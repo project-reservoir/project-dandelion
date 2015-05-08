@@ -56,6 +56,10 @@
 #include <compiler.h>
 #include <status_codes.h>
 
+// From module: EXTINT - External Interrupt (Callback APIs)
+#include <extint.h>
+#include <extint_callback.h>
+
 // From module: Generic board support
 #include <board.h>
 
@@ -67,6 +71,9 @@
 
 // From module: Part identification macros
 #include <parts.h>
+
+// From module: SAM D21/R21 USB Dual role interface
+#include <usb_dual.h>
 
 // From module: SERCOM Callback API
 #include <sercom.h>
@@ -95,7 +102,27 @@
 // From module: SYSTEM - Reset Management for SAM L21
 #include <reset.h>
 
+// From module: Sleep manager - SAML implementation
+#include <saml/sleepmgr.h>
+#include <sleepmgr.h>
+
 // From module: USART - Serial interface- SAM implementation for devices with only USART
 #include <serial.h>
+
+// From module: USB - Universal Serial Bus
+#include <usb.h>
+
+// From module: USB Device HID Generic (Single Interface Device)
+#include <udi_hid_generic.h>
+
+// From module: USB Device Stack Core (Common API)
+#include <udc.h>
+#include <udd.h>
+
+// From module: USB HID Device protocol
+#include <usb_protocol_hid.h>
+
+// From module: USB HID Library (Device)
+#include <udi_hid.h>
 
 #endif // ASF_H

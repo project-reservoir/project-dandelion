@@ -244,6 +244,8 @@ const size_t xRegTestStackSize = 25U;
 	{
 		xTimerStart( xTimer, mainDONT_BLOCK );
 	}
+	
+	udc_start();
 
 	/* Start the kernel.  From here on, only tasks and interrupts will run. */
 	vTaskStartScheduler();
