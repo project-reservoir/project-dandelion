@@ -1,7 +1,7 @@
+language: c
+
 notifications:
   email: true
-
-language: c
 
 before_script:
   - sudo apt-add-repository 'deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse restricted'
@@ -10,7 +10,6 @@ before_script:
   - curl -sL https://raw.githubusercontent.com/travis-ci/artifacts/master/install | bash
   - export PATH=$PATH:~/bin/
 
-script: cd EVAL/EVAL/Debug && make BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
-
-after_success:
-  "artifacts upload  --target-paths=builds/b$TRAVIS_BUILD_NUMBER build/project-dandelion*"
+script: 
+  - cd EVAL/EVAL/Debug 
+  - make all BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
