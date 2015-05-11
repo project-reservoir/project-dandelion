@@ -1,5 +1,5 @@
 notifications:
-  email: false
+  email: true
 
 language: c
 
@@ -10,7 +10,7 @@ before_script:
   - curl -sL https://raw.githubusercontent.com/travis-ci/artifacts/master/install | bash
   - export PATH=$PATH:~/bin/
 
-script: make BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
+script: cd EVAL/EVAL/Debug && make BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
 
 after_success:
   "artifacts upload  --target-paths=builds/b$TRAVIS_BUILD_NUMBER build/project-dandelion*"
