@@ -12,4 +12,4 @@ before_script:
 
 script: 
   - cd EVAL/EVAL/Debug 
-  - make all BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
+  - ./build.sh
