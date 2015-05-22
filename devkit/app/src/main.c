@@ -1,5 +1,7 @@
 #include "hwctrl.h"
 #include "stm32l0xx_hal.h"
+#include "led_task.h"
+#include "cmsis_os.h"
 
 int main(void)
 {
@@ -12,15 +14,13 @@ int main(void)
     // Setup external ports on the MCU
     HwCtrl_Init();
 
-    // Flash an LED on and off forever.
-    while(1)
-    {
-    	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
+    // Create an LED blink task
+    osThreadDef(LEDTask, LedBlinkTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
+    osThreadCreate(osThread(LEDTask), NULL);
 
-    	HAL_Delay(500);
+    // Start scheduler
+    osKernelStart(NULL, NULL);
 
-    	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
-
-    	HAL_Delay(500);
-    }
+    // We should never get here as control is now taken by the scheduler
+    for(;;);
 }

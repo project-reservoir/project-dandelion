@@ -39,6 +39,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "system_interrupts.h"
+#include "cmsis_os.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -77,29 +78,11 @@ void HardFault_Handler(void)
 }
 
 /**
-  * @brief  This function handles SVCall exception.
-  * @param  None
-  * @retval None
-  */
-void SVC_Handler(void)
-{
-}
-
-/**
   * @brief  This function handles Debug Monitor exception.
   * @param  None
   * @retval None
   */
 void DebugMon_Handler(void)
-{
-}
-
-/**
-  * @brief  This function handles PendSVC exception.
-  * @param  None
-  * @retval None
-  */
-void PendSV_Handler(void)
 {
 }
 
@@ -110,7 +93,10 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
-  static uint32_t ticks = 0;
+	if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED)
+	{
+		xPortSysTickHandler();
+	}
 
-  HAL_IncTick();
+	HAL_IncTick();
 }
