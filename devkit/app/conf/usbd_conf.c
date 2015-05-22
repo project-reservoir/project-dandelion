@@ -28,7 +28,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l0xx_hal.h"
 #include "usbd_core.h"
-#include "main.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -505,7 +504,7 @@ static void SystemClockConfig_STOP(void)
   */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-  if (GPIO_Pin == KEY_BUTTON_PIN)
+  if (GPIO_Pin == GPIO_PIN_0)
   {
     if ((((USBD_HandleTypeDef *)hpcd.pData)->dev_remote_wakeup == 1)&&
          (((USBD_HandleTypeDef *)hpcd.pData)->dev_state == USBD_STATE_SUSPENDED))

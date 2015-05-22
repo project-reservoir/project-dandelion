@@ -1,6 +1,7 @@
 #include "hwctrl.h"
 #include "stm32l0xx_hal.h"
 #include "led_task.h"
+#include "usb_task.h"
 #include "cmsis_os.h"
 
 int main(void)
@@ -17,6 +18,10 @@ int main(void)
     // Create an LED blink task
     osThreadDef(LEDTask, LedBlinkTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
     osThreadCreate(osThread(LEDTask), NULL);
+
+    // Create the USB Comm task
+	osThreadDef(USBTask, UsbTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
+	osThreadCreate(osThread(USBTask), NULL);
 
     // Start scheduler
     osKernelStart(NULL, NULL);
