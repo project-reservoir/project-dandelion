@@ -8,9 +8,9 @@
 *.sln.docstates
 
 # Build results
-[Dd]ebug/
+[Dd]ebug/src/
+[Rr]elease/src/
 [Dd]ebugPublic/
-[Rr]elease/
 [Rr]eleases/
 x64/
 x86/
@@ -229,3 +229,14 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Build artifacts
+*.bin
+*.hex
+*.srec
+*.map
+*.elf
+*.eep
+*.lss
+
+EVAL/EVAL/Debug/src/
