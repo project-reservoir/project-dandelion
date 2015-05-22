@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Project version="2G - 2.0.2" name="devkit">
+  <Target name="devkit" isCurrent="1">
+    <Device manufacturerId="9" manufacturerName="ST" chipId="1351" chipName="STM32L053C8T6" boardId="" boardName="" coreId="2" coreName="Cortex M0+"/>
+    <BuildOption>
+      <Compile>
+        <Option name="OptimizationLevel" value="4"/>
+        <Option name="UseFPU" value="0"/>
+        <Option name="UserEditCompiler" value=""/>
+        <Option name="SupportCPlusplus" value="0"/>
+        <Option name="DEBUG" value="2"/>
+        <Option name="WARNING" value="1"/>
+        <Includepaths>
+          <Includepath path="."/>
+        </Includepaths>
+        <DefinedSymbols>
+          <Define name="STM32L053C8T6"/>
+          <Define name="STM32L053xx"/>
+        </DefinedSymbols>
+      </Compile>
+      <Link useDefault="0">
+        <Option name="DiscardUnusedSection" value="0"/>
+        <Option name="UserEditLinkder" value=""/>
+        <Option name="UseMemoryLayout" value="1"/>
+        <Option name="nostartfiles" value="0"/>
+        <Option name="LTO" value="0"/>
+        <Option name="IsNewStartupCode" value="1"/>
+        <LinkedLibraries/>
+        <MemoryAreas debugInFlashNotRAM="1">
+          <Memory name="IROM1" type="ReadOnly" size="0x00010000" startValue="0x08000000"/>
+          <Memory name="IRAM1" type="ReadWrite" size="0x00002000" startValue="0x20000000"/>
+          <Memory name="IROM2" type="ReadOnly" size="" startValue=""/>
+          <Memory name="IRAM2" type="ReadWrite" size="" startValue=""/>
+        </MemoryAreas>
+        <LocateLinkFile path="../../../appdata/roaming/coocox/coide/configuration/programdata/devkit/arm-gcc-link.ld" type="0"/>
+      </Link>
+      <Output>
+        <Option name="OutputFileType" value="0"/>
+        <Option name="Path" value="./"/>
+        <Option name="Name" value="devkit"/>
+        <Option name="HEX" value="1"/>
+        <Option name="BIN" value="1"/>
+      </Output>
+      <User>
+        <UserRun name="Run#1" type="Before" checked="0" value=""/>
+        <UserRun name="Run#1" type="After" checked="0" value=""/>
+      </User>
+    </BuildOption>
+    <DebugOption>
+      <Option name="org.coocox.codebugger.gdbjtag.core.adapter" value="ST-Link"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.debugMode" value="SWD"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.clockDiv" value="1M"/>
+      <Option name="org.coocox.codebugger.gdbjtag.corerunToMain" value="1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.jlinkgdbserver" value=""/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.userDefineGDBScript" value=""/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.targetEndianess" value="0"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.jlinkResetMode" value="Type 0: Normal"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.resetMode" value="SYSRESETREQ"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.ifSemihost" value="0"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.ifCacheRom" value="1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.ipAddress" value="127.0.0.1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.portNumber" value="2009"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.autoDownload" value="1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.verify" value="1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.downloadFuction" value="Erase Effected"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.defaultAlgorithm" value="C:\Users\Stuart Alldritt\AppData\Roaming\CooCox\CoIDE\config\flash\CooCox-Flash\CoIDE_STM32L0xx_64K\STM32L0xx_64.elf"/>
+    </DebugOption>
+    <ExcludeFile/>
+  </Target>
+  <Components path="./">
+    <Component id="97" name="cmsis_core" path="" type="BasicComponet"/>
+  </Components>
+  <LocalComponents/>
+  <Files>
+    <File name="support/inc/stm32l0xx_hal_rng.h" path="support/Inc/stm32l0xx_hal_rng.h" type="1"/>
+    <File name="support/inc/stm32l052xx.h" path="support/Inc/stm32l052xx.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_gpio.h" path="support/Inc/stm32l0xx_hal_gpio.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_lcd.h" path="support/Inc/stm32l0xx_hal_lcd.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_pcd_ex.h" path="support/Inc/stm32l0xx_hal_pcd_ex.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_rtc_ex.h" path="support/Inc/stm32l0xx_hal_rtc_ex.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_lptim.h" path="support/Inc/stm32l0xx_hal_lptim.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_conf_template.h" path="support/Inc/stm32l0xx_hal_conf_template.h" type="1"/>
+    <File name="components/cmsis_core/arm_const_structs.h" path="components/coocox-master/cmsis_core/source/arm_const_structs.h" type="1"/>
+    <File name="app/inc/system_interrupts.h" path="app/inc/system_interrupts.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_flash_ex.c" path="support/Src/stm32l0xx_hal_flash_ex.c" type="1"/>
+    <File name="components/cmsis_core/core_sc300.h" path="components/coocox-master/cmsis_core/source/core_sc300.h" type="1"/>
+    <File name="app/src" path="" type="2"/>
+    <File name="support/src/stm32l0xx_hal_usart.c" path="support/Src/stm32l0xx_hal_usart.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_rcc_ex.c" path="support/Src/stm32l0xx_hal_rcc_ex.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_flash_ex.h" path="support/Inc/stm32l0xx_hal_flash_ex.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_spi.c" path="support/Src/stm32l0xx_hal_spi.c" type="1"/>
+    <File name="support/inc/stm32l062xx.h" path="support/Inc/stm32l062xx.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_adc.h" path="support/Inc/stm32l0xx_hal_adc.h" type="1"/>
+    <File name="components/cmsis_core/core_cm4_simd.h" path="components/coocox-master/cmsis_core/source/core_cm4_simd.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_wwdg.h" path="support/Inc/stm32l0xx_hal_wwdg.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal.c" path="support/Src/stm32l0xx_hal.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_smartcard.c" path="support/Src/stm32l0xx_hal_smartcard.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_smartcard.h" path="support/Inc/stm32l0xx_hal_smartcard.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_crc.c" path="support/Src/stm32l0xx_hal_crc.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_tim_ex.h" path="support/Inc/stm32l0xx_hal_tim_ex.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_rcc_ex.h" path="support/Inc/stm32l0xx_hal_rcc_ex.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_uart.h" path="support/Inc/stm32l0xx_hal_uart.h" type="1"/>
+    <File name="app/src/hwctrl.c" path="app/src/hwctrl.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_crc_ex.h" path="support/Inc/stm32l0xx_hal_crc_ex.h" type="1"/>
+    <File name="app/src/main.c" path="app/src/main.c" type="1"/>
+    <File name="components/cmsis_core/core_cm0plus.h" path="components/coocox-master/cmsis_core/source/core_cm0plus.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_i2c_ex.c" path="support/Src/stm32l0xx_hal_i2c_ex.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_dac_ex.h" path="support/Inc/stm32l0xx_hal_dac_ex.h" type="1"/>
+    <File name="components/cmsis_core/core_sc000.h" path="components/coocox-master/cmsis_core/source/core_sc000.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_pwr.c" path="support/Src/stm32l0xx_hal_pwr.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_cryp.c" path="support/Src/stm32l0xx_hal_cryp.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_adc.c" path="support/Src/stm32l0xx_hal_adc.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_i2s.h" path="support/Inc/stm32l0xx_hal_i2s.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_i2s.c" path="support/Src/stm32l0xx_hal_i2s.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_usart.h" path="support/Inc/stm32l0xx_hal_usart.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_pcd_ex.c" path="support/Src/stm32l0xx_hal_pcd_ex.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_dac.h" path="support/Inc/stm32l0xx_hal_dac.h" type="1"/>
+    <File name="app/src/system_interrupts.c" path="app/src/system_interrupts.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_pwr.h" path="support/Inc/stm32l0xx_hal_pwr.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_rcc.c" path="support/Src/stm32l0xx_hal_rcc.c" type="1"/>
+    <File name="app/conf" path="" type="2"/>
+    <File name="support/inc/stm32l0xx_hal_pcd.h" path="support/Inc/stm32l0xx_hal_pcd.h" type="1"/>
+    <File name="support/inc/stm32l051xx.h" path="support/Inc/stm32l051xx.h" type="1"/>
+    <File name="components/cmsis_core/core_cm3.h" path="components/coocox-master/cmsis_core/source/core_cm3.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_iwdg.h" path="support/Inc/stm32l0xx_hal_iwdg.h" type="1"/>
+    <File name="support/src" path="" type="2"/>
+    <File name="support/inc/stm32l0xx.h" path="support/Inc/stm32l0xx.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_adc_ex.h" path="support/Inc/stm32l0xx_hal_adc_ex.h" type="1"/>
+    <File name="support/inc/stm32l053xx.h" path="support/Inc/stm32l053xx.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_tsc.h" path="support/Inc/stm32l0xx_hal_tsc.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_dma.c" path="support/Src/stm32l0xx_hal_dma.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_lcd.c" path="support/Src/stm32l0xx_hal_lcd.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_dac.c" path="support/Src/stm32l0xx_hal_dac.c" type="1"/>
+    <File name="app/src/startup_stm32l053xx.s" path="app/startup_stm32l053xx.s" type="1"/>
+    <File name="support/inc/stm32l063xx.h" path="support/Inc/stm32l063xx.h" type="1"/>
+    <File name="components/cmsis_core/core_cm4.h" path="components/coocox-master/cmsis_core/source/core_cm4.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_irda.c" path="support/Src/stm32l0xx_hal_irda.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_rtc.h" path="support/Inc/stm32l0xx_hal_rtc.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_pcd.c" path="support/Src/stm32l0xx_hal_pcd.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_flash_ramfunc.c" path="support/Src/stm32l0xx_hal_flash_ramfunc.c" type="1"/>
+    <File name="support/inc/stm32l061xx.h" path="support/Inc/stm32l061xx.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_tim.c" path="support/Src/stm32l0xx_hal_tim.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_gpio_ex.h" path="support/Inc/stm32l0xx_hal_gpio_ex.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_irda.h" path="support/Inc/stm32l0xx_hal_irda.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_cortex.c" path="support/Src/stm32l0xx_hal_cortex.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_flash_ramfunc.h" path="support/Inc/stm32l0xx_hal_flash_ramfunc.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_cryp.h" path="support/Inc/stm32l0xx_hal_cryp.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_i2c.c" path="support/Src/stm32l0xx_hal_i2c.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_lptim.c" path="support/Src/stm32l0xx_hal_lptim.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_crc.h" path="support/Inc/stm32l0xx_hal_crc.h" type="1"/>
+    <File name="app" path="" type="2"/>
+    <File name="support/inc/stm32l0xx_hal_comp.h" path="support/Inc/stm32l0xx_hal_comp.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_cryp_ex.h" path="support/Inc/stm32l0xx_hal_cryp_ex.h" type="1"/>
+    <File name="components/cmsis_core/core_cmInstr.h" path="components/coocox-master/cmsis_core/source/core_cmInstr.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_smbus.c" path="support/Src/stm32l0xx_hal_smbus.c" type="1"/>
+    <File name="components/cmsis_core" path="" type="2"/>
+    <File name="components/cmsis_core/core_cmFunc.h" path="components/coocox-master/cmsis_core/source/core_cmFunc.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_dac_ex.c" path="support/Src/stm32l0xx_hal_dac_ex.c" type="1"/>
+    <File name="app/inc" path="" type="2"/>
+    <File name="support/src/stm32l0xx_hal_rng.c" path="support/Src/stm32l0xx_hal_rng.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_tim.h" path="support/Inc/stm32l0xx_hal_tim.h" type="1"/>
+    <File name="components/cmsis_core/arm_common_tables.h" path="components/coocox-master/cmsis_core/source/arm_common_tables.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_rtc.c" path="support/Src/stm32l0xx_hal_rtc.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_flash.h" path="support/Inc/stm32l0xx_hal_flash.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_irda_ex.h" path="support/Inc/stm32l0xx_hal_irda_ex.h" type="1"/>
+    <File name="support" path="" type="2"/>
+    <File name="support/inc/stm32l0xx_hal_spi.h" path="support/Inc/stm32l0xx_hal_spi.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_adc_ex.c" path="support/Src/stm32l0xx_hal_adc_ex.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_pwr_ex.h" path="support/Inc/stm32l0xx_hal_pwr_ex.h" type="1"/>
+    <File name="app/inc/hwctrl.h" path="app/inc/hwctrl.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_uart.c" path="support/Src/stm32l0xx_hal_uart.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_msp_template.c" path="support/Src/stm32l0xx_hal_msp_template.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_def.h" path="support/Inc/stm32l0xx_hal_def.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_dma.h" path="support/Inc/stm32l0xx_hal_dma.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_comp.c" path="support/Src/stm32l0xx_hal_comp.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_usart_ex.h" path="support/Inc/stm32l0xx_hal_usart_ex.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_tsc.c" path="support/Src/stm32l0xx_hal_tsc.c" type="1"/>
+    <File name="components/cmsis_core/core_cm0.h" path="components/coocox-master/cmsis_core/source/core_cm0.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_smbus.h" path="support/Inc/stm32l0xx_hal_smbus.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_rcc.h" path="support/Inc/stm32l0xx_hal_rcc.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_i2c.h" path="support/Inc/stm32l0xx_hal_i2c.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_pwr_ex.c" path="support/Src/stm32l0xx_hal_pwr_ex.c" type="1"/>
+    <File name="support/inc" path="" type="2"/>
+    <File name="support/inc/system_stm32l0xx.h" path="support/Inc/system_stm32l0xx.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_gpio.c" path="support/Src/stm32l0xx_hal_gpio.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_crc_ex.c" path="support/Src/stm32l0xx_hal_crc_ex.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_uart_ex.h" path="support/Inc/stm32l0xx_hal_uart_ex.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_cryp_ex.c" path="support/Src/stm32l0xx_hal_cryp_ex.c" type="1"/>
+    <File name="support/src/system_stm32l0xx.c" path="support/Src/system_stm32l0xx.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_wwdg.c" path="support/Src/stm32l0xx_hal_wwdg.c" type="1"/>
+    <File name="app/conf/stm32l0xx_hal_conf.h" path="app/conf/stm32l0xx_hal_conf.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_flash.c" path="support/Src/stm32l0xx_hal_flash.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal.h" path="support/Inc/stm32l0xx_hal.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_i2c_ex.h" path="support/Inc/stm32l0xx_hal_i2c_ex.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_smartcard_ex.c" path="support/Src/stm32l0xx_hal_smartcard_ex.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_iwdg.c" path="support/Src/stm32l0xx_hal_iwdg.c" type="1"/>
+    <File name="components" path="" type="2"/>
+    <File name="support/src/stm32l0xx_hal_rtc_ex.c" path="support/Src/stm32l0xx_hal_rtc_ex.c" type="1"/>
+    <File name="support/src/stm32l0xx_hal_tim_ex.c" path="support/Src/stm32l0xx_hal_tim_ex.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_cortex.h" path="support/Inc/stm32l0xx_hal_cortex.h" type="1"/>
+    <File name="support/src/stm32l0xx_hal_uart_ex.c" path="support/Src/stm32l0xx_hal_uart_ex.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_smartcard_ex.h" path="support/Inc/stm32l0xx_hal_smartcard_ex.h" type="1"/>
+    <File name="components/cmsis_core/arm_math.h" path="components/coocox-master/cmsis_core/source/arm_math.h" type="1"/>
+  </Files>
+  <Bookmarks/>
+</Project>
