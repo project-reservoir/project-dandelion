@@ -66,6 +66,11 @@
 
 #define CUSTOM_HID_REQ_SET_REPORT            0x09
 #define CUSTOM_HID_REQ_GET_REPORT            0x01
+
+// If these values are changed, the USB HID Report Descriptor must be updated!!!
+#define USBD_CUSTOM_HID_REPORT_DESC_SIZE 	 32
+#define USBD_CUSTOMHID_OUTREPORT_BUF_SIZE    64
+
 /**
   * @}
   */ 
@@ -99,7 +104,7 @@ typedef struct
   uint32_t             IsReportAvailable;  
   CUSTOM_HID_StateTypeDef     state;  
 }
-USBD_CUSTOM_HID_HandleTypeDef; 
+USBD_CUSTOM_HID_HandleTypeDef;
 /**
   * @}
   */ 

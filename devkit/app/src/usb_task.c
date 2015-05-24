@@ -2,89 +2,76 @@
 #include "cmsis_os.h"
 #include "usbd_core.h"
 #include "usbd_desc.h"
-#include "usbd_hid.h"
+#include "usbd_customhid.h"
 #include "stm32l0xx_hal.h"
 
 // LOCAL FUNCTION PROTOTYPES
-static void UsbClockEnable(void);
-static void UsbClockDisable(void);
+static int8_t HID_USER_Init(void);
+static int8_t HID_USER_DeInit(void);
+static int8_t HID_USER_OutEvent(uint8_t event_idx, uint8_t state);
+
+__ALIGN_BEGIN static uint8_t HID_CUSTOM_ReportDesc[USBD_CUSTOM_HID_REPORT_DESC_SIZE]  __ALIGN_END =
+{
+	0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
+	0x09, 0x00,                    // USAGE (Undefined)
+	0xa1, 0x01,                    // COLLECTION (Application)
+	0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
+	0x26, 0xff, 0x00,              //   LOGICAL_MAXIMUM (255)
+	0x85, 0x01,                    //   REPORT_ID (1)
+	0x75, 0x40,                    //   REPORT_SIZE (64)
+	0x95, 0x01,                    //   REPORT_COUNT (1)
+	0x09, 0x00,                    //   USAGE (Undefined)
+	0x81, 0x82,                    //   INPUT (Data,Var,Abs,Vol)
+	0x85, 0x02,                    //   REPORT_ID (2)
+	0x75, 0x40,                    //   REPORT_SIZE (64)
+	0x95, 0x01,                    //   REPORT_COUNT (1)
+	0x09, 0x00,                    //   USAGE (Undefined)
+	0x91, 0x82,                    //   OUTPUT (Data,Var,Abs,Vol)
+	0xC0                           // END_COLLECTION
+};
 
 // GLOBAL VARIABLES
 USBD_HandleTypeDef USBD_Device;
+USBD_CUSTOM_HID_ItfTypeDef USBD_Callbacks = {
+											  HID_CUSTOM_ReportDesc,
+											  HID_USER_Init,
+											  HID_USER_DeInit,
+											  HID_USER_OutEvent,
+											};
 
 // GLOBAL FUNCTION IMPLEMENTATIONS
 void UsbTask(const void *argument)
 {
 	// Initialize USB hardware
-
-	// Initialize USB clock
-	UsbClockEnable();
+	USBD_Device.pUserData = &USBD_Callbacks;
 
 	// Init USB Device Library
 	USBD_Init(&USBD_Device, &HID_Desc, 0);
 
 	// Register the HID class
-	USBD_RegisterClass(&USBD_Device, &USBD_HID);
+	USBD_RegisterClass(&USBD_Device, &USBD_CUSTOM_HID);
 
 	// Start Device Process
 	USBD_Start(&USBD_Device);
 
 	while(1)
 	{
-		osDelay(100);
+		;
 	}
 
 }
 
-// LOCAL FUNCTION IMPLEMENTATIONS
-void UsbClockEnable(void)
+static int8_t HID_USER_Init(void)
 {
-  RCC_OscInitTypeDef RCC_OscInitStruct;
-  RCC_PeriphCLKInitTypeDef  PeriphClkInitStruct;
-  static RCC_CRSInitTypeDef RCC_CRSInitStruct;
-
-  /* Enable HSI48 Oscillator to be used as USB clock source */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48;
-  RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
-  HAL_RCC_OscConfig(&RCC_OscInitStruct);
-  /* Select HSI48 as USB clock source */
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USB;
-  PeriphClkInitStruct.UsbClockSelection = RCC_USBCLKSOURCE_HSI48;
-  HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct);
-
-  /*Configure the clock recovery system (CRS)**********************************/
-
-  /*Enable CRS Clock*/
-  __CRS_CLK_ENABLE();
-
-  /* Default Synchro Signal division factor (not divided) */
-  RCC_CRSInitStruct.Prescaler = RCC_CRS_SYNC_DIV1;
-  /* Set the SYNCSRC[1:0] bits according to CRS_Source value */
-  RCC_CRSInitStruct.Source = RCC_CRS_SYNC_SOURCE_USB;
-  /* HSI48 is synchronized with USB SOF at 1KHz rate */
-  RCC_CRSInitStruct.ReloadValue =  __HAL_RCC_CRS_CALCULATE_RELOADVALUE(48000000, 1000);
-  RCC_CRSInitStruct.ErrorLimitValue = RCC_CRS_ERRORLIMIT_DEFAULT;
-  /* Set the TRIM[5:0] to the default value*/
-  RCC_CRSInitStruct.HSI48CalibrationValue = 0x20;
-  /* Start automatic synchronization */
-  HAL_RCCEx_CRSConfig (&RCC_CRSInitStruct);
+	return 0;
 }
 
-
-/**
-  * @brief  USB Clock Configuration: Disable Resources
-  * @param  None
-  * @retval None
-  */
-void UsbClockDisable(void)
+static int8_t HID_USER_DeInit(void)
 {
-  RCC_OscInitTypeDef RCC_OscInitStruct;
+	return 0;
+}
 
-  /* Enable HSI48 Oscillator to be used as USB clock source */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48;
-  RCC_OscInitStruct.HSI48State = RCC_HSI48_OFF;
-  HAL_RCC_OscConfig(&RCC_OscInitStruct);
-
-  /*Enable CRS Clock*/
-  __CRS_CLK_DISABLE();
+static int8_t HID_USER_OutEvent(uint8_t event_idx, uint8_t state)
+{
+	return 0;
 }

@@ -490,10 +490,12 @@ static void SystemClockConfig_STOP(void)
   RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
   HAL_RCC_OscConfig(&RCC_OscInitStruct);
 
-  /* Select HSI as system clock source, SYSCLK = 16 MHz */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_SYSCLK;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
-  HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0);
+  /* Select HSI as system clock source and configure the HCLK, PCLK1 and PCLK2
+	 clock dividers */
+	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_SYSCLK;
+	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+	HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0);
+
 }
 
 /**

@@ -31,6 +31,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l0xx_hal.h"
+#include "cmsis_os.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -41,20 +42,17 @@
 #define USBD_MAX_NUM_INTERFACES               1
 #define USBD_MAX_NUM_CONFIGURATION            1
 #define USBD_MAX_STR_DESC_SIZ                 0x100
-#define USBD_SUPPORT_USER_STRING              0 
+#define USBD_SUPPORT_USER_STRING              0
 #define USBD_SELF_POWERED                     1
 #define USBD_DEBUG_LEVEL                      0
 
 /* Exported macro ------------------------------------------------------------*/
 /* Memory management macros */
 
-/* For footprint reasons and since only one allocation is handled in the HID class
-   driver, the malloc/free is changed into a static allocation method */
-
 void *USBD_static_malloc(uint32_t size);
 void USBD_static_free(void *p);
 
-#define MAX_STATIC_ALLOC_SIZE     4 /*HID Class Driver Structure size*/
+#define MAX_STATIC_ALLOC_SIZE     84 /*HID Class Driver Structure size*/
 
 #define USBD_malloc               (uint32_t *)USBD_static_malloc
 #define USBD_free                 USBD_static_free

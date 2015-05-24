@@ -32,11 +32,13 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
-#define USBD_VID                      0x0483
-#define USBD_PID                      0x5710
+#define USBD_VID                      0x1209
+#define USBD_PID                      0x0001
 #define USBD_LANGID_STRING            0x409
-#define USBD_MANUFACTURER_STRING      "STMicroelectronics"
-#define USBD_PRODUCT_FS_STRING        "HID Joystick in FS Mode"
+#define USBD_MANUFACTURER_STRING      "Project Reservoir"
+//#define USBD_MANUFACTURER_STRING      "STMicroelectronics"
+#define USBD_PRODUCT_FS_STRING        "Project Dandelion"
+//#define USBD_PRODUCT_FS_STRING        "HID Joystick in FS Mode"
 #define USBD_CONFIGURATION_FS_STRING  "HID Config"
 #define USBD_INTERFACE_FS_STRING      "HID Interface"
 

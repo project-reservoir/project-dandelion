@@ -9,10 +9,10 @@ void LedBlinkTask(const void *argument)
 	{
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
 
-		osDelay(500);
+		osDelay(100);
 
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
 
-		osDelay(500);
+		osDelay(100);
 	}
 }
