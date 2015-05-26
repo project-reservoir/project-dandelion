@@ -24,7 +24,7 @@ int main(void)
 	osThreadCreate(osThread(USBTask), NULL);
 
     // Start scheduler
-    osKernelStart(NULL, NULL);
+	vTaskStartScheduler();
 
     // We should never get here as control is now taken by the scheduler
     for(;;);
