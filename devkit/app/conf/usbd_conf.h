@@ -31,7 +31,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l0xx_hal.h"
-#include "cmsis_os.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

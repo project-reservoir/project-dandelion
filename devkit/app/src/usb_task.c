@@ -1,5 +1,4 @@
 #include "usb_task.h"
-#include "cmsis_os.h"
 #include "usbd_core.h"
 #include "usbd_desc.h"
 #include "usbd_customhid.h"

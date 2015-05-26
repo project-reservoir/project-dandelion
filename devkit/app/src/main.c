@@ -2,7 +2,7 @@
 #include "stm32l0xx_hal.h"
 #include "led_task.h"
 #include "usb_task.h"
-#include "cmsis_os.h"
+#include "coocox.h"
 
 int main(void)
 {
@@ -15,16 +15,17 @@ int main(void)
     // Setup external ports on the MCU
     HwCtrl_Init();
 
+    // Initialize the OS
+    CoInitOS();
+
     // Create an LED blink task
-    osThreadDef(LEDTask, LedBlinkTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
-    osThreadCreate(osThread(LEDTask), NULL);
+    LedTaskCreate();
 
     // Create the USB Comm task
-	osThreadDef(USBTask, UsbTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
-	osThreadCreate(osThread(USBTask), NULL);
+	//osThreadDef(USBTask, UsbTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
 
     // Start scheduler
-    osKernelStart(NULL, NULL);
+    CoStartOS();
 
     // We should never get here as control is now taken by the scheduler
     for(;;);

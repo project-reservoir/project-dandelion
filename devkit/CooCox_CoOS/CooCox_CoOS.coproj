@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Project version="2G - Default" name="CooCox_CoOS">
+  <Target name="CooCox_CoOS" isCurrent="1">
+    <Device manufacturerId="8" manufacturerName="Nuvoton" chipId="15" chipName="NUC472HI8AE" boardId="" boardName="" coreId="4" coreName="Cortex M4"/>
+    <BuildOption>
+      <Compile>
+        <Option name="OptimizationLevel" value="0"/>
+        <Option name="UseFPU" value="0"/>
+        <Option name="UserEditCompiler" value=""/>
+        <Option name="SupportCPlusplus" value="0"/>
+        <Includepaths>
+          <Includepath path="."/>
+        </Includepaths>
+        <DefinedSymbols>
+          <Define name="NUC472HI8AE"/>
+        </DefinedSymbols>
+      </Compile>
+      <Link useDefault="0">
+        <Option name="DiscardUnusedSection" value="0"/>
+        <Option name="UserEditLinkder" value=""/>
+        <Option name="UseMemoryLayout" value="1"/>
+        <Option name="nostartfiles" value="1"/>
+        <Option name="LTO" value="0"/>
+        <Option name="IsNewStartupCode" value="1"/>
+        <LinkedLibraries/>
+        <MemoryAreas debugInFlashNotRAM="1">
+          <Memory name="IROM1" type="ReadOnly" size="0x00080000" startValue="0x00000000"/>
+          <Memory name="IRAM1" type="ReadWrite" size="0x00010000" startValue="0x20000000"/>
+          <Memory name="IROM2" type="ReadOnly" size="" startValue=""/>
+          <Memory name="IRAM2" type="ReadWrite" size="" startValue=""/>
+        </MemoryAreas>
+        <LocateLinkFile path="e:/work_space/runtime-coide.product/coocox_coos/link.ld" type="0"/>
+      </Link>
+      <Output>
+        <Option name="OutputFileType" value="0"/>
+        <Option name="Path" value="./"/>
+        <Option name="Name" value="CooCox_CoOS"/>
+        <Option name="HEX" value="1"/>
+        <Option name="BIN" value="1"/>
+      </Output>
+      <User>
+        <UserRun name="Run#1" type="Before" checked="0" value=""/>
+        <UserRun name="Run#1" type="After" checked="0" value=""/>
+      </User>
+    </BuildOption>
+    <DebugOption>
+      <Option name="org.coocox.codebugger.gdbjtag.core.adapter" value="Nu-Link"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.debugMode" value="SWD"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.clockDiv" value="1M"/>
+      <Option name="org.coocox.codebugger.gdbjtag.corerunToMain" value="1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.jlinkgdbserver" value=""/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.userDefineGDBScript" value=""/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.targetEndianess" value="0"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.jlinkResetMode" value="Type 0: Normal"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.resetMode" value="SYSRESETREQ"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.ifSemihost" value="0"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.ifCacheRom" value="1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.ipAddress" value="127.0.0.1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.portNumber" value="2009"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.autoDownload" value="1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.verify" value="1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.downloadFuction" value="Erase Effected"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.defaultAlgorithm" value=""/>
+    </DebugOption>
+    <ExcludeFile/>
+  </Target>
+  <Components path="./"/>
+  <LocalComponents/>
+  <Files>
+    <File name="Source/kernel/serviceReq.c" path="Source/kernel/serviceReq.c" type="1"/>
+    <File name="Source/kernel/CoOS.h" path="Source/kernel/CoOS.h" type="1"/>
+    <File name="Source/portable/GCC" path="" type="2"/>
+    <File name="Source/kernel/hook.c" path="Source/kernel/hook.c" type="1"/>
+    <File name="Source/kernel/OsTime.h" path="Source/kernel/OsTime.h" type="1"/>
+    <File name="Source/kernel/utility.h" path="Source/kernel/utility.h" type="1"/>
+    <File name="Source/kernel/mm.c" path="Source/kernel/mm.c" type="1"/>
+    <File name="Source/kernel/OsEvent.h" path="Source/kernel/OsEvent.h" type="1"/>
+    <File name="Source/kernel/task.c" path="Source/kernel/task.c" type="1"/>
+    <File name="Source/kernel/core.c" path="Source/kernel/core.c" type="1"/>
+    <File name="Source/kernel/OsServiceReq.h" path="Source/kernel/OsServiceReq.h" type="1"/>
+    <File name="Source/kernel/OsError.h" path="Source/kernel/OsError.h" type="1"/>
+    <File name="Source/kernel/queue.c" path="Source/kernel/queue.c" type="1"/>
+    <File name="Source/kernel/OsKernelHeap.h" path="Source/kernel/OsKernelHeap.h" type="1"/>
+    <File name="Source/kernel/OsFlag.h" path="Source/kernel/OsFlag.h" type="1"/>
+    <File name="Source/kernel/mbox.c" path="Source/kernel/mbox.c" type="1"/>
+    <File name="Source/kernel/OsCore.h" path="Source/kernel/OsCore.h" type="1"/>
+    <File name="Source/portable/arch.c" path="Source/portable/arch.c" type="1"/>
+    <File name="Source/kernel/timer.c" path="Source/kernel/timer.c" type="1"/>
+    <File name="OsConfig.h" path="test/OsConfig.h" type="1"/>
+    <File name="Source/kernel/sem.c" path="Source/kernel/sem.c" type="1"/>
+    <File name="Source/kernel/OsTask.h" path="Source/kernel/OsTask.h" type="1"/>
+    <File name="Source/kernel/flag.c" path="Source/kernel/flag.c" type="1"/>
+    <File name="Source/kernel/OsQueue.h" path="Source/kernel/OsQueue.h" type="1"/>
+    <File name="Source/kernel/OsMM.h" path="Source/kernel/OsMM.h" type="1"/>
+    <File name="Source/kernel/utility.c" path="Source/kernel/utility.c" type="1"/>
+    <File name="Source/portable" path="" type="2"/>
+    <File name="Source/kernel/OsMutex.h" path="Source/kernel/OsMutex.h" type="1"/>
+    <File name="Source/kernel/coocox.h" path="Source/kernel/coocox.h" type="1"/>
+    <File name="Source/kernel/OsTimer.h" path="Source/kernel/OsTimer.h" type="1"/>
+    <File name="Source" path="" type="2"/>
+    <File name="Source/kernel/OsConfig.h.example" path="Source/kernel/OsConfig.h.example" type="1"/>
+    <File name="Source/portable/GCC/port.c" path="Source/portable/GCC/port.c" type="1"/>
+    <File name="Source/kernel/time.c" path="Source/kernel/time.c" type="1"/>
+    <File name="Source/kernel/event.c" path="Source/kernel/event.c" type="1"/>
+    <File name="Source/kernel/mutex.c" path="Source/kernel/mutex.c" type="1"/>
+    <File name="Source/portable/OsArch.h" path="Source/portable/OsArch.h" type="1"/>
+    <File name="Source/kernel" path="" type="2"/>
+    <File name="main.c" path="test/main.c" type="1"/>
+    <File name="Source/kernel/kernelHeap.c" path="Source/kernel/kernelHeap.c" type="1"/>
+  </Files>
+  <Bookmarks/>
+</Project>
