@@ -18,7 +18,10 @@ void SystemClock_Config(void)
 	/* Enable HSI Oscillator to be used as System clock source */
 	/* Enable HSI48 Oscillator to be used as USB clock source */
 	RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI | RCC_OSCILLATORTYPE_HSI48;
-	RCC_OscInitStruct.HSIState = RCC_HSI_ON | RCC_HSI48_ON;
+	RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+	RCC_OscInitStruct.HSICalibrationValue = 0x00; // Max value of 0x1F, this is used to compensate for temperature fluctuations
+	RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
+	RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
 	HAL_RCC_OscConfig(&RCC_OscInitStruct);
 
 	/* Select HSI48 as USB clock source */

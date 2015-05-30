@@ -46,17 +46,16 @@
   * @{
   */ 
 #define CUSTOM_HID_EPIN_ADDR                 0x81
-#define CUSTOM_HID_EPIN_SIZE                 0x02
+#define CUSTOM_HID_EPIN_SIZE                 0x40
 
 #define CUSTOM_HID_EPOUT_ADDR                0x01
-#define CUSTOM_HID_EPOUT_SIZE                0x02
+#define CUSTOM_HID_EPOUT_SIZE                0x40
 
 #define USB_CUSTOM_HID_CONFIG_DESC_SIZ       41
 #define USB_CUSTOM_HID_DESC_SIZ              9
 
 #define CUSTOM_HID_DESCRIPTOR_TYPE           0x21
 #define CUSTOM_HID_REPORT_DESC               0x22
-
 
 #define CUSTOM_HID_REQ_SET_PROTOCOL          0x0B
 #define CUSTOM_HID_REQ_GET_PROTOCOL          0x03
@@ -91,7 +90,7 @@ typedef struct _USBD_CUSTOM_HID_Itf
   uint8_t                  *pReport;
   int8_t (* Init)          (void);
   int8_t (* DeInit)        (void);
-  int8_t (* OutEvent)      (uint8_t, uint8_t );   
+  int8_t (* OutEvent)      (uint8_t*);
 
 }USBD_CUSTOM_HID_ItfTypeDef;
 

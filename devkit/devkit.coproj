@@ -8,7 +8,7 @@
         <Option name="UseFPU" value="0"/>
         <Option name="UserEditCompiler" value="-s;-Wl,--gc-sections;-ffunction-sections;-fdata-sections;-Wl,-static;"/>
         <Option name="SupportCPlusplus" value="0"/>
-        <Option name="DEBUG" value="0"/>
+        <Option name="DEBUG" value="2"/>
         <Option name="WARNING" value="1"/>
         <Option name="CPPADVANCES" value="1,0,0,0,0,0"/>
         <Includepaths>
@@ -104,10 +104,10 @@
     <File name="support/inc/stm32l0xx_hal_smartcard.h" path="support/Inc/stm32l0xx_hal_smartcard.h" type="1"/>
     <File name="support/src/stm32l0xx_hal_crc.c" path="support/Src/stm32l0xx_hal_crc.c" type="1"/>
     <File name="usb_library/Core/Src" path="" type="2"/>
-    <File name="support/inc/stm32l0xx_hal_uart.h" path="support/Inc/stm32l0xx_hal_uart.h" type="1"/>
-    <File name="support/inc/stm32l0xx_hal_rcc_ex.h" path="support/Inc/stm32l0xx_hal_rcc_ex.h" type="1"/>
     <File name="FreeRTOS/queue.c" path="FreeRTOS/queue.c" type="1"/>
     <File name="support/inc/stm32l0xx_hal_tim_ex.h" path="support/Inc/stm32l0xx_hal_tim_ex.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_uart.h" path="support/Inc/stm32l0xx_hal_uart.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_rcc_ex.h" path="support/Inc/stm32l0xx_hal_rcc_ex.h" type="1"/>
     <File name="support/inc/stm32l0xx_hal_crc_ex.h" path="support/Inc/stm32l0xx_hal_crc_ex.h" type="1"/>
     <File name="app/src/hwctrl.c" path="app/src/hwctrl.c" type="1"/>
     <File name="support/inc/core_cmFunc.h" path="support/Inc/core_cmFunc.h" type="1"/>
@@ -125,10 +125,10 @@
     <File name="support/src/stm32l0xx_hal_adc.c" path="support/Src/stm32l0xx_hal_adc.c" type="1"/>
     <File name="support/inc/stm32l0xx_hal_i2s.h" path="support/Inc/stm32l0xx_hal_i2s.h" type="1"/>
     <File name="support/src/stm32l0xx_hal_i2s.c" path="support/Src/stm32l0xx_hal_i2s.c" type="1"/>
-    <File name="support/inc/stm32l0xx_hal_usart.h" path="support/Inc/stm32l0xx_hal_usart.h" type="1"/>
-    <File name="usb_library/Core/Src/usbd_ctlreq.c" path="STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c" type="1"/>
     <File name="FreeRTOS/include/queue.h" path="FreeRTOS/include/queue.h" type="1"/>
+    <File name="usb_library/Core/Src/usbd_ctlreq.c" path="STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c" type="1"/>
     <File name="support/src/stm32l0xx_hal_pcd_ex.c" path="support/Src/stm32l0xx_hal_pcd_ex.c" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_usart.h" path="support/Inc/stm32l0xx_hal_usart.h" type="1"/>
     <File name="app/src/usbd_desc.c" path="app/src/usbd_desc.c" type="1"/>
     <File name="app/inc/usb_task.h" path="app/inc/usb_task.h" type="1"/>
     <File name="support/inc/stm32l0xx_hal_dac.h" path="support/Inc/stm32l0xx_hal_dac.h" type="1"/>
@@ -165,9 +165,9 @@
     <File name="support/src/stm32l0xx_hal_tim.c" path="support/Src/stm32l0xx_hal_tim.c" type="1"/>
     <File name="usb_library/Core/Src/usbd_core.c" path="STM32_USB_Device_Library/Core/Src/usbd_core.c" type="1"/>
     <File name="support/inc/stm32l0xx_hal_gpio_ex.h" path="support/Inc/stm32l0xx_hal_gpio_ex.h" type="1"/>
+    <File name="support/inc/stm32l0xx_hal_irda.h" path="support/Inc/stm32l0xx_hal_irda.h" type="1"/>
     <File name="support/src/stm32l0xx_hal_cortex.c" path="support/Src/stm32l0xx_hal_cortex.c" type="1"/>
     <File name="FreeRTOS/include/FreeRTOSConfig_template.h" path="FreeRTOS/include/FreeRTOSConfig_template.h" type="1"/>
-    <File name="support/inc/stm32l0xx_hal_irda.h" path="support/Inc/stm32l0xx_hal_irda.h" type="1"/>
     <File name="support/inc/stm32l0xx_hal_flash_ramfunc.h" path="support/Inc/stm32l0xx_hal_flash_ramfunc.h" type="1"/>
     <File name="support/inc/stm32l0xx_hal_cryp.h" path="support/Inc/stm32l0xx_hal_cryp.h" type="1"/>
     <File name="support/src/stm32l0xx_hal_i2c.c" path="support/Src/stm32l0xx_hal_i2c.c" type="1"/>
@@ -236,9 +236,9 @@
     <File name="support/inc/stm32l0xx_hal.h" path="support/Inc/stm32l0xx_hal.h" type="1"/>
     <File name="support/inc/stm32l0xx_hal_i2c_ex.h" path="support/Inc/stm32l0xx_hal_i2c_ex.h" type="1"/>
     <File name="support/src/stm32l0xx_hal_flash.c" path="support/Src/stm32l0xx_hal_flash.c" type="1"/>
-    <File name="support/inc/core_cm3.h" path="support/Inc/core_cm3.h" type="1"/>
     <File name="support/src/stm32l0xx_hal_smartcard_ex.c" path="support/Src/stm32l0xx_hal_smartcard_ex.c" type="1"/>
     <File name="support/src/stm32l0xx_hal_iwdg.c" path="support/Src/stm32l0xx_hal_iwdg.c" type="1"/>
+    <File name="support/inc/core_cm3.h" path="support/Inc/core_cm3.h" type="1"/>
     <File name="FreeRTOS/croutine.c" path="FreeRTOS/croutine.c" type="1"/>
     <File name="support/src/stm32l0xx_hal_rtc_ex.c" path="support/Src/stm32l0xx_hal_rtc_ex.c" type="1"/>
     <File name="app/src/usb_task.c" path="app/src/usb_task.c" type="1"/>

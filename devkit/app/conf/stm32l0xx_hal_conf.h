@@ -139,6 +139,7 @@
 #define  PREFETCH_ENABLE              1
 #define  PREREAD_ENABLE               1
 #define  BUFFER_CACHE_DISABLE         0
+#define  USE_FULL_ASSERT			  1
 
 /* ########################## Assert Selection ############################## */
 /**
