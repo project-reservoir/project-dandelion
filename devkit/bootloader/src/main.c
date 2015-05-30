@@ -1,4 +1,5 @@
 #include "hwctrl.h"
+#include "app_header.h"
 #include "stm32l0xx_hal.h"
 
 NVIC_BLOCK ivt __attribute__((section(".patched_nvic_table")));

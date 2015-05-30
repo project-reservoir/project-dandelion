@@ -30,14 +30,13 @@
 <part id="17"/>
 <part id="18"/>
 <part id="19"/>
-<part id="20"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/src/main.c" title="main.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/src/main.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/src/main.c" title="main.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/src/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/app/src/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="64" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="534" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="system_interrupts.c" partName="system_interrupts.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/src/system_interrupts.c" title="system_interrupts.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/src/system_interrupts.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/app/src/system_interrupts.c"/>
@@ -53,7 +52,7 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="hwctrl.h" partName="hwctrl.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/inc/hwctrl.h" title="hwctrl.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/inc/hwctrl.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/app/inc/hwctrl.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="18" selectionOffset="654" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="519" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal.h" partName="stm32l0xx_hal.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Inc/stm32l0xx_hal.h" title="stm32l0xx_hal.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Inc/stm32l0xx_hal.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/inc/stm32l0xx_hal.h"/>
@@ -93,7 +92,7 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32l053xx.s" partName="startup_stm32l053xx.s" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/startup_stm32l053xx.s" title="startup_stm32l053xx.s" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/startup_stm32l053xx.s" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/app/src/startup_stm32l053xx.s"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="4390"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="1803"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_rcc.c" partName="stm32l0xx_hal_rcc.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_rcc.c" title="stm32l0xx_hal_rcc.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_rcc.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/src/stm32l0xx_hal_rcc.c"/>
@@ -122,10 +121,9 @@
 <expanded>
 <element path="/devkit-bootloader"/>
 <element path="/devkit-bootloader/app"/>
+<element path="/devkit-bootloader/app/inc"/>
 <element path="/devkit-bootloader/app/src"/>
 <element path="/devkit-bootloader/support"/>
-<element path="/devkit-bootloader/support/inc"/>
-<element path="/devkit-bootloader/support/src"/>
 </expanded>
 <selection>
 <element path="/devkit-bootloader/app/src/main.c"/>
@@ -171,7 +169,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.coocox.builder.perspective.CoBuilder">
+<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.coocox.builder.ui.PerspectiveCoBuilder" id="org.coocox.builder.perspective.CoBuilder" label="CooCox CoBuilder"/>
 <alwaysOnActionSet id="org.coocox.welcome.ui.actionSet"/>
@@ -193,8 +191,8 @@
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showMemoryBrowserAction"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showVariablesAction"/>
 <hide_menu_item_id id="org.coocox.builder.ui.openProjectExplorerAction"/>
-<hide_menu_item_id id="org.coocox.codebugger.trace.actions.ShowTraceControlAction"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
+<hide_menu_item_id id="org.coocox.codebugger.trace.actions.ShowTraceControlAction"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showRegistersAction"/>
 <hide_toolbar_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
@@ -350,7 +348,47 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/devkit-bootloader/app/src/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/devkit-bootloader/app/src/main_app.s"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/devkit-bootloader/app/src/startup_stm32l053xx.s"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/devkit-bootloader/app/inc/hwctrl.h"/>
+</editors>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="64" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="237" y="0"/>
+</item>
+<item historyLabel="main_app.s" index="1">
+<position info="not_deleted" x="161" y="0"/>
+</item>
+<item historyLabel="startup_stm32l053xx.s" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main_app.s" index="1">
+<position info="not_deleted" x="11" y="17"/>
+</item>
+<item historyLabel="startup_stm32l053xx.s" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="237" y="0"/>
+</item>
+<item historyLabel="hwctrl.h" index="3">
+<position info="not_deleted" x="274" y="14"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="534" y="0"/>
+</item>
+<item historyLabel="hwctrl.h" index="3">
+<position info="not_deleted" x="519" y="0"/>
+</item>
+<item active="true" historyLabel="main.c" index="0">
+<position info="not_deleted" x="458" y="0"/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -362,10 +400,29 @@
 <org.coocox.welcome.ui.WelcomePage/>
 </persistable>
 </file>
-<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage" name="" tooltip="">
-<persistable>
-<org.coocox.welcome.ui.WelcomePage/>
-</persistable>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="main_app.s" tooltip="devkit-bootloader/app/src/main_app.s">
+<persistable path="/devkit-bootloader/app/src/main_app.s"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal.h" tooltip="devkit-bootloader/support/inc/stm32l0xx_hal.h">
+<persistable path="/devkit-bootloader/support/inc/stm32l0xx_hal.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="core_cm0plus.h" tooltip="devkit-bootloader/support/inc/core_cm0plus.h">
+<persistable path="/devkit-bootloader/support/inc/core_cm0plus.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="core_cm0.h" tooltip="devkit-bootloader/support/inc/core_cm0.h">
+<persistable path="/devkit-bootloader/support/inc/core_cm0.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="arm_common_tables.h" tooltip="devkit-bootloader/support/inc/arm_common_tables.h">
+<persistable path="/devkit-bootloader/support/inc/arm_common_tables.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="arm_const_structs.h" tooltip="devkit-bootloader/support/inc/arm_const_structs.h">
+<persistable path="/devkit-bootloader/support/inc/arm_const_structs.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_cortex.c" tooltip="devkit-bootloader/support/src/stm32l0xx_hal_cortex.c">
+<persistable path="/devkit-bootloader/support/src/stm32l0xx_hal_cortex.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_conf.c" tooltip="devkit/app/conf/usbd_conf.c">
+<persistable path="/devkit/app/conf/usbd_conf.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_conf.c" tooltip="devkit/app/conf/usbd_conf.c">
 <persistable path="/devkit/app/conf/usbd_conf.c"/>
@@ -381,27 +438,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_rcc.h" tooltip="devkit/support/inc/stm32l0xx_hal_rcc.h">
 <persistable path="/devkit/support/inc/stm32l0xx_hal_rcc.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32l053xx.s" tooltip="devkit/app/src/startup_stm32l053xx.s">
-<persistable path="/devkit/app/src/startup_stm32l053xx.s"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="heap_4.c" tooltip="devkit/FreeRTOS/portable/heap_4.c">
-<persistable path="/devkit/FreeRTOS/portable/heap_4.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_conf.h" tooltip="devkit/app/conf/stm32l0xx_hal_conf.h">
-<persistable path="/devkit/app/conf/stm32l0xx_hal_conf.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="queue.h" tooltip="devkit/FreeRTOS/include/queue.h">
-<persistable path="/devkit/FreeRTOS/include/queue.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_customhid.h" tooltip="devkit/usb_library/Class/CustomHID/usbd_customhid.h">
-<persistable path="/devkit/usb_library/Class/CustomHID/usbd_customhid.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_core.h" tooltip="devkit/usb_library/Core/Inc/usbd_core.h">
-<persistable path="/devkit/usb_library/Core/Inc/usbd_core.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_def.h" tooltip="devkit-bootloader/support/inc/stm32l0xx_hal_def.h">
-<persistable path="/devkit-bootloader/support/inc/stm32l0xx_hal_def.h"/>
 </file>
 </mruList>
 </workbench>
