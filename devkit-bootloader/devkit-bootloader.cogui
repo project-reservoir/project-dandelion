@@ -13,8 +13,8 @@
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
-<part id="3"/>
 <part id="4"/>
+<part id="3"/>
 <part id="5"/>
 <part id="6"/>
 <part id="7"/>
@@ -31,106 +31,104 @@
 <part id="18"/>
 <part id="19"/>
 <part id="20"/>
-<part id="21"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="led_task.c" partName="led_task.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/led_task.c" title="led_task.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/led_task.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/src/led_task.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="21" selectionOffset="94" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/src/main.c" title="main.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/src/main.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/app/src/main.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="64" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usb_task.c" partName="usb_task.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/usb_task.c" title="usb_task.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/usb_task.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/src/usb_task.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1850" selectionTopPixel="748"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="system_interrupts.c" partName="system_interrupts.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/src/system_interrupts.c" title="system_interrupts.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/src/system_interrupts.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/app/src/system_interrupts.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2650" selectionTopPixel="905"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usb_task.h" partName="usb_task.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/inc/usb_task.h" title="usb_task.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/inc/usb_task.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/inc/usb_task.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="33" selectionOffset="146" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_conf.h" partName="stm32l0xx_hal_conf.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/conf/stm32l0xx_hal_conf.h" title="stm32l0xx_hal_conf.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/conf/stm32l0xx_hal_conf.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/app/conf/stm32l0xx_hal_conf.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2793" selectionTopPixel="1080"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_desc.c" partName="usbd_desc.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/usbd_desc.c" title="usbd_desc.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/usbd_desc.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/src/usbd_desc.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1569" selectionTopPixel="304"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="hwctrl.c" partName="hwctrl.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/src/hwctrl.c" title="hwctrl.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/src/hwctrl.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/app/src/hwctrl.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1471" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="tasks.c" partName="tasks.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/tasks.c" title="tasks.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/tasks.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/FreeRTOS/tasks.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="33815" selectionTopPixel="13617"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="hwctrl.h" partName="hwctrl.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/inc/hwctrl.h" title="hwctrl.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/inc/hwctrl.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/app/inc/hwctrl.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="18" selectionOffset="654" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/main.c" title="main.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/main.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/src/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="652" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal.h" partName="stm32l0xx_hal.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Inc/stm32l0xx_hal.h" title="stm32l0xx_hal.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Inc/stm32l0xx_hal.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/inc/stm32l0xx_hal.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="8" selectionOffset="9576" selectionTopPixel="3060"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="hwctrl.c" partName="hwctrl.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/hwctrl.c" title="hwctrl.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/hwctrl.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/src/hwctrl.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1139" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal.c" partName="stm32l0xx_hal.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal.c" title="stm32l0xx_hal.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/src/stm32l0xx_hal.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="10063" selectionTopPixel="2411"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="cmsis_os.h" partName="cmsis_os.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/CMSIS_RTOS/cmsis_os.h" title="cmsis_os.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/CMSIS_RTOS/cmsis_os.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/FreeRTOS/CMSIS_RTOS/cmsis_os.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="7" selectionOffset="16491" selectionTopPixel="5558"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_cortex.c" partName="stm32l0xx_hal_cortex.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_cortex.c" title="stm32l0xx_hal_cortex.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_cortex.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/src/stm32l0xx_hal_cortex.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="1205"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="cmsis_os.c" partName="cmsis_os.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/CMSIS_RTOS/cmsis_os.c" title="cmsis_os.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/CMSIS_RTOS/cmsis_os.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/FreeRTOS/CMSIS_RTOS/cmsis_os.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="23421" selectionTopPixel="13823"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_comp.c" partName="stm32l0xx_hal_comp.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_comp.c" title="stm32l0xx_hal_comp.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_comp.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/src/stm32l0xx_hal_comp.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="23" selectionOffset="6789" selectionTopPixel="9762"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_core.h" partName="usbd_core.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/STM32_USB_Device_Library/Core/Inc/usbd_core.h" title="usbd_core.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/STM32_USB_Device_Library/Core/Inc/usbd_core.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/usb_library/Core/Inc/usbd_core.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="22" selectionOffset="4973" selectionTopPixel="2040"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_crc_ex.c" partName="stm32l0xx_hal_crc_ex.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_crc_ex.c" title="stm32l0xx_hal_crc_ex.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_crc_ex.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/src/stm32l0xx_hal_crc_ex.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="3557"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="queue.c" partName="queue.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/queue.c" title="queue.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/queue.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/FreeRTOS/queue.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="48276" selectionTopPixel="23171"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_crc.c" partName="stm32l0xx_hal_crc.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_crc.c" title="stm32l0xx_hal_crc.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_crc.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/src/stm32l0xx_hal_crc.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="7960"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_customhid.c" partName="usbd_customhid.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c" title="usbd_customhid.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/STM32_USB_Device_Library/Class/CustomHID/Src/usbd_customhid.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/usb_library/Class/CustomHID/usbd_customhid.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="1560"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_dma.c" partName="stm32l0xx_hal_dma.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_dma.c" title="stm32l0xx_hal_dma.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_dma.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/src/stm32l0xx_hal_dma.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5134" selectionTopPixel="1475"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_customhid.h" partName="usbd_customhid.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h" title="usbd_customhid.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/STM32_USB_Device_Library/Class/CustomHID/Inc/usbd_customhid.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/usb_library/Class/CustomHID/usbd_customhid.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="33" selectionOffset="2920" selectionTopPixel="300"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_flash.h" partName="stm32l0xx_hal_flash.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Inc/stm32l0xx_hal_flash.h" title="stm32l0xx_hal_flash.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Inc/stm32l0xx_hal_flash.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/inc/stm32l0xx_hal_flash.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="20" selectionOffset="5847" selectionTopPixel="1572"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="queue.h" partName="queue.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/include/queue.h" title="queue.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/include/queue.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/FreeRTOS/include/queue.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="15011" selectionTopPixel="6911"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32l0xx.c" partName="system_stm32l0xx.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/system_stm32l0xx.c" title="system_stm32l0xx.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/system_stm32l0xx.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/src/system_stm32l0xx.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5066" selectionTopPixel="4169"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_conf.h" partName="stm32l0xx_hal_conf.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/conf/stm32l0xx_hal_conf.h" title="stm32l0xx_hal_conf.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/conf/stm32l0xx_hal_conf.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/conf/stm32l0xx_hal_conf.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6003" selectionTopPixel="1908"/>
+<editor id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32l053xx.s" partName="startup_stm32l053xx.s" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/startup_stm32l053xx.s" title="startup_stm32l053xx.s" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/app/startup_stm32l053xx.s" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/app/src/startup_stm32l053xx.s"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="4390"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="heap_4.c" partName="heap_4.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/portable/MemMang/heap_4.c" title="heap_4.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/portable/MemMang/heap_4.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/FreeRTOS/portable/heap_4.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="8" selectionOffset="10272" selectionTopPixel="3090"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_rcc.c" partName="stm32l0xx_hal_rcc.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_rcc.c" title="stm32l0xx_hal_rcc.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_rcc.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/src/stm32l0xx_hal_rcc.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="3306"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_rcc.h" partName="stm32l0xx_hal_rcc.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Inc/stm32l0xx_hal_rcc.h" title="stm32l0xx_hal_rcc.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Inc/stm32l0xx_hal_rcc.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/support/inc/stm32l0xx_hal_rcc.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="11131" selectionTopPixel="4505"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_rcc_ex.c" partName="stm32l0xx_hal_rcc_ex.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_rcc_ex.c" title="stm32l0xx_hal_rcc_ex.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_rcc_ex.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/src/stm32l0xx_hal_rcc_ex.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="2070"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_rcc.c" partName="stm32l0xx_hal_rcc.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Src/stm32l0xx_hal_rcc.c" title="stm32l0xx_hal_rcc.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Src/stm32l0xx_hal_rcc.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/support/src/stm32l0xx_hal_rcc.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="20063" selectionTopPixel="7735"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_pwr.c" partName="stm32l0xx_hal_pwr.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_pwr.c" title="stm32l0xx_hal_pwr.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_pwr.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/src/stm32l0xx_hal_pwr.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="1500"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_conf.h" partName="usbd_conf.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/conf/usbd_conf.h" title="usbd_conf.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/conf/usbd_conf.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/conf/usbd_conf.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="270"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_gpio.c" partName="stm32l0xx_hal_gpio.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_gpio.c" title="stm32l0xx_hal_gpio.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Src/stm32l0xx_hal_gpio.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/src/stm32l0xx_hal_gpio.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="2760"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_desc.h" partName="usbd_desc.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/inc/usbd_desc.h" title="usbd_desc.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/inc/usbd_desc.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/inc/usbd_desc.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="140"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_conf.c" partName="usbd_conf.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/conf/usbd_conf.c" title="usbd_conf.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/conf/usbd_conf.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/conf/usbd_conf.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="990"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_def.h" partName="stm32l0xx_hal_def.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Inc/stm32l0xx_hal_def.h" title="stm32l0xx_hal_def.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit-bootloader/support/Inc/stm32l0xx_hal_def.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit-bootloader/support/inc/stm32l0xx_hal_def.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="2690"/>
 </editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
 <viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
 <expanded>
-<element path="/devkit"/>
-<element path="/devkit/app"/>
-<element path="/devkit/app/src"/>
+<element path="/devkit-bootloader"/>
+<element path="/devkit-bootloader/app"/>
+<element path="/devkit-bootloader/app/src"/>
+<element path="/devkit-bootloader/support"/>
+<element path="/devkit-bootloader/support/inc"/>
+<element path="/devkit-bootloader/support/src"/>
 </expanded>
 <selection>
-<element path="/devkit/app/src/led_task.c"/>
+<element path="/devkit-bootloader/app/src/main.c"/>
 </selection>
 </viewState>
 </view>
@@ -139,6 +137,7 @@
 </view>
 <view id="org.eclipse.search.ui.views.SearchView" partName="Search">
 <viewState isPinned="false">
+<view IMemento.internal.id="org.eclipse.search.text.FileSearchResultPage" org.eclipse.search.lastActivation="2" org.eclipse.search.resultpage.layout="2" org.eclipse.search.resultpage.limit="1000" org.eclipse.search.resultpage.sorting="2"/>
 <view IMemento.internal.id="org.eclipse.cdt.ui.pdomSearchViewPage" definitionColumnWidth="150" locationColumnWidth="300" matchColumnWidth="300" org.eclipse.search.lastActivation="1" org.eclipse.search.resultpage.layout="2" showEnclosingDefinitions="true"/>
 <view IMemento.internal.id="" org.eclipse.search.lastActivation="0"/>
 </viewState>
@@ -194,8 +193,8 @@
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showMemoryBrowserAction"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showVariablesAction"/>
 <hide_menu_item_id id="org.coocox.builder.ui.openProjectExplorerAction"/>
-<hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <hide_menu_item_id id="org.coocox.codebugger.trace.actions.ShowTraceControlAction"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showRegistersAction"/>
 <hide_toolbar_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
@@ -368,16 +367,6 @@
 <org.coocox.welcome.ui.WelcomePage/>
 </persistable>
 </file>
-<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage" name="" tooltip="">
-<persistable>
-<org.coocox.welcome.ui.WelcomePage/>
-</persistable>
-</file>
-<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage" name="" tooltip="">
-<persistable>
-<org.coocox.welcome.ui.WelcomePage/>
-</persistable>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_conf.c" tooltip="devkit/app/conf/usbd_conf.c">
 <persistable path="/devkit/app/conf/usbd_conf.c"/>
 </file>
@@ -407,6 +396,12 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_customhid.h" tooltip="devkit/usb_library/Class/CustomHID/usbd_customhid.h">
 <persistable path="/devkit/usb_library/Class/CustomHID/usbd_customhid.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_core.h" tooltip="devkit/usb_library/Core/Inc/usbd_core.h">
+<persistable path="/devkit/usb_library/Core/Inc/usbd_core.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_def.h" tooltip="devkit-bootloader/support/inc/stm32l0xx_hal_def.h">
+<persistable path="/devkit-bootloader/support/inc/stm32l0xx_hal_def.h"/>
 </file>
 </mruList>
 </workbench>
