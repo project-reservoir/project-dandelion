@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>Target 1</TargetName>
+      <TargetName>devkit</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
@@ -226,7 +226,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>1</useUlib>
+            <useUlib>0</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <RoSelD>3</RoSelD>
@@ -356,7 +356,7 @@
             <Strict>0</Strict>
             <EnumInt>0</EnumInt>
             <PlainCh>0</PlainCh>
-            <Ropi>0</Ropi>
+            <Ropi>1</Ropi>
             <Rwpi>0</Rwpi>
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
@@ -366,15 +366,15 @@
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>--lower_ropi</MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\app\inc;.\support\FreeRTOS\include;.\support\HAL\Inc;.\support\STM32_USB_Device_Library\Class\CustomHID\Inc;.\support\STM32_USB_Device_Library\Core\Inc;.\support\FreeRTOS\CMSIS_RTOS;.\support\FreeRTOS\portable\Keil;.\app\conf;.\support\FreeRTOS\portable\RVDS\ARM_CM0;.\support\xbee_ansi\inc</IncludePath>
+              <IncludePath>.\app\inc;.\support\FreeRTOS\include;.\support\HAL\Inc;.\support\STM32_USB_Device_Library\Class\CustomHID\Inc;.\support\STM32_USB_Device_Library\Core\Inc;.\support\FreeRTOS\CMSIS_RTOS;.\support\FreeRTOS\portable\Keil;.\app\conf;.\support\FreeRTOS\portable\RVDS\ARM_CM0;.\support\xbee_ansi\inc;.\common\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
             <interw>1</interw>
-            <Ropi>0</Ropi>
+            <Ropi>1</Ropi>
             <Rwpi>0</Rwpi>
             <thumb>1</thumb>
             <SplitLS>0</SplitLS>
@@ -390,11 +390,11 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>1</umfTarg>
-            <Ropi>0</Ropi>
+            <umfTarg>0</umfTarg>
+            <Ropi>1</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
-            <RepFail>1</RepFail>
+            <RepFail>0</RepFail>
             <useFile>0</useFile>
             <TextAddressRange>0x08000000</TextAddressRange>
             <DataAddressRange>0x20000000</DataAddressRange>
@@ -402,8 +402,8 @@
             <ScatterFile></ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
-            <Misc></Misc>
-            <LinkerInputFile></LinkerInputFile>
+            <Misc>
+</Misc>            <LinkerInputFile></LinkerInputFile>
             <DisabledWarnings></DisabledWarnings>
           </LDads>
         </TargetArmAds>
@@ -433,25 +433,25 @@
               <FilePath>.\app\src\system_interrupts.c</FilePath>
             </File>
             <File>
-              <FileName>usb_task.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\src\usb_task.c</FilePath>
+              <FileName>header.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\app\src\header.s</FilePath>
             </File>
             <File>
-              <FileName>usbd_desc.c</FileName>
+              <FileName>weak_interrupts.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\app\src\usbd_desc.c</FilePath>
+              <FilePath>.\app\src\weak_interrupts.c</FilePath>
+            </File>
+            <File>
+              <FileName>metadata.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\metadata.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>inc</GroupName>
           <Files>
-            <File>
-              <FileName>app_header.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\app\inc\app_header.h</FilePath>
-            </File>
             <File>
               <FileName>hwctrl.h</FileName>
               <FileType>5</FileType>
@@ -468,14 +468,9 @@
               <FilePath>.\app\inc\system_interrupts.h</FilePath>
             </File>
             <File>
-              <FileName>usb_task.h</FileName>
+              <FileName>app_header.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\app\inc\usb_task.h</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_desc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\app\inc\usbd_desc.h</FilePath>
+              <FilePath>.\common\inc\app_header.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1155,56 +1150,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>USBD</GroupName>
-          <Files>
-            <File>
-              <FileName>usbd_customhid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\STM32_USB_Device_Library\Class\CustomHID\Src\usbd_customhid.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_customhid.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\support\STM32_USB_Device_Library\Class\CustomHID\Inc\usbd_customhid.h</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_core.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\support\STM32_USB_Device_Library\Core\Inc\usbd_core.h</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_ctlreq.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\support\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_def.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\support\STM32_USB_Device_Library\Core\Inc\usbd_def.h</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_ioreq.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\support\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_core.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\STM32_USB_Device_Library\Core\Src\usbd_core.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_ctlreq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\STM32_USB_Device_Library\Core\Src\usbd_ctlreq.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_ioreq.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\STM32_USB_Device_Library\Core\Src\usbd_ioreq.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>conf</GroupName>
           <Files>
             <File>
@@ -1213,102 +1158,14 @@
               <FilePath>.\app\conf\stm32l0xx_hal_conf.h</FilePath>
             </File>
             <File>
-              <FileName>usbd_conf.c</FileName>
+              <FileName>system_stm32l0xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\app\conf\usbd_conf.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_conf.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\app\conf\usbd_conf.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>xbee_ansi</GroupName>
-          <Files>
-            <File>
-              <FileName>xbee_sxa.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\xbee\xbee_sxa.c</FilePath>
-            </File>
-            <File>
-              <FileName>xbee_atcmd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\xbee\xbee_atcmd.c</FilePath>
-            </File>
-            <File>
-              <FileName>xbee_platform_stm32.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\stm32\xbee_platform_stm32.c</FilePath>
-            </File>
-            <File>
-              <FileName>xbee_serial_stm32.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\stm32\xbee_serial_stm32.c</FilePath>
-            </File>
-            <File>
-              <FileName>xbee_io.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\xbee\xbee_io.c</FilePath>
-            </File>
-            <File>
-              <FileName>xbee_wpan.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\xbee\xbee_wpan.c</FilePath>
-            </File>
-            <File>
-              <FileName>wpan_types.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\wpan\wpan_types.c</FilePath>
-            </File>
-            <File>
-              <FileName>wpan_aps.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\wpan\wpan_aps.c</FilePath>
-            </File>
-            <File>
-              <FileName>swapbytes.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\util\swapbytes.c</FilePath>
-            </File>
-            <File>
-              <FileName>xbee_device.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\xbee\xbee_device.c</FilePath>
-            </File>
-            <File>
-              <FileName>hexstrtobyte.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\util\hexstrtobyte.c</FilePath>
-            </File>
-            <File>
-              <FileName>hexdump.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\util\hexdump.c</FilePath>
-            </File>
-            <File>
-              <FileName>zigbee_zcl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\zigbee\zigbee_zcl.c</FilePath>
-            </File>
-            <File>
-              <FileName>xbee_discovery.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\xbee\xbee_discovery.c</FilePath>
-            </File>
-            <File>
-              <FileName>zcl_types.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\xbee_ansi\src\zigbee\zcl_types.c</FilePath>
+              <FilePath>.\app\conf\system_stm32l0xx.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
-          <GroupName>::Device</GroupName>
         </Group>
       </Groups>
     </Target>
@@ -1320,32 +1177,22 @@
       <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="4.1.0" condition="CMSIS Core">
         <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="4.3.0"/>
         <targetInfos>
-          <targetInfo name="Target 1"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32L053 CMSIS">
-        <package name="STM32L0xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.3.0"/>
-        <targetInfos>
-          <targetInfo name="Target 1"/>
+          <targetInfo name="devkit"/>
         </targetInfos>
       </component>
     </components>
     <files>
       <file attr="config" category="source" condition="Compiler ARMCC" name="Device\Source\ARM\startup_stm32l053xx.s" version="1.0.0">
-        <instance index="0">RTE\Device\STM32L053C8\startup_stm32l053xx.s</instance>
+        <instance index="0" removed="1">RTE\Device\STM32L053C8\startup_stm32l053xx.s</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32L053 CMSIS"/>
         <package name="STM32L0xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.3.0"/>
-        <targetInfos>
-          <targetInfo name="Target 1"/>
-        </targetInfos>
+        <targetInfos/>
       </file>
       <file attr="config" category="source" name="Device\Source\system_stm32l0xx.c" version="1.0.0">
-        <instance index="0">RTE\Device\STM32L053C8\system_stm32l0xx.c</instance>
+        <instance index="0" removed="1">RTE\Device\STM32L053C8\system_stm32l0xx.c</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="STM32L053 CMSIS"/>
         <package name="STM32L0xx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.3.0"/>
-        <targetInfos>
-          <targetInfo name="Target 1"/>
-        </targetInfos>
+        <targetInfos/>
       </file>
     </files>
   </RTE>

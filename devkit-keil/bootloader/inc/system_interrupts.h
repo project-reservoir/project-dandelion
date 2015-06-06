@@ -60,34 +60,6 @@ void SVC_Handler(void);
 void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
-void Reset_Handler(void);
-void WWDG_Handler(void);
-void PVD_Handler(void);
-void RTC_Handler(void);
-void FLASH_Handler(void);
-void RCC_CRS_Handler(void);
-void EXTI0_1_Handler(void);
-void EXTI2_3_Handler(void);
-void EXTI4_15_Handler(void);
-void TSC_Handler(void);
-void DMA1_Channel1_Handler(void);
-void DMA1_Channel2_3_Handler(void);
-void DMA1_Channel4_5_6_7_Handler(void);
-void ADC1_COMP_Handler(void);
-void LPTIM1_Handler(void);
-void TIM2_Handler(void);
-void TIM6_DAC_Handler(void);
-void TIM21_Handler(void);
-void TIM22_Handler(void);
-void I2C1_Handler(void);
-void I2C2_Handler(void);
-void SPI1_Handler(void);
-void SPI2_Handler(void);
-void USART1_Handler(void);
-void USART2_Handler(void);
-void RNG_LPUART1_Handler(void);
-void LCD_Handler(void);
-void USB_Handler(void);
 
 #ifdef __cplusplus
 }

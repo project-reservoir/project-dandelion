@@ -224,9 +224,9 @@ ARM Macro Assembler    Page 4
 WEAK]
   136 00000000                 IMPORT           __main
   137 00000000                 IMPORT           SystemInit
-  138 00000000 4805            LDR              R0, =SystemInit
+  138 00000000 4808            LDR              R0, =SystemInit
   139 00000002 4780            BLX              R0
-  140 00000004 4805            LDR              R0, =__main
+  140 00000004 4808            LDR              R0, =__main
   141 00000006 4700            BX               R0
   142 00000008                 ENDP
   143 00000008         
@@ -381,31 +381,42 @@ ARM Macro Assembler    Page 6
   240 00000018         ;*******************************************************
                        ************************
   241 00000018                 IF               :DEF:__MICROLIB
-  242 00000018         
-  243 00000018                 EXPORT           __initial_sp
-  244 00000018                 EXPORT           __heap_base
-  245 00000018                 EXPORT           __heap_limit
-  246 00000018         
-  247 00000018                 ELSE
-  262                          ENDIF
+  248 00000018         
+  249 00000018                 IMPORT           __use_two_region_memory
+  250 00000018                 EXPORT           __user_initial_stackheap
+  251 00000018         
+  252 00000018         __user_initial_stackheap
+  253 00000018         
+  254 00000018 4804            LDR              R0, =  Heap_Mem
 
 
 
 ARM Macro Assembler    Page 7 
 
 
-  263 00000018         
-  264 00000018                 END
+  255 0000001A 4905            LDR              R1, =(Stack_Mem + Stack_Size)
+  256 0000001C 4A05            LDR              R2, = (Heap_Mem +  Heap_Size)
+  257 0000001E 4B06            LDR              R3, = Stack_Mem
+  258 00000020 4770            BX               LR
+  259 00000022         
+  260 00000022 00 00           ALIGN
+  261 00000024         
+  262 00000024                 ENDIF
+  263 00000024         
+  264 00000024                 END
               00000000 
               00000000 
-Command Line: --16 --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=
-interwork --depend=.\objects\startup_stm32l053xx.d -o.\objects\startup_stm32l05
-3xx.o -I"C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-kei
-l\RTE" -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include -IC:\Keil_v5\ARM\PAC
-K\Keil\STM32L0xx_DFP\1.3.0\Device\Include --predefine="__MICROLIB SETA 1" --pre
-define="__UVISION_VERSION SETA 515" --predefine="_RTE_ SETA 1" --predefine="STM
-32L053xx SETA 1" --list=.\listings\startup_stm32l053xx.lst RTE\Device\STM32L053
-C8\startup_stm32l053xx.s
+              00000000 
+              00000400 
+              00000200 
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
+work --depend=.\objects\startup_stm32l053xx.d -o.\objects\startup_stm32l053xx.o
+ -IC:\Users\Stuart\Documents\GitHub\project-dandelion\devkit-keil\RTE -IC:\Keil
+_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx
+_DFP\1.3.0\Device\Include --predefine="__UVISION_VERSION SETA 515" --predefine=
+"_RTE_ SETA 1" --predefine="STM32L053xx SETA 1" --list=.\listings\startup_stm32
+l053xx.lst RTE\Device\STM32L053C8\startup_stm32l053xx.s
 
 
 
@@ -426,8 +437,9 @@ Symbol: Stack_Mem
    Definitions
       At line 51 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
    Uses
-      None
-Comment: Stack_Mem unused
+      At line 255 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
+      At line 257 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
+
 __initial_sp 00000400
 
 Symbol: __initial_sp
@@ -435,8 +447,7 @@ Symbol: __initial_sp
       At line 52 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
    Uses
       At line 76 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
-      At line 243 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
-
+Comment: __initial_sp used once
 3 symbols
 
 
@@ -458,24 +469,25 @@ Symbol: Heap_Mem
    Definitions
       At line 63 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
    Uses
-      None
-Comment: Heap_Mem unused
+      At line 254 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
+      At line 256 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
+
 __heap_base 00000000
 
 Symbol: __heap_base
    Definitions
       At line 62 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
    Uses
-      At line 244 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
-Comment: __heap_base used once
+      None
+Comment: __heap_base unused
 __heap_limit 00000200
 
 Symbol: __heap_limit
    Definitions
       At line 64 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
    Uses
-      At line 245 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
-Comment: __heap_limit used once
+      None
+Comment: __heap_limit unused
 4 symbols
 
 
@@ -868,7 +880,15 @@ Symbol: WWDG_IRQHandler
       At line 94 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
       At line 175 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
 
-36 symbols
+__user_initial_stackheap 00000018
+
+Symbol: __user_initial_stackheap
+   Definitions
+      At line 252 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
+   Uses
+      At line 250 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
+Comment: __user_initial_stackheap used once
+37 symbols
 
 
 
@@ -882,7 +902,8 @@ Symbol: Heap_Size
       At line 59 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
    Uses
       At line 63 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
-Comment: Heap_Size used once
+      At line 256 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
+
 Stack_Size 00000400
 
 Symbol: Stack_Size
@@ -890,7 +911,8 @@ Symbol: Stack_Size
       At line 48 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
    Uses
       At line 51 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
-Comment: Stack_Size used once
+      At line 255 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
+
 __Vectors_Size 000000C0
 
 Symbol: __Vectors_Size
@@ -922,5 +944,13 @@ Symbol: __main
    Uses
       At line 140 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
 Comment: __main used once
-2 symbols
-387 symbols in table
+__use_two_region_memory 00000000
+
+Symbol: __use_two_region_memory
+   Definitions
+      At line 249 in file RTE\Device\STM32L053C8\startup_stm32l053xx.s
+   Uses
+      None
+Comment: __use_two_region_memory unused
+3 symbols
+390 symbols in table

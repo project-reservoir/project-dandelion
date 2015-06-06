@@ -1,4 +1,7 @@
-#pragma once
+#ifndef __APP_HEADER_H
+#define __APP_HEADER_H
+
+#include "stm32l0xx_hal.h"
 
 #define SRAM_START			0x20000000
 #define FLASH_START			0x08000000
@@ -110,3 +113,5 @@ typedef struct NVIC_BLOCK_T {
 	uint32_t LCD_IRQHandler;                    /* LCD                          */
 	uint32_t USB_IRQHandler;                    /* USB                          */
 } NVIC_BLOCK;
+
+#endif // __APP_HEADER_H

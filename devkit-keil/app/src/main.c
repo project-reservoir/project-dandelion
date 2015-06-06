@@ -3,15 +3,23 @@
 #include "led_task.h"
 #include "usb_task.h"
 #include "cmsis_os.h"
-#include "xbee/device.h"
-#include "xbee/sxa.h"
 
-const xbee_dispatch_table_entry_t xbee_frame_handlers[] = {XBEE_FRAME_TABLE_END};
+uint32_t __initial_sp = 0x0000;
+
+unsigned portBASE_TYPE makeFreeRtosPriority (osPriority priority)
+{
+  unsigned portBASE_TYPE fpriority = tskIDLE_PRIORITY;
+  
+  if (priority != osPriorityError) {
+    fpriority += (priority - osPriorityIdle);
+  }
+  
+  return fpriority;
+}
 
 int main(void)
-{
-		osThreadDef(USBTask, UsbTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
-		osThreadDef(LEDTask, LedBlinkTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
+{	
+		xTaskHandle ledTaskHandle;
 	
 		// Initialize the ST Micro Board Support Library
     HAL_Init();
@@ -22,20 +30,25 @@ int main(void)
     // Setup external ports on the MCU
     HwCtrl_Init();
 
-    // Create an LED blink task
-    osThreadCreate(osThread(LEDTask), NULL);
-
-		// Create the USB Comm task
-		osThreadCreate(osThread(USBTask), NULL);
-
-		UsbTaskInit();
-		sxa_init_or_exit();
+    // Create an LED blink task		
+		xTaskCreate(LedBlinkTask,
+              "LEDTask",
+              configMINIMAL_STACK_SIZE,
+              NULL,
+              makeFreeRtosPriority(osPriorityNormal),
+              &ledTaskHandle);					
 
 		// Start scheduler
 		vTaskStartScheduler();
 
     // We should never get here as control is now taken by the scheduler
     for(;;);
+}
+
+// Dummy reset handler to satisfy Keil
+void Reset_Handler(void) 
+{
+	
 }
 
 #ifdef  USE_FULL_ASSERT

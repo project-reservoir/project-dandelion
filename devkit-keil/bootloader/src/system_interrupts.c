@@ -1,10 +1,12 @@
 /**
   ******************************************************************************
-  * @file    stm32l0xx_it.h
+  * @file    stm32l0xx_it.c
   * @author  MCD Application Team
   * @version V1.0.1
   * @date    18-June-2014
-  * @brief   This file contains the headers of the interrupt handlers.
+  * @brief   Main Interrupt Service Routines.
+  *          This file provides template for all exceptions handler and
+  *          peripherals interrupt service routine.
   ******************************************************************************
   * @attention
   *
@@ -35,64 +37,57 @@
   ******************************************************************************
   */
 
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __STM32L0xx_IT_H
-#define __STM32L0xx_IT_H
-
-#ifdef __cplusplus
- extern "C" {
-#endif
-
 /* Includes ------------------------------------------------------------------*/
-#include "stm32l0xx_hal.h"
+#include "system_interrupts.h"
 
-/* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
-/* Exported macro ------------------------------------------------------------*/
-/* Exported functions ------------------------------------------------------- */
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
 
-void NMI_Handler(void);
-void HardFault_Handler(void);
-void MemManage_Handler(void);
-void BusFault_Handler(void);
-void UsageFault_Handler(void);
-void SVC_Handler(void);
-void DebugMon_Handler(void);
-void PendSV_Handler(void);
-void SysTick_Handler(void);
-void Reset_Handler(void);
-void WWDG_Handler(void);
-void PVD_Handler(void);
-void RTC_Handler(void);
-void FLASH_Handler(void);
-void RCC_CRS_Handler(void);
-void EXTI0_1_Handler(void);
-void EXTI2_3_Handler(void);
-void EXTI4_15_Handler(void);
-void TSC_Handler(void);
-void DMA1_Channel1_Handler(void);
-void DMA1_Channel2_3_Handler(void);
-void DMA1_Channel4_5_6_7_Handler(void);
-void ADC1_COMP_Handler(void);
-void LPTIM1_Handler(void);
-void TIM2_Handler(void);
-void TIM6_DAC_Handler(void);
-void TIM21_Handler(void);
-void TIM22_Handler(void);
-void I2C1_Handler(void);
-void I2C2_Handler(void);
-void SPI1_Handler(void);
-void SPI2_Handler(void);
-void USART1_Handler(void);
-void USART2_Handler(void);
-void RNG_LPUART1_Handler(void);
-void LCD_Handler(void);
-void USB_Handler(void);
+/* Private function prototypes -----------------------------------------------*/
+/* Private functions ---------------------------------------------------------*/
 
-#ifdef __cplusplus
+/******************************************************************************/
+/*            Cortex-M4 Processor Exceptions Handlers                         */
+/******************************************************************************/
+
+/**
+  * @brief   This function handles NMI exception.
+  * @param  None
+  * @retval None
+  */
+void NMI_Handler(void)
+{
 }
-#endif
 
-#endif /* __STM32L0xx_IT_H */
+/**
+  * @brief  This function handles Hard Fault exception.
+  * @param  None
+  * @retval None
+  */
+void HardFault_Handler(void)
+{
+  /* Go to infinite loop when Hard Fault exception occurs */
+  while (1)
+  {
+  }
+}
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+/**
+  * @brief  This function handles Debug Monitor exception.
+  * @param  None
+  * @retval None
+  */
+void DebugMon_Handler(void)
+{
+}
+
+/**
+  * @brief  This function handles SysTick Handler.
+  * @param  None
+  * @retval None
+  */
+void SysTick_Handler(void)
+{
+}

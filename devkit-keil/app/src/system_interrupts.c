@@ -40,6 +40,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "system_interrupts.h"
 #include "cmsis_os.h"
+#include "app_header.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -49,6 +50,8 @@ extern PCD_HandleTypeDef hpcd;
 extern __IO uint32_t RunModeMeasure;
 
 /* Private function prototypes -----------------------------------------------*/
+void Dummy_Handler(void);
+
 /* Private functions ---------------------------------------------------------*/
 
 /******************************************************************************/
@@ -99,9 +102,4 @@ void SysTick_Handler(void)
 	}
 
 	HAL_IncTick();
-}
-
-void USB_IRQHandler(void)
-{
-  HAL_PCD_IRQHandler(&hpcd);
 }
