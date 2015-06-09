@@ -33,6 +33,12 @@
 <part id="20"/>
 <part id="21"/>
 <part id="22"/>
+<part id="23"/>
+<part id="24"/>
+<part id="25"/>
+<part id="26"/>
+<part id="27"/>
+<part id="28"/>
 </presentation>
 </folder>
 </info>
@@ -55,11 +61,11 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="tasks.c" partName="tasks.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/tasks.c" title="tasks.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/tasks.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/FreeRTOS/tasks.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="33815" selectionTopPixel="13617"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="49271" selectionTopPixel="21626"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/main.c" title="main.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/src/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="652" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="678" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="hwctrl.c" partName="hwctrl.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/hwctrl.c" title="hwctrl.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/src/hwctrl.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/src/hwctrl.c"/>
@@ -123,22 +129,53 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32l053xx.s" partName="startup_stm32l053xx.s" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/startup_stm32l053xx.s" title="startup_stm32l053xx.s" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/startup_stm32l053xx.s" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/src/startup_stm32l053xx.s"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5105" selectionTopPixel="2034"/>
+<editorState selectionHorizontalPixel="0" selectionLength="10" selectionOffset="3857" selectionTopPixel="2304"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="app_header.h" partName="app_header.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/inc/app_header.h" title="app_header.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/app/inc/app_header.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/app/inc/app_header.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2793" selectionTopPixel="630"/>
 </editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32l0xx.c" partName="system_stm32l0xx.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Src/system_stm32l0xx.c" title="system_stm32l0xx.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Src/system_stm32l0xx.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/support/src/system_stm32l0xx.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="2399"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal.h" partName="stm32l0xx_hal.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Inc/stm32l0xx_hal.h" title="stm32l0xx_hal.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Inc/stm32l0xx_hal.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/support/inc/stm32l0xx_hal.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="8" selectionOffset="9576" selectionTopPixel="3060"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal.c" partName="stm32l0xx_hal.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Src/stm32l0xx_hal.c" title="stm32l0xx_hal.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Src/stm32l0xx_hal.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/support/src/stm32l0xx_hal.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="10023" selectionTopPixel="3791"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_cortex.h" partName="stm32l0xx_hal_cortex.h" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Inc/stm32l0xx_hal_cortex.h" title="stm32l0xx_hal_cortex.h" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Inc/stm32l0xx_hal_cortex.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/support/inc/stm32l0xx_hal_cortex.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="20" selectionOffset="4594" selectionTopPixel="1513"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_cortex.c" partName="stm32l0xx_hal_cortex.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Src/stm32l0xx_hal_cortex.c" title="stm32l0xx_hal_cortex.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/support/Src/stm32l0xx_hal_cortex.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/support/src/stm32l0xx_hal_cortex.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="2280"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="port.c" partName="port.c" path="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/portable/GCC/ARM_CM0/port.c" title="port.c" tooltip="C:/Users/Stuart Alldritt/Documents/GitHub/project-dandelion/devkit/FreeRTOS/portable/GCC/ARM_CM0/port.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/devkit/FreeRTOS/portable/port.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="19" selectionOffset="9853" selectionTopPixel="3757"/>
+</editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
+<viewState CommonNavigator.LINKING_ENABLED="1" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="5">
 <expanded>
 <element path="/devkit"/>
 <element path="/devkit/app"/>
 <element path="/devkit/app/conf"/>
 <element path="/devkit/app/inc"/>
 <element path="/devkit/app/src"/>
+<element path="/devkit/FreeRTOS"/>
+<element path="/devkit/FreeRTOS/CMSIS_RTOS"/>
+<element path="/devkit/FreeRTOS/include"/>
+<element path="/devkit/FreeRTOS/portable"/>
+<element path="/devkit/support"/>
+<element path="/devkit/support/inc"/>
+<element path="/devkit/support/src"/>
 </expanded>
 <selection>
 <element path="/devkit/app/src/startup_stm32l053xx.s"/>
@@ -173,8 +210,7 @@
 </view>
 <view id="org.coocox.coassistant.view.CoAssistantView_debug" partName="Peripherals">
 <viewState horizontalPosition="0" verticalPosition="21">
-<selection>
-<element name="RCC"/>
+<selection>&#x0A;<element name="RCC"/>
 </selection>
 <registerValues baseAddress="Base Address: 0x40021000" description="Description:  Reset and clock control"/>
 </viewState>
@@ -189,7 +225,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.coocox.builder.perspective.CoBuilder">
+<perspectives activePart="org.eclipse.cdt.ui.editor.asm.AsmEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.coocox.builder.ui.PerspectiveCoBuilder" id="org.coocox.builder.perspective.CoBuilder" label="CooCox CoBuilder"/>
 <alwaysOnActionSet id="org.coocox.welcome.ui.actionSet"/>
@@ -211,8 +247,8 @@
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showMemoryBrowserAction"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showVariablesAction"/>
 <hide_menu_item_id id="org.coocox.builder.ui.openProjectExplorerAction"/>
-<hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <hide_menu_item_id id="org.coocox.codebugger.trace.actions.ShowTraceControlAction"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showRegistersAction"/>
 <hide_toolbar_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
@@ -322,59 +358,43 @@
 <view id="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser"/>
 <fastViewBars/>
 <viewLayoutRec closeable="false" id="org.eclipse.debug.ui.DebugView"/>
-<layout>
-<mainWindow>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@77420f">
-<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
-<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.ui.internal.ViewStack@77420f">&#x0A;<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">&#x0A;<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@77420f">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@77420f">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@e77c19" ratio="0.73913044" ratioLeft="782" ratioRight="276" relationship="4" relative="org.eclipse.ui.internal.ViewStack@77420f">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@e77c19" ratio="0.73913044" ratioLeft="782" ratioRight="276" relationship="4" relative="org.eclipse.ui.internal.ViewStack@77420f">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1846a7e" ratio="0.5" ratioLeft="956" ratioRight="956" relationship="2" relative="org.eclipse.ui.internal.ViewStack@e77c19">
-<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">
-<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1846a7e" ratio="0.5" ratioLeft="956" ratioRight="956" relationship="2" relative="org.eclipse.ui.internal.ViewStack@e77c19">&#x0A;<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">&#x0A;<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
 <page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
 <page content="org.coocox.component.ui.view.ComponentView" label="Component View"/>
 <page content="org.eclipse.cdt.ui.callHierarchy" label="Call Hierarchy"/>
 <page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.MemoryView" label="LabelNotFound"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@6baa43" ratio="0.6081718" ratioLeft="1161" ratioRight="748" relationship="2" relative="org.eclipse.ui.internal.ViewStack@77420f">
-<folder activePageID="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" appearance="2" expanded="2">
-<page content="org.coocox.coassistant.view.CoAssistantView_debug" label="Peripherals"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@6baa43" ratio="0.6081718" ratioLeft="1161" ratioRight="748" relationship="2" relative="org.eclipse.ui.internal.ViewStack@77420f">&#x0A;<folder activePageID="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" appearance="2" expanded="2">&#x0A;<page content="org.coocox.coassistant.view.CoAssistantView_debug" label="Peripherals"/>
 <page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="Disassembly"/>
 <page content="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" label="Memory Browser"/>
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 </presentation>
@@ -393,6 +413,14 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/devkit/app/src/startup_stm32l053xx.s"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/devkit/app/inc/app_header.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/devkit/app/conf/stm32l0xx_hal_conf.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/devkit/support/src/system_stm32l0xx.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/devkit/app/src/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/devkit/support/inc/stm32l0xx_hal.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/devkit/support/src/stm32l0xx_hal.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/devkit/support/inc/stm32l0xx_hal_cortex.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/devkit/support/src/stm32l0xx_hal_cortex.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/devkit/FreeRTOS/tasks.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/devkit/FreeRTOS/portable/port.c"/>
 </editors>
 <item historyLabel="led_task.c" index="0">
 <position info="not_deleted" x="94" y="21"/>
@@ -427,8 +455,53 @@
 <item historyLabel="stm32l0xx_hal_conf.h" index="4">
 <position info="not_deleted" x="5339" y="0"/>
 </item>
-<item active="true" historyLabel="startup_stm32l053xx.s" index="2">
+<item historyLabel="startup_stm32l053xx.s" index="2">
 <position info="not_deleted" x="5178" y="0"/>
+</item>
+<item historyLabel="system_stm32l0xx.c" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="6">
+<position info="not_deleted" x="185" y="8"/>
+</item>
+<item historyLabel="stm32l0xx_hal.h" index="7">
+<position info="not_deleted" x="9576" y="8"/>
+</item>
+<item historyLabel="stm32l0xx_hal.c" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="stm32l0xx_hal.c" index="8">
+<position info="not_deleted" x="7454" y="0"/>
+</item>
+<item historyLabel="stm32l0xx_hal.c" index="8">
+<position info="not_deleted" x="10023" y="0"/>
+</item>
+<item historyLabel="stm32l0xx_hal_cortex.h" index="9">
+<position info="not_deleted" x="4594" y="20"/>
+</item>
+<item historyLabel="stm32l0xx_hal_cortex.c" index="10">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="startup_stm32l053xx.s" index="2">
+<position info="not_deleted" x="3857" y="10"/>
+</item>
+<item historyLabel="main.c" index="6">
+<position info="not_deleted" x="185" y="8"/>
+</item>
+<item historyLabel="tasks.c" index="11">
+<position info="not_deleted" x="33815" y="0"/>
+</item>
+<item historyLabel="tasks.c" index="11">
+<position info="not_deleted" x="49271" y="0"/>
+</item>
+<item historyLabel="port.c" index="12">
+<position info="not_deleted" x="9853" y="19"/>
+</item>
+<item historyLabel="main.c" index="6">
+<position info="not_deleted" x="678" y="0"/>
+</item>
+<item active="true" historyLabel="startup_stm32l053xx.s" index="2">
+<position info="not_deleted" x="3857" y="10"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -437,21 +510,29 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="port.c" tooltip="devkit/FreeRTOS/portable/port.c">
+<persistable path="/devkit/FreeRTOS/portable/port.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_cortex.c" tooltip="devkit/support/src/stm32l0xx_hal_cortex.c">
+<persistable path="/devkit/support/src/stm32l0xx_hal_cortex.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal_cortex.h" tooltip="devkit/support/inc/stm32l0xx_hal_cortex.h">
+<persistable path="/devkit/support/inc/stm32l0xx_hal_cortex.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal.c" tooltip="devkit/support/src/stm32l0xx_hal.c">
+<persistable path="/devkit/support/src/stm32l0xx_hal.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32l0xx_hal.h" tooltip="devkit/support/inc/stm32l0xx_hal.h">
+<persistable path="/devkit/support/inc/stm32l0xx_hal.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32l0xx.c" tooltip="devkit/support/src/system_stm32l0xx.c">
+<persistable path="/devkit/support/src/system_stm32l0xx.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="app_header.h" tooltip="devkit/app/inc/app_header.h">
 <persistable path="/devkit/app/inc/app_header.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32l053xx.s" tooltip="devkit/app/src/startup_stm32l053xx.s">
 <persistable path="/devkit/app/src/startup_stm32l053xx.s"/>
-</file>
-<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage" name="" tooltip="">
-<persistable>
-<org.coocox.welcome.ui.WelcomePage/>
-</persistable>
-</file>
-<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage" name="" tooltip="">
-<persistable>
-<org.coocox.welcome.ui.WelcomePage/>
-</persistable>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32l053xx.s" tooltip="devkit-bootloader/bootloader/src/startup_stm32l053xx.s">
 <persistable path="/devkit-bootloader/bootloader/src/startup_stm32l053xx.s"/>
@@ -473,12 +554,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="app_header.h" tooltip="devkit-bootloader/bootloader/src/app_header.h">
 <persistable path="/devkit-bootloader/bootloader/src/app_header.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="devkit-bootloader/app/src/main.c">
-<persistable path="/devkit-bootloader/app/src/main.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="devkit-bootloader/bootloader/src/main.c">
-<persistable path="/devkit-bootloader/bootloader/src/main.c"/>
 </file>
 </mruList>
 </workbench>

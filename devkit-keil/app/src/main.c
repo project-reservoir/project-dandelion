@@ -4,8 +4,6 @@
 #include "usb_task.h"
 #include "cmsis_os.h"
 
-uint32_t __initial_sp = 0x0000;
-
 unsigned portBASE_TYPE makeFreeRtosPriority (osPriority priority)
 {
   unsigned portBASE_TYPE fpriority = tskIDLE_PRIORITY;
@@ -19,9 +17,9 @@ unsigned portBASE_TYPE makeFreeRtosPriority (osPriority priority)
 
 int main(void)
 {	
-		xTaskHandle ledTaskHandle;
+	xTaskHandle ledTaskHandle;
 	
-		// Initialize the ST Micro Board Support Library
+	// Initialize the ST Micro Board Support Library
     HAL_Init();
 
     // Configure the system clock
@@ -29,26 +27,32 @@ int main(void)
 
     // Setup external ports on the MCU
     HwCtrl_Init();
+    
+    // Flash an LED on and off forever.
+	while(1)
+	{
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
+
+		HAL_Delay(1000);
+
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
+
+		HAL_Delay(1000);
+	}
 
     // Create an LED blink task		
-		xTaskCreate(LedBlinkTask,
-              "LEDTask",
-              configMINIMAL_STACK_SIZE,
-              NULL,
-              makeFreeRtosPriority(osPriorityNormal),
-              &ledTaskHandle);					
+    xTaskCreate(LedBlinkTask,
+                "LEDTask",
+                configMINIMAL_STACK_SIZE,
+                NULL,
+                makeFreeRtosPriority(osPriorityAboveNormal),
+                &ledTaskHandle);					
 
-		// Start scheduler
-		vTaskStartScheduler();
+    // Start scheduler
+    vTaskStartScheduler();
 
     // We should never get here as control is now taken by the scheduler
     for(;;);
-}
-
-// Dummy reset handler to satisfy Keil
-void Reset_Handler(void) 
-{
-	
 }
 
 #ifdef  USE_FULL_ASSERT
