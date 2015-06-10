@@ -20,6 +20,21 @@ __weak void HardFault_Handler()
 		Dummy_Handler();
 }
 
+__weak void MemManage_Handler()
+{
+		Dummy_Handler();
+}
+
+__weak void BusFault_Handler()
+{
+		Dummy_Handler();
+}
+
+__weak void UsageFault_Handler()
+{
+		Dummy_Handler();
+}
+
 __weak void SVC_Handler()
 {
 		Dummy_Handler();

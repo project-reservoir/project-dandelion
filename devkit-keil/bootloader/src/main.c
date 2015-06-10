@@ -68,6 +68,9 @@ void createIVT(APP_HEADER* app)
     ivt.RNG_LPUART1_Handler = (app->RNG_LPUART1_Handler + (uint32_t)app) | ARM_THUMB_MODE;
     ivt.LCD_Handler = (app->LCD_Handler + (uint32_t)app) | ARM_THUMB_MODE;
     ivt.USB_Handler = (app->USB_Handler + (uint32_t)app) | ARM_THUMB_MODE;
+    ivt.BusFault_Handler = (app->BusFault_Handler + (uint32_t)app) | ARM_THUMB_MODE;
+    ivt.MemManage_Handler = (app->MemManage_Handler + (uint32_t)app) | ARM_THUMB_MODE;
+    ivt.UsageFault_Handler = (app->UsageFault_Handler + (uint32_t)app) | ARM_THUMB_MODE;   
 }
 
 void launchImage(APP_HEADER* app)

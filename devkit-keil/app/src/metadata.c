@@ -57,5 +57,10 @@ const APP_HEADER __Vectors __attribute__((section("HEADER"))) __attribute__((use
     sizeof(APP_HEADER) + 0x000000F0, // USART1
     sizeof(APP_HEADER) + 0x000000F8, // USART2
     sizeof(APP_HEADER) + 0x00000100, // USB
-    sizeof(APP_HEADER) + 0x00000108  // WWDG_Handler
+    sizeof(APP_HEADER) + 0x00000108, // WWDG_Handler
+    sizeof(APP_HEADER) + 0x00000110, // BusFault_Handler
+    sizeof(APP_HEADER) + 0x00000118, // MemManage_Handler
+    sizeof(APP_HEADER) + 0x00000120 // UsageFault_Handler
+                    
+        
 };

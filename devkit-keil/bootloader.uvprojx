@@ -423,11 +423,6 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
-              <FileName>hwctrl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\bootloader\src\hwctrl.c</FilePath>
-            </File>
-            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\bootloader\src\main.c</FilePath>

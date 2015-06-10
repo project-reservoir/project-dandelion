@@ -42,6 +42,21 @@ __attribute__((section("!!!!0.HARDFAULT_HANDLER"))) void HardFault_Handler_Stand
     HardFault_Handler();
 }
 
+__attribute__((section("!!!!1.MEMMANAGE_HANDLER")))void MemManage_Handler_Standin()
+{
+    MemManage_Handler();
+}
+
+__attribute__((section("!!!!1.BUSFAULT_HANDLER")))void BusFault_Handler_Standin()
+{
+    BusFault_Handler();
+}
+
+__attribute__((section("!!!!1.USAGEFAULT_HANDLER")))void UsageFault_Handler_Standin()
+{
+    UsageFault_Handler();
+}
+
 __attribute__((section("!!!!0.SVC_HANDLER"))) void SVC_Handler_Standin()
 {
     SVC_Handler();

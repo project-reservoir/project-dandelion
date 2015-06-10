@@ -18,6 +18,7 @@ unsigned portBASE_TYPE makeFreeRtosPriority (osPriority priority)
 int main(void)
 {	
 	xTaskHandle ledTaskHandle;
+    xTaskHandle ledTask2Handle;
 
     // Configure the system clock
     SystemClock_Config();
@@ -40,14 +41,21 @@ int main(void)
 		HAL_Delay(1000);
 	}*/
 
-    // Create an LED blink task		
+    // Create an LED blink tasks	
     xTaskCreate(LedBlinkTask,
                 "LEDTask",
                 configMINIMAL_STACK_SIZE,
                 NULL,
-                makeFreeRtosPriority(osPriorityAboveNormal),
+                makeFreeRtosPriority(osPriorityNormal),
                 &ledTaskHandle);					
-
+    
+    xTaskCreate(Led2BlinkTask,
+                "LED2Task",
+                configMINIMAL_STACK_SIZE,
+                NULL,
+                makeFreeRtosPriority(osPriorityNormal),
+                &ledTask2Handle);    
+    
     // Start scheduler
     vTaskStartScheduler();
 

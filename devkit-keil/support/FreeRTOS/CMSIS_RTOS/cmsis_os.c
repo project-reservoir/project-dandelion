@@ -36,8 +36,6 @@ static int inHandlerMode (void)
   return __get_IPSR() != 0;
 }
 
-#ifdef FULL
-
 /*********************** Kernel Control Functions *****************************/
 /**
 * @brief  Start the RTOS Kernel with executing the specified thread.
@@ -60,8 +58,6 @@ osStatus osKernelStart (osThreadDef_t *thread_def, void *argument)
   return osOK;
 }
 
-#endif
-
 /**
 * @brief  Get the value of the Kernel SysTick timer
 * @param  None
@@ -73,7 +69,6 @@ uint32_t osKernelSysTick(void)
 	return inHandlerMode() ? xTaskGetTickCountFromISR() : xTaskGetTickCount();
 }
 
-#ifdef FULL
 /**
 * @brief  Check if the RTOS kernel is already started
 * @param  None
@@ -94,7 +89,6 @@ int32_t osKernelRunning(void)
 #endif
 
 }
-#endif
 
 /*********************** Thread Management *****************************/
 /**
@@ -119,7 +113,6 @@ osThreadId osThreadCreate (osThreadDef_t *thread_def, void *argument)
   return handle;
 }
 
-#ifdef FULL
 /**
 * @brief  Return the thread ID of the current running thread.
 * @retval thread ID for reference by other functions or NULL in case of error.
@@ -133,9 +126,7 @@ osThreadId osThreadGetId (void)
 	return NULL;
 #endif
 }
-#endif
 
-#ifdef FULL
 /**
 * @brief  Terminate execution of a thread and remove it from Active Threads.
 * @param   thread_id   thread ID obtained by \ref osThreadCreate or \ref osThreadGetId.
@@ -151,7 +142,6 @@ osStatus osThreadTerminate (osThreadId thread_id)
 	return osErrorOS;
 #endif
 }
-#endif
 
 /**
 * @brief  Pass control to next thread that is in state \b READY.
@@ -165,7 +155,6 @@ osStatus osThreadYield (void)
   return osOK;
 }
 
-#ifdef FULL
 /**
 * @brief   Change priority of an active thread.
 * @param   thread_id     thread ID obtained by \ref osThreadCreate or \ref osThreadGetId.
@@ -197,7 +186,6 @@ osPriority osThreadGetPriority (osThreadId thread_id)
 	return osPriorityError;
 #endif
 }
-#endif
 
 /*********************** Generic Wait Functions *******************************/
 /**
@@ -231,7 +219,6 @@ osEvent osWait (uint32_t millisec);
 
 #endif  /* Generic Wait available */
 
-#ifdef FULL
 /***********************  Timer Management Functions ***************************/
 /**
 * @brief  Create a timer.
@@ -350,8 +337,6 @@ osStatus osTimerStop (osTimerId timer_id)
   return result;
 }
 
-#endif
-
 /***************************  Signal Management ********************************/
 /**
 * @brief  Set the specified Signal Flags of an active thread.
@@ -388,7 +373,7 @@ int32_t osSignalGet (osThreadId thread_id);
 */
 osEvent osSignalWait (int32_t signals, uint32_t millisec);
 
-#ifdef FULL
+
 /****************************  Mutex Management ********************************/
 /**
 * @brief  Create and Initialize a Mutex object
@@ -476,7 +461,7 @@ osStatus osMutexDelete (osMutexId mutex_id)
   
   return osOK;
 }
-#endif
+
 /********************  Semaphore Management Functions **************************/
 
 #if (defined (osFeature_Semaphore)  &&  (osFeature_Semaphore != 0))

@@ -50,11 +50,15 @@ typedef struct APP_HEADER_T {
     uint32_t TIM22_Handler;                  /* TIM22                        */
     uint32_t TIM2_Handler;                   /* TIM2                         */
     uint32_t TIM6_DAC_Handler;               /* TIM6 and DAC                 */
-    uint32_t TSC_Handler;                     /* TSC                         */
+    uint32_t TSC_Handler;                    /* TSC                         */
     uint32_t USART1_Handler;                 /* USART1                       */
     uint32_t USART2_Handler;                 /* USART2                       */
     uint32_t USB_Handler;                    /* USB                          */
     uint32_t WWDG_Handler;                   /* Window WatchDog              */
+    uint32_t BusFault_Handler;
+    uint32_t MemManage_Handler;
+    uint32_t UsageFault_Handler;
+    
 } APP_HEADER;
 
 typedef struct NVIC_BLOCK_T {
@@ -62,10 +66,10 @@ typedef struct NVIC_BLOCK_T {
 	uint32_t Reset_Handler;
 	uint32_t NMI_Handler;
 	uint32_t HardFault_Handler;
-
-	uint32_t reserved_0;
-	uint32_t reserved_1;
-	uint32_t reserved_2;
+    uint32_t MemManage_Handler;
+	uint32_t BusFault_Handler;
+	uint32_t UsageFault_Handler;
+	
 	uint32_t reserved_3;
 	uint32_t reserved_4;
 	uint32_t reserved_5;
