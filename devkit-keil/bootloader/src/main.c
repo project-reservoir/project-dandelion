@@ -22,9 +22,6 @@ void launchImage(APP_HEADER* app);
 // GLOBAL FUNCTIONS
 int main(void)
 {    
-    // Configure the system clock
-    SystemClock_Config();
-
     // TODO: pick an image based on the CRC value
     createIVT(main_app);
     launchImage(main_app);

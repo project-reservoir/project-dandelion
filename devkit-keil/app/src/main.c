@@ -18,18 +18,18 @@ unsigned portBASE_TYPE makeFreeRtosPriority (osPriority priority)
 int main(void)
 {	
 	xTaskHandle ledTaskHandle;
-	
-	// Initialize the ST Micro Board Support Library
-    HAL_Init();
 
     // Configure the system clock
     SystemClock_Config();
-
+    
     // Setup external ports on the MCU
     HwCtrl_Init();
     
+    // Initialize the ST Micro Board Support Library
+    HAL_Init();
+    
     // Flash an LED on and off forever.
-	while(1)
+	/*while(1)
 	{
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
 
@@ -38,7 +38,7 @@ int main(void)
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
 
 		HAL_Delay(1000);
-	}
+	}*/
 
     // Create an LED blink task		
     xTaskCreate(LedBlinkTask,
