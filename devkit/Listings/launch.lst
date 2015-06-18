@@ -1,0 +1,46 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             subrout, CODE, READONLY ; Name 
+                                                            this block of code
+    2 00000000 4685    launch  MOV              sp, r0      ; Subroutine code
+    3 00000002 4708            BX               r1          ; Jump into the app
+                                                            lication
+    4 00000004         
+    5 00000004                 EXPORT           launch
+    6 00000004         
+    7 00000004                 END                          ; Mark end of file
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
+work --depend=.\objects\launch.d -o.\objects\launch.o -I"C:\Users\Stuart Alldri
+tt\Documents\GitHub\project-dandelion\devkit-keil\RTE" -IC:\Keil_v5\ARM\PACK\AR
+M\CMSIS\4.3.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Devi
+ce\Include --predefine="__UVISION_VERSION SETA 515" --predefine="_RTE_ SETA 1" 
+--predefine="STM32L053xx SETA 1" --list=.\listings\launch.lst bootloader\src\la
+unch.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+launch 00000000
+
+Symbol: launch
+   Definitions
+      At line 2 in file bootloader\src\launch.s
+   Uses
+      At line 5 in file bootloader\src\launch.s
+Comment: launch used once
+subrout 00000000
+
+Symbol: subrout
+   Definitions
+      At line 1 in file bootloader\src\launch.s
+   Uses
+      None
+Comment: subrout unused
+2 symbols
+335 symbols in table

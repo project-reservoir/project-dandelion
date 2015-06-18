@@ -240,3 +240,5 @@ $RECYCLE.BIN/
 *.lss
 
 EVAL/EVAL/Debug/src/
+
+devkit-keil/Objects/

@@ -16,3 +16,18 @@ void LedBlinkTask(const void *argument)
 		osDelay(100);
 	}
 }
+
+void Led2BlinkTask(const void *argument)
+{
+	// Flash an LED on and off forever.
+	while(1)
+	{
+        osDelay(100);
+        
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+
+        osDelay(100);
+
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+	}
+}

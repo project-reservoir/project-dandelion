@@ -4,29 +4,60 @@
 #include "usb_task.h"
 #include "cmsis_os.h"
 
-int main(void)
+unsigned portBASE_TYPE makeFreeRtosPriority (osPriority priority)
 {
-	// Initialize the ST Micro Board Support Library
-    HAL_Init();
+  unsigned portBASE_TYPE fpriority = tskIDLE_PRIORITY;
+  
+  if (priority != osPriorityError) {
+    fpriority += (priority - osPriorityIdle);
+  }
+  
+  return fpriority;
+}
+
+int main(void)
+{	
+	xTaskHandle ledTaskHandle;
+    xTaskHandle ledTask2Handle;
 
     // Configure the system clock
     SystemClock_Config();
-
+    
     // Setup external ports on the MCU
     HwCtrl_Init();
+    
+    // Initialize the ST Micro Board Support Library
+    HAL_Init();
+    
+    // Flash an LED on and off forever.
+	/*while(1)
+	{
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
 
-    // Create an LED blink task
-    osThreadDef(LEDTask, LedBlinkTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
-    osThreadCreate(osThread(LEDTask), NULL);
+		HAL_Delay(1000);
 
-    // Create the USB Comm task
-	osThreadDef(USBTask, UsbTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
-	osThreadCreate(osThread(USBTask), NULL);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
 
-	UsbTaskInit();
+		HAL_Delay(1000);
+	}*/
 
+    // Create an LED blink tasks	
+    xTaskCreate(LedBlinkTask,
+                "LEDTask",
+                configMINIMAL_STACK_SIZE,
+                NULL,
+                makeFreeRtosPriority(osPriorityNormal),
+                &ledTaskHandle);					
+    
+    xTaskCreate(Led2BlinkTask,
+                "LED2Task",
+                configMINIMAL_STACK_SIZE,
+                NULL,
+                makeFreeRtosPriority(osPriorityNormal),
+                &ledTask2Handle);    
+    
     // Start scheduler
-	vTaskStartScheduler();
+    vTaskStartScheduler();
 
     // We should never get here as control is now taken by the scheduler
     for(;;);

@@ -1,0 +1,2498 @@
+Dependencies for Project 'app', Target 'Target 1': (DO NOT MODIFY !)
+F (.\app\src\hwctrl.c)(0x556936CE)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\hwctrl.o --omf_browse .\objects\hwctrl.crf --depend .\objects\hwctrl.d)
+I (.\app\inc\hwctrl.h)(0x555D5732)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\app\src\led_task.c)(0x55640855)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\led_task.o --omf_browse .\objects\led_task.crf --depend .\objects\led_task.d)
+I (.\app\inc\led_task.h)(0x55640855)
+I (.\support\FreeRTOS\CMSIS_RTOS\cmsis_os.h)(0x55691BB4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+I (.\support\FreeRTOS\include\semphr.h)(0x539F1036)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\app\src\main.c)(0x556AA304)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (.\app\inc\hwctrl.h)(0x555D5732)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (.\app\inc\led_task.h)(0x55640855)
+I (.\app\inc\usb_task.h)(0x5569270B)
+I (.\support\STM32_USB_Device_Library\Class\CustomHID\Inc\usbd_customhid.h)(0x55694453)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_def.h)(0x539F102B)
+I (.\app\conf\usbd_conf.h)(0x55640855)
+I (.\support\FreeRTOS\CMSIS_RTOS\cmsis_os.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+I (.\support\FreeRTOS\include\semphr.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x539F102B)
+I (.\support\xbee_ansi\inc\xbee/device.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/serial.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/aps.h)(0x50B41336)
+F (.\app\src\system_interrupts.c)(0x55640855)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\system_interrupts.o --omf_browse .\objects\system_interrupts.crf --depend .\objects\system_interrupts.d)
+I (.\app\inc\system_interrupts.h)(0x55640855)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (.\support\FreeRTOS\CMSIS_RTOS\cmsis_os.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+I (.\support\FreeRTOS\include\semphr.h)(0x539F1036)
+F (.\app\src\usb_task.c)(0x55692CE9)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\usb_task.o --omf_browse .\objects\usb_task.crf --depend .\objects\usb_task.d)
+I (.\app\inc\usb_task.h)(0x5569270B)
+I (.\support\STM32_USB_Device_Library\Class\CustomHID\Inc\usbd_customhid.h)(0x55694453)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_def.h)(0x539F102B)
+I (.\app\conf\usbd_conf.h)(0x55640855)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (.\support\FreeRTOS\CMSIS_RTOS\cmsis_os.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+I (.\support\FreeRTOS\include\semphr.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x539F102B)
+I (.\app\inc\usbd_desc.h)(0x556145A0)
+F (.\app\src\usbd_desc.c)(0x556151ED)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\usbd_desc.o --omf_browse .\objects\usbd_desc.crf --depend .\objects\usbd_desc.d)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x539F102B)
+I (.\app\conf\usbd_conf.h)(0x55640855)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (.\support\FreeRTOS\CMSIS_RTOS\cmsis_os.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+I (.\support\FreeRTOS\include\semphr.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_def.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x539F102B)
+I (.\app\inc\usbd_desc.h)(0x556145A0)
+F (.\app\inc\app_header.h)(0x556A01A0)()
+F (.\app\inc\hwctrl.h)(0x555D5732)()
+F (.\app\inc\led_task.h)(0x55640855)()
+F (.\app\inc\system_interrupts.h)(0x55640855)()
+F (.\app\inc\usb_task.h)(0x5569270B)()
+F (.\app\inc\usbd_desc.h)(0x556145A0)()
+F (.\support\FreeRTOS\croutine.c)(0x539F1038)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\croutine.o --omf_browse .\objects\croutine.crf --depend .\objects\croutine.d)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\croutine.h)(0x539F1036)
+F (.\support\FreeRTOS\list.c)(0x539F1038)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\list.o --omf_browse .\objects\list.crf --depend .\objects\list.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+F (.\support\FreeRTOS\queue.c)(0x539F1036)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\queue.o --omf_browse .\objects\queue.crf --depend .\objects\queue.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+F (.\support\FreeRTOS\tasks.c)(0x539F1036)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\tasks.o --omf_browse .\objects\tasks.crf --depend .\objects\tasks.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\StackMacros.h)(0x539F1036)
+F (.\support\FreeRTOS\timers.c)(0x539F1036)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\timers.o --omf_browse .\objects\timers.crf --depend .\objects\timers.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+F (.\support\FreeRTOS\CMSIS_RTOS\cmsis_os.c)(0x556A1DED)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\cmsis_os.o --omf_browse .\objects\cmsis_os.crf --depend .\objects\cmsis_os.d)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (support\FreeRTOS\CMSIS_RTOS\cmsis_os.h)(0x55691BB4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+I (.\support\FreeRTOS\include\semphr.h)(0x539F1036)
+F (.\support\FreeRTOS\CMSIS_RTOS\cmsis_os.h)(0x55691BB4)()
+F (.\support\FreeRTOS\include\croutine.h)(0x539F1036)()
+F (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)()
+F (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)()
+F (.\support\FreeRTOS\include\list.h)(0x539F1036)()
+F (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)()
+F (.\support\FreeRTOS\include\portable.h)(0x539F1036)()
+F (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)()
+F (.\support\FreeRTOS\include\queue.h)(0x539F1036)()
+F (.\support\FreeRTOS\include\semphr.h)(0x539F1036)()
+F (.\support\FreeRTOS\include\StackMacros.h)(0x539F1036)()
+F (.\support\FreeRTOS\include\task.h)(0x539F1036)()
+F (.\support\FreeRTOS\include\timers.h)(0x539F1036)()
+F (.\support\FreeRTOS\portable\RVDS\ARM_CM0\port.c)(0x539F1038)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\port.o --omf_browse .\objects\port.crf --depend .\objects\port.d)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+F (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)()
+F (.\support\FreeRTOS\portable\MemMang\heap_4.c)(0x539F1036)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\heap_4.o --omf_browse .\objects\heap_4.crf --depend .\objects\heap_4.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+F (.\support\HAL\Inc\arm_common_tables.h)(0x555CDCC6)()
+F (.\support\HAL\Inc\arm_const_structs.h)(0x555CDCC6)()
+F (.\support\HAL\Inc\arm_math.h)(0x555CDCC6)()
+F (.\support\HAL\Inc\core_cm0.h)(0x555CDCC6)()
+F (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)()
+F (.\support\HAL\Inc\core_cm3.h)(0x555CDCC6)()
+F (.\support\HAL\Inc\core_cm4.h)(0x555CDCC6)()
+F (.\support\HAL\Inc\core_cm4_simd.h)(0x555CDCC6)()
+F (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)()
+F (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)()
+F (.\support\HAL\Inc\core_sc000.h)(0x555CDCC6)()
+F (.\support\HAL\Inc\core_sc300.h)(0x555CDCC6)()
+F (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)()
+F (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)()
+F (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_comp.h)(0x53A1EEC0)()
+F (.\support\HAL\Inc\stm32l0xx_hal_conf_template.h)(0x53A1EEBF)()
+F (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)()
+F (.\support\HAL\Inc\stm32l0xx_hal_crc.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_crc_ex.h)(0x53A1EEBD)()
+F (.\support\HAL\Inc\stm32l0xx_hal_cryp.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_cryp_ex.h)(0x53A1EEBE)()
+F (.\support\HAL\Inc\stm32l0xx_hal_dac.h)(0x53A1EEBB)()
+F (.\support\HAL\Inc\stm32l0xx_hal_dac_ex.h)(0x53A1EEBF)()
+F (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)()
+F (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)()
+F (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)()
+F (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)()
+F (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)()
+F (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)()
+F (.\support\HAL\Inc\stm32l0xx_hal_i2c.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_i2c_ex.h)(0x53A1EEBE)()
+F (.\support\HAL\Inc\stm32l0xx_hal_i2s.h)(0x53A1EEBC)()
+F (.\support\HAL\Inc\stm32l0xx_hal_irda.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_irda_ex.h)(0x53A1EEBF)()
+F (.\support\HAL\Inc\stm32l0xx_hal_iwdg.h)(0x53A1EEBB)()
+F (.\support\HAL\Inc\stm32l0xx_hal_lcd.h)(0x53A1EEBC)()
+F (.\support\HAL\Inc\stm32l0xx_hal_lptim.h)(0x53A1EEBB)()
+F (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)()
+F (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)()
+F (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)()
+F (.\support\HAL\Inc\stm32l0xx_hal_rcc_ex.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_rng.h)(0x53A1EEBB)()
+F (.\support\HAL\Inc\stm32l0xx_hal_rtc.h)(0x53A1EEBB)()
+F (.\support\HAL\Inc\stm32l0xx_hal_rtc_ex.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_smartcard.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_smartcard_ex.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_smbus.h)(0x53A1EEC0)()
+F (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)()
+F (.\support\HAL\Inc\stm32l0xx_hal_tim.h)(0x53A1EEC0)()
+F (.\support\HAL\Inc\stm32l0xx_hal_tim_ex.h)(0x53A1EEBB)()
+F (.\support\HAL\Inc\stm32l0xx_hal_tsc.h)(0x53A1EEC0)()
+F (.\support\HAL\Inc\stm32l0xx_hal_uart.h)(0x53A1EEBF)()
+F (.\support\HAL\Inc\stm32l0xx_hal_uart_ex.h)(0x53A1EEBA)()
+F (.\support\HAL\Inc\stm32l0xx_hal_usart.h)(0x53A1EEBC)()
+F (.\support\HAL\Inc\stm32l0xx_hal_usart_ex.h)(0x53A1EEBB)()
+F (.\support\HAL\Inc\stm32l0xx_hal_wwdg.h)(0x53A1EEBE)()
+F (.\support\HAL\Inc\stm32l051xx.h)(0x53A1B064)()
+F (.\support\HAL\Inc\stm32l052xx.h)(0x53A1B064)()
+F (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)()
+F (.\support\HAL\Inc\stm32l061xx.h)(0x53A1B064)()
+F (.\support\HAL\Inc\stm32l062xx.h)(0x53A1B064)()
+F (.\support\HAL\Inc\stm32l063xx.h)(0x53A1B064)()
+F (.\support\HAL\Src\stm32l0xx_hal.c)(0x53A1EEB5)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal.o --omf_browse .\objects\stm32l0xx_hal.crf --depend .\objects\stm32l0xx_hal.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_adc.c)(0x53A1EEB8)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_adc.o --omf_browse .\objects\stm32l0xx_hal_adc.crf --depend .\objects\stm32l0xx_hal_adc.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_adc_ex.c)(0x53A1EEB6)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_adc_ex.o --omf_browse .\objects\stm32l0xx_hal_adc_ex.crf --depend .\objects\stm32l0xx_hal_adc_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_comp.c)(0x53A1EEB9)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_comp.o --omf_browse .\objects\stm32l0xx_hal_comp.crf --depend .\objects\stm32l0xx_hal_comp.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_cortex.c)(0x53A1EEB8)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_cortex.o --omf_browse .\objects\stm32l0xx_hal_cortex.crf --depend .\objects\stm32l0xx_hal_cortex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_crc.c)(0x53A1EEAF)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_crc.o --omf_browse .\objects\stm32l0xx_hal_crc.crf --depend .\objects\stm32l0xx_hal_crc.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_crc_ex.c)(0x53A1EEB7)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_crc_ex.o --omf_browse .\objects\stm32l0xx_hal_crc_ex.crf --depend .\objects\stm32l0xx_hal_crc_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_cryp.c)(0x53A1EEB5)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_cryp.o --omf_browse .\objects\stm32l0xx_hal_cryp.crf --depend .\objects\stm32l0xx_hal_cryp.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_cryp_ex.c)(0x53A1EEB8)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_cryp_ex.o --omf_browse .\objects\stm32l0xx_hal_cryp_ex.crf --depend .\objects\stm32l0xx_hal_cryp_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_dac.c)(0x53A1EEB6)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_dac.o --omf_browse .\objects\stm32l0xx_hal_dac.crf --depend .\objects\stm32l0xx_hal_dac.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_dac_ex.c)(0x53A1EEB8)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_dac_ex.o --omf_browse .\objects\stm32l0xx_hal_dac_ex.crf --depend .\objects\stm32l0xx_hal_dac_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_dma.c)(0x53A1EEB7)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_dma.o --omf_browse .\objects\stm32l0xx_hal_dma.crf --depend .\objects\stm32l0xx_hal_dma.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_flash.c)(0x53A1EEB9)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_flash.o --omf_browse .\objects\stm32l0xx_hal_flash.crf --depend .\objects\stm32l0xx_hal_flash.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_flash_ex.c)(0x53A1EEB6)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_flash_ex.o --omf_browse .\objects\stm32l0xx_hal_flash_ex.crf --depend .\objects\stm32l0xx_hal_flash_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_flash_ramfunc.c)(0x53A1EEB2)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_flash_ramfunc.o --omf_browse .\objects\stm32l0xx_hal_flash_ramfunc.crf --depend .\objects\stm32l0xx_hal_flash_ramfunc.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_gpio.c)(0x55691BAE)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_gpio.o --omf_browse .\objects\stm32l0xx_hal_gpio.crf --depend .\objects\stm32l0xx_hal_gpio.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_i2c.c)(0x53A1EEB4)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_i2c.o --omf_browse .\objects\stm32l0xx_hal_i2c.crf --depend .\objects\stm32l0xx_hal_i2c.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_i2c_ex.c)(0x53A1EEB8)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_i2c_ex.o --omf_browse .\objects\stm32l0xx_hal_i2c_ex.crf --depend .\objects\stm32l0xx_hal_i2c_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_i2s.c)(0x53A1EEB7)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_i2s.o --omf_browse .\objects\stm32l0xx_hal_i2s.crf --depend .\objects\stm32l0xx_hal_i2s.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_irda.c)(0x53A1EEB5)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_irda.o --omf_browse .\objects\stm32l0xx_hal_irda.crf --depend .\objects\stm32l0xx_hal_irda.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_iwdg.c)(0x53A1EEB6)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_iwdg.o --omf_browse .\objects\stm32l0xx_hal_iwdg.crf --depend .\objects\stm32l0xx_hal_iwdg.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_lcd.c)(0x53A1EEB7)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_lcd.o --omf_browse .\objects\stm32l0xx_hal_lcd.crf --depend .\objects\stm32l0xx_hal_lcd.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_lptim.c)(0x53A1EEB6)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_lptim.o --omf_browse .\objects\stm32l0xx_hal_lptim.crf --depend .\objects\stm32l0xx_hal_lptim.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_msp_template.c)(0x53A1EEB6)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_msp_template.o --omf_browse .\objects\stm32l0xx_hal_msp_template.crf --depend .\objects\stm32l0xx_hal_msp_template.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_pcd.c)(0x53A1EEB8)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_pcd.o --omf_browse .\objects\stm32l0xx_hal_pcd.crf --depend .\objects\stm32l0xx_hal_pcd.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_pcd_ex.c)(0x53A1EEB7)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_pcd_ex.o --omf_browse .\objects\stm32l0xx_hal_pcd_ex.crf --depend .\objects\stm32l0xx_hal_pcd_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_pwr.c)(0x53A1EEB2)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_pwr.o --omf_browse .\objects\stm32l0xx_hal_pwr.crf --depend .\objects\stm32l0xx_hal_pwr.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_pwr_ex.c)(0x53A1EEB9)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_pwr_ex.o --omf_browse .\objects\stm32l0xx_hal_pwr_ex.crf --depend .\objects\stm32l0xx_hal_pwr_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_rcc.c)(0x53A1EEB8)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_rcc.o --omf_browse .\objects\stm32l0xx_hal_rcc.crf --depend .\objects\stm32l0xx_hal_rcc.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_rcc_ex.c)(0x53A1EEB9)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_rcc_ex.o --omf_browse .\objects\stm32l0xx_hal_rcc_ex.crf --depend .\objects\stm32l0xx_hal_rcc_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_rng.c)(0x53A1EEB6)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_rng.o --omf_browse .\objects\stm32l0xx_hal_rng.crf --depend .\objects\stm32l0xx_hal_rng.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_rtc.c)(0x53A1EEB6)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_rtc.o --omf_browse .\objects\stm32l0xx_hal_rtc.crf --depend .\objects\stm32l0xx_hal_rtc.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_rtc_ex.c)(0x53A1EEB6)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_rtc_ex.o --omf_browse .\objects\stm32l0xx_hal_rtc_ex.crf --depend .\objects\stm32l0xx_hal_rtc_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_smartcard.c)(0x53A1EEB5)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_smartcard.o --omf_browse .\objects\stm32l0xx_hal_smartcard.crf --depend .\objects\stm32l0xx_hal_smartcard.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_smartcard_ex.c)(0x53A1EEB4)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_smartcard_ex.o --omf_browse .\objects\stm32l0xx_hal_smartcard_ex.crf --depend .\objects\stm32l0xx_hal_smartcard_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_smbus.c)(0x53A1EEB8)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_smbus.o --omf_browse .\objects\stm32l0xx_hal_smbus.crf --depend .\objects\stm32l0xx_hal_smbus.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_spi.c)(0x53A1EEB7)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_spi.o --omf_browse .\objects\stm32l0xx_hal_spi.crf --depend .\objects\stm32l0xx_hal_spi.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_tim.c)(0x53A1EEB8)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_tim.o --omf_browse .\objects\stm32l0xx_hal_tim.crf --depend .\objects\stm32l0xx_hal_tim.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_tim_ex.c)(0x53A1EEB6)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_tim_ex.o --omf_browse .\objects\stm32l0xx_hal_tim_ex.crf --depend .\objects\stm32l0xx_hal_tim_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_tsc.c)(0x53A1EEB9)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_tsc.o --omf_browse .\objects\stm32l0xx_hal_tsc.crf --depend .\objects\stm32l0xx_hal_tsc.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_uart.c)(0x53A1EEB8)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_uart.o --omf_browse .\objects\stm32l0xx_hal_uart.crf --depend .\objects\stm32l0xx_hal_uart.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_uart_ex.c)(0x53A1EEB1)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_uart_ex.o --omf_browse .\objects\stm32l0xx_hal_uart_ex.crf --depend .\objects\stm32l0xx_hal_uart_ex.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_usart.c)(0x53A1EEB7)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_usart.o --omf_browse .\objects\stm32l0xx_hal_usart.crf --depend .\objects\stm32l0xx_hal_usart.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\HAL\Src\stm32l0xx_hal_wwdg.c)(0x53A1EEB8)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\stm32l0xx_hal_wwdg.o --omf_browse .\objects\stm32l0xx_hal_wwdg.crf --depend .\objects\stm32l0xx_hal_wwdg.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+F (.\support\STM32_USB_Device_Library\Class\CustomHID\Src\usbd_customhid.c)(0x55692418)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\usbd_customhid.o --omf_browse .\objects\usbd_customhid.crf --depend .\objects\usbd_customhid.d)
+I (.\support\STM32_USB_Device_Library\Class\CustomHID\Inc\usbd_customhid.h)(0x55694453)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_def.h)(0x539F102B)
+I (.\app\conf\usbd_conf.h)(0x55640855)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (.\support\FreeRTOS\CMSIS_RTOS\cmsis_os.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+I (.\support\FreeRTOS\include\semphr.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x539F102B)
+I (.\app\inc\usbd_desc.h)(0x556145A0)
+F (.\support\STM32_USB_Device_Library\Class\CustomHID\Inc\usbd_customhid.h)(0x55694453)()
+F (.\support\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x539F102B)()
+F (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x539F102B)()
+F (.\support\STM32_USB_Device_Library\Core\Inc\usbd_def.h)(0x539F102B)()
+F (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h)(0x539F102B)()
+F (.\support\STM32_USB_Device_Library\Core\Src\usbd_core.c)(0x539F102B)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\usbd_core.o --omf_browse .\objects\usbd_core.crf --depend .\objects\usbd_core.d)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x539F102B)
+I (.\app\conf\usbd_conf.h)(0x55640855)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (.\support\FreeRTOS\CMSIS_RTOS\cmsis_os.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+I (.\support\FreeRTOS\include\semphr.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_def.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x539F102B)
+F (.\support\STM32_USB_Device_Library\Core\Src\usbd_ctlreq.c)(0x539F102B)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\usbd_ctlreq.o --omf_browse .\objects\usbd_ctlreq.crf --depend .\objects\usbd_ctlreq.d)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_def.h)(0x539F102B)
+I (.\app\conf\usbd_conf.h)(0x55640855)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (.\support\FreeRTOS\CMSIS_RTOS\cmsis_os.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+I (.\support\FreeRTOS\include\semphr.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x539F102B)
+F (.\support\STM32_USB_Device_Library\Core\Src\usbd_ioreq.c)(0x539F102B)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\usbd_ioreq.o --omf_browse .\objects\usbd_ioreq.crf --depend .\objects\usbd_ioreq.d)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_def.h)(0x539F102B)
+I (.\app\conf\usbd_conf.h)(0x55640855)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (.\support\FreeRTOS\CMSIS_RTOS\cmsis_os.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+I (.\support\FreeRTOS\include\semphr.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x539F102B)
+F (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)()
+F (.\app\conf\usbd_conf.c)(0x55616B38)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\usbd_conf.o --omf_browse .\objects\usbd_conf.crf --depend .\objects\usbd_conf.d)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x539F102B)
+I (.\app\conf\usbd_conf.h)(0x55640855)
+I (.\support\FreeRTOS\CMSIS_RTOS\cmsis_os.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\FreeRTOS.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\FreeRTOS\include\projdefs.h)(0x539F1036)
+I (.\support\FreeRTOS\include\FreeRTOSConfig.h)(0x55691BB4)
+I (.\support\FreeRTOS\include\portable.h)(0x539F1036)
+I (.\support\FreeRTOS\portable\RVDS\ARM_CM0\portmacro.h)(0x539F1038)
+I (.\support\FreeRTOS\include\mpu_wrappers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\task.h)(0x539F1036)
+I (.\support\FreeRTOS\include\list.h)(0x539F1036)
+I (.\support\FreeRTOS\include\timers.h)(0x539F1036)
+I (.\support\FreeRTOS\include\queue.h)(0x539F1036)
+I (.\support\FreeRTOS\include\semphr.h)(0x539F1036)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_def.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h)(0x539F102B)
+I (.\support\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x539F102B)
+F (.\app\conf\usbd_conf.h)(0x55640855)()
+F (.\support\xbee_ansi\src\xbee\xbee_sxa.c)(0x556AA109)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\xbee_sxa.o --omf_browse .\objects\xbee_sxa.crf --depend .\objects\xbee_sxa.d)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/atcmd.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/device.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/serial.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/aps.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/byteorder.h)(0x50B41336)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/discovery.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/io.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/sxa.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/wpan.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/reg_descr.h)(0x50B41336)
+F (.\support\xbee_ansi\src\xbee\xbee_atcmd.c)(0x50B41336)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\xbee_atcmd.o --omf_browse .\objects\xbee_atcmd.crf --depend .\objects\xbee_atcmd.d)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/byteorder.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/atcmd.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/device.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/serial.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/aps.h)(0x50B41336)
+F (.\support\xbee_ansi\src\stm32\xbee_platform_stm32.c)(0x556A9568)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\xbee_platform_stm32.o --omf_browse .\objects\xbee_platform_stm32.crf --depend .\objects\xbee_platform_stm32.d)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+F (.\support\xbee_ansi\src\stm32\xbee_serial_stm32.c)(0x556A961F)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\xbee_serial_stm32.o --omf_browse .\objects\xbee_serial_stm32.crf --depend .\objects\xbee_serial_stm32.d)
+I (C:\Keil_v5\ARM\ARMCC\include\limits.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/serial.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/cbuf.h)(0x50B41336)
+F (.\support\xbee_ansi\src\xbee\xbee_io.c)(0x50B41336)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\xbee_io.o --omf_browse .\objects\xbee_io.crf --depend .\objects\xbee_io.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/atcmd.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/device.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/serial.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/aps.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/byteorder.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/io.h)(0x50B41336)
+F (.\support\xbee_ansi\src\xbee\xbee_wpan.c)(0x50B41336)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\xbee_wpan.o --omf_browse .\objects\xbee_wpan.crf --depend .\objects\xbee_wpan.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/device.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/serial.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/aps.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/wpan.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\zigbee/zdo.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\zigbee/zcl.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\zigbee/zcl_types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/byteorder.h)(0x50B41336)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\zigbee/zcl64.h)(0x50B41336)
+F (.\support\xbee_ansi\src\wpan\wpan_types.c)(0x50B41336)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\wpan_types.o --omf_browse .\objects\wpan_types.crf --depend .\objects\wpan_types.d)
+I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\wpan/types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+F (.\support\xbee_ansi\src\wpan\wpan_aps.c)(0x50B41336)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\wpan_aps.o --omf_browse .\objects\wpan_aps.crf --depend .\objects\wpan_aps.d)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/aps.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\zigbee/zdo.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\zigbee/zcl.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\zigbee/zcl_types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/byteorder.h)(0x50B41336)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\zigbee/zcl64.h)(0x50B41336)
+F (.\support\xbee_ansi\src\util\swapbytes.c)(0x50B41336)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\swapbytes.o --omf_browse .\objects\swapbytes.crf --depend .\objects\swapbytes.d)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+F (.\support\xbee_ansi\src\xbee\xbee_device.c)(0x50B41336)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\xbee_device.o --omf_browse .\objects\xbee_device.crf --depend .\objects\xbee_device.d)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/device.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/serial.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/aps.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/byteorder.h)(0x50B41336)
+F (.\support\xbee_ansi\src\util\hexstrtobyte.c)(0x50B41336)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\hexstrtobyte.o --omf_browse .\objects\hexstrtobyte.crf --depend .\objects\hexstrtobyte.d)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+F (.\support\xbee_ansi\src\util\hexdump.c)(0x50B41336)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\hexdump.o --omf_browse .\objects\hexdump.crf --depend .\objects\hexdump.d)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+F (.\support\xbee_ansi\src\zigbee\zigbee_zcl.c)(0x50B41336)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\zigbee_zcl.o --omf_browse .\objects\zigbee_zcl.crf --depend .\objects\zigbee_zcl.d)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/byteorder.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/aps.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\zigbee/zcl.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\zigbee/zcl_types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\zigbee/zcl64.h)(0x50B41336)
+F (.\support\xbee_ansi\src\xbee\xbee_discovery.c)(0x50B41336)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\xbee_discovery.o --omf_browse .\objects\xbee_discovery.crf --depend .\objects\xbee_discovery.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/atcmd.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/device.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/serial.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\wpan/aps.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/byteorder.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/discovery.h)(0x50B41336)
+F (.\support\xbee_ansi\src\zigbee\zcl_types.c)(0x50B41336)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\zcl_types.o --omf_browse .\objects\zcl_types.crf --depend .\objects\zcl_types.d)
+I (.\support\xbee_ansi\inc\zigbee/zcl_types.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/platform.h)(0x556A989C)
+I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x53A1EEBA)
+I (.\app\conf\stm32l0xx_hal_conf.h)(0x556A00C4)
+I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
+I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_dma.h)(0x53A1EEBC)
+I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc.h)(0x53A1EEBF)
+I (.\support\HAL\Inc\stm32l0xx_hal_adc_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x53A1EEC0)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x53A1EEBB)
+I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd.h)(0x53A1EEBE)
+I (.\support\HAL\Inc\stm32l0xx_hal_pcd_ex.h)(0x53A1EEBD)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x53A1EEBA)
+I (.\support\HAL\Inc\stm32l0xx_hal_spi.h)(0x53A1EEBC)
+I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x54C2FC88)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\xbee/platform_stm32.h)(0x556A9AE6)
+I (.\support\xbee_ansi\inc\xbee/jslong_glue.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/jslong.h)(0x50B41336)
+I (.\support\xbee_ansi\inc\xbee/byteorder.h)(0x50B41336)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54C2FC88)
+I (.\support\xbee_ansi\inc\zigbee/zcl64.h)(0x50B41336)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54C2FC88)
+F (RTE\Device\STM32L053C8\startup_stm32l053xx.s)(0x53501472)(--cpu Cortex-M0+ -g --16 --apcs=interwork --pd "__MICROLIB SETA 1"-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include--pd "__UVISION_VERSION SETA 515" --pd "_RTE_ SETA 1" --pd "STM32L053xx SETA 1"--list .\listings\startup_stm32l053xx.lst --xref -o .\objects\startup_stm32l053xx.o --depend .\objects\startup_stm32l053xx.d)
+F (RTE\Device\STM32L053C8\system_stm32l0xx.c)(0x53501472)(-c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I.\app\inc -I.\support\FreeRTOS\include -I.\support\HAL\Inc -I.\support\STM32_USB_Device_Library\Class\CustomHID\Inc -I.\support\STM32_USB_Device_Library\Core\Inc -I.\support\FreeRTOS\CMSIS_RTOS -I.\support\FreeRTOS\portable\Keil -I.\app\conf -I.\support\FreeRTOS\portable\RVDS\ARM_CM0 -I.\support\xbee_ansi\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\system_stm32l0xx_1.o --omf_browse .\objects\system_stm32l0xx_1.crf --depend .\objects\system_stm32l0xx_1.d)
+I (.\support\HAL\Inc\stm32l0xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\stm32l053xx.h)(0x53A1B064)
+I (.\support\HAL\Inc\core_cm0plus.h)(0x555CDCC6)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
+I (.\support\HAL\Inc\core_cmInstr.h)(0x555CDCC6)
+I (.\support\HAL\Inc\core_cmFunc.h)(0x555CDCC6)
+I (.\support\HAL\Inc\system_stm32l0xx.h)(0x555D42D9)
