@@ -1,82 +1,0 @@
-Dependencies for Project 'bootloader', Target 'devkit': (DO NOT MODIFY !)
-F (.\app\conf\stm32l0xx_hal_conf.h)(0x55732E86)()
-F (.\bootloader\src\main.c)(0x5577A738)(-c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I.\bootloader\inc -I.\bootloader\conf -I.\support\HAL\Inc -I.\common\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (.\bootloader\inc\hwctrl.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x55732E86)
-I (.\bootloader\conf\stm32l0xx_hal_conf.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l053xx.h)(0x55732E86)
-I (.\support\HAL\Inc\core_cm0plus.h)(0x55732E86)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
-I (.\support\HAL\Inc\core_cmInstr.h)(0x55732E86)
-I (.\support\HAL\Inc\core_cmFunc.h)(0x55732E86)
-I (.\support\HAL\Inc\system_stm32l0xx.h)(0x55732E87)
-I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x55732E87)
-I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x55732E86)
-I (.\common\inc\app_header.h)(0x5577A6FF)
-F (.\bootloader\src\system_interrupts.c)(0x55732E86)(-c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I.\bootloader\inc -I.\bootloader\conf -I.\support\HAL\Inc -I.\common\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\system_interrupts.o --omf_browse .\objects\system_interrupts.crf --depend .\objects\system_interrupts.d)
-I (.\bootloader\inc\system_interrupts.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x55732E86)
-I (.\bootloader\conf\stm32l0xx_hal_conf.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l053xx.h)(0x55732E86)
-I (.\support\HAL\Inc\core_cm0plus.h)(0x55732E86)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
-I (.\support\HAL\Inc\core_cmInstr.h)(0x55732E86)
-I (.\support\HAL\Inc\core_cmFunc.h)(0x55732E86)
-I (.\support\HAL\Inc\system_stm32l0xx.h)(0x55732E87)
-I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x55732E87)
-I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x55732E86)
-F (.\bootloader\src\app_header.c)(0x5573CE92)(-c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I.\bootloader\inc -I.\bootloader\conf -I.\support\HAL\Inc -I.\common\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\app_header.o --omf_browse .\objects\app_header.crf --depend .\objects\app_header.d)
-I (.\common\inc\app_header.h)(0x5577A6FF)
-I (.\support\HAL\Inc\stm32l0xx_hal.h)(0x55732E86)
-I (.\bootloader\conf\stm32l0xx_hal_conf.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_rcc.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_def.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l053xx.h)(0x55732E86)
-I (.\support\HAL\Inc\core_cm0plus.h)(0x55732E86)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
-I (.\support\HAL\Inc\core_cmInstr.h)(0x55732E86)
-I (.\support\HAL\Inc\core_cmFunc.h)(0x55732E86)
-I (.\support\HAL\Inc\system_stm32l0xx.h)(0x55732E87)
-I (.\support\HAL\Inc\stm32L0xx_hal_rcc_ex.h)(0x55732E87)
-I (.\support\HAL\Inc\stm32l0xx_hal_gpio.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_gpio_ex.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_cortex.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_flash.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_flash_ex.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_flash_ramfunc.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_pwr.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l0xx_hal_pwr_ex.h)(0x55732E86)
-F (.\bootloader\src\launch.s)(0x5574B7F1)(--cpu Cortex-M0+ -g --apcs=interwork -I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include--pd "__UVISION_VERSION SETA 515" --pd "_RTE_ SETA 1" --pd "STM32L053xx SETA 1"--list .\listings\launch.lst --xref -o .\objects\launch.o --depend .\objects\launch.d)
-F (.\bootloader\inc\hwctrl.h)(0x55732E86)()
-F (.\bootloader\inc\system_interrupts.h)(0x55732E86)()
-F (.\common\inc\app_header.h)(0x5577A6FF)()
-F (RTE\Device\STM32L053C8\startup_stm32l053xx.s)(0x55732E85)(--cpu Cortex-M0+ -g --apcs=interwork -I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include--pd "__UVISION_VERSION SETA 515" --pd "_RTE_ SETA 1" --pd "STM32L053xx SETA 1"--list .\listings\startup_stm32l053xx.lst --xref -o .\objects\startup_stm32l053xx.o --depend .\objects\startup_stm32l053xx.d)
-F (RTE\Device\STM32L053C8\system_stm32l0xx.c)(0x55732E85)(-c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I.\bootloader\inc -I.\bootloader\conf -I.\support\HAL\Inc -I.\common\inc-I "C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit-keil\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include-D__UVISION_VERSION="515" -D_RTE_ -DSTM32L053xx-o .\objects\system_stm32l0xx.o --omf_browse .\objects\system_stm32l0xx.crf --depend .\objects\system_stm32l0xx.d)
-I (.\support\HAL\Inc\stm32l0xx.h)(0x55732E86)
-I (.\support\HAL\Inc\stm32l053xx.h)(0x55732E86)
-I (.\support\HAL\Inc\core_cm0plus.h)(0x55732E86)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2FC88)
-I (.\support\HAL\Inc\core_cmInstr.h)(0x55732E86)
-I (.\support\HAL\Inc\core_cmFunc.h)(0x55732E86)
-I (.\support\HAL\Inc\system_stm32l0xx.h)(0x55732E87)
