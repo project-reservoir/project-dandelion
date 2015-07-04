@@ -1,7 +1,10 @@
 #include "system_interrupts.h"
 #include "cmsis_os.h"
 #include "app_header.h"
+#include "stm32l0xx_hal.h"
+#include "hwctrl.h"
 
+extern I2C_HandleTypeDef I2CxHandle;
 extern void __main(void);
 
 void Reset_Handler(void)
@@ -18,6 +21,12 @@ void SysTick_Handler(void)
 	}
 
 	HAL_IncTick();
+}
+
+void I2Cx_IRQHandler(void)
+{
+    HAL_I2C_EV_IRQHandler(&I2CxHandle);
+    HAL_I2C_ER_IRQHandler(&I2CxHandle);
 }
 
 // These functions are the "static" handlers. They're placed at fixed memory addresses 

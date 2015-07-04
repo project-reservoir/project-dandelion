@@ -447,6 +447,16 @@
               <FileType>1</FileType>
               <FilePath>.\app\src\metadata.c</FilePath>
             </File>
+            <File>
+              <FileName>sensors.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\sensors.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32l0xx_hal_msp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\stm32l0xx_hal_msp.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -471,6 +481,11 @@
               <FileName>app_header.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\common\inc\app_header.h</FilePath>
+            </File>
+            <File>
+              <FileName>sensors.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\inc\sensors.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1041,11 +1056,6 @@
               <FileName>stm32l0xx_hal_lptim.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\support\HAL\Src\stm32l0xx_hal_lptim.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l0xx_hal_msp_template.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\support\HAL\Src\stm32l0xx_hal_msp_template.c</FilePath>
             </File>
             <File>
               <FileName>stm32l0xx_hal_pcd.c</FileName>
