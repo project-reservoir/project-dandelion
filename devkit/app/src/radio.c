@@ -2,6 +2,7 @@
 #include "radio_config.h"
 #include "cmsis_os.h"
 #include "si446x_api_lib.h"
+#include "si446x_cmd.h"
 
 #define RADIO_MAX_PACKET_LENGTH     64u
 
@@ -56,6 +57,8 @@ static NetworkInfo    network;
 
 // Local function prototypes
 static void SendRadioConfig(void);
+static void Radio_StartTx_Variable_Packet(uint8_t channel, uint8_t *pioRadioPacket, uint8_t length);
+
 
 // Global function implementations
 void RadioTaskOSInit(void)
@@ -174,6 +177,28 @@ void RadioTaskHwInit(void)
     GPIO_InitStruct.Alternate = SPIx_MOSI_AF;
 
     HAL_GPIO_Init(SPIx_MOSI_GPIO_PORT, &GPIO_InitStruct);
+    
+    GPIO_InitStruct.Pin = SPIx_NSS_PIN;
+    GPIO_InitStruct.Alternate = SPIx_NSS_AF;
+
+    HAL_GPIO_Init(SPIx_NSS_GPIO_PORT, &GPIO_InitStruct);
+    
+    GPIO_InitStruct.Pin        = RADIO_SDL_PIN;
+    GPIO_InitStruct.Pull       = GPIO_PULLDOWN;
+    GPIO_InitStruct.Mode       = GPIO_MODE_OUTPUT_PP;   
+    GPIO_InitStruct.Speed      = GPIO_SPEED_LOW;
+    GPIO_InitStruct.Alternate  = 0x00;
+    
+    HAL_GPIO_Init(RADIO_SDL_GPIO_PORT, &GPIO_InitStruct);
+    
+    // Configure Radio NIRQ
+    GPIO_InitStruct.Pin        = RADIO_NIRQ_PIN;
+    GPIO_InitStruct.Pull       = GPIO_NOPULL;
+    GPIO_InitStruct.Mode       = GPIO_MODE_IT_RISING;   
+    GPIO_InitStruct.Speed      = GPIO_SPEED_LOW;
+    GPIO_InitStruct.Alternate  = 0x00;
+    
+    HAL_GPIO_Init(RADIO_NIRQ_GPIO_PORT, &GPIO_InitStruct);
 
     /*##-3- Configure the NVIC for SPI #########################################*/
     /* NVIC for SPI */
@@ -190,8 +215,22 @@ void RadioTask(void)
     //Configure radio
     SendRadioConfig();
     
+    osDelay(1000);
+    
     while(1)
     {
+        // Payload
+        txBuff[0] = 'B';
+        txBuff[1] = 'U';
+        txBuff[2] = 'T';
+        txBuff[3] = 'T';
+        txBuff[4] = 'O';
+        txBuff[5] = 'N';
+        txBuff[6] = '1';
+
+        // 7 bytes sent to TX FIFO
+        //Radio_StartTx_Variable_Packet(pRadioConfiguration->Radio_ChannelNumber, txBuff, 7u);
+        
         switch(radioTaskState)
         {
             // Try and join the network. If success, enter CONNECTED state, else return to LOOKING_FOR_BASE_STATION
@@ -263,7 +302,26 @@ void SendRadioConfig(void)
     si446x_reset();
     
     /* Wait until reset timeout or Reset IT signal */
-    for (wDelay = 0; wDelay < pRadioConfiguration->Radio_Delay_Cnt_After_Reset; wDelay++);
+    //for (wDelay = 0; wDelay < pRadioConfiguration->Radio_Delay_Cnt_After_Reset; wDelay++);
+    osDelay(100);
     
     si446x_configuration_init(pRadioConfiguration->Radio_ConfigurationArray);
+}
+
+void Radio_StartTx_Variable_Packet(uint8_t channel, uint8_t *pioRadioPacket, uint8_t length)
+{
+  /* Leave RX state */
+  si446x_change_state(SI446X_CMD_CHANGE_STATE_ARG_NEXT_STATE1_NEW_STATE_ENUM_READY);
+
+  /* Read ITs, clear pending ones */
+  si446x_get_int_status(0u, 0u, 0u);
+
+  /* Reset the Tx Fifo */
+  si446x_fifo_info(SI446X_CMD_FIFO_INFO_ARG_FIFO_TX_BIT);
+
+  /* Fill the TX fifo with datas */
+  si446x_write_tx_fifo(length, pioRadioPacket);
+
+  /* Start sending packet, channel 0, START immediately */
+   si446x_start_tx(channel, 0x80, length);
 }

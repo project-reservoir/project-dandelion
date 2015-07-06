@@ -13,6 +13,10 @@
 #define SPIx_RELEASE_RESET()             __SPI2_RELEASE_RESET()
 
 /* Definition for SPIx Pins */
+#define SPIx_NSS_PIN                     GPIO_PIN_12
+#define SPIx_NSS_GPIO_PORT               GPIOB
+#define SPIx_NSS_AF                      GPIO_AF0_SPI2
+
 #define SPIx_SCK_PIN                     GPIO_PIN_13
 #define SPIx_SCK_GPIO_PORT               GPIOB
 #define SPIx_SCK_AF                      GPIO_AF0_SPI2
@@ -27,19 +31,13 @@
 
 /* Definition for SPIx's NVIC */
 #define SPIx_IRQn                        SPI2_IRQn
-#define SPIx_IRQHandler                  SPI2_IRQHandler
 
-#define RADIO_NIRQ_PIN                   GPIO_PIN_8
-#define RADIO_NIRQ_GPIO_PORT             GPIOA
+#define RADIO_NIRQ_PIN                   GPIO_PIN_0
+#define RADIO_NIRQ_GPIO_PORT             GPIOB
+#define NIRQ_IRQn                        EXTI0_1_IRQn
 
-#define NIRQ_IRQn                        EXTI4_15_IRQn
-
-#define RADIO_SDL_PIN                    GPIO_PIN_9
-#define RADIO_SDL_GPIO_PORT              GPIOA
-
-/* Definition for SPIx's NVIC */
-#define SPIx_IRQn                        SPI1_IRQn
-#define SPIx_IRQHandler                  SPI1_Handler
+#define RADIO_SDL_PIN                    GPIO_PIN_2
+#define RADIO_SDL_GPIO_PORT              GPIOB
 
 /* Size of buffer */
 #define BUFFSIZE                         255

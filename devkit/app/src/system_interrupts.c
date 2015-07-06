@@ -40,7 +40,7 @@ void SPI1_Handler(void)
     }
 }
 
-void EXTI4_15_Handler(void)
+void EXTI0_1_Handler(void)
 {
     /* EXTI line interrupt detected */
     if(__HAL_GPIO_EXTI_GET_IT(RADIO_NIRQ_PIN) != RESET) 
