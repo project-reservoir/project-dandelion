@@ -1,7 +1,8 @@
 #include "hwctrl.h"
 #include "stm32l0xx_hal.h"
 #include "led_task.h"
-#include "usb_task.h"
+#include "sensors.h"
+#include "radio.h"
 #include "cmsis_os.h"
 
 unsigned portBASE_TYPE makeFreeRtosPriority (osPriority priority)
@@ -18,7 +19,8 @@ unsigned portBASE_TYPE makeFreeRtosPriority (osPriority priority)
 int main(void)
 {	
 	xTaskHandle ledTaskHandle;
-    xTaskHandle ledTask2Handle;
+    xTaskHandle sensorsTaskHandle;
+    xTaskHandle radioTaskHandle;
 
     // Configure the system clock
     SystemClock_Config();
@@ -29,32 +31,33 @@ int main(void)
     // Initialize the ST Micro Board Support Library
     HAL_Init();
     
-    // Flash an LED on and off forever.
-	/*while(1)
-	{
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
+    // Initialize all OS resources used by all tasks
+    SensorsTaskOSInit();
+    RadioTaskOSInit();
 
-		HAL_Delay(1000);
-
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
-
-		HAL_Delay(1000);
-	}*/
-
+    // Create sensor polling task
+    xTaskCreate(RadioTask,
+                "RadioTask",
+                configMINIMAL_STACK_SIZE,
+                NULL,
+                makeFreeRtosPriority(osPriorityNormal),
+                &radioTaskHandle);
+    
+    // Create sensor polling task
+    xTaskCreate(SensorsTask,
+                "SensorsTask",
+                configMINIMAL_STACK_SIZE,
+                NULL,
+                makeFreeRtosPriority(osPriorityNormal),
+                &sensorsTaskHandle);
+    
     // Create an LED blink tasks	
     xTaskCreate(LedBlinkTask,
                 "LEDTask",
                 configMINIMAL_STACK_SIZE,
                 NULL,
                 makeFreeRtosPriority(osPriorityNormal),
-                &ledTaskHandle);					
-    
-    xTaskCreate(Led2BlinkTask,
-                "LED2Task",
-                configMINIMAL_STACK_SIZE,
-                NULL,
-                makeFreeRtosPriority(osPriorityNormal),
-                &ledTask2Handle);    
+                &ledTaskHandle);
     
     // Start scheduler
     vTaskStartScheduler();

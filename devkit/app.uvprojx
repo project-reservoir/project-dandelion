@@ -349,7 +349,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>0</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -369,7 +369,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\app\inc;.\support\FreeRTOS\include;.\support\HAL\Inc;.\support\STM32_USB_Device_Library\Class\CustomHID\Inc;.\support\STM32_USB_Device_Library\Core\Inc;.\support\FreeRTOS\CMSIS_RTOS;.\support\FreeRTOS\portable\Keil;.\app\conf;.\support\FreeRTOS\portable\RVDS\ARM_CM0;.\support\xbee_ansi\inc;.\common\inc</IncludePath>
+              <IncludePath>.\app\inc;.\support\FreeRTOS\include;.\support\HAL\Inc;.\support\STM32_USB_Device_Library\Class\CustomHID\Inc;.\support\STM32_USB_Device_Library\Core\Inc;.\support\FreeRTOS\CMSIS_RTOS;.\support\FreeRTOS\portable\Keil;.\app\conf;.\support\FreeRTOS\portable\RVDS\ARM_CM0;.\support\xbee_ansi\inc;.\common\inc;.\support\Si4463\drivers\radio\Si446x;.\support\Si4463\drivers\radio</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -391,7 +391,7 @@
           </Aads>
           <LDads>
             <umfTarg>0</umfTarg>
-            <Ropi>1</Ropi>
+            <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
             <RepFail>0</RepFail>
@@ -448,14 +448,24 @@
               <FilePath>.\app\src\metadata.c</FilePath>
             </File>
             <File>
+              <FileName>stm32l0xx_hal_msp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\stm32l0xx_hal_msp.c</FilePath>
+            </File>
+            <File>
               <FileName>sensors.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\src\sensors.c</FilePath>
             </File>
             <File>
-              <FileName>stm32l0xx_hal_msp.c</FileName>
+              <FileName>radio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\app\src\stm32l0xx_hal_msp.c</FilePath>
+              <FilePath>.\app\src\radio.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\i2c.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -486,6 +496,16 @@
               <FileName>sensors.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\app\inc\sensors.h</FilePath>
+            </File>
+            <File>
+              <FileName>radio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\inc\radio.h</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\inc\i2c.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1171,6 +1191,76 @@
               <FileName>system_stm32l0xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\conf\system_stm32l0xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>radio_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\conf\radio_config.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Si4463</GroupName>
+          <Files>
+            <File>
+              <FileName>radio_comm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\support\Si4463\drivers\radio\radio_comm.c</FilePath>
+            </File>
+            <File>
+              <FileName>radio_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\support\Si4463\drivers\radio\radio_hal.c</FilePath>
+            </File>
+            <File>
+              <FileName>si446x_api_lib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\support\Si4463\drivers\radio\Si446x\si446x_api_lib.c</FilePath>
+            </File>
+            <File>
+              <FileName>si446x_nirq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\support\Si4463\drivers\radio\Si446x\si446x_nirq.c</FilePath>
+            </File>
+            <File>
+              <FileName>si446x_api_lib.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\support\Si4463\drivers\radio\Si446x\si446x_api_lib.h</FilePath>
+            </File>
+            <File>
+              <FileName>si446x_cmd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\support\Si4463\drivers\radio\Si446x\si446x_cmd.h</FilePath>
+            </File>
+            <File>
+              <FileName>si446x_defs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\support\Si4463\drivers\radio\Si446x\si446x_defs.h</FilePath>
+            </File>
+            <File>
+              <FileName>si446x_nirq.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\support\Si4463\drivers\radio\Si446x\si446x_nirq.h</FilePath>
+            </File>
+            <File>
+              <FileName>si446x_patch.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\support\Si4463\drivers\radio\Si446x\si446x_patch.h</FilePath>
+            </File>
+            <File>
+              <FileName>si446x_prop.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\support\Si4463\drivers\radio\Si446x\si446x_prop.h</FilePath>
+            </File>
+            <File>
+              <FileName>radio_comm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\support\Si4463\drivers\radio\radio_comm.h</FilePath>
+            </File>
+            <File>
+              <FileName>radio_hal.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\support\Si4463\drivers\radio\radio_hal.h</FilePath>
             </File>
           </Files>
         </Group>

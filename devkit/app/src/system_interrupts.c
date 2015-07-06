@@ -2,9 +2,12 @@
 #include "cmsis_os.h"
 #include "app_header.h"
 #include "stm32l0xx_hal.h"
+#include "radio.h"
 #include "hwctrl.h"
 
 extern I2C_HandleTypeDef I2CxHandle;
+extern SPI_HandleTypeDef SpiHandle;
+
 extern void __main(void);
 
 void Reset_Handler(void)
@@ -23,17 +26,35 @@ void SysTick_Handler(void)
 	HAL_IncTick();
 }
 
-void I2Cx_IRQHandler(void)
+void I2C2_Handler(void)
 {
     HAL_I2C_EV_IRQHandler(&I2CxHandle);
     HAL_I2C_ER_IRQHandler(&I2CxHandle);
+}
+
+void SPI1_Handler(void)
+{
+    if(SpiHandle.State != HAL_SPI_STATE_RESET)
+    {
+        HAL_SPI_IRQHandler(&SpiHandle);
+    }
+}
+
+void EXTI4_15_Handler(void)
+{
+    /* EXTI line interrupt detected */
+    if(__HAL_GPIO_EXTI_GET_IT(RADIO_NIRQ_PIN) != RESET) 
+    { 
+        __HAL_GPIO_EXTI_CLEAR_IT(RADIO_NIRQ_PIN);
+        // TODO: Handle the radio interrupting the MCU
+    }
 }
 
 // These functions are the "static" handlers. They're placed at fixed memory addresses 
 // and call the real handlers, which can be placed anywhere.
 // DO NOT CHANGE THESE FUNCTIONS. THEY ALL COMPILE DOWN TO EXACTLY 8 BYTES EACH AND CHANGING
 // THAT AMOUNT WILL CAUSE THE BOOTLOADER TO FAIL. LIKEWISE, DO NOT CREATE INTERRUPT HANDLERS 
-// THAT COMPILE DOWN TO LESS THAN 8 INSTRUCTIONS. THE COMPILER WILL OPTIMIZE THEM AWAY AND MESS
+// THAT COMPILE DOWN TO LESS OR MORE THAN 8 INSTRUCTIONS. THE COMPILER WILL OPTIMIZE THEM AWAY AND MESS
 // UP THE ALIGNMENT OF THIS SECTION.
 
 __attribute__((section("!!!!0.RESET_HANDLER"))) void Reset_Handler_Standin()
