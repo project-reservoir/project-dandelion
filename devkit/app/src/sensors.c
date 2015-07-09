@@ -1,6 +1,7 @@
 #include "sensors.h"
 #include "hwctrl.h"
 #include "cmsis_os.h"
+#include "i2c.h"
 
 // Global variables
 I2C_HandleTypeDef I2CxHandle;
@@ -47,8 +48,8 @@ void SensorsTaskHwInit(void)
 
     /*##-3- Configure the NVIC for I2C #########################################*/   
     /* NVIC for I2C1 */
-    HAL_NVIC_SetPriority(I2Cx_IRQn, 0, 1);
-    HAL_NVIC_EnableIRQ(I2Cx_IRQn);
+    //HAL_NVIC_SetPriority(I2Cx_IRQn, 0, 1);
+    //HAL_NVIC_EnableIRQ(I2Cx_IRQn);
 }
 
 void SensorsTaskOSInit(void)
@@ -59,22 +60,22 @@ void SensorsTaskOSInit(void)
     
     I2CxHandle.Instance              = I2Cx;
     I2CxHandle.Init.AddressingMode   = I2C_ADDRESSINGMODE_7BIT;
-    I2CxHandle.Init.Timing           = I2C_TIMING_300KHZ_NEW;
+    I2CxHandle.Init.Timing           = I2C_TIMING_100KHZ;
     I2CxHandle.Init.DualAddressMode  = I2C_DUALADDRESS_DISABLED;
     I2CxHandle.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
     I2CxHandle.Init.GeneralCallMode  = I2C_GENERALCALL_DISABLED;
     I2CxHandle.Init.NoStretchMode    = I2C_NOSTRETCH_DISABLED;
-    I2CxHandle.Init.OwnAddress1      = I2C_ADDRESS;
-    I2CxHandle.Init.OwnAddress2      = 0x02;
+    I2CxHandle.Init.OwnAddress1      = 0x00;
+    I2CxHandle.Init.OwnAddress2      = 0x00;
     
     assert_param(HAL_I2C_Init(&I2CxHandle) == HAL_OK);
 }
 
 void SensorsTask(void)
 {
-    osDelay(2000);
+    //osDelay(2000);
     
-    //InitTempSensor(0);
+    InitTempSensor(0);
     
     //osDelay(2000);
     
@@ -178,7 +179,7 @@ float ReadTempSensor(uint8_t index)
 
 void InitTempSensor(uint8_t index)
 {
-    uint32_t error;
+    uint32_t error = 0;
     // Take the I2C semaphore so this task will block forever until the I2C transaction has completed
     // TODO: task shouldn't block forever waiting for I2C control. Maybe block for 2 seconds or something similar
     osSemaphoreWait(i2cSem, osWaitForever);
@@ -186,7 +187,32 @@ void InitTempSensor(uint8_t index)
     // Write to the i2cTxBuffer
     i2cTxBuffer[0] = TMP102_CONFIG_1_VAL;
     i2cTxBuffer[1] = TMP102_CONFIG_2_VAL;
-        
+    
+    __disable_irq();
+    
+    /* start I2C master transmission sequence */
+    /*I2C1->CR1 = I2C_CR1_PE;
+    I2C1->CR2 =  I2C_CR2_AUTOEND | (1<<16) | (TMP102_0_ADDR<<1);
+    I2C1->TXDR = TMP102_CONFIG_1_VAL;
+    I2C1->CR2 |= I2C_CR2_START;*/
+    
+    I2C_Start(TMP102_0_ADDR, 0); // I2C Write
+    I2C_WriteByte(TMP102_TEMP_ADDR);
+    I2C_WaitForTX();
+    I2C_Stop();
+    
+    I2C_Start(TMP102_0_ADDR, 1); // I2C Read
+    I2C_ReadBytes(i2cRxBuffer, 2);
+    I2C_Stop();
+    
+    __enable_irq();
+    
+    if(error != 0)
+    {
+        error--;
+    }
+    
+    /*  
     // Write to the config register to begin a one-shot temperature conversion
     while(HAL_I2C_Mem_Write(&I2CxHandle, (uint16_t)GetTmp102Addr(index), (uint16_t)TMP102_CONFIG_ADDR, 1, i2cTxBuffer, 2, 2000) != HAL_OK)
     {
@@ -197,4 +223,5 @@ void InitTempSensor(uint8_t index)
             
         }
     }
+    */
 }
