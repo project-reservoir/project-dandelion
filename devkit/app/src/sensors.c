@@ -72,16 +72,14 @@ void SensorsTaskOSInit(void)
 }
 
 void SensorsTask(void)
-{
-    //osDelay(2000);
-    
+{    
     InitTempSensor(0);
     
     //osDelay(2000);
     
     while(1)
     {
-        //ReadTempSensor(0);
+        ReadTempSensor(0);
         osDelay(1000);
     }
 }
@@ -133,48 +131,45 @@ uint8_t GetTmp102Addr(uint8_t index)
 // block the calling task until the entire sensor read has been completed
 float ReadTempSensor(uint8_t index)
 {
+    uint16_t temp = 0;
     // Take the I2C semaphore so this task will block forever until the I2C transaction has completed
     // TODO: task shouldn't block forever waiting for I2C control. Maybe block for 2 seconds or something similar
     osSemaphoreWait(i2cSem, osWaitForever);
+    
+    __disable_irq();
     
     // Write to the i2cTxBuffer
     i2cTxBuffer[0] = TMP102_CONFIG_1_ONESHOT_VAL;
     i2cTxBuffer[1] = TMP102_CONFIG_2_VAL;
     
     // Write to the config register to begin a one-shot temperature conversion
-    while(HAL_I2C_Mem_Write(&I2CxHandle, (uint16_t)GetTmp102Addr(index), (uint16_t)TMP102_CONFIG_ADDR, 1, i2cTxBuffer, 2, 1000) != HAL_OK)
-    {
-        // If the error as anything other than "device did not respond to address" then do something
-        if(HAL_I2C_GetError(&I2CxHandle) != HAL_I2C_ERROR_AF)
-        {
-            
-        }
-    }
+    I2C_Start(GetTmp102Addr(index), 0); // I2C Write
+    I2C_WriteByte(TMP102_CONFIG_ADDR);
+    I2C_WaitForTX();
+    I2C_Stop();
     
-    // Take the I2C semaphore so this task will block forever until the I2C transaction has completed
-    // TODO: task shouldn't block forever waiting for I2C control. Maybe block for 2 seconds or something similar
-    osSemaphoreWait(i2cSem, osWaitForever);
+    I2C_Start(GetTmp102Addr(index), 0); // I2C Write
+    I2C_WriteBytes(i2cTxBuffer, 2);
+    I2C_WaitForTX();
+    I2C_Stop();
     
-    // Read the temperature registers from the 
-    while(HAL_I2C_Mem_Read(&I2CxHandle, (uint16_t)GetTmp102Addr(index), (uint16_t)TMP102_TEMP_ADDR, 1, i2cRxBuffer, 2, 1000) != HAL_OK)
-    {
-        // If the error as anything other than "device did not respond to address" then do something
-        if(HAL_I2C_GetError(&I2CxHandle) != HAL_I2C_ERROR_AF)
-        {
-            
-        }
-    }
+    // Read the temperature registers from the sensor
+    I2C_Start(GetTmp102Addr(index), 0); // I2C Write
+    I2C_WriteByte(TMP102_TEMP_ADDR);
+    I2C_WaitForTX();
+    I2C_Stop();
     
-    // Take the I2C semaphore again. We aren't actually going to perform another transaction, but it will block until the 
-    // current transaction has finished.
-    
-    osSemaphoreWait(i2cSem, osWaitForever);
+    I2C_Start(GetTmp102Addr(index), 1); // I2C Read
+    I2C_ReadBytes(i2cRxBuffer, 2);
+    I2C_Stop();
     
     // Process returned data
+    temp |= i2cRxBuffer[0] << 4;
+    temp |= (i2cRxBuffer[1] & 0x0F);
     
-    osSemaphoreRelease(i2cSem);
+    __enable_irq();
     
-    return 0.0;
+    return temp * TMP102_LSB_INC;
 }
 
 void InitTempSensor(uint8_t index)
@@ -184,44 +179,23 @@ void InitTempSensor(uint8_t index)
     // TODO: task shouldn't block forever waiting for I2C control. Maybe block for 2 seconds or something similar
     osSemaphoreWait(i2cSem, osWaitForever);
     
-    // Write to the i2cTxBuffer
+    // Write the config values into the TX buffer
     i2cTxBuffer[0] = TMP102_CONFIG_1_VAL;
     i2cTxBuffer[1] = TMP102_CONFIG_2_VAL;
     
     __disable_irq();
     
-    /* start I2C master transmission sequence */
-    /*I2C1->CR1 = I2C_CR1_PE;
-    I2C1->CR2 =  I2C_CR2_AUTOEND | (1<<16) | (TMP102_0_ADDR<<1);
-    I2C1->TXDR = TMP102_CONFIG_1_VAL;
-    I2C1->CR2 |= I2C_CR2_START;*/
-    
-    I2C_Start(TMP102_0_ADDR, 0); // I2C Write
-    I2C_WriteByte(TMP102_TEMP_ADDR);
+    I2C_Start(GetTmp102Addr(index), 0); // I2C Write
+    I2C_WriteByte(TMP102_CONFIG_ADDR);
     I2C_WaitForTX();
     I2C_Stop();
     
-    I2C_Start(TMP102_0_ADDR, 1); // I2C Read
-    I2C_ReadBytes(i2cRxBuffer, 2);
+    I2C_Start(GetTmp102Addr(index), 0); // I2C Read
+    I2C_WriteBytes(i2cTxBuffer, 2);
+    I2C_WaitForTX();
     I2C_Stop();
     
     __enable_irq();
     
-    if(error != 0)
-    {
-        error--;
-    }
-    
-    /*  
-    // Write to the config register to begin a one-shot temperature conversion
-    while(HAL_I2C_Mem_Write(&I2CxHandle, (uint16_t)GetTmp102Addr(index), (uint16_t)TMP102_CONFIG_ADDR, 1, i2cTxBuffer, 2, 2000) != HAL_OK)
-    {
-        error = HAL_I2C_GetError(&I2CxHandle);
-        // If the error as anything other than "device did not respond to address" then do something
-        if(HAL_I2C_GetError(&I2CxHandle) != HAL_I2C_ERROR_AF)
-        {
-            
-        }
-    }
-    */
+    osSemaphoreRelease(i2cSem);
 }

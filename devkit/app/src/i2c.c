@@ -36,9 +36,24 @@ void I2C_WaitForRX(void)
 void I2C_WriteByte(uint8_t byte)
 {
     I2C_WaitForTX();
-    
+
+    I2C1->CR2 |= (1<<16); // Write n bytes
     I2C1->TXDR = byte;
-    I2C1->CR2 |= (1<<16); // Write 1 byte
+}
+
+// Write the byte over the I2C bus. Does not return until the byte has been written.
+// Will not write the byte until the I2C device is ready.
+void I2C_WriteBytes(uint8_t* buffer, uint8_t numBytes)
+{
+    uint8_t i;
+    
+    I2C1->CR2 |= (numBytes<<16); // Write n bytes
+    
+    for(i = 0; i < numBytes; i++)
+    {
+        I2C_WaitForTX();
+        I2C1->TXDR = buffer[i];
+    }
 }
 
 // Receive a byte over the I2C bus. Does not return until a byte is received

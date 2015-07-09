@@ -47,6 +47,7 @@
 #define TMP102_CONFIG_ADDR          0x01
 #define TMP102_TLOW_ADDR            0x02
 #define TMP102_THIGH_ADDR           0x03
+#define TMP102_LSB_INC              0.0625f
 
 typedef struct SensorData_t {
     float temp0;
