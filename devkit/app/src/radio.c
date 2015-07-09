@@ -78,7 +78,7 @@ void RadioTaskOSInit(void)
     SpiHandle.Init.CRCPolynomial     = 7;
     SpiHandle.Init.DataSize          = SPI_DATASIZE_8BIT;
     SpiHandle.Init.FirstBit          = SPI_FIRSTBIT_MSB;
-    SpiHandle.Init.NSS               = SPI_NSS_HARD_OUTPUT;
+    SpiHandle.Init.NSS               = SPI_NSS_SOFT;
     SpiHandle.Init.TIMode            = SPI_TIMODE_DISABLED;
     SpiHandle.Init.Mode              = SPI_MODE_MASTER;
     
@@ -178,8 +178,11 @@ void RadioTaskHwInit(void)
 
     HAL_GPIO_Init(SPIx_MOSI_GPIO_PORT, &GPIO_InitStruct);
     
-    GPIO_InitStruct.Pin = SPIx_NSS_PIN;
-    GPIO_InitStruct.Alternate = SPIx_NSS_AF;
+    GPIO_InitStruct.Pin        = SPIx_NSS_PIN;
+    GPIO_InitStruct.Pull       = GPIO_NOPULL;
+    GPIO_InitStruct.Mode       = GPIO_MODE_OUTPUT_PP;   
+    GPIO_InitStruct.Speed      = GPIO_SPEED_FAST;
+    GPIO_InitStruct.Alternate  = 0x00;
 
     HAL_GPIO_Init(SPIx_NSS_GPIO_PORT, &GPIO_InitStruct);
     
@@ -204,6 +207,9 @@ void RadioTaskHwInit(void)
     /* NVIC for SPI */
     HAL_NVIC_SetPriority(SPIx_IRQn, 0, 1);
     HAL_NVIC_EnableIRQ(SPIx_IRQn);
+    
+    // Initially de-select SPI devices
+    HAL_GPIO_WritePin(SPIx_NSS_GPIO_PORT, SPIx_NSS_PIN, GPIO_PIN_SET);
 }
 
 void RadioTask(void)
@@ -229,7 +235,9 @@ void RadioTask(void)
         txBuff[6] = '1';
 
         // 7 bytes sent to TX FIFO
-        //Radio_StartTx_Variable_Packet(pRadioConfiguration->Radio_ChannelNumber, txBuff, 7u);
+        Radio_StartTx_Variable_Packet(pRadioConfiguration->Radio_ChannelNumber, txBuff, 7u);
+        
+        osDelay(1000);
         
         switch(radioTaskState)
         {
@@ -261,7 +269,6 @@ void RadioTask(void)
                 // If network found, store details and move to -> CONNECTING
                 break;
         }
-        osDelay(1000);
     }
 }
 

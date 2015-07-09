@@ -44,14 +44,12 @@ void radio_hal_DeassertShutdown(void)
 
 void radio_hal_ClearNsel(void)
 {
-	// TODO: select the chip using the NSEL pin on the SPI hardware
-    //RF_NSEL = 0;
+    HAL_GPIO_WritePin(SPIx_NSS_GPIO_PORT, SPIx_NSS_PIN, GPIO_PIN_RESET);
 }
 
 void radio_hal_SetNsel(void)
 {
-	// TODO: de-select the chip using the NSEL pin on the SPI hardware
-    //RF_NSEL = 1;
+	HAL_GPIO_WritePin(SPIx_NSS_GPIO_PORT, SPIx_NSS_PIN, GPIO_PIN_SET);
 }
 
 BIT radio_hal_NirqLevel(void)
