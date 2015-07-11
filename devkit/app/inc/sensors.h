@@ -49,12 +49,25 @@
 #define TMP102_THIGH_ADDR           0x03
 #define TMP102_LSB_INC              0.0625f
 
+// HTU21D (Humidity and air temperature sensor) definitions
+#define HTU21D_ADDR                 0x40
+
+#define HTU21D_TEMP_MEAS_HOLD       0xE3
+#define HTU21D_HUMID_MEAS_HOLD      0xE5
+#define HTU21D_TEMP_MEAS_NO_HOLD    0xF3
+#define HTU21D_HUMID_MEAS_NO_HOLD   0xF5
+#define HTU21D_WRITE_USER_REG       0xE6
+#define HTU21D_READ_USER_REG        0xE7
+#define HTU21D_SOFT_RESET           0xFE
+
+
 typedef struct SensorData_t {
     float temp0;
+    float temp1;
     float temp2;
-    float temp3;
     float tempChip;
     float tempRadio;
+    float tempAir;
     float moist0;
     float moist1;
     float moist2;
@@ -64,9 +77,5 @@ typedef struct SensorData_t {
 void SensorsTaskOSInit(void);
 void SensorsTaskHwInit(void);
 void SensorsTask(void);
-
-void HAL_I2C_MemTxCpltCallback(I2C_HandleTypeDef *hi2c) __attribute__((used));
-void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c) __attribute__((used));
-
 
 #endif // _SENSORS_H
