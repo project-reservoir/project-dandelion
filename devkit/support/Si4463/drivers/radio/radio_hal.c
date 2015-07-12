@@ -15,6 +15,7 @@
 
 #include "..\..\bsp.h"
 #include "radio.h"
+#include "spi.h"
 
                 /* ======================================= *
                  *          D E F I N I T I O N S          *
@@ -54,37 +55,29 @@ void radio_hal_SetNsel(void)
 
 BIT radio_hal_NirqLevel(void)
 {
-	//TODO: return the value of the pin connected to the radio NIRQ pin
     return HAL_GPIO_ReadPin(RADIO_NIRQ_GPIO_PORT, RADIO_NIRQ_PIN);
 }
 
 void radio_hal_SpiWriteByte(U8 byteToWrite)
-{
-    uint8_t byte_buff[1];
-    
-    byte_buff[0] = byteToWrite;
-    
-    HAL_SPI_Transmit(&SpiHandle, byte_buff, 1, 1000);
+{    
+    SPI_WriteByte(byteToWrite);
 }
 
 U8 radio_hal_SpiReadByte(void)
 {
-    uint8_t byte[1];
-    uint8_t dummy_byte[1];
-    dummy_byte[0] = 0xFF;
-    
-    HAL_SPI_TransmitReceive(&SpiHandle, dummy_byte, byte, 1, 1000);
-    return byte[0];
+    uint8_t byte;
+    SPI_ReadByte(&byte);
+    return byte;
 }
 
 void radio_hal_SpiWriteData(U8 byteCount, U8* pData)
 {
-    HAL_SPI_Transmit(&SpiHandle, pData, byteCount, 1000);
+    SPI_WriteBytes(pData, byteCount);
 }
 
 void radio_hal_SpiReadData(U8 byteCount, U8* pData)
 {
-    HAL_SPI_Receive(&SpiHandle, pData, byteCount, 1000);
+    SPI_ReadBytes(pData, byteCount);
 }
 
 #ifdef RADIO_DRIVER_EXTENDED_SUPPORT

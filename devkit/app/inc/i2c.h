@@ -3,7 +3,7 @@
 
 #include "stm32l0xx_hal.h"
 
-#define I2C_TIMEOUT_TICKS 5000000
+#define I2C_TIMEOUT_TICKS 500000
 
 typedef enum I2C_Status_t {
     I2C_OK,

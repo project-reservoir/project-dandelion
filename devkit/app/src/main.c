@@ -36,12 +36,12 @@ int main(void)
     RadioTaskOSInit();
 
     // Create sensor polling task
-    /*xTaskCreate(RadioTask,
+    xTaskCreate(RadioTask,
                 "RadioTask",
                 configMINIMAL_STACK_SIZE,
                 NULL,
                 makeFreeRtosPriority(osPriorityNormal),
-                &radioTaskHandle);*/
+                &radioTaskHandle);
     
     // Create sensor polling task
     xTaskCreate(SensorsTask,

@@ -3,6 +3,7 @@
 #include "cmsis_os.h"
 #include "si446x_api_lib.h"
 #include "si446x_cmd.h"
+#include "spi.h"
 
 #define RADIO_MAX_PACKET_LENGTH     64u
 
@@ -67,8 +68,7 @@ void RadioTaskOSInit(void)
     
     radioMsgQ = osMessageCreate(osMessageQ(RadioMsgQueue), NULL);
     
-    // TODO: check message queue was created OK
-    
+    // TODO: check message queue was created OK    
     SpiHandle.Instance               = SPIx;
     SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
     SpiHandle.Init.Direction         = SPI_DIRECTION_2LINES;
@@ -83,6 +83,8 @@ void RadioTaskOSInit(void)
     SpiHandle.Init.Mode              = SPI_MODE_MASTER;
     
     assert_param(HAL_SPI_Init(&SpiHandle) == HAL_OK);
+    
+    SPI2->CR1 |= SPI_CR1_SPE;
 }
 
 void RadioTaskHwInit(void)
@@ -205,8 +207,8 @@ void RadioTaskHwInit(void)
 
     /*##-3- Configure the NVIC for SPI #########################################*/
     /* NVIC for SPI */
-    HAL_NVIC_SetPriority(SPIx_IRQn, 0, 1);
-    HAL_NVIC_EnableIRQ(SPIx_IRQn);
+    //HAL_NVIC_SetPriority(SPIx_IRQn, 0, 1);
+    //HAL_NVIC_EnableIRQ(SPIx_IRQn);
     
     // Initially de-select SPI devices
     HAL_GPIO_WritePin(SPIx_NSS_GPIO_PORT, SPIx_NSS_PIN, GPIO_PIN_SET);
@@ -218,13 +220,32 @@ void RadioTask(void)
     RadioMessage* msg;
     // Load radio config from flash    
     
-    //Configure radio
-    SendRadioConfig();
+    // Configure radio
+    //SendRadioConfig();
     
-    osDelay(1000);
+    taskENTER_CRITICAL();
+    
+    txBuff[0] = 'B';
+    txBuff[1] = 'U';
+    txBuff[2] = 'T';
+    txBuff[3] = 'T';
+    txBuff[4] = 'O';
+    txBuff[5] = 'N';
+    txBuff[6] = '1';
+    
+    HAL_GPIO_WritePin(SPIx_NSS_GPIO_PORT, SPIx_NSS_PIN, GPIO_PIN_RESET);
+    SPI_WriteBytes(txBuff, 7);
+    SPI_WaitForNotBusy();
+    
+    // TODO: Delay a tiny bit before making this call... the CPU goes too fast for the SPI bus
+    // and de-asserts the NSS pin during the transmission of the final bit
+    HAL_GPIO_WritePin(SPIx_NSS_GPIO_PORT, SPIx_NSS_PIN, GPIO_PIN_SET);
+    
+    taskEXIT_CRITICAL();
     
     while(1)
     {
+        /*
         // Payload
         txBuff[0] = 'B';
         txBuff[1] = 'U';
@@ -236,8 +257,6 @@ void RadioTask(void)
 
         // 7 bytes sent to TX FIFO
         Radio_StartTx_Variable_Packet(pRadioConfiguration->Radio_ChannelNumber, txBuff, 7u);
-        
-        osDelay(1000);
         
         switch(radioTaskState)
         {
@@ -268,7 +287,9 @@ void RadioTask(void)
                 // Wait for reply
                 // If network found, store details and move to -> CONNECTING
                 break;
-        }
+        }*/
+        
+        osDelay(1000);
     }
 }
 
