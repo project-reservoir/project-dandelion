@@ -155,7 +155,9 @@ void SensorsTask(void)
                 I2C_Reset();
                 enabledSensors[3]--;
            }
-           
+        }
+        if(enabledSensors[3] > 0)
+        {
            if(ReadAirTempSensor(&sensorData.tempAir) != I2C_OK)
            {
                 I2C_Reset();
