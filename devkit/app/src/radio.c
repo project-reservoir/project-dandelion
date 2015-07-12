@@ -73,7 +73,7 @@ void RadioTaskOSInit(void)
     SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
     SpiHandle.Init.Direction         = SPI_DIRECTION_2LINES;
     SpiHandle.Init.CLKPhase          = SPI_PHASE_1EDGE;
-    SpiHandle.Init.CLKPolarity       = SPI_POLARITY_HIGH;
+    SpiHandle.Init.CLKPolarity       = SPI_POLARITY_LOW;
     SpiHandle.Init.CRCCalculation    = SPI_CRCCALCULATION_DISABLED;
     SpiHandle.Init.CRCPolynomial     = 7;
     SpiHandle.Init.DataSize          = SPI_DATASIZE_8BIT;
@@ -162,7 +162,7 @@ void RadioTaskHwInit(void)
     /* SPI SCK GPIO pin configuration  */
     GPIO_InitStruct.Pin       = SPIx_SCK_PIN;
     GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull      = GPIO_PULLUP;
+    GPIO_InitStruct.Pull      = GPIO_NOPULL;
     GPIO_InitStruct.Speed     = GPIO_SPEED_FAST;
     GPIO_InitStruct.Alternate = SPIx_SCK_AF;
 
@@ -181,7 +181,7 @@ void RadioTaskHwInit(void)
     HAL_GPIO_Init(SPIx_MOSI_GPIO_PORT, &GPIO_InitStruct);
     
     GPIO_InitStruct.Pin        = SPIx_NSS_PIN;
-    GPIO_InitStruct.Pull       = GPIO_NOPULL;
+    GPIO_InitStruct.Pull       = GPIO_PULLDOWN;
     GPIO_InitStruct.Mode       = GPIO_MODE_OUTPUT_PP;   
     GPIO_InitStruct.Speed      = GPIO_SPEED_FAST;
     GPIO_InitStruct.Alternate  = 0x00;
@@ -191,7 +191,7 @@ void RadioTaskHwInit(void)
     GPIO_InitStruct.Pin        = RADIO_SDL_PIN;
     GPIO_InitStruct.Pull       = GPIO_PULLDOWN;
     GPIO_InitStruct.Mode       = GPIO_MODE_OUTPUT_PP;   
-    GPIO_InitStruct.Speed      = GPIO_SPEED_LOW;
+    GPIO_InitStruct.Speed      = GPIO_SPEED_FAST;
     GPIO_InitStruct.Alternate  = 0x00;
     
     HAL_GPIO_Init(RADIO_SDL_GPIO_PORT, &GPIO_InitStruct);
@@ -199,11 +199,20 @@ void RadioTaskHwInit(void)
     // Configure Radio NIRQ
     GPIO_InitStruct.Pin        = RADIO_NIRQ_PIN;
     GPIO_InitStruct.Pull       = GPIO_NOPULL;
-    GPIO_InitStruct.Mode       = GPIO_MODE_IT_RISING;   
-    GPIO_InitStruct.Speed      = GPIO_SPEED_LOW;
+    GPIO_InitStruct.Mode       = GPIO_MODE_INPUT;   
+    GPIO_InitStruct.Speed      = GPIO_SPEED_FAST;
     GPIO_InitStruct.Alternate  = 0x00;
     
     HAL_GPIO_Init(RADIO_NIRQ_GPIO_PORT, &GPIO_InitStruct);
+    
+    // Configure Radio GP1 pin
+    GPIO_InitStruct.Pin        = RADIO_GP1_PIN;
+    GPIO_InitStruct.Pull       = GPIO_NOPULL;
+    GPIO_InitStruct.Mode       = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Speed      = GPIO_SPEED_FAST;
+    GPIO_InitStruct.Alternate  = 0x00;
+    
+    HAL_GPIO_Init(RADIO_GP1_GPIO_PORT, &GPIO_InitStruct);
 
     /*##-3- Configure the NVIC for SPI #########################################*/
     /* NVIC for SPI */
@@ -218,42 +227,26 @@ void RadioTask(void)
 {
     osEvent msgQueueEvent;
     RadioMessage* msg;
-    // Load radio config from flash    
+    // Load radio config from flash
     
     // Configure radio
-    //SendRadioConfig();
+    SendRadioConfig();
     
-    taskENTER_CRITICAL();
+    osDelay(1);
     
-    txBuff[0] = 'B';
-    txBuff[1] = 'U';
-    txBuff[2] = 'T';
-    txBuff[3] = 'T';
-    txBuff[4] = 'O';
-    txBuff[5] = 'N';
-    txBuff[6] = '1';
-    
-    HAL_GPIO_WritePin(SPIx_NSS_GPIO_PORT, SPIx_NSS_PIN, GPIO_PIN_RESET);
-    SPI_WriteBytes(txBuff, 7);
-    SPI_WaitForNotBusy();
-    
-    // TODO: Delay a tiny bit before making this call... the CPU goes too fast for the SPI bus
-    // and de-asserts the NSS pin during the transmission of the final bit
-    HAL_GPIO_WritePin(SPIx_NSS_GPIO_PORT, SPIx_NSS_PIN, GPIO_PIN_SET);
-    
-    taskEXIT_CRITICAL();
+    si446x_part_info();
     
     while(1)
     {
-        /*
+        
         // Payload
-        txBuff[0] = 'B';
-        txBuff[1] = 'U';
-        txBuff[2] = 'T';
-        txBuff[3] = 'T';
-        txBuff[4] = 'O';
-        txBuff[5] = 'N';
-        txBuff[6] = '1';
+        txBuff[0] = 0xC5;
+        txBuff[1] = 0xC5;
+        txBuff[2] = 0xC5;
+        txBuff[3] = 0xC5;
+        txBuff[4] = 0xC5;
+        txBuff[5] = 0xC5;
+        txBuff[6] = 0xC5;
 
         // 7 bytes sent to TX FIFO
         Radio_StartTx_Variable_Packet(pRadioConfiguration->Radio_ChannelNumber, txBuff, 7u);
@@ -287,7 +280,7 @@ void RadioTask(void)
                 // Wait for reply
                 // If network found, store details and move to -> CONNECTING
                 break;
-        }*/
+        }
         
         osDelay(1000);
     }
@@ -333,7 +326,9 @@ void SendRadioConfig(void)
     //for (wDelay = 0; wDelay < pRadioConfiguration->Radio_Delay_Cnt_After_Reset; wDelay++);
     osDelay(100);
     
+    taskENTER_CRITICAL();
     si446x_configuration_init(pRadioConfiguration->Radio_ConfigurationArray);
+    taskEXIT_CRITICAL();
 }
 
 void Radio_StartTx_Variable_Packet(uint8_t channel, uint8_t *pioRadioPacket, uint8_t length)
@@ -351,5 +346,5 @@ void Radio_StartTx_Variable_Packet(uint8_t channel, uint8_t *pioRadioPacket, uin
   si446x_write_tx_fifo(length, pioRadioPacket);
 
   /* Start sending packet, channel 0, START immediately */
-   si446x_start_tx(channel, 0x80, length);
+   si446x_start_tx(channel, 0x30, length);
 }

@@ -23,6 +23,7 @@
  * might not build with some extended drivers 
  * due to data memory overflow */
 #define RADIO_DRIVER_EXTENDED_SUPPORT
+//#define RADIO_USER_CFG_USE_GPIO1_FOR_CTS
 
 #undef  RADIO_DRIVER_FULL_SUPPORT
 #undef  SPI_DRIVER_EXTENDED_SUPPORT

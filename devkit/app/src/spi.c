@@ -3,7 +3,10 @@
 
 void SPI_WaitForNotBusy(void)
 {
+    uint32_t i;
     while((SPI2->SR & SPI_SR_BSY) == SPI_SR_BSY);
+    
+    for(i = 0; i < SPI_BUSY_WAIT_EXTRA; i++);
 }
 
 void SPI_WaitForRX(void)
@@ -18,18 +21,24 @@ void SPI_WaitForTX(void)
 
 void SPI_WriteByte(uint8_t byte)
 {
-    SPI_WaitForTX();
+    uint8_t dummy;
     
+    SPI_WaitForTX();   
     *(uint8_t *)&(SPI2->DR) = byte; /* Will inititiate 8-bit transmission */
+    SPI_WaitForRX();
+    dummy = (uint8_t)SPI2->DR;
 }
 
 void SPI_WriteBytes(uint8_t* bytes, uint8_t len)
 {
     uint8_t i;
+    uint8_t dummy;
     for(i = 0; i < len; i++)
     {
         SPI_WaitForTX();
         *(uint8_t *)&(SPI2->DR) = bytes[i]; /* Will inititiate 8-bit transmission */
+        SPI_WaitForRX();
+        dummy = (uint8_t)SPI2->DR;
     }
 }
 

@@ -28,14 +28,14 @@ SEGMENT_VARIABLE( Si446xPatchCommands[][8] = { SI446X_PATCH_CMDS }, uint8_t, SEG
  */
 void si446x_reset(void)
 {
-    uint8_t loopCount;
+    uint32_t loopCount;
 
     /* Put radio in shutdown, wait then release */
     radio_hal_AssertShutdown();
     //! @todo this needs to be a better delay function.
-    for (loopCount = 255; loopCount != 0; loopCount--);
+    for (loopCount = 50000; loopCount != 0; loopCount--);
     radio_hal_DeassertShutdown();
-    for (loopCount = 255; loopCount != 0; loopCount--);
+    for (loopCount = 50000; loopCount != 0; loopCount--);
     radio_comm_ClearCTS();
 }
 

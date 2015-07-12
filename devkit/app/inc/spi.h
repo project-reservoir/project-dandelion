@@ -3,7 +3,8 @@
 
 #include "stm32l0xx_hal.h"
 
-#define I2C_TIMEOUT_TICKS 5000000
+#define SPI_TIMEOUT_TICKS 5000000
+#define SPI_BUSY_WAIT_EXTRA 80
 
 typedef enum SPI_Status_t {
     SPI_OK,

@@ -39,6 +39,9 @@
 #define RADIO_SDL_PIN                    GPIO_PIN_2
 #define RADIO_SDL_GPIO_PORT              GPIOB
 
+#define RADIO_GP1_PIN                    GPIO_PIN_10
+#define RADIO_GP1_GPIO_PORT              GPIOB
+
 /* Size of buffer */
 #define BUFFSIZE                         255
 
