@@ -349,7 +349,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -1271,6 +1271,11 @@
               <FileName>radio_hal.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\support\Si4463\drivers\radio\radio_hal.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\support\Si4463\bsp.h</FilePath>
             </File>
           </Files>
         </Group>

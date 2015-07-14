@@ -238,15 +238,14 @@ void RadioTask(void)
     
     while(1)
     {
-        
         // Payload
-        txBuff[0] = 0xC5;
-        txBuff[1] = 0xC5;
-        txBuff[2] = 0xC5;
-        txBuff[3] = 0xC5;
-        txBuff[4] = 0xC5;
-        txBuff[5] = 0xC5;
-        txBuff[6] = 0xC5;
+        txBuff[0] = 'B';
+        txBuff[1] = 'U';
+        txBuff[2] = 'T';
+        txBuff[3] = 'T';
+        txBuff[4] = 'O';
+        txBuff[5] = 'N';
+        txBuff[6] = '1';
 
         // 7 bytes sent to TX FIFO
         Radio_StartTx_Variable_Packet(pRadioConfiguration->Radio_ChannelNumber, txBuff, 7u);

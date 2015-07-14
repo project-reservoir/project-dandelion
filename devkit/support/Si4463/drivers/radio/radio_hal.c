@@ -57,8 +57,7 @@ void radio_hal_SetNsel(void)
 
 BIT radio_hal_NirqLevel(void)
 {
-    //return HAL_GPIO_ReadPin(RADIO_NIRQ_GPIO_PORT, RADIO_NIRQ_PIN);
-    return 1;
+    return HAL_GPIO_ReadPin(RADIO_NIRQ_GPIO_PORT, RADIO_NIRQ_PIN);
 }
 
 void radio_hal_SpiWriteByte(U8 byteToWrite)
