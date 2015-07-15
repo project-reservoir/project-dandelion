@@ -70,6 +70,7 @@
 /* Scheduler includes. */
 #include "FreeRTOS.h"
 #include "task.h"
+#include "system_interrupts.h"
 
 #ifndef configSYSTICK_CLOCK_HZ
 	#define configSYSTICK_CLOCK_HZ configCPU_CLOCK_HZ
@@ -299,8 +300,7 @@ __asm void vClearInterruptMaskFromISR( unsigned long ulMask )
 	bx lr
 }
 /*-----------------------------------------------------------*/
-
-__asm void xPortPendSVHandler( void )
+__attribute__((section("!!!!2.PENDSV_HANDLER"))) __asm void xPortPendSVHandler( void )
 {
 	extern vTaskSwitchContext
 	extern pxCurrentTCB

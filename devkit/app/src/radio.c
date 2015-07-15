@@ -5,46 +5,15 @@
 #include "si446x_cmd.h"
 #include "spi.h"
 
-#define RADIO_MAX_PACKET_LENGTH     64u
-
-// Typedefs
-typedef enum RadioTaskState_t {
-    CONNECTED,
-    CONNECTING,
-    SEARCHING
-} RadioTaskState;
-
-typedef struct NetworkInfo_t {
-    uint32_t baseStationMac;
-} NetworkInfo;
-
-typedef struct RadioMessage_t {
-    uint8_t* pData;
-    uint8_t  size;
-    uint32_t dest;
-} RadioMessage;
-
-typedef struct
-{
-    uint8_t   *Radio_ConfigurationArray;
-
-    uint8_t   Radio_ChannelNumber;
-    uint8_t   Radio_PacketLength;
-    uint8_t   Radio_State_After_Power_Up;
-
-    uint16_t  Radio_Delay_Cnt_After_Reset;
-
-    uint8_t   Radio_CustomPayload[RADIO_MAX_PACKET_LENGTH];
-} tRadioConfiguration;
-
 // Global variables
-osMessageQId radioMsgQ;
+osMessageQId radioTxMsgQ;
+osMessageQId radioRxMsgQ;
+osMessageQId radioWakeupMsgQ;
+
 SPI_HandleTypeDef SpiHandle;
 
 uint8_t Radio_Configuration_Data_Array[] = RADIO_CONFIGURATION_DATA_ARRAY;
-
 tRadioConfiguration RadioConfiguration = RADIO_CONFIGURATION_DATA;
-
 tRadioConfiguration* pRadioConfiguration = &RadioConfiguration;
 
 uint8_t customRadioPacket[RADIO_MAX_PACKET_LENGTH];
@@ -53,22 +22,29 @@ uint8_t customRadioPacket[RADIO_MAX_PACKET_LENGTH];
 static uint8_t txBuff[BUFFSIZE];
 static uint8_t rxBuff[BUFFSIZE];
 
-static RadioTaskState radioTaskState = SEARCHING;
+static RadioTaskState radioTaskState = CONNECTED;
 static NetworkInfo    network;
 
 // Local function prototypes
-static void SendRadioConfig(void);
-static void Radio_StartTx_Variable_Packet(uint8_t channel, uint8_t *pioRadioPacket, uint8_t length);
-
+static uint8_t SendRadioConfig(void);
+static void    Radio_StartTx_Variable_Packet(uint8_t channel, uint8_t *pioRadioPacket, uint8_t length);
+static void    SignalRadioTXNeeded(void);
 
 // Global function implementations
 void RadioTaskOSInit(void)
 {
-    osMessageQDef(RadioMsgQueue, RADIO_MSG_QUEUE_SIZE, RadioMessage*);
+    osMessageQDef(RadioTxMsgQueue, RADIO_MSG_QUEUE_SIZE, RadioMessage*);
+    osMessageQDef(RadioRxMsgQueue, RADIO_MSG_QUEUE_SIZE, RadioMessage*);
+    osMessageQDef(RadioWakeupMsgQueue, RADIO_MSG_QUEUE_SIZE, RadioTaskWakeupReason);
     
-    radioMsgQ = osMessageCreate(osMessageQ(RadioMsgQueue), NULL);
+    radioTxMsgQ = osMessageCreate(osMessageQ(RadioTxMsgQueue), NULL);
+    radioRxMsgQ = osMessageCreate(osMessageQ(RadioRxMsgQueue), NULL);
+    radioWakeupMsgQ = osMessageCreate(osMessageQ(RadioWakeupMsgQueue), NULL);
     
-    // TODO: check message queue was created OK    
+    assert_param(radioTxMsgQ != NULL);
+    assert_param(radioRxMsgQ != NULL);
+    assert_param(radioWakeupMsgQ != NULL);
+    
     SpiHandle.Instance               = SPIx;
     SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
     SpiHandle.Init.Direction         = SPI_DIRECTION_2LINES;
@@ -88,66 +64,7 @@ void RadioTaskOSInit(void)
 }
 
 void RadioTaskHwInit(void)
-{
-/*    GPIO_InitTypeDef  GPIO_InitStruct;
-
-    SPIx_SCK_GPIO_CLK_ENABLE();
-    SPIx_MISO_GPIO_CLK_ENABLE();
-    SPIx_MOSI_GPIO_CLK_ENABLE();
-  
-    SPIx_CLK_ENABLE();
-    
-    __SYSCFG_CLK_ENABLE();
-
-    GPIO_InitStruct.Pin       = SPIx_SCK_PIN;
-    GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull      = GPIO_NOPULL;
-    GPIO_InitStruct.Speed     = GPIO_SPEED_HIGH;
-    GPIO_InitStruct.Alternate = SPIx_SCK_AF;
-
-    HAL_GPIO_Init(SPIx_SCK_GPIO_PORT, &GPIO_InitStruct);
-
-    GPIO_InitStruct.Pin = SPIx_MISO_PIN;
-    GPIO_InitStruct.Alternate = SPIx_MISO_AF;
-
-    HAL_GPIO_Init(SPIx_MISO_GPIO_PORT, &GPIO_InitStruct);
-
-    GPIO_InitStruct.Pin = SPIx_MOSI_PIN;
-    GPIO_InitStruct.Alternate = SPIx_MOSI_AF;
-
-    HAL_GPIO_Init(SPIx_MOSI_GPIO_PORT, &GPIO_InitStruct);
-    
-    GPIO_InitStruct.Pin = SPIx_NSEL_PIN;
-    GPIO_InitStruct.Alternate = SPIx_NSEL_AF;
-
-    HAL_GPIO_Init(SPIx_NSEL_GPIO_PORT, &GPIO_InitStruct);
-
-    // Configure Radio SDL
-    GPIO_InitStruct.Pin        = RADIO_SDL_PIN;
-    GPIO_InitStruct.Pull       = GPIO_PULLDOWN;
-    GPIO_InitStruct.Mode       = GPIO_MODE_OUTPUT_PP;   
-    GPIO_InitStruct.Speed      = GPIO_SPEED_HIGH;
-    GPIO_InitStruct.Alternate  = 0x00;
-    
-    HAL_GPIO_Init(RADIO_SDL_GPIO_PORT, &GPIO_InitStruct);
-    
-    // Configure Radio NIRQ
-    GPIO_InitStruct.Pin        = RADIO_NIRQ_PIN;
-    GPIO_InitStruct.Pull       = GPIO_NOPULL;
-    GPIO_InitStruct.Mode       = GPIO_MODE_IT_RISING;   
-    GPIO_InitStruct.Speed      = GPIO_SPEED_HIGH;
-    GPIO_InitStruct.Alternate  = 0x00;
-    
-    HAL_GPIO_Init(RADIO_NIRQ_GPIO_PORT, &GPIO_InitStruct);
-    
-    // NVIC for SPI
-    //HAL_NVIC_SetPriority(SPIx_IRQn, 0, 1);
-    //HAL_NVIC_EnableIRQ(SPIx_IRQn);
-    
-    // Configure NVIC for NIRQ line
-    //HAL_NVIC_SetPriority(NIRQ_IRQn, 0, 1);
-    //HAL_NVIC_EnableIRQ(NIRQ_IRQn);*/
-    
+{   
     GPIO_InitTypeDef  GPIO_InitStruct;
 
     /*##-1- Enable peripherals and GPIO Clocks #################################*/
@@ -199,7 +116,7 @@ void RadioTaskHwInit(void)
     // Configure Radio NIRQ
     GPIO_InitStruct.Pin        = RADIO_NIRQ_PIN;
     GPIO_InitStruct.Pull       = GPIO_NOPULL;
-    GPIO_InitStruct.Mode       = GPIO_MODE_INPUT;   
+    GPIO_InitStruct.Mode       = GPIO_MODE_IT_FALLING;   
     GPIO_InitStruct.Speed      = GPIO_SPEED_FAST;
     GPIO_InitStruct.Alternate  = 0x00;
     
@@ -213,6 +130,18 @@ void RadioTaskHwInit(void)
     GPIO_InitStruct.Alternate  = 0x00;
     
     HAL_GPIO_Init(RADIO_GP1_GPIO_PORT, &GPIO_InitStruct);
+    
+    // Configure User pushbutton for radio testing
+    
+    KEY_BUTTON_GPIO_CLK_ENABLE();
+    
+    GPIO_InitStruct.Pin        = KEY_BUTTON_PIN;
+    GPIO_InitStruct.Pull       = GPIO_NOPULL;
+    GPIO_InitStruct.Mode       = GPIO_MODE_IT_FALLING;   
+    GPIO_InitStruct.Speed      = GPIO_SPEED_FAST;
+    GPIO_InitStruct.Alternate  = 0x00;
+    
+    HAL_GPIO_Init(KEY_BUTTON_GPIO_PORT, &GPIO_InitStruct);    
 
     /*##-3- Configure the NVIC for SPI #########################################*/
     /* NVIC for SPI */
@@ -225,52 +154,78 @@ void RadioTaskHwInit(void)
 
 void RadioTask(void)
 {
+    uint8_t radioConfigured = 0;
     osEvent msgQueueEvent;
     RadioMessage* msg;
-    // Load radio config from flash
     
     // Configure radio
-    SendRadioConfig();
+    while(!radioConfigured)
+    {
+        if(SendRadioConfig() == SI446X_SUCCESS)
+        {
+            radioConfigured = 1;
+        }
+        else
+        {
+            // TODO: we should delay for a while before trying to reprogram the radio.
+            // TODO: consider entering an ultra-low power mode if radio config fails?
+            //       We can't send sensor readings without the radio, so performing
+            //       sensor polling is probably a waste of power
+        }
+    }
     
-    osDelay(1);
+    // Now that the radio has been configured, enable radio interrupts
+    HAL_NVIC_SetPriority(NIRQ_IRQn, 0, 1);
+    HAL_NVIC_EnableIRQ(NIRQ_IRQn);
     
-    si446x_part_info();
+    // Enable User pushbutton IRQ
+    HAL_NVIC_SetPriority(KEY_BUTTON_EXTI_IRQn, 0, 1);
+    HAL_NVIC_EnableIRQ(KEY_BUTTON_EXTI_IRQn);
     
     while(1)
-    {
-        // Payload
-        txBuff[0] = 'B';
-        txBuff[1] = 'U';
-        txBuff[2] = 'T';
-        txBuff[3] = 'T';
-        txBuff[4] = 'O';
-        txBuff[5] = 'N';
-        txBuff[6] = '1';
-
-        // 7 bytes sent to TX FIFO
-        Radio_StartTx_Variable_Packet(pRadioConfiguration->Radio_ChannelNumber, txBuff, 7u);
-        
+    {               
         switch(radioTaskState)
         {
             // Try and join the network. If success, enter CONNECTED state, else return to LOOKING_FOR_BASE_STATION
             case CONNECTING:
-                
                 break;
             
             // Perform regular radio duties. If we loose connection, enter the CONNECTING_TO_BASE_STATION state
             case CONNECTED:
-                // Wait on the transmit queue
-                msgQueueEvent = osMessageGet(radioMsgQ, 0);
-                if(msgQueueEvent.status == osOK)
+                // Pend on the message queue that will wakeup the radio task. 
+                // This can come from a TX event or an IRQ event
+                msgQueueEvent = osMessageGet(radioWakeupMsgQ, osWaitForever);
+                
+                if(msgQueueEvent.status == osEventMessage)
                 {
-                    msg = (RadioMessage*)(msgQueueEvent.value.p);
-                    
-                    // Transmit the packet to the radio hardware
-                    
-                    // Free the data
-                    vPortFree(msg->pData);
-                    vPortFree(msg);
-                }            
+                    if(msgQueueEvent.value.v == RADIO_IRQ_DETECTED)
+                    {
+                        RadioTaskHandleIRQ();
+                    }
+                    else if(msgQueueEvent.value.v == RADIO_TX_NEEDED)
+                    {
+                        // Wait on the transmit queue
+                        // TODO: this should timeout, since it should have a message in it already if we got this far
+                        msgQueueEvent = osMessageGet(radioTxMsgQ, osWaitForever);
+                        
+                        if(msgQueueEvent.status == osEventMessage)
+                        {
+                            msg = (RadioMessage*)(msgQueueEvent.value.p);
+                            
+                            // Transmit the packet to the radio hardware
+                            Radio_StartTx_Variable_Packet(pRadioConfiguration->Radio_ChannelNumber, msg->pData, msg->size);
+                            
+                            // Free the data
+                            vPortFree(msg->pData);
+                            vPortFree(msg);
+                        }
+                    }
+                }
+                else
+                {
+                    // Message wasn't received OK? Just wait for another one... something went wrong with the OS.
+                    continue;
+                }
                 break;
             
             // Send ANNOUNCE packets every 20 seconds and see if we get a reply
@@ -280,8 +235,6 @@ void RadioTask(void)
                 // If network found, store details and move to -> CONNECTING
                 break;
         }
-        
-        osDelay(1000);
     }
 }
 
@@ -296,11 +249,13 @@ void SendToBaseStation(uint8_t* data, uint8_t size)
     
     // TODO: Check that this actually succeeded, and don't block forever.
     //       Might need to return a status to indicate to calling function that we failed to send message
-    osMessagePut (radioMsgQ, (uint32_t)message, 0);
+    osMessagePut(radioTxMsgQ, (uint32_t)message, osWaitForever);
+    
+    SignalRadioTXNeeded();
 }
 
 // The pointer passed into this function should have been allocated using 
-// the osAlloc() routine: it will be freed using the osFree routine
+// the pvPortMalloc() routine: it will be freed using the osFree routine
 void SendToBroadcast(uint8_t* data, uint8_t size)
 {
     RadioMessage* message = pvPortMalloc(sizeof(RadioMessage));
@@ -310,14 +265,17 @@ void SendToBroadcast(uint8_t* data, uint8_t size)
     
     // TODO: Check that this actually succeeded, and don't block forever.
     //       Might need to return a status to indicate to calling function that we failed to send message
-    osMessagePut (radioMsgQ, (uint32_t)message, 0);
+    osMessagePut(radioTxMsgQ, (uint32_t)message, osWaitForever);
+    
+    SignalRadioTXNeeded();
 }
 
 // Local function implementations
 
-void SendRadioConfig(void)
+uint8_t SendRadioConfig(void)
 {
     uint16_t wDelay = 0;
+    uint8_t retVal;
     
     si446x_reset();
     
@@ -326,8 +284,26 @@ void SendRadioConfig(void)
     osDelay(100);
     
     taskENTER_CRITICAL();
-    si446x_configuration_init(pRadioConfiguration->Radio_ConfigurationArray);
+    retVal = si446x_configuration_init(pRadioConfiguration->Radio_ConfigurationArray);
     taskEXIT_CRITICAL();
+    
+    return retVal;
+}
+
+void SignalRadioIRQ(void)
+{
+    // Wakeup the radio task by putting a message on it's "wakeup" queue.
+    // TODO: Check that this actually succeeded, and don't block forever.
+    //       Might need to return a status to indicate to calling function that we failed to send message
+    osMessagePut(radioWakeupMsgQ, RADIO_IRQ_DETECTED, osWaitForever);
+}
+
+void SignalRadioTXNeeded(void)
+{
+    // Wakeup the radio task by putting a message on it's "wakeup" queue.
+    // TODO: Check that this actually succeeded, and don't block forever.
+    //       Might need to return a status to indicate to calling function that we failed to send message
+    osMessagePut(radioWakeupMsgQ, RADIO_TX_NEEDED, osWaitForever);
 }
 
 void Radio_StartTx_Variable_Packet(uint8_t channel, uint8_t *pioRadioPacket, uint8_t length)
@@ -346,4 +322,51 @@ void Radio_StartTx_Variable_Packet(uint8_t channel, uint8_t *pioRadioPacket, uin
 
   /* Start sending packet, channel 0, START immediately */
    si446x_start_tx(channel, 0x30, length);
+}
+
+void RadioTaskHandleIRQ(void)
+{
+    uint8_t phInt = 0;
+    uint8_t chipInt = 0;
+    uint8_t modemInt = 0;
+    
+    // Get the interrupts from the radio: clear them all
+    si446x_get_int_status(0u, 0u, 0u);
+    
+    // Only process status flags if they triggered this interrupt
+    phInt = Si446xCmd.GET_INT_STATUS.PH_PEND & Si446xCmd.GET_INT_STATUS.PH_STATUS;
+    chipInt = Si446xCmd.GET_INT_STATUS.CHIP_PEND & Si446xCmd.GET_INT_STATUS.CHIP_STATUS;
+    modemInt = Si446xCmd.GET_INT_STATUS.MODEM_PEND & Si446xCmd.GET_INT_STATUS.MODEM_STATUS;      
+    
+    // PACKET_SENT
+    if(phInt & PACKET_SENT)
+    {
+        // TODO: Packet was transmitted, move to the "wait for ACK" state
+    }
+    
+    // PACKET_RX
+    if(phInt & PACKET_RX)
+    {
+        // TODO: Received a packet addressed to us. Put it in the input queue
+    }
+    
+    // CRC_ERROR
+    if(phInt & CRC_ERROR)
+    {
+        // TODO: Recevied a garbled packet. Reply with a NAK
+    }
+     
+    // Other interesting interrupts:
+    //  CHIP_READY
+    //  LOW_BATT
+    //  CMD_ERROR
+    //  FIFO_UNDERFLOW_OVERFLOW_ERROR
+    //  FILTER_MATCH 
+    //  SYNC_DETECT
+    //  PREAMBLE_DETECT
+    //  RSSI
+    //  RSSI_JUMP
+    //  INVALID_SYNC
+    //  TX_FIFO_ALMOST_EMPTY
+    //  RX_FIFO_ALMOST_FULL
 }

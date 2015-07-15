@@ -40,13 +40,35 @@ void SPI1_Handler(void)
     }
 }
 
-void EXTI0_1_Handler(void)
+void EXTI4_15_Handler(void)
 {
     /* EXTI line interrupt detected */
     if(__HAL_GPIO_EXTI_GET_IT(RADIO_NIRQ_PIN) != RESET) 
     { 
-        __HAL_GPIO_EXTI_CLEAR_IT(RADIO_NIRQ_PIN);
-        // TODO: Handle the radio interrupting the MCU
+        __HAL_GPIO_EXTI_CLEAR_IT(RADIO_NIRQ_PIN);        
+        SignalRadioIRQ();
+    }
+}
+
+void EXTI0_1_Handler(void)
+{
+    uint8_t* buff;
+    /* EXTI line interrupt detected */
+    if(__HAL_GPIO_EXTI_GET_IT(KEY_BUTTON_PIN) != RESET)
+    { 
+        __HAL_GPIO_EXTI_CLEAR_IT(KEY_BUTTON_PIN);
+        
+        buff = pvPortMalloc(7);
+        
+        buff[0] = 'B';
+        buff[1] = 'U';
+        buff[2] = 'T';
+        buff[3] = 'T';
+        buff[4] = 'O';
+        buff[5] = 'N';
+        buff[6] = '1';
+        
+        SendToBroadcast(buff, 7);
     }
 }
 

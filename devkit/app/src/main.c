@@ -17,7 +17,7 @@ unsigned portBASE_TYPE makeFreeRtosPriority (osPriority priority)
 }
 
 int main(void)
-{	
+{
 	xTaskHandle ledTaskHandle;
     xTaskHandle sensorsTaskHandle;
     xTaskHandle radioTaskHandle;

@@ -14,11 +14,12 @@ ARM Macro Assembler    Page 1
     6 00000004         
     7 00000004                 END                          ; Mark end of file
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
-work --depend=.\objects\launch.d -o.\objects\launch.o -IC:\Users\Stuart\Documen
-ts\GitHub\project-dandelion\devkit\RTE -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CM
-SIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\Include --pre
-define="__UVISION_VERSION SETA 515" --predefine="_RTE_ SETA 1" --predefine="STM
-32L053xx SETA 1" --list=.\listings\launch.lst bootloader\src\launch.s
+work --depend=.\objects\launch.d -o.\objects\launch.o -I"C:\Users\Stuart Alldri
+tt\Documents\GitHub\project-dandelion\devkit\RTE" -IC:\Keil_v5\ARM\PACK\ARM\CMS
+IS\4.3.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Device\In
+clude --predefine="__UVISION_VERSION SETA 515" --predefine="_RTE_ SETA 1" --pre
+define="STM32L053xx SETA 1" --list=.\listings\launch.lst bootloader\src\launch.
+s
 
 
 

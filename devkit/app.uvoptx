@@ -96,31 +96,16 @@
         </Book>
         <Book>
           <Number>3</Number>
-          <Title>User Manual (NUCLEO-L053R8)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.4.0\Documents\DM00105823.pdf</Path>
+          <Title>STM32L053-Discovery Web Page (STM32L053-Discovery)</Title>
+          <Path>http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF260319</Path>
         </Book>
         <Book>
           <Number>4</Number>
-          <Title>Overview (NUCLEO-L053R8)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.4.0\Documents\DM00105918.pdf</Path>
-        </Book>
-        <Book>
-          <Number>5</Number>
-          <Title>Getting started (NUCLEO-L053R8)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.4.0\Documents\DM00105925.pdf</Path>
-        </Book>
-        <Book>
-          <Number>6</Number>
-          <Title>Schematics (NUCLEO-L053R8)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.4.0\Documents\MB1136.pdf</Path>
-        </Book>
-        <Book>
-          <Number>7</Number>
           <Title>STM32 Nucleo board (NUCLEO-L053R8)</Title>
           <Path>http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1847/PF260001</Path>
         </Book>
         <Book>
-          <Number>8</Number>
+          <Number>5</Number>
           <Title>STM32L053-Discovery Web Page (STM32L053-Discovery)</Title>
           <Path>http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF260319</Path>
         </Book>
@@ -197,12 +182,12 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Pro2Cmd</ItemText>
+          <ItemText>buff</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>GPIOB</ItemText>
+          <ItemText>SCB</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -426,7 +411,7 @@
 
   <Group>
     <GroupName>inc</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2270,7 +2255,7 @@
 
   <Group>
     <GroupName>conf</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

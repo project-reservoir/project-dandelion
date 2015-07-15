@@ -45,11 +45,6 @@ __weak void DebugMon_Handler()
 		Dummy_Handler();
 }
 
-__weak void PendSV_Handler()
-{
-		Dummy_Handler();
-}
-
 __weak void SysTick_Handler()
 {
 		Dummy_Handler();
