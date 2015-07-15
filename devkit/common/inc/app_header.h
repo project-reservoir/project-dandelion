@@ -36,7 +36,7 @@ typedef struct APP_HEADER_T {
     uint32_t LCD_Handler;                    /* LCD                          */
     uint32_t LPTIM1_Handler;                 /* LPTIM1                       */
     uint32_t NMI_Handler;
-    uint32_t PendSV_Handler;
+    uint32_t Fake_PendSV_Handler;
     uint32_t PVD_Handler;                    /* PVD through EXTI Line detection */
     uint32_t RCC_CRS_Handler;                /* RCC and CRS                  */
     uint32_t Reset_Handler;
@@ -58,6 +58,7 @@ typedef struct APP_HEADER_T {
     uint32_t BusFault_Handler;
     uint32_t MemManage_Handler;
     uint32_t UsageFault_Handler;
+    uint32_t PendSV_Handler;                // This is the real location of the PendSV_Handler. We have to use a fake one above because the Keil compiler is stupid.
     
 } APP_HEADER;
 

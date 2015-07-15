@@ -39,7 +39,7 @@ const APP_HEADER __Vectors __attribute__((section("HEADER"))) __attribute__((use
     sizeof(APP_HEADER) + 0x00000060, // LCD
     sizeof(APP_HEADER) + 0x00000068, // LPTIM1
     sizeof(APP_HEADER) + 0x00000070, // NMI_Handler
-    sizeof(APP_HEADER) + 0x00000078, // PendSV_Handler
+    sizeof(APP_HEADER) + 0x00000078, // Fake PendSV_Handler
     sizeof(APP_HEADER) + 0x00000080, // PVD_Handler
     sizeof(APP_HEADER) + 0x00000088, // RCC_CRS
     sizeof(APP_HEADER) + 0x00000090, // Reset_Handler
@@ -60,7 +60,6 @@ const APP_HEADER __Vectors __attribute__((section("HEADER"))) __attribute__((use
     sizeof(APP_HEADER) + 0x00000108, // WWDG_Handler
     sizeof(APP_HEADER) + 0x00000110, // BusFault_Handler
     sizeof(APP_HEADER) + 0x00000118, // MemManage_Handler
-    sizeof(APP_HEADER) + 0x00000120 // UsageFault_Handler
-                    
-        
+    sizeof(APP_HEADER) + 0x00000120, // UsageFault_Handler
+    sizeof(APP_HEADER) + 0x00000128  // Real PendSV_Handler
 };

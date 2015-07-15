@@ -239,6 +239,4 @@ $RECYCLE.BIN/
 *.eep
 *.lss
 
-EVAL/EVAL/Debug/src/
-
 devkit/Objects/
