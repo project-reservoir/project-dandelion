@@ -2,6 +2,7 @@
 #include "hwctrl.h"
 #include "cmsis_os.h"
 #include "i2c.h"
+#include "radio.h"
 
 // Global variables
 I2C_HandleTypeDef I2CxHandle;
@@ -20,6 +21,7 @@ static I2C_Status ReadTempSensor(uint8_t index, float* tempOut);
 static I2C_Status ReadHumiditySensor(float* humidOut);
 static I2C_Status InitHumiditySensor(void);
 static I2C_Status ReadAirTempSensor(float* tempOut);
+static void       SendSensorData(void);
 
 // Global function implementations
 void SensorsTaskHwInit(void) 
@@ -166,8 +168,69 @@ void SensorsTask(void)
         }
         
         //ReadChipTemp(&sensorData.tempChip);
+        
+        // Send sensor Data to the base station
+        SendSensorData();
+        
         osDelay(1000);
     }
+}
+
+void SendSensorData(void)
+{
+    uint16_t tmp = 0;
+    uint8_t* radioMessage;
+    
+    // TODO: we should be wrapping this data in MAC layer data in the radio task, so
+    // we shouldn't be allocating the full packet size here
+    radioMessage = pvPortMalloc(RADIO_MAX_PACKET_LENGTH);
+    
+    // moist 0
+    radioMessage[0] = 0x00; 
+    radioMessage[1] = 0x00; 
+    
+    // moist 1
+    radioMessage[2] = 0x00;
+    radioMessage[3] = 0x00;
+    
+    // moist 2
+    radioMessage[4] = 0x00;
+    radioMessage[5] = 0x00;
+    
+    // humid
+    tmp = ((sensorData.humid + 6.0f) / 125.0f) * ((float)(1 << 16));
+    radioMessage[6] = (tmp >> 8) & 0xFF;     // MSB
+    radioMessage[7] = tmp & 0xFF;            // LSB
+    
+    // temp 0
+    tmp = sensorData.temp0 / TMP102_LSB_INC;       
+    radioMessage[8] = (tmp >> 8) & 0xFF;     // MSB
+    radioMessage[9] = tmp & 0xFF;            // LSB
+    
+    // temp 1
+    tmp = sensorData.temp1 / TMP102_LSB_INC; 
+    radioMessage[10] = (tmp >> 8) & 0xFF;     // MSB
+    radioMessage[11] = tmp & 0xFF;            // LSB
+    
+    // temp 2
+    tmp = sensorData.temp2 / TMP102_LSB_INC;
+    radioMessage[12] = (tmp >> 8) & 0xFF;     // MSB
+    radioMessage[13] = tmp & 0xFF;            // LSB
+   
+    // air temp
+    tmp = (((sensorData.tempAir + 46.85f) / 175.72f) * ((float)(1 << 16)));
+    radioMessage[14] = (tmp >> 8) & 0xFF;     // MSB
+    radioMessage[15] = tmp & 0xFF;            // LSB
+    
+    // battery level
+    radioMessage[16] = 0x00;
+    radioMessage[17] = 0x00;
+    
+    // solar level
+    radioMessage[18] = 0x00;
+    radioMessage[19] = 0x00;
+    
+    SendToBroadcast(radioMessage, RADIO_MAX_PACKET_LENGTH);
 }
 
 void HAL_I2C_MemTxCpltCallback(I2C_HandleTypeDef *hi2c)
