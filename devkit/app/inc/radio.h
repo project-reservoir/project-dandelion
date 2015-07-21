@@ -52,7 +52,7 @@
 
 #define RADIO_MSG_QUEUE_SIZE             8
 
-#define RADIO_MAX_PACKET_LENGTH          64
+#define RADIO_MAX_PACKET_LENGTH          64u
 
 // Radio command definitions
 #define CRC_ERROR                        (1 << 3)
