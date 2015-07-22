@@ -96,31 +96,6 @@
         </Book>
         <Book>
           <Number>3</Number>
-          <Title>User Manual (NUCLEO-L053R8)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.4.0\Documents\DM00105823.pdf</Path>
-        </Book>
-        <Book>
-          <Number>4</Number>
-          <Title>Overview (NUCLEO-L053R8)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.4.0\Documents\DM00105918.pdf</Path>
-        </Book>
-        <Book>
-          <Number>5</Number>
-          <Title>Getting started (NUCLEO-L053R8)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.4.0\Documents\DM00105925.pdf</Path>
-        </Book>
-        <Book>
-          <Number>6</Number>
-          <Title>Schematics (NUCLEO-L053R8)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.4.0\Documents\MB1136.pdf</Path>
-        </Book>
-        <Book>
-          <Number>7</Number>
-          <Title>STM32 Nucleo board (NUCLEO-L053R8)</Title>
-          <Path>http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1847/PF260001</Path>
-        </Book>
-        <Book>
-          <Number>8</Number>
           <Title>STM32L053-Discovery Web Page (STM32L053-Discovery)</Title>
           <Path>http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF260319</Path>
         </Book>
@@ -196,50 +171,34 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>334</LineNumber>
+          <LineNumber>194</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134228308</Address>
+          <Address>134230386</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;.\app\src\radio.c</Filename>
+          <Filename>&lt;1&gt;.\app\src\sensors.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\app\app/src/radio.c\334</Expression>
+          <Expression>\\app\app/src/sensors.c\194</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>164</LineNumber>
+          <LineNumber>194</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134228144</Address>
+          <Address>134230450</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;.\app\src\radio.c</Filename>
+          <Filename>&lt;1&gt;.\app\src\sensors.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\app\app/src/radio.c\164</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>46</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134221506</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;.\app\src\system_interrupts.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\app\app/src/system_interrupts.c\46</Expression>
+          <Expression>\\app\app/src/sensors.c\194</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -256,7 +215,7 @@
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>msg</ItemText>
+          <ItemText>sensorData</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -275,7 +234,7 @@
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>2</SubType>
-          <ItemText>0x20000000</ItemText>
+          <ItemText>0x200011E0</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
@@ -2324,7 +2283,7 @@
 
   <Group>
     <GroupName>conf</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2541,6 +2500,40 @@
       <bDave2>0</bDave2>
       <PathWithFileName>.\support\Si4463\bsp.h</PathWithFileName>
       <FilenameWithoutPath>bsp.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>cross-platform</GroupName>
+    <tvExp>1</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>169</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\cross-platform\src\sensor_conversions.c</PathWithFileName>
+      <FilenameWithoutPath>sensor_conversions.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>7</GroupNumber>
+      <FileNumber>170</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\cross-platform\inc\sensor_conversions.h</PathWithFileName>
+      <FilenameWithoutPath>sensor_conversions.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

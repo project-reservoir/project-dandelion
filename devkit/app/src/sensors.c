@@ -3,6 +3,7 @@
 #include "cmsis_os.h"
 #include "i2c.h"
 #include "radio.h"
+#include "sensor_conversions.h"
 
 // Global variables
 I2C_HandleTypeDef I2CxHandle;
@@ -21,6 +22,10 @@ static I2C_Status ReadTempSensor(uint8_t index, float* tempOut);
 static I2C_Status ReadHumiditySensor(float* humidOut);
 static I2C_Status InitHumiditySensor(void);
 static I2C_Status ReadAirTempSensor(float* tempOut);
+static I2C_Status ReprogramSoilMoistureAddress(void);
+static I2C_Status InitSoilMoistureSensor(uint8_t sensor);
+static I2C_Status ReadSoilMoisture(uint8_t sensor, float* out);
+static uint8_t    GetSmsAddr(uint8_t index);
 static void       SendSensorData(void);
 
 // Global function implementations
@@ -81,8 +86,9 @@ void SensorsTask(void)
     // Array storing the status of each physical sensor.
     // If a sensor fails to initialize, or fails 3 sensor reads in a row, 
     // it will be disabled here until the next system reboot
-    uint8_t enabledSensors[4] = {3, 3, 3, 3};
+    uint8_t enabledSensors[7] = {3, 3, 3, 3, 3, 3, 3};
     uint8_t i;
+    I2C_Status retVal = I2C_OK;
     
     for(i = 0; i < 3; i++)
     {
@@ -101,6 +107,23 @@ void SensorsTask(void)
         enabledSensors[3] = 0;
     }
     
+    for(i = 4; i < 7; i++)
+    {
+        // Initialize the soil sensors. If any sensor fails to initialize, disable it.
+        if(InitSoilMoistureSensor(i - 4) != I2C_OK)
+        {
+            I2C_Reset();
+            enabledSensors[i] = 0;
+        }
+    }
+    
+    /*// This code was used to initially reprogram the addresses on the soil moisture sensors.
+    // It should NOT be enabled in the field
+    if(ReprogramSoilMoistureAddress() != I2C_OK)
+    {
+        osDelay(2000);
+    }*/
+    
     // Let other tasks in the system warmup before entering the sensor polling loop
     osDelay(2000);
     
@@ -109,44 +132,39 @@ void SensorsTask(void)
     
     while(1)
     {
-        if(enabledSensors[0] > 0)
-        {
-            // If the sensor read failed, indicate that the sensor has one less chance to respond correctly before being disabled
-            if(ReadTempSensor(0, &sensorData.temp0) != I2C_OK)
-            {
-                I2C_Reset();
-                enabledSensors[0]--;
-            }
-            // The sensor is still alive! Restore it to a full 3 chances to respond
-            else
-            {
-                enabledSensors[0] = 3;
-            }
-        }
         
-        if(enabledSensors[1] > 0)
-        {
-            if(ReadTempSensor(1, &sensorData.temp1) != I2C_OK)
-            {
-                I2C_Reset();
-                enabledSensors[1]--;
-            }
-            else
-            {
-                enabledSensors[1] = 3;
-            }
-        }
         
-        if(enabledSensors[2] > 0)
+        for(i = 0; i < 3; i++)
         {
-            if(ReadTempSensor(2, &sensorData.temp2) != I2C_OK)
+            if(enabledSensors[i] > 0)
             {
-                I2C_Reset();
-                enabledSensors[2]--;
-            }
-            else
-            {
-                enabledSensors[2] = 3;
+                switch(i)
+                {
+                    case 0:
+                        retVal = ReadTempSensor(0, &sensorData.temp0);
+                        break;
+                    case 1:
+                        retVal = ReadTempSensor(1, &sensorData.temp1);
+                        break;
+                    case 2:
+                        retVal = ReadTempSensor(2, &sensorData.temp2);
+                        break;
+                    default:
+                        retVal = ReadTempSensor(0, &sensorData.temp0);
+                        break;
+                }
+                
+                // If the sensor read failed, indicate that the sensor has one less chance to respond correctly before being disabled
+                if(retVal != I2C_OK)
+                {
+                    I2C_Reset();
+                    enabledSensors[i]--;
+                }
+                // The sensor is still alive! Restore it to a full 3 chances to respond
+                else
+                {
+                    enabledSensors[i] = 3;
+                }
             }
         }
         
@@ -157,14 +175,54 @@ void SensorsTask(void)
                 I2C_Reset();
                 enabledSensors[3]--;
            }
-        }
-        if(enabledSensors[3] > 0)
-        {
+           else
+           {
+               enabledSensors[3] = 3;
+           }
+           
            if(ReadAirTempSensor(&sensorData.tempAir) != I2C_OK)
            {
                 I2C_Reset();
                 enabledSensors[3]--;
            }
+           else
+           {
+               enabledSensors[3] = 3;
+           } 
+        }
+        
+        for(i = 4; i < 7; i++)
+        {
+            if(enabledSensors[i] > 0)
+            {
+                switch(i)
+                {
+                    case 4:
+                        retVal = ReadSoilMoisture(0, &sensorData.moist0);
+                        break;
+                    case 5:
+                        retVal = ReadSoilMoisture(1, &sensorData.moist1);
+                        break;
+                    case 6:
+                        retVal = ReadSoilMoisture(2, &sensorData.moist2);
+                        break;
+                    default:
+                        retVal = ReadSoilMoisture(0, &sensorData.moist0);
+                        break;
+                }
+                
+                // If the sensor read failed, indicate that the sensor has one less chance to respond correctly before being disabled
+                if(retVal != I2C_OK)
+                {
+                    I2C_Reset();
+                    enabledSensors[i]--;
+                }
+                // The sensor is still alive! Restore it to a full 3 chances to respond
+                else
+                {
+                    enabledSensors[i] = 3;
+                }
+            }
         }
         
         //ReadChipTemp(&sensorData.tempChip);
@@ -198,27 +256,27 @@ void SendSensorData(void)
     radioMessage[5] = 0x00;
     
     // humid
-    tmp = ((sensorData.humid + 6.0f) / 125.0f) * ((float)(1 << 16));
+    tmp = Float_To_HTU21D_Humid(sensorData.humid);
     radioMessage[6] = (tmp >> 8) & 0xFF;     // MSB
     radioMessage[7] = tmp & 0xFF;            // LSB
     
     // temp 0
-    tmp = sensorData.temp0 / TMP102_LSB_INC;       
+    tmp = Float_To_TMP102(sensorData.temp0);
     radioMessage[8] = (tmp >> 8) & 0xFF;     // MSB
     radioMessage[9] = tmp & 0xFF;            // LSB
     
     // temp 1
-    tmp = sensorData.temp1 / TMP102_LSB_INC; 
+    tmp = Float_To_TMP102(sensorData.temp1);
     radioMessage[10] = (tmp >> 8) & 0xFF;     // MSB
     radioMessage[11] = tmp & 0xFF;            // LSB
     
     // temp 2
-    tmp = sensorData.temp2 / TMP102_LSB_INC;
+    tmp = Float_To_TMP102(sensorData.temp2);
     radioMessage[12] = (tmp >> 8) & 0xFF;     // MSB
     radioMessage[13] = tmp & 0xFF;            // LSB
    
     // air temp
-    tmp = (((sensorData.tempAir + 46.85f) / 175.72f) * ((float)(1 << 16)));
+    tmp = Float_To_HTU21D_Temp(sensorData.tempAir);
     radioMessage[14] = (tmp >> 8) & 0xFF;     // MSB
     radioMessage[15] = tmp & 0xFF;            // LSB
     
@@ -271,6 +329,31 @@ uint8_t GetTmp102Addr(uint8_t index)
         
         default:
             addr = TMP102_0_ADDR;
+    }
+    
+    return addr;
+}
+
+uint8_t GetSmsAddr(uint8_t index)
+{
+    uint8_t addr = SMS_0_ADDR;
+    
+    switch(index)
+    {
+        case 0:
+            addr = SMS_0_ADDR;
+            break;
+        
+        case 1:
+            addr = SMS_1_ADDR;
+            break;
+        
+        case 2:
+            addr = SMS_2_ADDR;
+            break;
+        
+        default:
+            addr = SMS_0_ADDR;
     }
     
     return addr;
@@ -351,7 +434,7 @@ I2C_Status ReadTempSensor(uint8_t index, float* tempOut)
         temp |= i2cRxBuffer[0] << 4;
         temp |= (i2cRxBuffer[1] & 0x0F);
         
-        *tempOut = temp * TMP102_LSB_INC;
+        *tempOut = TMP102_To_Float(temp);
     } while(0);
     
     taskEXIT_CRITICAL();
@@ -386,7 +469,7 @@ I2C_Status InitTempSensor(uint8_t index)
         }
         I2C_Stop();
         
-        // I2C Read
+        // I2C Write
         I2C_Start(GetTmp102Addr(index), 0); 
         retVal = I2C_WriteBytes(i2cTxBuffer, 2);
         if(retVal != I2C_OK)
@@ -460,13 +543,19 @@ I2C_Status ReadHumiditySensor(float* humidOut)
         humidity |= i2cRxBuffer[0] << 8;
         humidity |= i2cRxBuffer[1];
         
-        *humidOut = -6.0f + (125.0f * ((float)humidity / (float)(1 << 16)));
+        *humidOut = HTU21D_Humid_To_Float(humidity);
         
     }while(0);
     
     taskEXIT_CRITICAL();
     
     return retVal;
+}
+
+I2C_Status InitSoilMoistureSensor(uint8_t sensor)
+{
+    // These sensors require no initialization for now
+    return I2C_OK;
 }
 
 I2C_Status ReadAirTempSensor(float* tempOut)
@@ -508,7 +597,7 @@ I2C_Status ReadAirTempSensor(float* tempOut)
         temperature |= i2cRxBuffer[0] << 8;
         temperature |= i2cRxBuffer[1];
         
-        *tempOut = -46.85f + (175.72f * ((float)temperature / (float)(1 << 16)));
+        *tempOut = HTU21D_Temp_To_Float(temperature);
         
     }while(0);
     
@@ -516,3 +605,103 @@ I2C_Status ReadAirTempSensor(float* tempOut)
     
     return retVal;
 }
+
+I2C_Status ReprogramSoilMoistureAddress(void)
+{
+    I2C_Status retVal = I2C_OK;
+    
+    // This is a critical section: if the device is interrupted during an I2C transaction, it will probably fail.
+    // Disable all interrupts during this transaction to ensure that it completes sucessfully.
+    // NOTE: This means that the system clock will be wrong by ~15 ms (15 ticks) after this section of code is executed
+    taskENTER_CRITICAL();
+    
+    // Use a do {} while(0); loop to allow the use of the "break" statement.
+    // In C++ / Java this would be accomplished with a "try {} catch() {} finally {}" section, but C does not support this construct.
+    do
+    {
+        i2cTxBuffer[0] = SMS_SET_ADDRESS;
+        i2cTxBuffer[1] = 0x22;
+        
+        // I2C Write
+        I2C_Start(SMS_0_ADDR, I2C_WRITE); 
+        retVal = I2C_WriteBytes(i2cTxBuffer, 2);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        retVal = I2C_WaitForTX();
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        // I2C Write
+        I2C_Start(SMS_0_ADDR, I2C_WRITE);
+        retVal = I2C_WriteByte(0x06);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        retVal = I2C_WaitForTX();
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        I2C_Stop();
+                
+    } while(0);
+    
+    taskEXIT_CRITICAL();
+    
+    return retVal;
+}
+
+I2C_Status ReadSoilMoisture(uint8_t sensor, float* out)
+{
+    uint16_t capacitance = 0;
+    I2C_Status retVal = I2C_OK;
+    
+    // This is a critical section: if the device is interrupted during an I2C transaction, it will probably fail.
+    // Disable all interrupts during this transaction to ensure that it completes sucessfully.
+    // NOTE: This means that the system clock will be wrong by ~15 ms (15 ticks) after this section of code is executed
+    taskENTER_CRITICAL();
+    
+    // Use a do {} while(0); loop to allow the use of the "break" statement.
+    // In C++ / Java this would be accomplished with a "try {} catch() {} finally {}" section, but C does not support this construct.
+    do
+    {
+        // I2C Write
+        I2C_Start(GetSmsAddr(sensor), I2C_WRITE); 
+        retVal = I2C_WriteByte(SMS_GET_CAPACITANCE);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        retVal = I2C_WaitForTX();
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        // I2C Read
+        I2C_Start(GetSmsAddr(sensor), I2C_READ);
+        retVal = I2C_ReadBytes(i2cRxBuffer, 2);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        I2C_Stop();
+        
+        capacitance |= i2cRxBuffer[0] << 8;
+        capacitance |= i2cRxBuffer[1];
+        
+        *out = 1.0 * capacitance;
+        
+    } while(0);
+    
+    taskEXIT_CRITICAL();
+    
+    return retVal;
+}
+
+

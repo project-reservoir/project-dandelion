@@ -103,7 +103,7 @@ void RadioTaskHandleIRQ(void);
 
 // Public Radio API
 void SendToBaseStation(uint8_t* data, uint8_t size);
-void SentToBroadcast(uint8_t* data, uint8_t size);
+void SendToBroadcast(uint8_t* data, uint8_t size);
 void SignalRadioIRQ(void);
 
 #endif // _RADIO_H

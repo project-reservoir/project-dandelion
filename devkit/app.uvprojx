@@ -349,7 +349,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>0</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -369,7 +369,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\app\inc;.\support\FreeRTOS\include;.\support\HAL\Inc;.\support\STM32_USB_Device_Library\Class\CustomHID\Inc;.\support\STM32_USB_Device_Library\Core\Inc;.\support\FreeRTOS\CMSIS_RTOS;.\support\FreeRTOS\portable\Keil;.\app\conf;.\support\FreeRTOS\portable\RVDS\ARM_CM0;.\support\xbee_ansi\inc;.\common\inc;.\support\Si4463\drivers\radio\Si446x;.\support\Si4463\drivers\radio</IncludePath>
+              <IncludePath>.\app\inc;.\support\FreeRTOS\include;.\support\HAL\Inc;.\support\STM32_USB_Device_Library\Class\CustomHID\Inc;.\support\STM32_USB_Device_Library\Core\Inc;.\support\FreeRTOS\CMSIS_RTOS;.\support\FreeRTOS\portable\Keil;.\app\conf;.\support\FreeRTOS\portable\RVDS\ARM_CM0;.\support\xbee_ansi\inc;.\common\inc;.\support\Si4463\drivers\radio\Si446x;.\support\Si4463\drivers\radio;.\cross-platform\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1276,6 +1276,21 @@
               <FileName>bsp.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\support\Si4463\bsp.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>cross-platform</GroupName>
+          <Files>
+            <File>
+              <FileName>sensor_conversions.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\cross-platform\src\sensor_conversions.c</FilePath>
+            </File>
+            <File>
+              <FileName>sensor_conversions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\cross-platform\inc\sensor_conversions.h</FilePath>
             </File>
           </Files>
         </Group>

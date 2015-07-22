@@ -2161,7 +2161,7 @@ static portTASK_FUNCTION( prvIdleTask, pvParameters )
 			/* If we are not using preemption we keep forcing a task switch to
 			see if any other task has become available.  If we are using
 			preemption we don't need to do this as any task becoming available
-			will automatically get the processor anyway. */
+			will automatically get the processor anyway. */ 
 			taskYIELD();
 		}
 		#endif /* configUSE_PREEMPTION */

@@ -5,6 +5,9 @@
 
 #define I2C_TIMEOUT_TICKS 500000
 
+#define I2C_WRITE         0
+#define I2C_READ          1
+
 typedef enum I2C_Status_t {
     I2C_OK,
     I2C_TIMEOUT

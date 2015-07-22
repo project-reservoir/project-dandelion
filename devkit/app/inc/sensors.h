@@ -47,7 +47,6 @@
 #define TMP102_CONFIG_ADDR          0x01
 #define TMP102_TLOW_ADDR            0x02
 #define TMP102_THIGH_ADDR           0x03
-#define TMP102_LSB_INC              0.0625f
 
 // HTU21D (Humidity and air temperature sensor) definitions
 #define HTU21D_ADDR                 0x40
@@ -60,19 +59,13 @@
 #define HTU21D_READ_USER_REG        0xE7
 #define HTU21D_SOFT_RESET           0xFE
 
+// Soil moisture sensor probes
+#define SMS_0_ADDR                  0x20
+#define SMS_1_ADDR                  0x21
+#define SMS_2_ADDR                  0x22
 
-typedef struct SensorData_t {
-    float temp0;
-    float temp1;
-    float temp2;
-    float tempChip;
-    float tempRadio;
-    float tempAir;
-    float moist0;
-    float moist1;
-    float moist2;
-    float humid;
-} SensorData;
+#define SMS_GET_CAPACITANCE         0x00
+#define SMS_SET_ADDRESS             0x01
 
 void SensorsTaskOSInit(void);
 void SensorsTaskHwInit(void);
