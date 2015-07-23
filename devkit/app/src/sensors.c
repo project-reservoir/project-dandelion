@@ -25,6 +25,7 @@ static I2C_Status ReadAirTempSensor(float* tempOut);
 static I2C_Status ReprogramSoilMoistureAddress(void);
 static I2C_Status InitSoilMoistureSensor(uint8_t sensor);
 static I2C_Status ReadSoilMoisture(uint8_t sensor, float* out);
+static I2C_Status PingI2C(uint8_t addr);
 static uint8_t    GetSmsAddr(uint8_t index);
 static void       SendSensorData(void);
 
@@ -90,6 +91,20 @@ void SensorsTask(void)
     uint8_t i;
     I2C_Status retVal = I2C_OK;
     
+    /*
+    for(i = 0; i < 0x30; i++)
+    {
+        if(PingI2C(i) != I2C_OK)
+        {
+            I2C_Reset();
+        }
+        else
+        {
+            osDelay(1);
+        }
+    }
+    */
+    
     for(i = 0; i < 3; i++)
     {
         // If the temperature sensor initialized, set its enabled value to 3 (so it has 3 chances to respond to a read request)
@@ -117,12 +132,14 @@ void SensorsTask(void)
         }
     }
     
-    /*// This code was used to initially reprogram the addresses on the soil moisture sensors.
+    // This code was used to initially reprogram the addresses on the soil moisture sensors.
     // It should NOT be enabled in the field
+    /*    
     if(ReprogramSoilMoistureAddress() != I2C_OK)
     {
         osDelay(2000);
-    }*/
+    }
+    */
     
     // Let other tasks in the system warmup before entering the sensor polling loop
     osDelay(2000);
@@ -132,8 +149,6 @@ void SensorsTask(void)
     
     while(1)
     {
-        
-        
         for(i = 0; i < 3; i++)
         {
             if(enabledSensors[i] > 0)
@@ -244,16 +259,19 @@ void SendSensorData(void)
     radioMessage = pvPortMalloc(RADIO_MAX_PACKET_LENGTH);
     
     // moist 0
-    radioMessage[0] = 0x00; 
-    radioMessage[1] = 0x00; 
+    tmp = Float_To_SMS(sensorData.moist0);
+    radioMessage[0] = (tmp >> 8) & 0xFF;     // MSB
+    radioMessage[1] = tmp & 0xFF;            // LSB
     
     // moist 1
-    radioMessage[2] = 0x00;
-    radioMessage[3] = 0x00;
+    tmp = Float_To_SMS(sensorData.moist1);
+    radioMessage[2] = (tmp >> 8) & 0xFF;     // MSB
+    radioMessage[3] = tmp & 0xFF;            // LSB
     
     // moist 2
-    radioMessage[4] = 0x00;
-    radioMessage[5] = 0x00;
+    tmp = Float_To_SMS(sensorData.moist2);
+    radioMessage[4] = (tmp >> 8) & 0xFF;     // MSB
+    radioMessage[5] = tmp & 0xFF;            // LSB
     
     // humid
     tmp = Float_To_HTU21D_Humid(sensorData.humid);
@@ -620,7 +638,7 @@ I2C_Status ReprogramSoilMoistureAddress(void)
     do
     {
         i2cTxBuffer[0] = SMS_SET_ADDRESS;
-        i2cTxBuffer[1] = 0x22;
+        i2cTxBuffer[1] = 0x21;
         
         // I2C Write
         I2C_Start(SMS_0_ADDR, I2C_WRITE); 
@@ -695,7 +713,7 @@ I2C_Status ReadSoilMoisture(uint8_t sensor, float* out)
         capacitance |= i2cRxBuffer[0] << 8;
         capacitance |= i2cRxBuffer[1];
         
-        *out = 1.0 * capacitance;
+        *out = SMS_To_Float(capacitance);
         
     } while(0);
     
@@ -705,3 +723,44 @@ I2C_Status ReadSoilMoisture(uint8_t sensor, float* out)
 }
 
 
+I2C_Status PingI2C(uint8_t addr)
+{
+    I2C_Status retVal = I2C_OK;
+    
+    // This is a critical section: if the device is interrupted during an I2C transaction, it will probably fail.
+    // Disable all interrupts during this transaction to ensure that it completes sucessfully.
+    // NOTE: This means that the system clock will be wrong by ~15 ms (15 ticks) after this section of code is executed
+    taskENTER_CRITICAL();
+    
+    // Use a do {} while(0); loop to allow the use of the "break" statement.
+    // In C++ / Java this would be accomplished with a "try {} catch() {} finally {}" section, but C does not support this construct.
+    do
+    {
+        // I2C Write
+        I2C_Start(addr, I2C_WRITE); 
+        retVal = I2C_WriteByte(SMS_GET_ADDRESS);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        retVal = I2C_WaitForTX();
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        // I2C Read
+        I2C_Start(addr, I2C_READ);
+        retVal = I2C_ReadBytes(i2cRxBuffer, 1);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        I2C_Stop();
+        
+    } while(0);
+    
+    taskEXIT_CRITICAL();
+    
+    return retVal;
+}

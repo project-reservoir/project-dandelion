@@ -61,11 +61,12 @@
 
 // Soil moisture sensor probes
 #define SMS_0_ADDR                  0x20
-#define SMS_1_ADDR                  0x21
-#define SMS_2_ADDR                  0x22
+#define SMS_1_ADDR                  0x2E
+#define SMS_2_ADDR                  0x24
 
 #define SMS_GET_CAPACITANCE         0x00
 #define SMS_SET_ADDRESS             0x01
+#define SMS_GET_ADDRESS             0x02
 
 void SensorsTaskOSInit(void);
 void SensorsTaskHwInit(void);

@@ -29,4 +29,8 @@ uint16_t Float_To_HTU21D_Humid(float input);
 float    HTU21D_Temp_To_Float(uint16_t input);
 uint16_t Float_To_HTU21D_Temp(float input);
 
+// Soil Moisture Sensors
+float SMS_To_Float(uint16_t input);
+uint16_t Float_To_SMS(float input);
+
 #endif

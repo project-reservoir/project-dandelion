@@ -29,3 +29,13 @@ uint16_t Float_To_HTU21D_Temp(float input)
 {
 	return (((input + 46.85f) / 175.72f) * ((float)(1 << 16)));
 }
+
+float SMS_To_Float(uint16_t input)
+{
+    return input * 1.0;
+}
+
+uint16_t Float_To_SMS(float input)
+{
+    return input / 1.0;
+}
