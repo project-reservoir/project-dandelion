@@ -3,6 +3,7 @@
 #include "led_task.h"
 #include "sensors.h"
 #include "radio.h"
+#include "console.h"
 #include "cmsis_os.h"
 
 unsigned portBASE_TYPE makeFreeRtosPriority (osPriority priority)
@@ -21,6 +22,7 @@ int main(void)
 	xTaskHandle ledTaskHandle;
     xTaskHandle sensorsTaskHandle;
     xTaskHandle radioTaskHandle;
+    xTaskHandle consoleTaskHandle;
 
     // Configure the system clock
     SystemClock_Config();
@@ -34,8 +36,9 @@ int main(void)
     // Initialize all OS resources used by all tasks
     SensorsTaskOSInit();
     RadioTaskOSInit();
+    ConsoleTaskOSInit();
 
-    // Create sensor polling task
+    // Create radio task
     xTaskCreate(RadioTask,
                 "RadioTask",
                 configMINIMAL_STACK_SIZE,
@@ -50,6 +53,14 @@ int main(void)
                 NULL,
                 makeFreeRtosPriority(osPriorityNormal),
                 &sensorsTaskHandle);
+    
+    // Create an LED blink tasks	
+    xTaskCreate(ConsoleTask,
+                "ConsoleTask",
+                configMINIMAL_STACK_SIZE,
+                NULL,
+                makeFreeRtosPriority(osPriorityNormal),
+                &consoleTaskHandle);
     
     // Create an LED blink tasks	
     xTaskCreate(LedBlinkTask,

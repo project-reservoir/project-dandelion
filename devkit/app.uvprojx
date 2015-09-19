@@ -410,7 +410,7 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>src</GroupName>
+          <GroupName>app/src</GroupName>
           <Files>
             <File>
               <FileName>hwctrl.c</FileName>
@@ -428,29 +428,9 @@
               <FilePath>.\app\src\main.c</FilePath>
             </File>
             <File>
-              <FileName>system_interrupts.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\src\system_interrupts.c</FilePath>
-            </File>
-            <File>
-              <FileName>header.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\app\src\header.s</FilePath>
-            </File>
-            <File>
-              <FileName>weak_interrupts.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\src\weak_interrupts.c</FilePath>
-            </File>
-            <File>
               <FileName>metadata.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\src\metadata.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32l0xx_hal_msp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\src\stm32l0xx_hal_msp.c</FilePath>
             </File>
             <File>
               <FileName>sensors.c</FileName>
@@ -463,19 +443,14 @@
               <FilePath>.\app\src\radio.c</FilePath>
             </File>
             <File>
-              <FileName>i2c.c</FileName>
+              <FileName>console.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\app\src\i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\src\spi.c</FilePath>
+              <FilePath>.\app\src\console.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>inc</GroupName>
+          <GroupName>app/inc</GroupName>
           <Files>
             <File>
               <FileName>hwctrl.h</FileName>
@@ -486,11 +461,6 @@
               <FileName>led_task.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\app\inc\led_task.h</FilePath>
-            </File>
-            <File>
-              <FileName>system_interrupts.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\app\inc\system_interrupts.h</FilePath>
             </File>
             <File>
               <FileName>app_header.h</FileName>
@@ -508,14 +478,9 @@
               <FilePath>.\app\inc\radio.h</FilePath>
             </File>
             <File>
-              <FileName>i2c.h</FileName>
+              <FileName>console.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\app\inc\i2c.h</FilePath>
-            </File>
-            <File>
-              <FileName>spi.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\app\inc\spi.h</FilePath>
+              <FilePath>.\app\inc\console.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1291,6 +1256,61 @@
               <FileName>sensor_conversions.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\cross-platform\inc\sensor_conversions.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>bsp/src</GroupName>
+          <Files>
+            <File>
+              <FileName>header.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\app\src\header.s</FilePath>
+            </File>
+            <File>
+              <FileName>system_interrupts.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\system_interrupts.c</FilePath>
+            </File>
+            <File>
+              <FileName>weak_interrupts.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\weak_interrupts.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32l0xx_hal_msp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\stm32l0xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\i2c.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>bsp/inc</GroupName>
+          <Files>
+            <File>
+              <FileName>system_interrupts.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\inc\system_interrupts.h</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\inc\i2c.h</FilePath>
+            </File>
+            <File>
+              <FileName>spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\inc\spi.h</FilePath>
             </File>
           </Files>
         </Group>

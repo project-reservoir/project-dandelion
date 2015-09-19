@@ -4,9 +4,11 @@
 #include "stm32l0xx_hal.h"
 #include "radio.h"
 #include "hwctrl.h"
+#include "console.h"
 
 extern I2C_HandleTypeDef I2CxHandle;
 extern SPI_HandleTypeDef SpiHandle;
+extern UART_HandleTypeDef UartHandle;
 
 extern void __main(void);
 
@@ -69,6 +71,19 @@ void EXTI0_1_Handler(void)
         buff[6] = '1';
         
         SendToBroadcast(buff, 7);
+    }
+}
+
+void USARTx_Handler(void)
+{
+    // This code is here to ensure that the function isn't inlined
+    if(UartHandle.State != HAL_UART_STATE_ERROR)
+    {
+        HAL_UART_IRQHandler(&UartHandle);
+    }
+    else
+    {
+        HAL_UART_IRQHandler(&UartHandle);
     }
 }
 

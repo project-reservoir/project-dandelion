@@ -1,6 +1,7 @@
 #include "sensors.h"
 #include "led_task.h"
 #include "radio.h"
+#include "console.h"
 #include "hwctrl.h"
 
 void SystemClock_Config(void)
@@ -73,4 +74,5 @@ void HwCtrl_Init(void)
 	LedBlinkTaskHwInit();
     SensorsTaskHwInit();
     RadioTaskHwInit();
+    ConsoleTaskHwInit();
 }
