@@ -26,7 +26,8 @@
 
 void ConsoleTaskHwInit(void);
 void ConsoleTaskOSInit(void);
-void ConsolePrint(const char* text);
+void ConsolePrint(char* text);
 void ConsoleTask(void);
+void ConsoleGetChar(char c);
 
 #endif //__CONSOLE_H

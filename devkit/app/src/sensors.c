@@ -4,6 +4,7 @@
 #include "i2c.h"
 #include "radio.h"
 #include "sensor_conversions.h"
+#include "debug.h"
 
 // Global variables
 I2C_HandleTypeDef I2CxHandle;
@@ -91,6 +92,8 @@ void SensorsTask(void)
     uint8_t i;
     I2C_Status retVal = I2C_OK;
     
+    INFO("(SENSORS_TASK) I2C Sensor failed to initialize\r\n");
+    
     /*
     for(i = 0; i < 0x30; i++)
     {
@@ -113,6 +116,7 @@ void SensorsTask(void)
         {
             I2C_Reset();
             enabledSensors[i] = 0;
+            WARN("(SENSORS_TASK) I2C Sensor failed to initialize\r\n"); 
         }
     }
     
@@ -120,6 +124,7 @@ void SensorsTask(void)
     {
         I2C_Reset();
         enabledSensors[3] = 0;
+        WARN("(SENSORS_TASK) Humidity sensor failed to initialize\r\n");
     }
     
     for(i = 4; i < 7; i++)
@@ -129,6 +134,7 @@ void SensorsTask(void)
         {
             I2C_Reset();
             enabledSensors[i] = 0;
+            WARN("(SENSORS_TASK) Soil Moisture sensor failed to initialize\r\n");
         }
     }
     
@@ -174,36 +180,46 @@ void SensorsTask(void)
                 {
                     I2C_Reset();
                     enabledSensors[i]--;
+                    WARN("(SENSORS_TASK) Temp sensor read failed\r\n");
                 }
                 // The sensor is still alive! Restore it to a full 3 chances to respond
                 else
                 {
                     enabledSensors[i] = 3;
+                    DEBUG("(SENSORS_TASK) Temp sensor connection restored\r\n");
                 }
             }
         }
         
         if(enabledSensors[3] > 0)
         {
-           if(ReadHumiditySensor(&sensorData.humid) != I2C_OK)
-           {
-                I2C_Reset();
-                enabledSensors[3]--;
-           }
-           else
-           {
-               enabledSensors[3] = 3;
-           }
-           
-           if(ReadAirTempSensor(&sensorData.tempAir) != I2C_OK)
-           {
-                I2C_Reset();
-                enabledSensors[3]--;
-           }
-           else
-           {
-               enabledSensors[3] = 3;
-           } 
+           do {
+                if(ReadHumiditySensor(&sensorData.humid) != I2C_OK)
+                {
+                    I2C_Reset();
+                    enabledSensors[3]--;
+                    WARN("(SENSORS_TASK) Humidity sensor read failed\r\n");
+                    break;
+                }
+                else
+                {
+                   enabledSensors[3] = 3;
+                   DEBUG("(SENSORS_TASK) Humidity sensor connection restored\r\n");
+                }
+               
+                if(ReadAirTempSensor(&sensorData.tempAir) != I2C_OK)
+                {
+                    I2C_Reset();
+                    enabledSensors[3]--;
+                    WARN("(SENSORS_TASK) Air temp sensor read failed\r\n");
+                }
+                else
+                {
+                   enabledSensors[3] = 3;
+                   DEBUG("(SENSORS_TASK) Air temp sensor connection restored\r\n");
+                }
+            }
+            while(0);
         }
         
         for(i = 4; i < 7; i++)
@@ -231,11 +247,13 @@ void SensorsTask(void)
                 {
                     I2C_Reset();
                     enabledSensors[i]--;
+                    WARN("(SENSORS_TASK) Soil moisture sensor read failed\r\n");
                 }
                 // The sensor is still alive! Restore it to a full 3 chances to respond
                 else
                 {
                     enabledSensors[i] = 3;
+                    DEBUG("(SENSORS_TASK) Soil moisture sensor connection restored\r\n");
                 }
             }
         }
@@ -305,6 +323,8 @@ void SendSensorData(void)
     // solar level
     radioMessage[18] = 0x00;
     radioMessage[19] = 0x00;
+    
+    DEBUG("(SENSORS_TASK) Sending sensor message to radio task\r\n");
     
     SendToBroadcast(radioMessage, RADIO_MAX_PACKET_LENGTH);
 }

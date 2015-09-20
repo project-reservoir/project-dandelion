@@ -1,7 +1,11 @@
 #include "cmsis_os.h"
 #include "stm32l0xx_hal.h"
 #include "stm32l0xx_hal_uart.h"
+#include "uart.h"
 #include "console.h"
+#include "app_header.h"
+#include "debug.h"
+#include <string.h>
 
 UART_HandleTypeDef UartHandle;
 osMessageQId uartRxMsgQ;
@@ -9,8 +13,14 @@ osMessageQId uartRxMsgQ;
 char rxBuff[CONSOLE_MAX_MSG_SIZE];
 char txBuff[CONSOLE_MAX_MSG_SIZE];
 
-void processString(const char* str);
-uint8_t string_len(const char* str);
+uint8_t rxBuffPos = 0;
+uint8_t txBuffPos = 0;
+
+uint8_t console_task_started = 0;
+
+static void processString(char* str);
+static uint8_t string_len(char* str);
+static void processDebugCommand(char* str, uint8_t len);
 
 void ConsoleTaskHwInit(void)
 {
@@ -51,7 +61,7 @@ void ConsoleTaskOSInit(void)
     uartRxMsgQ = osMessageCreate(osMessageQ(UARTRxMsgQueue), NULL);
     
     UartHandle.Instance        = USARTx;
-    UartHandle.Init.BaudRate   = 9600;
+    UartHandle.Init.BaudRate   = 115200;
     UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
     UartHandle.Init.StopBits   = UART_STOPBITS_1;
     UartHandle.Init.Parity     = UART_PARITY_NONE;
@@ -68,8 +78,9 @@ void ConsoleTask(void)
     
     while(1)
     {
-        // Put UART into receive mode
-        assert_param(HAL_UART_Receive_IT(&UartHandle, (uint8_t *)rxBuff, CONSOLE_MAX_MSG_SIZE) == HAL_OK);
+        UART_StartRX(USARTx);
+        
+        console_task_started = 1;
         
         // Sleep until we receive some data
         msgQueueEvent = osMessageGet(uartRxMsgQ, osWaitForever);
@@ -79,24 +90,77 @@ void ConsoleTask(void)
             rxChars = (char*)msgQueueEvent.value.p;
             processString(rxChars);
         }
+        
+        memset(rxBuff, 0, CONSOLE_MAX_MSG_SIZE);
+        rxBuffPos = 0;
     }
 }
 
-void processString(const char* str)
+void processString(char* str)
 {
     uint8_t len = string_len(str);
     
+    ConsolePrint("\r\n");
+    
     switch(str[0])
     {
-        case 'h':
-            ConsolePrint("h : print help\r\n");
+        case 'd':
+            processDebugCommand(str, len);
+            break;
+        case 'v':
+            ConsolePrint("DANDELION OS V ");
+            ConsolePrint(APP_VERSION_STR);
+            ConsolePrint("\r\n");
+            ConsolePrint("BUILD DATE: ");
+            ConsolePrint(__DATE__);
+            ConsolePrint("  :  ");
+            ConsolePrint(__TIME__);
+            ConsolePrint("\r\n");
+            break;
         default:
-            ConsolePrint("> ");
+            ConsolePrint("h : print help\r\n");
+            ConsolePrint("v : print version info\r\n");
+            ConsolePrint("d : debug information\r\n");
             break;
     }
+    
+    ConsolePrint("> ");
 }
 
-uint8_t string_len(const char* str)
+void processDebugCommand(char* str, uint8_t len)
+{
+    if(len >= 2)
+    {
+        if(str[1] == 'd')
+        {
+            ToggleDebug();
+            return;
+        }
+        else if(str[1] == 'i')
+        {
+            ToggleInfo();
+            return;
+        }
+        else if(str[1] == 'w')
+        {
+            ToggleWarn();
+            return;
+        }
+        else if(str[1] == 'e')
+        {
+            ToggleError();
+            return;
+        }
+    }
+    
+    ConsolePrint("Debug commands\r\n");
+    ConsolePrint("dd : toggle debug messages\r\n");
+    ConsolePrint("di : toggle info messages\r\n");
+    ConsolePrint("dw : toggle warn messages\r\n");
+    ConsolePrint("de : toggle error messages\r\n");
+}
+
+uint8_t string_len(char* str)
 {
     uint8_t i = 0;
     
@@ -108,20 +172,46 @@ uint8_t string_len(const char* str)
     return i;
 }
 
-void ConsolePrint(const char* text)
+void ConsolePrint(char* text)
 {
     uint8_t i = string_len(text);
-    
-    // While the UART is not ready for TX, spin
-    while(!((HAL_UART_GetState(&UartHandle) == HAL_UART_STATE_READY) || (HAL_UART_GetState(&UartHandle) == HAL_UART_STATE_BUSY_RX)))
+    while(!console_task_started)
     {
         osDelay(10);
     }
     
-    assert_param(HAL_UART_Transmit_IT(&UartHandle, (uint8_t*)text, i) == HAL_OK);
+    // While the UART is not ready for TX, spin
+    while(UART_ReadyTX(UartHandle.Instance) != UART_OK)
+    {
+        osDelay(10);
+    }
+    
+    UART_StartTX(UartHandle.Instance, text, i);
 }
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *uh)
+void ConsoleGetChar(char c)
 {
-    osMessagePut(uartRxMsgQ, (uint32_t)uh->pRxBuffPtr, osWaitForever);
+    // Silently drop chars if buffer is full: OS is dealing with the message
+    if(rxBuffPos >= CONSOLE_MAX_MSG_SIZE)
+    {
+        return;
+    }
+    
+    switch(c)
+    {
+        case '\r':
+        case '\n':
+            osMessagePut(uartRxMsgQ, (uint32_t)rxBuff, osWaitForever);
+            break;
+        
+        default:
+            rxBuff[rxBuffPos++] = c;
+    }
+    
+    if(rxBuffPos >= CONSOLE_MAX_MSG_SIZE)
+    {
+        osMessagePut(uartRxMsgQ, (uint32_t)rxBuff, osWaitForever);
+    }
+    
+    UART_CharTX(UartHandle.Instance, c);
 }

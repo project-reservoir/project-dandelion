@@ -5,6 +5,7 @@
 #include "radio.h"
 #include "hwctrl.h"
 #include "console.h"
+#include "uart.h"
 
 extern I2C_HandleTypeDef I2CxHandle;
 extern SPI_HandleTypeDef SpiHandle;
@@ -74,16 +75,17 @@ void EXTI0_1_Handler(void)
     }
 }
 
-void USARTx_Handler(void)
+void USART1_Handler(void)
 {
     // This code is here to ensure that the function isn't inlined
-    if(UartHandle.State != HAL_UART_STATE_ERROR)
+    if((USART1->ISR & USART_ISR_RXNE) == USART_ISR_RXNE)
     {
-        HAL_UART_IRQHandler(&UartHandle);
+        ConsoleGetChar(USART1->RDR);
     }
-    else
+    
+    if((USART1->ISR & USART_ISR_TXE) == USART_ISR_TXE && (USART1->CR1 & USART_CR1_TXEIE) == USART_CR1_TXEIE)
     {
-        HAL_UART_IRQHandler(&UartHandle);
+        UART_ContinueTX(USART1);
     }
 }
 

@@ -18,7 +18,7 @@ extern uint32_t __initial_sp;
 const APP_HEADER __Vectors __attribute__((section("HEADER"))) __attribute__((used)) = {
 	0,          // Space reserved in the image for a CRC32 checksum
 	0xDEADBEEF, // the CRC32 start mark
-	0x00000001, // test version
+	APP_VERSION, // version
 	sizeof(APP_HEADER) + 0x00000090, // Reset_Handler, the entry point for this application (this calls SystemInit and __main, which in turn calls the application main)
 	(uint32_t)(&Image$$ER_IROM1$$Length), // ro_size
 	(uint32_t)(&Image$$RW_IRAM1$$Length), // rw_size

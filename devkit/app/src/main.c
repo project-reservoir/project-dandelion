@@ -37,7 +37,15 @@ int main(void)
     SensorsTaskOSInit();
     RadioTaskOSInit();
     ConsoleTaskOSInit();
-
+    
+    // Create console debug task
+    xTaskCreate(ConsoleTask,
+                "ConsoleTask",
+                configMINIMAL_STACK_SIZE,
+                NULL,
+                makeFreeRtosPriority(osPriorityNormal),
+                &consoleTaskHandle);
+    
     // Create radio task
     xTaskCreate(RadioTask,
                 "RadioTask",
@@ -53,14 +61,6 @@ int main(void)
                 NULL,
                 makeFreeRtosPriority(osPriorityNormal),
                 &sensorsTaskHandle);
-    
-    // Create an LED blink tasks	
-    xTaskCreate(ConsoleTask,
-                "ConsoleTask",
-                configMINIMAL_STACK_SIZE,
-                NULL,
-                makeFreeRtosPriority(osPriorityNormal),
-                &consoleTaskHandle);
     
     // Create an LED blink tasks	
     xTaskCreate(LedBlinkTask,
