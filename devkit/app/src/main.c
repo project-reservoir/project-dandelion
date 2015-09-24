@@ -4,6 +4,7 @@
 #include "sensors.h"
 #include "radio.h"
 #include "console.h"
+#include "fw_update.h"
 #include "cmsis_os.h"
 
 unsigned portBASE_TYPE makeFreeRtosPriority (osPriority priority)
@@ -23,6 +24,7 @@ int main(void)
     xTaskHandle sensorsTaskHandle;
     xTaskHandle radioTaskHandle;
     xTaskHandle consoleTaskHandle;
+    xTaskHandle fwUpdateTaskHandle;
 
     // Configure the system clock
     SystemClock_Config();
@@ -37,6 +39,7 @@ int main(void)
     SensorsTaskOSInit();
     RadioTaskOSInit();
     ConsoleTaskOSInit();
+    FwUpdateOsInit();
     
     // Create console debug task
     xTaskCreate(ConsoleTask,
@@ -45,6 +48,16 @@ int main(void)
                 NULL,
                 makeFreeRtosPriority(osPriorityNormal),
                 &consoleTaskHandle);
+                
+    // Create fw update task with maximum priority:
+    // this ensures FW updates will always proceed as quickly as possible
+    // without being interrupted by the other system tasks
+    xTaskCreate(FwUpdateTask,
+                "FwUpdateTask",
+                configMINIMAL_STACK_SIZE,
+                NULL,
+                makeFreeRtosPriority(osPriorityNormal),
+                &fwUpdateTaskHandle);
     
     // Create radio task
     xTaskCreate(RadioTask,

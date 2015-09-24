@@ -5,6 +5,8 @@
 #include "console.h"
 #include "app_header.h"
 #include "debug.h"
+#include "fw_update.h"
+#include "flash.h"
 #include <string.h>
 
 UART_HandleTypeDef UartHandle;
@@ -99,11 +101,20 @@ void ConsoleTask(void)
 void processString(char* str)
 {
     uint8_t len = string_len(str);
+    uint8_t i;
     
     ConsolePrint("\r\n");
     
     switch(str[0])
     {
+        case 'u':
+            FwUpdateStart();
+            for(i = 0; i < FLASH_PAGE_SIZE; i++)
+            {
+                FwUpdateWriteWord(0xDEADBEEF);
+            }
+            FwUpdateEnd();
+            break;
         case 'd':
             processDebugCommand(str, len);
             break;
@@ -116,11 +127,23 @@ void processString(char* str)
             ConsolePrint("  :  ");
             ConsolePrint(__TIME__);
             ConsolePrint("\r\n");
+            ConsolePrint("RUN REGION: ");
+            if(FwUpdateGetCurrentRegion() == MAIN_APP_START)
+            {
+                ConsolePrint("MAIN APP");
+            }
+            else
+            {
+                ConsolePrint("BACKUP APP");
+            }
+            ConsolePrint("\r\n\r\n");
+            
             break;
         default:
             ConsolePrint("h : print help\r\n");
             ConsolePrint("v : print version info\r\n");
             ConsolePrint("d : debug information\r\n");
+            ConsolePrint("u : perform a fake firmware upgrade using 0xDEADBEEF as the payload\r\n");
             break;
     }
     

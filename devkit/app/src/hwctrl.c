@@ -2,6 +2,7 @@
 #include "led_task.h"
 #include "radio.h"
 #include "console.h"
+#include "fw_update.h"
 #include "hwctrl.h"
 
 void SystemClock_Config(void)
@@ -75,4 +76,5 @@ void HwCtrl_Init(void)
     SensorsTaskHwInit();
     RadioTaskHwInit();
     ConsoleTaskHwInit();
+    FwUpdateHwInit();
 }
