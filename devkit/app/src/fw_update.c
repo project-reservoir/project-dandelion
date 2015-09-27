@@ -143,3 +143,8 @@ uint8_t FwUpdateWriteWord(uint32_t word)
     
     return 0;
 }
+
+bool FwUpdateInProgress(void)
+{
+    return update_in_progress;
+}

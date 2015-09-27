@@ -9,6 +9,10 @@
 #include "flash.h"
 #include <string.h>
 
+// Minimum message size includes the ':' starting character and the \n
+#define MIN_INTEL_MESSAGE_LEN   12
+#define MAX_INTEL_PAYLOAD       0x10
+
 UART_HandleTypeDef UartHandle;
 osMessageQId uartRxMsgQ;
 
@@ -20,9 +24,212 @@ uint8_t txBuffPos = 0;
 
 uint8_t console_task_started = 0;
 
+uint16_t extended_address = 0;
+uint16_t current_intel_address = 0;
+uint8_t intel_hex_payload[MAX_INTEL_PAYLOAD];
+
 static void processString(char* str);
 static uint8_t string_len(char* str);
 static void processDebugCommand(char* str, uint8_t len);
+static void ParseIntelHex(char* str, uint8_t len);
+static uint8_t HexToNibble(char ch);
+
+// Convert 1 hex char into a Nibble. Fills the lower 4 bits of the byte
+static uint8_t HexToNibble(char ch)
+{
+    uint8_t nib = 0;
+    
+    switch(ch)
+    {
+        case '0':
+            nib = 0u;
+            break;
+        
+        case '1':
+            nib = 1u;
+            break;
+        
+        case '2':
+            nib = 2u;
+            break;
+        
+        case '3':
+            nib = 3u;
+            break;
+        
+        case '4':
+            nib = 4u;
+            break;
+        
+        case '5':
+            nib = 5u;
+            break;
+        
+        case '6':
+            nib = 6u;
+            break;
+        
+        case '7':
+            nib = 7u;
+            break;
+        
+        case '8':
+            nib = 8u;
+            break;
+        
+        case '9':
+            nib = 9u;
+            break;
+        case 'A':
+        case 'a':
+            nib = 10u;
+            break;
+        
+        case 'B':
+        case 'b':
+            nib = 11u;
+            break;
+        
+        case 'C':
+        case 'c':
+            nib = 12u;
+            break;
+        
+        case 'D':
+        case 'd':
+            nib = 13u;
+            break;
+        
+        case 'E':
+        case 'e':
+            nib = 14u;
+            break;
+        
+        case 'F':
+        case 'f':
+            nib = 15u;
+            break;
+        
+        default:
+            DEBUG("Invalid HEX char in HexToNib\r\n");
+            break;
+    }
+    
+    return nib;
+}
+
+static void ParseIntelHex(char* str, uint8_t len)
+{
+    uint8_t i = 0;
+    uint8_t command = 0;
+    uint8_t byte_count = 0;
+    uint16_t address = 0;
+    uint8_t checksum = 0;
+    uint8_t sent_check = 0;
+    
+    if(len < MIN_INTEL_MESSAGE_LEN)
+    {
+        WARN("Malformed Intel Hex Msg\r\n");
+        return;
+    }
+    
+    if(str[0] != ':')
+    {
+        WARN("Message is not Intel Hex Msg\r\n");
+        return;
+    }
+    
+    // Form the byte count
+    byte_count = (HexToNibble(str[1]) << 4) | HexToNibble(str[2]);
+    checksum = byte_count;
+    
+    // Form the address
+    address = (HexToNibble(str[3]) << 12) | (HexToNibble(str[4]) << 8) | (HexToNibble(str[5]) << 4) | HexToNibble(str[6]);
+    checksum += ((HexToNibble(str[3]) << 4) | HexToNibble(str[4]));
+    checksum += ((HexToNibble(str[5]) << 4) | HexToNibble(str[6]));
+    
+    // Form the command
+    command = (HexToNibble(str[7]) << 4) | HexToNibble(str[8]);
+    checksum += command;
+    
+    for(i = 0; i < byte_count && i < MAX_INTEL_PAYLOAD; i++)
+    {
+        intel_hex_payload[i] = (HexToNibble(str[9 + (i*2)]) << 4) | HexToNibble(str[10 + (i*2)]);
+        checksum += intel_hex_payload[i];
+    }
+    
+    checksum = ~checksum;
+    checksum += 0x01;
+    
+    sent_check = (uint32_t)((HexToNibble(str[(byte_count * 2) + 9]) << 4) | HexToNibble(str[(byte_count * 2) + 10]));
+    
+    if(checksum != sent_check)
+    {
+        ERR("Intel Hex Checksum fail\r\n");
+        return;
+    }
+    
+    switch(command)
+    {
+        case 0:
+            if((byte_count % 4) != 0)
+            {
+                WARN("Intel HEX Cmd 0 err: byte count !mod 4\r\n");
+                break;
+            }
+            
+            // Allow the first write to be to any address, initialize for future writes
+            if(current_intel_address == 0)
+            {
+                current_intel_address = address;
+            }
+            else if(current_intel_address != address)
+            {
+                ERR("Addresses are not sequential\r\n");
+                return;
+            }
+            
+            current_intel_address += byte_count;
+            
+            for(i = 0; i < byte_count; i += 4)
+            {
+                FwUpdateWriteWord((intel_hex_payload[i + 3] << 24) | (intel_hex_payload[i + 2] << 16) | (intel_hex_payload[i + 1] << 8) | (intel_hex_payload[i]));
+            }
+            break;
+        
+        case 1:
+            if(byte_count != 0)
+            {
+                WARN("Intel HEX Cmd 1 err: byte count != 0\r\n");
+                break;
+            }
+            extended_address = 0;
+            FwUpdateEnd();
+            break;
+        
+        case 4:
+            if(byte_count != 2)
+            {
+                WARN("Intel HEX Cmd 4 err: byte count != 2\r\n");
+                break;
+            }
+            extended_address = (intel_hex_payload[0] << 8) | intel_hex_payload[1];
+            FwUpdateStart();
+            break;
+        
+        case 5:
+            if(byte_count != 4)
+            {
+                WARN("Intel HEX Cmd 5 err: byte count != 4\r\n");
+                break;
+            }
+            break;
+        
+        default:
+            WARN("Unknown Intel HEX cmd\r\n");
+            break;
+    }
+}
 
 void ConsoleTaskHwInit(void)
 {
@@ -63,7 +270,7 @@ void ConsoleTaskOSInit(void)
     uartRxMsgQ = osMessageCreate(osMessageQ(UARTRxMsgQueue), NULL);
     
     UartHandle.Instance        = USARTx;
-    UartHandle.Init.BaudRate   = 115200;
+    UartHandle.Init.BaudRate   = 9600;
     UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
     UartHandle.Init.StopBits   = UART_STOPBITS_1;
     UartHandle.Init.Parity     = UART_PARITY_NONE;
@@ -107,6 +314,23 @@ void processString(char* str)
     
     switch(str[0])
     {
+        case ':':
+            ParseIntelHex(str, len);
+            break;
+        case 'r':
+            if(len >= 2)
+            {
+                if(str[1] == 'r')
+                {
+                    NVIC_SystemReset();
+                }
+            }
+            else
+            {
+                ConsolePrint("Reset commands\r\n");
+                ConsolePrint("rr: reset the microprocessor completely\r\n");
+            }
+            break;
         case 'u':
             FwUpdateStart();
             for(i = 0; i < FLASH_PAGE_SIZE; i++)
@@ -137,13 +361,13 @@ void processString(char* str)
                 ConsolePrint("BACKUP APP");
             }
             ConsolePrint("\r\n\r\n");
-            
             break;
         default:
             ConsolePrint("h : print help\r\n");
             ConsolePrint("v : print version info\r\n");
             ConsolePrint("d : debug information\r\n");
-            ConsolePrint("u : perform a fake firmware upgrade using 0xDEADBEEF as the payload\r\n");
+            ConsolePrint("u : perform a fake firmware upgrade\r\n");
+            ConsolePrint("r : reset commands\r\n");
             break;
     }
     

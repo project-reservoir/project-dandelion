@@ -311,8 +311,8 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x8000000</StartAddress>
-                <Size>0x10000</Size>
+                <StartAddress>0x8000800</StartAddress>
+                <Size>0x7c00</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -452,6 +452,11 @@
               <FileType>1</FileType>
               <FilePath>.\app\src\debug.c</FilePath>
             </File>
+            <File>
+              <FileName>fw_update.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\fw_update.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -491,6 +496,11 @@
               <FileName>debug.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\app\inc\debug.h</FilePath>
+            </File>
+            <File>
+              <FileName>fw_update.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\inc\fw_update.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1307,6 +1317,61 @@
               <FileType>1</FileType>
               <FilePath>.\app\src\uart.c</FilePath>
             </File>
+            <File>
+              <FileName>flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\flash.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>9</RVCTCodeConst>
+                  <RVCTZI>4</RVCTZI>
+                  <RVCTOtherData>4</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>2</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>2</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+            <File>
+              <FileName>capacitance.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\capacitance.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1331,6 +1396,16 @@
               <FileName>uart.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\app\inc\uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\inc\flash.h</FilePath>
+            </File>
+            <File>
+              <FileName>capacitance.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\inc\capacitance.h</FilePath>
             </File>
           </Files>
         </Group>

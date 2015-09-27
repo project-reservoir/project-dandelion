@@ -12,6 +12,7 @@ extern SPI_HandleTypeDef SpiHandle;
 extern UART_HandleTypeDef UartHandle;
 
 extern void __main(void);
+extern void xPortSysTickHandler(void);
 
 void Reset_Handler(void)
 {
@@ -86,6 +87,11 @@ void USART1_Handler(void)
     if((USART1->ISR & USART_ISR_TXE) == USART_ISR_TXE && (USART1->CR1 & USART_CR1_TXEIE) == USART_CR1_TXEIE)
     {
         UART_ContinueTX(USART1);
+    }
+    
+    if((USART1->ISR & USART_ISR_ORE) == USART_ISR_ORE)
+    {
+        USART1->ICR = USART_ISR_ORE;
     }
 }
 
