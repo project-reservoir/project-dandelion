@@ -4,6 +4,12 @@
 #include "si446x_api_lib.h"
 #include "si446x_cmd.h"
 #include "spi.h"
+#include "radio_packets.h"
+#include "fw_update.h"
+
+extern void si446x_fifo_info(uint8_t FIFO);
+extern void si446x_read_rx_fifo( uint8_t numBytes, uint8_t* pRxData );
+extern void si446x_write_tx_fifo( uint8_t numBytes, uint8_t* pData );
 
 // Global variables
 osMessageQId radioTxMsgQ;
@@ -19,7 +25,7 @@ tRadioConfiguration* pRadioConfiguration = &RadioConfiguration;
 uint8_t customRadioPacket[RADIO_MAX_PACKET_LENGTH];
 
 // Local variables 
-static uint8_t txBuff[BUFFSIZE];
+//static uint8_t txBuff[BUFFSIZE];
 static uint8_t rxBuff[BUFFSIZE];
 
 static RadioTaskState radioTaskState = CONNECTED;
@@ -274,7 +280,6 @@ void SendToBroadcast(uint8_t* data, uint8_t size)
 
 uint8_t SendRadioConfig(void)
 {
-    uint16_t wDelay = 0;
     uint8_t retVal;
     
     si446x_reset();
@@ -326,9 +331,14 @@ void Radio_StartTx_Variable_Packet(uint8_t channel, uint8_t *pioRadioPacket, uin
 
 void RadioTaskHandleIRQ(void)
 {
-    uint8_t phInt = 0;
-    uint8_t chipInt = 0;
-    uint8_t modemInt = 0;
+    uint8_t                         phInt = 0;
+    uint8_t                         chipInt = 0;
+    uint8_t                         modemInt = 0;
+    fw_update_payload_message_t*    fwup_msg;
+    
+    // Get rid of annoying warnings
+    (void)modemInt;
+    (void)chipInt;
     
     // Get the interrupts from the radio: clear them all
     si446x_get_int_status(0u, 0u, 0u);
@@ -347,7 +357,38 @@ void RadioTaskHandleIRQ(void)
     // PACKET_RX
     if(phInt & PACKET_RX)
     {
-        // TODO: Received a packet addressed to us. Put it in the input queue
+        si446x_read_rx_fifo(RadioConfiguration.Radio_PacketLength, rxBuff);
+        radio_message_t* message = (radio_message_t*)rxBuff;
+        
+        switch(message->generic.cmd)
+        {
+            // The base station has requested info from us: reply with it
+            case DEVICE_INFO:
+                // TODO: assemble device info struct and place on radio TX queue
+                break;
+            
+            case SENSOR_MSG:
+                // TODO: the base station wants a sensor update ASAP
+                break;
+            
+            case FW_UPD_START:
+                FwUpdateStart();
+                break;
+            
+            case FW_UPD_END:
+                FwUpdateEnd();
+                break;
+                
+            case FW_UPD_PAYLOAD:
+                fwup_msg = (fw_update_payload_message_t*)rxBuff;
+                for(uint8_t i = 0; i < NUM_FW_UPDATE_PAYLOAD_WORDS; i++)
+                {
+                    FwUpdateWriteWord(fwup_msg->payload[i]);
+                }
+                break;
+        }
+        
+        // TODO: send ACK
     }
     
     // CRC_ERROR

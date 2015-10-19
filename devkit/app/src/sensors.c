@@ -4,6 +4,7 @@
 #include "i2c.h"
 #include "radio.h"
 #include "sensor_conversions.h"
+#include "radio_packets.h"
 #include "debug.h"
 
 // Global variables
@@ -14,7 +15,7 @@ uint8_t i2cRxBuffer[I2C_BUFFER_SIZE];
 
 osSemaphoreId i2cSem;
 
-SensorData sensorData;
+SensorData          sensorData;
 
 // Local function declarations
 static uint8_t GetTmp102Addr(uint8_t index);
@@ -270,63 +271,56 @@ void SensorsTask(void)
 void SendSensorData(void)
 {
     uint16_t tmp = 0;
-    uint8_t* radioMessage;
+    sensor_message_t* radioMessage;
     
     // TODO: we should be wrapping this data in MAC layer data in the radio task, so
     // we shouldn't be allocating the full packet size here
+    // TODO: do something clever if we ran out of RAM
     radioMessage = pvPortMalloc(RADIO_MAX_PACKET_LENGTH);
     
     // moist 0
     tmp = Float_To_SMS(sensorData.moist0);
-    radioMessage[0] = (tmp >> 8) & 0xFF;     // MSB
-    radioMessage[1] = tmp & 0xFF;            // LSB
+    radioMessage->moisture0 = tmp;
     
     // moist 1
     tmp = Float_To_SMS(sensorData.moist1);
-    radioMessage[2] = (tmp >> 8) & 0xFF;     // MSB
-    radioMessage[3] = tmp & 0xFF;            // LSB
+    radioMessage->moisture1 = tmp;
     
     // moist 2
     tmp = Float_To_SMS(sensorData.moist2);
-    radioMessage[4] = (tmp >> 8) & 0xFF;     // MSB
-    radioMessage[5] = tmp & 0xFF;            // LSB
+    radioMessage->moisture2 = tmp;
     
     // humid
     tmp = Float_To_HTU21D_Humid(sensorData.humid);
-    radioMessage[6] = (tmp >> 8) & 0xFF;     // MSB
-    radioMessage[7] = tmp & 0xFF;            // LSB
+    radioMessage->humid = tmp;
     
     // temp 0
     tmp = Float_To_TMP102(sensorData.temp0);
-    radioMessage[8] = (tmp >> 8) & 0xFF;     // MSB
-    radioMessage[9] = tmp & 0xFF;            // LSB
+    radioMessage->temp0 = tmp;
     
     // temp 1
     tmp = Float_To_TMP102(sensorData.temp1);
-    radioMessage[10] = (tmp >> 8) & 0xFF;     // MSB
-    radioMessage[11] = tmp & 0xFF;            // LSB
+    radioMessage->temp1 = tmp;
     
     // temp 2
     tmp = Float_To_TMP102(sensorData.temp2);
-    radioMessage[12] = (tmp >> 8) & 0xFF;     // MSB
-    radioMessage[13] = tmp & 0xFF;            // LSB
+    radioMessage->temp2 = tmp;
    
     // air temp
     tmp = Float_To_HTU21D_Temp(sensorData.tempAir);
-    radioMessage[14] = (tmp >> 8) & 0xFF;     // MSB
-    radioMessage[15] = tmp & 0xFF;            // LSB
+    radioMessage->air_temp = tmp;
+    
+    // TODO: find a way to collect battery and solar panel data
     
     // battery level
-    radioMessage[16] = 0x00;
-    radioMessage[17] = 0x00;
+    radioMessage->battery_level = 0;
     
     // solar level
-    radioMessage[18] = 0x00;
-    radioMessage[19] = 0x00;
+    radioMessage->solar_level = 0;
     
     DEBUG("(SENSORS_TASK) Sending sensor message to radio task\r\n");
     
-    SendToBroadcast(radioMessage, RADIO_MAX_PACKET_LENGTH);
+    SendToBroadcast((uint8_t*)radioMessage, RADIO_MAX_PACKET_LENGTH);
 }
 
 void HAL_I2C_MemTxCpltCallback(I2C_HandleTypeDef *hi2c)

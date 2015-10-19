@@ -361,7 +361,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
@@ -551,11 +551,6 @@
               <FileName>FreeRTOS.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\support\FreeRTOS\include\FreeRTOS.h</FilePath>
-            </File>
-            <File>
-              <FileName>FreeRTOSConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\support\FreeRTOS\include\FreeRTOSConfig.h</FilePath>
             </File>
             <File>
               <FileName>list.h</FileName>
@@ -1178,6 +1173,11 @@
           <GroupName>conf</GroupName>
           <Files>
             <File>
+              <FileName>FreeRTOSConfig.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\support\FreeRTOS\include\FreeRTOSConfig.h</FilePath>
+            </File>
+            <File>
               <FileName>stm32l0xx_hal_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\app\conf\stm32l0xx_hal_conf.h</FilePath>
@@ -1276,6 +1276,11 @@
               <FileName>sensor_conversions.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\cross-platform\inc\sensor_conversions.h</FilePath>
+            </File>
+            <File>
+              <FileName>radio_packets.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\cross-platform\inc\radio_packets.h</FilePath>
             </File>
           </Files>
         </Group>
