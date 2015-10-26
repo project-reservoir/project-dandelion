@@ -68,8 +68,12 @@
 #define SMS_SET_ADDRESS             0x01
 #define SMS_GET_ADDRESS             0x02
 
-void SensorsTaskOSInit(void);
-void SensorsTaskHwInit(void);
-void SensorsTask(void);
+#define DEFAULT_POLL_RATE           60 * 1000
+
+void        SensorsTaskOSInit(void);
+void        SensorsTaskHwInit(void);
+void        SensorsTask(void);
+void        SensorsChangePollingRate(uint32_t ms);
+uint32_t    SensorsGetPollingRate(void);
 
 #endif // _SENSORS_H

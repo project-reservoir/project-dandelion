@@ -335,6 +335,7 @@ void RadioTaskHandleIRQ(void)
     uint8_t                         chipInt = 0;
     uint8_t                         modemInt = 0;
     fw_update_payload_message_t*    fwup_msg;
+    radio_message_t*                generic_msg;
     
     // Get rid of annoying warnings
     (void)modemInt;
@@ -385,6 +386,17 @@ void RadioTaskHandleIRQ(void)
                 {
                     FwUpdateWriteWord(fwup_msg->payload[i]);
                 }
+                break;
+                
+            case PING:
+                generic_msg = pvPortMalloc(sizeof(radio_message_t));
+            
+                // TODO: check we didn't run out of RAM (we should catch this in the 
+                //       application Malloc failed handler, but just in case)
+            
+                generic_msg->ping.cmd = PING;
+            
+                SendToBroadcast((uint8_t*)generic_msg, sizeof(radio_message_t));
                 break;
         }
         

@@ -7,7 +7,11 @@
 #include "debug.h"
 #include "fw_update.h"
 #include "flash.h"
+#include "radio.h"
+#include "radio_packets.h"
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 // Minimum message size includes the ':' starting character and the \n
 #define MIN_INTEL_MESSAGE_LEN   12
@@ -31,6 +35,7 @@ uint8_t intel_hex_payload[MAX_INTEL_PAYLOAD];
 static void processString(char* str);
 static uint8_t string_len(char* str);
 static void processDebugCommand(char* str, uint8_t len);
+static void processRadioCommand(char* str, uint8_t len);
 static void ParseIntelHex(char* str, uint8_t len);
 static uint8_t HexToNibble(char ch);
 
@@ -310,6 +315,8 @@ void processString(char* str)
     uint8_t len = string_len(str);
     uint8_t i;
     
+    // TODO: check len > 0
+    
     ConsolePrint("\r\n");
     
     switch(str[0])
@@ -342,6 +349,9 @@ void processString(char* str)
         case 'd':
             processDebugCommand(str, len);
             break;
+        case 'x':
+            processRadioCommand(str, len);
+            break;
         case 'v':
             ConsolePrint("DANDELION OS V ");
             ConsolePrint(APP_VERSION_STR);
@@ -366,12 +376,60 @@ void processString(char* str)
             ConsolePrint("h : print help\r\n");
             ConsolePrint("v : print version info\r\n");
             ConsolePrint("d : debug information\r\n");
+            ConsolePrint("x : radio commands\r\n");
             ConsolePrint("u : perform a fake firmware upgrade\r\n");
             ConsolePrint("r : reset commands\r\n");
             break;
     }
     
     ConsolePrint("> ");
+}
+
+void processRadioCommand(char* str, uint8_t len)
+{
+    radio_message_t* generic_msg;
+    
+    if(len >= 2)
+    {
+        switch(str[1])
+        {
+            case 'p':
+            generic_msg = pvPortMalloc(sizeof(radio_message_t));
+        
+            // TODO: check we didn't run out of RAM (we should catch this in the 
+            //       application Malloc failed handler, but just in case)
+        
+            generic_msg->ping.cmd = PING;
+        
+            SendToBroadcast((uint8_t*)generic_msg, sizeof(radio_message_t));
+            return;
+        }
+    }
+    
+    ConsolePrint("Radio Commands\r\n");
+    ConsolePrint("xp : send a radio ping packet\r\n");
+}
+
+void processSensorCommand(char* str, uint8_t len)
+{
+    radio_message_t* generic_msg;
+    uint32_t ms = 0;
+    
+    if(len >= 2)
+    {
+        switch(str[1])
+        {
+            case 'r':
+            if(str[2] == ' ')
+            {
+                ms = atoi(&str[3]);
+                return;
+            }
+        }
+    }
+    
+    ConsolePrint("Sensor Commands\r\n");
+    ConsolePrint("sr <val> : set polling rate in miliseconds\r\n");
 }
 
 void processDebugCommand(char* str, uint8_t len)

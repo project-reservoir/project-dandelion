@@ -8,14 +8,16 @@
 #include "debug.h"
 
 // Global variables
-I2C_HandleTypeDef I2CxHandle;
+I2C_HandleTypeDef   I2CxHandle;
 
-uint8_t i2cTxBuffer[I2C_BUFFER_SIZE];
-uint8_t i2cRxBuffer[I2C_BUFFER_SIZE];
+uint8_t             i2cTxBuffer[I2C_BUFFER_SIZE];
+uint8_t             i2cRxBuffer[I2C_BUFFER_SIZE];
 
-osSemaphoreId i2cSem;
+osSemaphoreId       i2cSem;
 
 SensorData          sensorData;
+
+uint32_t            pollingRate = DEFAULT_POLL_RATE; // Poll once per minute by default
 
 // Local function declarations
 static uint8_t GetTmp102Addr(uint8_t index);
@@ -264,7 +266,7 @@ void SensorsTask(void)
         // Send sensor Data to the base station
         SendSensorData();
         
-        osDelay(1000);
+        osDelay(pollingRate);
     }
 }
 
@@ -277,6 +279,8 @@ void SendSensorData(void)
     // we shouldn't be allocating the full packet size here
     // TODO: do something clever if we ran out of RAM
     radioMessage = pvPortMalloc(RADIO_MAX_PACKET_LENGTH);
+    
+    radioMessage->cmd = SENSOR_MSG;
     
     // moist 0
     tmp = Float_To_SMS(sensorData.moist0);
@@ -777,4 +781,14 @@ I2C_Status PingI2C(uint8_t addr)
     taskEXIT_CRITICAL();
     
     return retVal;
+}
+
+void SensorsChangePollingRate(uint32_t ms)
+{
+    pollingRate = ms;
+}
+
+uint32_t SensorsGetPollingRate(void)
+{
+    return pollingRate;
 }

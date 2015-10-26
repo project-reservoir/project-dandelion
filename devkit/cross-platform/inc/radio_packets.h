@@ -12,7 +12,8 @@ typedef enum {
     FW_UPD_END      = 3,
     SENSOR_MSG      = 4,
     DEVICE_INFO     = 5,
-    ACK             = 6
+    ACK             = 6,
+    PING            = 7
 } radio_cmd_t;
 
 #pragma pack(1)
@@ -69,9 +70,17 @@ typedef struct {
     uint8_t  ignd[RADIO_MSG_BYTES - 1];
 } ack_message_t;
 
+#pragma pack(1)
+typedef struct {
+    uint8_t  cmd;
+    uint8_t  ignd[RADIO_MSG_BYTES - 1];
+} ping_message_t;
+
 typedef union {
     generic_message_t           generic;
     device_info_message_t       device_info;
+    sensor_message_t            sensor;
+    ping_message_t              ping;
     fw_update_end_message_t     fw_update_end;
     fw_update_payload_message_t fw_update_payload;
     fw_update_start_message_t   fw_update_start;
