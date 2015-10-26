@@ -2,9 +2,11 @@
 #define _RADIO_PACKETS_
 
 #include "radio.h"
+#include "debug.h"
 
 #define RADIO_MSG_BYTES             RADIO_MAX_PACKET_LENGTH
-#define NUM_FW_UPDATE_PAYLOAD_WORDS 15
+#define RADIO_MAX_PAYLOAD_BYTES     (RADIO_MAX_PACKET_LENGTH - 12)
+#define NUM_FW_UPDATE_PAYLOAD_WORDS 12
 
 typedef enum {
     FW_UPD_START    = 1,
@@ -14,12 +16,14 @@ typedef enum {
     DEVICE_INFO     = 5,
     ACK             = 6,
     PING            = 7,
-    PONG            = 8
+    PONG            = 8,
+    ANNOUNCE        = 9,
+    JOIN            = 10,
+    TIME_UPDATE     = 11
 } radio_cmd_t;
 
 #pragma pack(1)
 typedef struct {
-    uint8_t  cmd;
     uint16_t moisture0;
     uint16_t moisture1;
     uint16_t moisture2;
@@ -30,67 +34,39 @@ typedef struct {
     uint16_t air_temp;
     uint16_t battery_level;
     uint16_t solar_level;
-    uint8_t  ignd[RADIO_MSG_BYTES - 21];
 } sensor_message_t;
 
 #pragma pack(1)
 typedef struct {
-    uint8_t  cmd;
     uint32_t crc32;
-    uint8_t  ignd[RADIO_MSG_BYTES - 5];
-} fw_update_start_message_t;
+} fw_update_start_payload_t;
 
 #pragma pack(1)
 typedef struct {
-    uint8_t  cmd;
     uint32_t payload[NUM_FW_UPDATE_PAYLOAD_WORDS];
-    uint8_t  ignd[RADIO_MSG_BYTES - 1 - (4 * NUM_FW_UPDATE_PAYLOAD_WORDS)];
-} fw_update_payload_message_t;
+} fw_update_payload_t;
+
+#pragma pack(1)
+typedef struct {
+    uint32_t mac;
+    uint32_t version;
+} device_info_payload_t;
 
 #pragma pack(1)
 typedef struct {
     uint8_t  cmd;
-    uint8_t  ignd[RADIO_MSG_BYTES - 1];
-} fw_update_end_message_t;
-
-#pragma pack(1)
-typedef struct {
-    uint8_t  cmd;
-    uint8_t  ignd[RADIO_MSG_BYTES - 1];
-} device_info_message_t;
-
-#pragma pack(1)
-typedef struct {
-    uint8_t  cmd;
-    uint8_t  ignd[RADIO_MSG_BYTES - 1];
+    uint8_t  flags;
+    uint16_t control;
+    uint32_t src;
+    uint32_t dst;
+    union {
+        uint8_t                     buffer[52];
+        device_info_payload_t       device_info;
+        fw_update_payload_t         fw_update_data;
+        fw_update_start_payload_t   fw_update_start;
+    } payload;
 } generic_message_t;
 
-#pragma pack(1)
-typedef struct {
-    uint8_t  cmd;
-    uint8_t  ignd[RADIO_MSG_BYTES - 1];
-} ack_message_t;
-
-#pragma pack(1)
-typedef struct {
-    uint8_t  cmd;
-    uint8_t  ignd[RADIO_MSG_BYTES - 1];
-} ping_message_t;
-
-#pragma pack(1)
-typedef struct {
-    uint8_t  cmd;
-    uint8_t  ignd[RADIO_MSG_BYTES - 1];
-} pong_message_t;
-
-typedef union {
-    generic_message_t           generic;
-    device_info_message_t       device_info;
-    sensor_message_t            sensor;
-    ping_message_t              ping;
-    fw_update_end_message_t     fw_update_end;
-    fw_update_payload_message_t fw_update_payload;
-    fw_update_start_message_t   fw_update_start;
-} radio_message_t;
+STATIC_ASSERT(sizeof(generic_message_t) == RADIO_MSG_BYTES);
 
 #endif // _RADIO_PACKETS_
