@@ -34,7 +34,7 @@ typedef struct {
     uint16_t air_temp;
     uint16_t battery_level;
     uint16_t solar_level;
-} sensor_message_t;
+} sensor_payload_t;
 
 #pragma pack(1)
 typedef struct {
@@ -64,6 +64,7 @@ typedef struct {
         device_info_payload_t       device_info;
         fw_update_payload_t         fw_update_data;
         fw_update_start_payload_t   fw_update_start;
+        sensor_payload_t            sensor_message;
     } payload;
 } generic_message_t;
 

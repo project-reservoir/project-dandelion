@@ -273,7 +273,7 @@ void SensorsTask(void)
 void SendSensorData(void)
 {
     uint16_t tmp = 0;
-    sensor_message_t* radioMessage;
+    generic_message_t* radioMessage;
     
     // TODO: we should be wrapping this data in MAC layer data in the radio task, so
     // we shouldn't be allocating the full packet size here
@@ -284,47 +284,47 @@ void SendSensorData(void)
     
     // moist 0
     tmp = Float_To_SMS(sensorData.moist0);
-    radioMessage->moisture0 = tmp;
+    radioMessage->payload.sensor_message.moisture0 = tmp;
     
     // moist 1
     tmp = Float_To_SMS(sensorData.moist1);
-    radioMessage->moisture1 = tmp;
+    radioMessage->payload.sensor_message.moisture1 = tmp;
     
     // moist 2
     tmp = Float_To_SMS(sensorData.moist2);
-    radioMessage->moisture2 = tmp;
+    radioMessage->payload.sensor_message.moisture2 = tmp;
     
     // humid
     tmp = Float_To_HTU21D_Humid(sensorData.humid);
-    radioMessage->humid = tmp;
+    radioMessage->payload.sensor_message.humid = tmp;
     
     // temp 0
     tmp = Float_To_TMP102(sensorData.temp0);
-    radioMessage->temp0 = tmp;
+    radioMessage->payload.sensor_message.temp0 = tmp;
     
     // temp 1
     tmp = Float_To_TMP102(sensorData.temp1);
-    radioMessage->temp1 = tmp;
+    radioMessage->payload.sensor_message.temp1 = tmp;
     
     // temp 2
     tmp = Float_To_TMP102(sensorData.temp2);
-    radioMessage->temp2 = tmp;
+    radioMessage->payload.sensor_message.temp2 = tmp;
    
     // air temp
     tmp = Float_To_HTU21D_Temp(sensorData.tempAir);
-    radioMessage->air_temp = tmp;
+    radioMessage->payload.sensor_message.air_temp = tmp;
     
     // TODO: find a way to collect battery and solar panel data
     
     // battery level
-    radioMessage->battery_level = 0;
+    radioMessage->payload.sensor_message.battery_level = 0;
     
     // solar level
-    radioMessage->solar_level = 0;
+    radioMessage->payload.sensor_message.solar_level = 0;
     
     DEBUG("(SENSORS_TASK) Sending sensor message to radio task\r\n");
     
-    SendToBroadcast((uint8_t*)radioMessage, sizeof(sensor_message_t));
+    SendToBaseStation((uint8_t*)radioMessage, sizeof(generic_message_t));
 }
 
 void HAL_I2C_MemTxCpltCallback(I2C_HandleTypeDef *hi2c)

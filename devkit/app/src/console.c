@@ -387,21 +387,21 @@ void processString(char* str)
 
 void processRadioCommand(char* str, uint8_t len)
 {
-    radio_message_t* generic_msg;
+    generic_message_t* generic_msg;
     
     if(len >= 2)
     {
         switch(str[1])
         {
             case 'p':
-            generic_msg = pvPortMalloc(sizeof(radio_message_t));
+            generic_msg = pvPortMalloc(sizeof(generic_message_t));
         
             // TODO: check we didn't run out of RAM (we should catch this in the 
             //       application Malloc failed handler, but just in case)
         
-            generic_msg->ping.cmd = PING;
+            generic_msg->cmd = PING;
         
-            SendToBroadcast((uint8_t*)generic_msg, sizeof(radio_message_t));
+            SendToBroadcast((uint8_t*)generic_msg, sizeof(generic_message_t));
             return;
         }
     }
@@ -412,7 +412,6 @@ void processRadioCommand(char* str, uint8_t len)
 
 void processSensorCommand(char* str, uint8_t len)
 {
-    radio_message_t* generic_msg;
     uint32_t ms = 0;
     
     if(len >= 2)
