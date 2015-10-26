@@ -35,6 +35,7 @@ static NetworkInfo    network;
 static uint8_t SendRadioConfig(void);
 static void    Radio_StartTx_Variable_Packet(uint8_t channel, uint8_t *pioRadioPacket, uint8_t length);
 static void    SignalRadioTXNeeded(void);
+static void    Radio_StartRX(uint8_t channel);
 
 // Global function implementations
 void RadioTaskOSInit(void)
@@ -137,22 +138,16 @@ void RadioTaskHwInit(void)
     
     HAL_GPIO_Init(RADIO_GP1_GPIO_PORT, &GPIO_InitStruct);
     
-    // Configure User pushbutton for radio testing
-    
     KEY_BUTTON_GPIO_CLK_ENABLE();
     
+    // Configure Pushbutton
     GPIO_InitStruct.Pin        = KEY_BUTTON_PIN;
     GPIO_InitStruct.Pull       = GPIO_NOPULL;
     GPIO_InitStruct.Mode       = GPIO_MODE_IT_FALLING;   
     GPIO_InitStruct.Speed      = GPIO_SPEED_FAST;
     GPIO_InitStruct.Alternate  = 0x00;
     
-    HAL_GPIO_Init(KEY_BUTTON_GPIO_PORT, &GPIO_InitStruct);    
-
-    /*##-3- Configure the NVIC for SPI #########################################*/
-    /* NVIC for SPI */
-    //HAL_NVIC_SetPriority(SPIx_IRQn, 0, 1);
-    //HAL_NVIC_EnableIRQ(SPIx_IRQn);
+    HAL_GPIO_Init(KEY_BUTTON_GPIO_PORT, &GPIO_InitStruct);
     
     // Initially de-select SPI devices
     HAL_GPIO_WritePin(SPIx_NSS_GPIO_PORT, SPIx_NSS_PIN, GPIO_PIN_SET);
@@ -183,10 +178,6 @@ void RadioTask(void)
     // Now that the radio has been configured, enable radio interrupts
     HAL_NVIC_SetPriority(NIRQ_IRQn, 0, 1);
     HAL_NVIC_EnableIRQ(NIRQ_IRQn);
-    
-    // Enable User pushbutton IRQ
-    HAL_NVIC_SetPriority(KEY_BUTTON_EXTI_IRQn, 0, 1);
-    HAL_NVIC_EnableIRQ(KEY_BUTTON_EXTI_IRQn);
     
     while(1)
     {               
@@ -329,6 +320,21 @@ void Radio_StartTx_Variable_Packet(uint8_t channel, uint8_t *pioRadioPacket, uin
    si446x_start_tx(channel, 0x30, length);
 }
 
+void Radio_StartRX(uint8_t channel)
+{
+    // Read ITs, clear pending ones
+    si446x_get_int_status(0u, 0u, 0u);
+
+    // Reset the FIFO
+    si446x_fifo_info(SI446X_CMD_FIFO_INFO_ARG_FIFO_RX_BIT);
+
+    /* Start Receiving packet, channel 0, START immediately, Packet n bytes long */
+    si446x_start_rx(channel, 0u, RadioConfiguration.Radio_PacketLength,
+                      SI446X_CMD_START_RX_ARG_NEXT_STATE1_RXTIMEOUT_STATE_ENUM_NOCHANGE,
+                      SI446X_CMD_START_RX_ARG_NEXT_STATE2_RXVALID_STATE_ENUM_READY,
+                      SI446X_CMD_START_RX_ARG_NEXT_STATE3_RXINVALID_STATE_ENUM_RX );
+}
+
 void RadioTaskHandleIRQ(void)
 {
     uint8_t                         phInt = 0;
@@ -345,9 +351,9 @@ void RadioTaskHandleIRQ(void)
     si446x_get_int_status(0u, 0u, 0u);
     
     // Only process status flags if they triggered this interrupt
-    phInt = Si446xCmd.GET_INT_STATUS.PH_PEND & Si446xCmd.GET_INT_STATUS.PH_STATUS;
-    chipInt = Si446xCmd.GET_INT_STATUS.CHIP_PEND & Si446xCmd.GET_INT_STATUS.CHIP_STATUS;
-    modemInt = Si446xCmd.GET_INT_STATUS.MODEM_PEND & Si446xCmd.GET_INT_STATUS.MODEM_STATUS;      
+    phInt = Si446xCmd.GET_INT_STATUS.PH_PEND; // & Si446xCmd.GET_INT_STATUS.PH_STATUS;
+    chipInt = Si446xCmd.GET_INT_STATUS.CHIP_PEND; // & Si446xCmd.GET_INT_STATUS.CHIP_STATUS;
+    modemInt = Si446xCmd.GET_INT_STATUS.MODEM_PEND; // & Si446xCmd.GET_INT_STATUS.MODEM_STATUS;      
     
     // PACKET_SENT
     if(phInt & PACKET_SENT)
@@ -427,4 +433,6 @@ void RadioTaskHandleIRQ(void)
     //  INVALID_SYNC
     //  TX_FIFO_ALMOST_EMPTY
     //  RX_FIFO_ALMOST_FULL
+    
+    Radio_StartRX(pRadioConfiguration->Radio_ChannelNumber);
 }

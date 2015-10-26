@@ -413,6 +413,11 @@
           <GroupName>app/src</GroupName>
           <Files>
             <File>
+              <FileName>system_interrupts.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\system_interrupts.c</FilePath>
+            </File>
+            <File>
               <FileName>hwctrl.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\src\hwctrl.c</FilePath>
@@ -1187,11 +1192,6 @@
               <FileType>1</FileType>
               <FilePath>.\app\conf\system_stm32l0xx.c</FilePath>
             </File>
-            <File>
-              <FileName>radio_config.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\app\conf\radio_config.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -1291,11 +1291,6 @@
               <FileName>header.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\app\src\header.s</FilePath>
-            </File>
-            <File>
-              <FileName>system_interrupts.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\src\system_interrupts.c</FilePath>
             </File>
             <File>
               <FileName>weak_interrupts.c</FileName>

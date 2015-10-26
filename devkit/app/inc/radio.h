@@ -29,7 +29,7 @@
 #define SPIx_MOSI_GPIO_PORT              GPIOB
 #define SPIx_MOSI_AF                     GPIO_AF0_SPI2
 
-#define RADIO_NIRQ_PIN                   GPIO_PIN_0
+#define RADIO_NIRQ_PIN                   GPIO_PIN_5
 #define RADIO_NIRQ_GPIO_PORT             GPIOB
 #define NIRQ_IRQn                        EXTI4_15_IRQn
 

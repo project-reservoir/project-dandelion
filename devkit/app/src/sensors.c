@@ -324,7 +324,7 @@ void SendSensorData(void)
     
     DEBUG("(SENSORS_TASK) Sending sensor message to radio task\r\n");
     
-    SendToBroadcast((uint8_t*)radioMessage, RADIO_MAX_PACKET_LENGTH);
+    SendToBroadcast((uint8_t*)radioMessage, sizeof(sensor_message_t));
 }
 
 void HAL_I2C_MemTxCpltCallback(I2C_HandleTypeDef *hi2c)
