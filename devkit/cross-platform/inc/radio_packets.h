@@ -13,7 +13,8 @@ typedef enum {
     SENSOR_MSG      = 4,
     DEVICE_INFO     = 5,
     ACK             = 6,
-    PING            = 7
+    PING            = 7,
+    PONG            = 8
 } radio_cmd_t;
 
 #pragma pack(1)
@@ -75,6 +76,12 @@ typedef struct {
     uint8_t  cmd;
     uint8_t  ignd[RADIO_MSG_BYTES - 1];
 } ping_message_t;
+
+#pragma pack(1)
+typedef struct {
+    uint8_t  cmd;
+    uint8_t  ignd[RADIO_MSG_BYTES - 1];
+} pong_message_t;
 
 typedef union {
     generic_message_t           generic;

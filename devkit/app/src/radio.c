@@ -389,15 +389,20 @@ void RadioTaskHandleIRQ(void)
                 break;
                 
             case PING:
+				DEBUG("PING");
                 generic_msg = pvPortMalloc(sizeof(radio_message_t));
             
                 // TODO: check we didn't run out of RAM (we should catch this in the 
                 //       application Malloc failed handler, but just in case)
             
-                generic_msg->ping.cmd = PING;
+                generic_msg->ping.cmd = PONG;
             
                 SendToBroadcast((uint8_t*)generic_msg, sizeof(radio_message_t));
                 break;
+			
+			case PONG:
+				DEBUG("PONG");
+				break;
         }
         
         // TODO: send ACK
