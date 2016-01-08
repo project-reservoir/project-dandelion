@@ -169,6 +169,14 @@ void RadioTask(void)
     {
         if(SendRadioConfig() == SI446X_SUCCESS)
         {
+            // Verify the radio actually came up:
+            si446x_part_info();
+            
+            if(Si446xCmd.PART_INFO.PART != 0x4463)
+            {
+                ERR("Radio did not return correct part number!\n");
+            }
+            
             radioConfigured = 1;
         }
         else
@@ -177,6 +185,7 @@ void RadioTask(void)
             // TODO: consider entering an ultra-low power mode if radio config fails?
             //       We can't send sensor readings without the radio, so performing
             //       sensor polling is probably a waste of power
+            __BKPT(0);
         }
     }
     
@@ -242,6 +251,7 @@ void RadioLinkManagementTask(void)
         {
             // Try and join the network. If success, enter CONNECTED state, else return to LOOKING_FOR_BASE_STATION
             case CONNECTING:
+                DEBUG("Connecting to base station...\r\n");
                 osDelay(10000);
                 break;
             
@@ -253,6 +263,7 @@ void RadioLinkManagementTask(void)
             
             // Send ANNOUNCE packets every 20 seconds and see if we get a reply
             case SEARCHING:
+                DEBUG("Sending ANNOUNCE packet...\r\n");
                 generic_msg = pvPortMalloc(sizeof(generic_message_t));
                 
                 // TODO: check we didn't run out of RAM (we should catch this in the 
@@ -297,9 +308,16 @@ void SendToBaseStation(uint8_t* data, uint8_t size)
     
     // TODO: Check that this actually succeeded, and don't block forever.
     //       Might need to return a status to indicate to calling function that we failed to send message
-    osMessagePut(radioTxMsgQ, (uint32_t)message, osWaitForever);
+    if(osMessagePut(radioTxMsgQ, (uint32_t)message, osWaitForever) == osOK)
+    {
+        SignalRadioTXNeeded();
+    }
+    else
+    {
+        DEBUG("SendToBaseStation failed due to message queue error\r\n");
+    }
     
-    SignalRadioTXNeeded();
+    
 }
 
 // The pointer passed into this function should have been allocated using 
@@ -313,9 +331,14 @@ void SendToBroadcast(uint8_t* data, uint8_t size)
     
     // TODO: Check that this actually succeeded, and don't block forever.
     //       Might need to return a status to indicate to calling function that we failed to send message
-    osMessagePut(radioTxMsgQ, (uint32_t)message, osWaitForever);
-    
-    SignalRadioTXNeeded();
+    if(osMessagePut(radioTxMsgQ, (uint32_t)message, 0) == osOK)
+    {
+        SignalRadioTXNeeded();
+    }
+    else
+    {
+        DEBUG("SendToBroadcast failed due to message queue error\r\n");
+    }
 }
 
 // Local function implementations
@@ -408,11 +431,13 @@ void RadioTaskHandleIRQ(void)
     if(phInt & PACKET_SENT)
     {
         // TODO: Packet was transmitted, move to the "wait for ACK" state
+        DEBUG("Packet TX completed event\r\n");
     }
     
     // PACKET_RX
     if(phInt & PACKET_RX)
     {
+        DEBUG("Packet RX event\r\n");
         si446x_read_rx_fifo(RadioConfiguration.Radio_PacketLength, rxBuff);
         generic_message_t* message = (generic_message_t*)rxBuff;
         generic_message_t* generic_msg;
@@ -446,7 +471,7 @@ void RadioTaskHandleIRQ(void)
                     break;
                     
                 case PING:
-                    DEBUG("PING");
+                    INFO("PING\r\n");
                     generic_msg = pvPortMalloc(sizeof(generic_message_t));
                 
                     // TODO: check we didn't run out of RAM (we should catch this in the 
@@ -460,10 +485,11 @@ void RadioTaskHandleIRQ(void)
                     break;
                 
                 case PONG:
-                    DEBUG("PONG");
+                    INFO("PONG\r\n");
                     break;
                 
                 case JOIN:
+                    INFO("Received JOIN message. Connecting to base station...\r\n");
                     radioTaskState = CONNECTED;
                     network.baseStationMac = message->src;
                     break;

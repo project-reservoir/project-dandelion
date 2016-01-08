@@ -186,7 +186,7 @@ void SensorsTask(void)
                     WARN("(SENSORS_TASK) Temp sensor read failed\r\n");
                 }
                 // The sensor is still alive! Restore it to a full 3 chances to respond
-                else
+                else if(enabledSensors[i] != 3)
                 {
                     enabledSensors[i] = 3;
                     DEBUG("(SENSORS_TASK) Temp sensor connection restored\r\n");
@@ -204,7 +204,7 @@ void SensorsTask(void)
                     WARN("(SENSORS_TASK) Humidity sensor read failed\r\n");
                     break;
                 }
-                else
+                else if(enabledSensors[3] != 3)
                 {
                    enabledSensors[3] = 3;
                    DEBUG("(SENSORS_TASK) Humidity sensor connection restored\r\n");
@@ -216,7 +216,7 @@ void SensorsTask(void)
                     enabledSensors[3]--;
                     WARN("(SENSORS_TASK) Air temp sensor read failed\r\n");
                 }
-                else
+                else if(enabledSensors[3] != 3)
                 {
                    enabledSensors[3] = 3;
                    DEBUG("(SENSORS_TASK) Air temp sensor connection restored\r\n");
@@ -253,7 +253,7 @@ void SensorsTask(void)
                     WARN("(SENSORS_TASK) Soil moisture sensor read failed\r\n");
                 }
                 // The sensor is still alive! Restore it to a full 3 chances to respond
-                else
+                else if(enabledSensors[i] != 3)
                 {
                     enabledSensors[i] = 3;
                     DEBUG("(SENSORS_TASK) Soil moisture sensor connection restored\r\n");
