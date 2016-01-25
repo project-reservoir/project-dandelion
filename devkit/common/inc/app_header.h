@@ -1,7 +1,7 @@
 #ifndef __APP_HEADER_H
 #define __APP_HEADER_H
 
-#include "stm32l0xx_hal.h"
+#include "cmsis_os.h"
 
 #define xstr(s) str(s)
 #define str(s) #s
@@ -25,8 +25,8 @@ typedef struct APP_HEADER_T {
 	uint32_t crc32_start_mark;
 	uint32_t version;
 	uint32_t entry_point;
-	uint32_t ro_size;
-	uint32_t rw_size;
+	uint32_t image_size;
+	uint32_t reserved;
     
     uint32_t initial_sp;
     

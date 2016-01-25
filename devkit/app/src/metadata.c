@@ -20,8 +20,8 @@ const APP_HEADER __Vectors __attribute__((section("HEADER"))) __attribute__((use
 	0xDEADBEEF, // the CRC32 start mark
 	APP_VERSION, // version
 	sizeof(APP_HEADER) + 0x00000090, // Reset_Handler, the entry point for this application (this calls SystemInit and __main, which in turn calls the application main)
-	(uint32_t)(&Image$$ER_IROM1$$Length), // ro_size
-	(uint32_t)(&Image$$RW_IRAM1$$Length), // rw_size
+	0xFFFFFFFF, // image_size
+	0x00000000, // reserved
     
     (uint32_t)(&__initial_sp),
 	sizeof(APP_HEADER) + 0x00000000, // ADC1_COMP
