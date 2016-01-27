@@ -3,7 +3,7 @@
  * configurations.
  *
  * @n WDS GUI Version: 3.2.9.0
- * @n Device: Si4463 Rev.: C2                                 
+ * @n Device: Si4468 Rev.: A2                                 
  *
  * @b COPYRIGHT
  * @n Silicon Laboratories Confidential
@@ -42,8 +42,6 @@
 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, 0xC5, \
 0xC5, 0xC5, 0xC5, 0xC5}
 
-#include "si446x_patch.h"
-
 
 // CONFIGURATION COMMANDS
 
@@ -51,7 +49,7 @@
 // Command:                  RF_POWER_UP
 // Description:              Command to power-up the device and select the operational mode and functionality.
 */
-#define RF_POWER_UP 0x02, 0x81, 0x00, 0x01, 0xC9, 0xC3, 0x80
+#define RF_POWER_UP 0x02, 0x01, 0x00, 0x01, 0xC9, 0xC3, 0x80
 
 /*
 // Command:                  RF_GPIO_PIN_CFG
@@ -128,11 +126,11 @@
 #define RF_PREAMBLE_TX_LENGTH_9 0x11, 0x10, 0x09, 0x00, 0x08, 0x14, 0x00, 0x0F, 0x31, 0x00, 0x00, 0x00, 0x00
 
 /*
-// Set properties:           RF_SYNC_CONFIG_6
-// Number of properties:     6
+// Set properties:           RF_SYNC_CONFIG_10
+// Number of properties:     10
 // Group ID:                 0x11
 // Start ID:                 0x00
-// Default values:           0x01, 0x2D, 0xD4, 0x2D, 0xD4, 0x00, 
+// Default values:           0x01, 0x2D, 0xD4, 0x2D, 0xD4, 0x00, 0x2D, 0xD4, 0x2D, 0xD4, 
 // Descriptions:
 //   SYNC_CONFIG - Sync Word configuration bits.
 //   SYNC_BITS_31_24 - Sync word.
@@ -140,8 +138,12 @@
 //   SYNC_BITS_15_8 - Sync word.
 //   SYNC_BITS_7_0 - Sync word.
 //   SYNC_CONFIG2 - Sync Word configuration bits.
+//   SYNC_BITS2_31_24 - Sync word 2.
+//   SYNC_BITS2_23_16 - Sync word 2.
+//   SYNC_BITS2_15_8 - Sync word 2.
+//   SYNC_BITS2_7_0 - Sync word 2.
 */
-#define RF_SYNC_CONFIG_6 0x11, 0x11, 0x06, 0x00, 0x01, 0xB4, 0x2B, 0x00, 0x00, 0x00
+#define RF_SYNC_CONFIG_10 0x11, 0x11, 0x0A, 0x00, 0x01, 0xB4, 0x2B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 /*
 // Set properties:           RF_PKT_CRC_CONFIG_7
@@ -541,7 +543,7 @@
 //   PA_BIAS_CLKDUTY - Configuration of the PA Bias and duty cycle of the TX clock source.
 //   PA_TC - Configuration of PA ramping parameters.
 */
-#define RF_PA_MODE_4 0x11, 0x22, 0x04, 0x00, 0x08, 0x7F, 0x00, 0x1D
+#define RF_PA_MODE_4 0x11, 0x22, 0x04, 0x00, 0x08, 0x0F, 0x00, 0x1D
 
 /*
 // Set properties:           RF_SYNTH_PFDCP_CPFF_7
@@ -607,7 +609,6 @@
 
 #ifndef FIRMWARE_LOAD_COMPILE
 #define RADIO_CONFIGURATION_DATA_ARRAY { \
-        SI446X_PATCH_CMDS, \
         0x07, RF_POWER_UP, \
         0x08, RF_GPIO_PIN_CFG, \
         0x06, RF_GLOBAL_XO_TUNE_2, \
@@ -615,7 +616,7 @@
         0x06, RF_INT_CTL_ENABLE_2, \
         0x08, RF_FRR_CTL_A_MODE_4, \
         0x0D, RF_PREAMBLE_TX_LENGTH_9, \
-        0x0A, RF_SYNC_CONFIG_6, \
+        0x0E, RF_SYNC_CONFIG_10, \
         0x0B, RF_PKT_CRC_CONFIG_7, \
         0x10, RF_PKT_LEN_12, \
         0x10, RF_PKT_FIELD_2_CRC_CONFIG_12, \

@@ -141,17 +141,6 @@ void RadioTaskHwInit(void)
     
     HAL_GPIO_Init(RADIO_GP1_GPIO_PORT, &GPIO_InitStruct);
     
-    KEY_BUTTON_GPIO_CLK_ENABLE();
-    
-    // Configure Pushbutton
-    GPIO_InitStruct.Pin        = KEY_BUTTON_PIN;
-    GPIO_InitStruct.Pull       = GPIO_NOPULL;
-    GPIO_InitStruct.Mode       = GPIO_MODE_IT_FALLING;   
-    GPIO_InitStruct.Speed      = GPIO_SPEED_FAST;
-    GPIO_InitStruct.Alternate  = 0x00;
-    
-    HAL_GPIO_Init(KEY_BUTTON_GPIO_PORT, &GPIO_InitStruct);
-    
     // Initially de-select SPI devices
     HAL_GPIO_WritePin(SPIx_NSS_GPIO_PORT, SPIx_NSS_PIN, GPIO_PIN_SET);
 }
@@ -172,7 +161,13 @@ void RadioTask(void)
             // Verify the radio actually came up:
             si446x_part_info();
             
+            #ifdef DEVKIT
             if(Si446xCmd.PART_INFO.PART != 0x4463)
+            #elif DANDELION
+            if(Si446xCmd.PART_INFO.PART != 0x4468)
+            #else
+            #error "Please select a device type"
+            #endif
             {
                 ERR("Radio did not return correct part number!\n");
             }
@@ -493,6 +488,26 @@ void RadioTaskHandleIRQ(void)
                     radioTaskState = CONNECTED;
                     network.baseStationMac = message->src;
                     break;
+                
+                case RSSI:
+                    DEBUG("Received RSSI message. Sending RSSI values...\r\n");
+                
+                    si446x_get_modem_status(0xFF);
+                
+                    generic_msg = pvPortMalloc(sizeof(generic_message_t));
+                
+                    // TODO: check we didn't run out of RAM (we should catch this in the 
+                    //       application Malloc failed handler, but just in case)
+                    
+                    generic_msg->cmd = RSSI;
+                    generic_msg->dst = message->src;
+                    generic_msg->src = RadioGetMACAddress();
+                    generic_msg->payload.rssi_message.curr_rssi  = Si446xCmd.GET_MODEM_STATUS.CURR_RSSI;
+                    generic_msg->payload.rssi_message.latch_rssi = Si446xCmd.GET_MODEM_STATUS.LATCH_RSSI;
+                    generic_msg->payload.rssi_message.ant1_rssi  = Si446xCmd.GET_MODEM_STATUS.ANT1_RSSI;
+                    generic_msg->payload.rssi_message.ant2_rssi  = Si446xCmd.GET_MODEM_STATUS.ANT2_RSSI;
+                
+                    SendToDevice((uint8_t*)generic_msg, sizeof(generic_message_t), message->src);
             }
             // TODO: send ACK
         }

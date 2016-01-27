@@ -82,17 +82,17 @@
         <Book>
           <Number>0</Number>
           <Title>User Manual (STM32L053-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Boards\ST\STM32L053-Discovery\Documents\DM00118944.pdf</Path>
+          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.4.0\Boards\ST\STM32L053-Discovery\Documents\DM00118944.pdf</Path>
         </Book>
         <Book>
           <Number>1</Number>
           <Title>Data Brief (STM32L053-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Boards\ST\STM32L053-Discovery\Documents\DM00122138.pdf</Path>
+          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.4.0\Boards\ST\STM32L053-Discovery\Documents\DM00122138.pdf</Path>
         </Book>
         <Book>
           <Number>2</Number>
           <Title>Schematics (STM32L053-Discovery)</Title>
-          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.3.0\Boards\ST\STM32L053-Discovery\Documents\MB1143.pdf</Path>
+          <Path>C:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1.4.0\Boards\ST\STM32L053-Discovery\Documents\MB1143.pdf</Path>
         </Book>
         <Book>
           <Number>3</Number>
@@ -200,6 +200,54 @@
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>167</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>&lt;1&gt;.\app\src\radio.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>173</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>&lt;1&gt;.\app\src\radio.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>161</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>&lt;1&gt;.\app\src\sensors.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
       </Breakpoint>
       <WatchWindow1>
         <Ww>
@@ -293,7 +341,6 @@
       <FileNumber>1</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\app\conf\stm32l0xx_hal_conf.h</PathWithFileName>
@@ -314,7 +361,6 @@
       <FileNumber>2</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\bootloader\src\main.c</PathWithFileName>
@@ -327,7 +373,6 @@
       <FileNumber>3</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\bootloader\src\system_interrupts.c</PathWithFileName>
@@ -340,7 +385,6 @@
       <FileNumber>4</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\bootloader\src\app_header.c</PathWithFileName>
@@ -353,7 +397,6 @@
       <FileNumber>5</FileNumber>
       <FileType>2</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\bootloader\src\launch.s</PathWithFileName>
@@ -374,7 +417,6 @@
       <FileNumber>6</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\bootloader\inc\hwctrl.h</PathWithFileName>
@@ -387,7 +429,6 @@
       <FileNumber>7</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\bootloader\inc\system_interrupts.h</PathWithFileName>
@@ -400,7 +441,6 @@
       <FileNumber>8</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
-      <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\common\inc\app_header.h</PathWithFileName>

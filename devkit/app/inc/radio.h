@@ -3,50 +3,90 @@
 
 #include "stm32l0xx_hal.h"
 
-#define SPIx                             SPI2
-#define SPIx_CLK_ENABLE()                __SPI2_CLK_ENABLE()
-#define SPIx_SCK_GPIO_CLK_ENABLE()       __GPIOB_CLK_ENABLE()
-#define SPIx_MISO_GPIO_CLK_ENABLE()      __GPIOB_CLK_ENABLE() 
-#define SPIx_MOSI_GPIO_CLK_ENABLE()      __GPIOB_CLK_ENABLE() 
+#ifdef DEVKIT
 
-#define SPIx_FORCE_RESET()               __SPI2_FORCE_RESET()
-#define SPIx_RELEASE_RESET()             __SPI2_RELEASE_RESET()
+    #define SPIx                             SPI2
+    #define SPIx_CLK_ENABLE()                __SPI2_CLK_ENABLE()
+    #define SPIx_SCK_GPIO_CLK_ENABLE()       __GPIOB_CLK_ENABLE()
+    #define SPIx_MISO_GPIO_CLK_ENABLE()      __GPIOB_CLK_ENABLE() 
+    #define SPIx_MOSI_GPIO_CLK_ENABLE()      __GPIOB_CLK_ENABLE() 
 
-/* Definition for SPIx Pins */
-#define SPIx_NSS_PIN                     GPIO_PIN_12
-#define SPIx_NSS_GPIO_PORT               GPIOB
-#define SPIx_NSS_AF                      GPIO_AF0_SPI2
+    #define SPIx_FORCE_RESET()               __SPI2_FORCE_RESET()
+    #define SPIx_RELEASE_RESET()             __SPI2_RELEASE_RESET()
 
-#define SPIx_SCK_PIN                     GPIO_PIN_13
-#define SPIx_SCK_GPIO_PORT               GPIOB
-#define SPIx_SCK_AF                      GPIO_AF0_SPI2
+    /* Definition for SPIx Pins */
+    #define SPIx_NSS_PIN                     GPIO_PIN_12
+    #define SPIx_NSS_GPIO_PORT               GPIOB
+    #define SPIx_NSS_AF                      GPIO_AF0_SPI2
 
-#define SPIx_MISO_PIN                    GPIO_PIN_14
-#define SPIx_MISO_GPIO_PORT              GPIOB
-#define SPIx_MISO_AF                     GPIO_AF0_SPI2
+    #define SPIx_SCK_PIN                     GPIO_PIN_13
+    #define SPIx_SCK_GPIO_PORT               GPIOB
+    #define SPIx_SCK_AF                      GPIO_AF0_SPI2
 
-#define SPIx_MOSI_PIN                    GPIO_PIN_15
-#define SPIx_MOSI_GPIO_PORT              GPIOB
-#define SPIx_MOSI_AF                     GPIO_AF0_SPI2
+    #define SPIx_MISO_PIN                    GPIO_PIN_14
+    #define SPIx_MISO_GPIO_PORT              GPIOB
+    #define SPIx_MISO_AF                     GPIO_AF0_SPI2
 
-#define RADIO_NIRQ_PIN                   GPIO_PIN_5
-#define RADIO_NIRQ_GPIO_PORT             GPIOB
-#define NIRQ_IRQn                        EXTI4_15_IRQn
+    #define SPIx_MOSI_PIN                    GPIO_PIN_15
+    #define SPIx_MOSI_GPIO_PORT              GPIOB
+    #define SPIx_MOSI_AF                     GPIO_AF0_SPI2
 
-#define RADIO_SDL_PIN                    GPIO_PIN_2
-#define RADIO_SDL_GPIO_PORT              GPIOB
+    #define RADIO_NIRQ_PIN                   GPIO_PIN_5
+    #define RADIO_NIRQ_GPIO_PORT             GPIOB
+    #define NIRQ_IRQn                        EXTI4_15_IRQn
 
-#define RADIO_GP1_PIN                    GPIO_PIN_10
-#define RADIO_GP1_GPIO_PORT              GPIOB
+    #define RADIO_SDL_PIN                    GPIO_PIN_2
+    #define RADIO_SDL_GPIO_PORT              GPIOB
 
-#define KEY_BUTTON_PIN                   GPIO_PIN_0
-#define KEY_BUTTON_GPIO_PORT             GPIOA
-#define KEY_BUTTON_GPIO_CLK_ENABLE()     __GPIOA_CLK_ENABLE()
-#define KEY_BUTTON_GPIO_CLK_DISABLE()    __GPIOA_CLK_DISABLE()
-#define KEY_BUTTON_EXTI_LINE             GPIO_PIN_0
-#define KEY_BUTTON_EXTI_IRQn             EXTI0_1_IRQn
+    #define RADIO_GP1_PIN                    GPIO_PIN_10
+    #define RADIO_GP1_GPIO_PORT              GPIOB
 
-#define SPIx_IRQn                        SPI2_IRQn
+    #define SPIx_IRQn                        SPI2_IRQn
+
+#elif DANDELION
+
+    #define SPIx                             SPI2
+    #define SPIx_CLK_ENABLE()                __SPI2_CLK_ENABLE()
+    #define SPIx_SCK_GPIO_CLK_ENABLE()       __GPIOB_CLK_ENABLE()
+    #define SPIx_MISO_GPIO_CLK_ENABLE()      __GPIOB_CLK_ENABLE() 
+    #define SPIx_MOSI_GPIO_CLK_ENABLE()      __GPIOB_CLK_ENABLE() 
+
+    #define SPIx_FORCE_RESET()               __SPI2_FORCE_RESET()
+    #define SPIx_RELEASE_RESET()             __SPI2_RELEASE_RESET()
+
+    /* Definition for SPIx Pins */
+    #define SPIx_NSS_PIN                     GPIO_PIN_12
+    #define SPIx_NSS_GPIO_PORT               GPIOB
+    #define SPIx_NSS_AF                      GPIO_AF0_SPI2
+
+    #define SPIx_SCK_PIN                     GPIO_PIN_13
+    #define SPIx_SCK_GPIO_PORT               GPIOB
+    #define SPIx_SCK_AF                      GPIO_AF0_SPI2
+
+    #define SPIx_MISO_PIN                    GPIO_PIN_14
+    #define SPIx_MISO_GPIO_PORT              GPIOB
+    #define SPIx_MISO_AF                     GPIO_AF0_SPI2
+
+    #define SPIx_MOSI_PIN                    GPIO_PIN_15
+    #define SPIx_MOSI_GPIO_PORT              GPIOB
+    #define SPIx_MOSI_AF                     GPIO_AF0_SPI2
+
+    #define RADIO_NIRQ_PIN                   GPIO_PIN_3
+    #define RADIO_NIRQ_GPIO_PORT             GPIOB
+    #define NIRQ_IRQn                        EXTI2_3_IRQn
+
+    #define RADIO_SDL_PIN                    GPIO_PIN_4
+    #define RADIO_SDL_GPIO_PORT              GPIOB
+
+    #define RADIO_GP1_PIN                    GPIO_PIN_5
+    #define RADIO_GP1_GPIO_PORT              GPIOB
+
+    #define SPIx_IRQn                        SPI2_IRQn
+
+#else
+    #error "Device type not selected. Define DEVKIT or DANDELION in project settings"
+#endif
+
 /* Size of buffer */
 #define BUFFSIZE                         255
 

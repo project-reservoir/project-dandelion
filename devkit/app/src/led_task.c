@@ -8,16 +8,18 @@ void LedBlinkTaskHwInit(void)
 	GPIO_InitTypeDef  GPIO_InitStruct;
 
 	/* Enable the GPIO_LED Clock */
-	__GPIOB_CLK_ENABLE();
+	LEDG_GPIO_CLK_ENABLE();
+    LEDR_GPIO_CLK_ENABLE();
+    LEDB_GPIO_CLK_ENABLE();
 
 	/* Configure the GPIO_LED pin */
-	GPIO_InitStruct.Pin = LED3_PIN;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_PULLUP;
+	GPIO_InitStruct.Pin = LEDG_PIN;
+	GPIO_InitStruct.Mode = LED_GPIO_MODE;
+	GPIO_InitStruct.Pull = LED_GPIO_PULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
 
-	HAL_GPIO_Init(LED3_GPIO_PORT, &GPIO_InitStruct);
-	HAL_GPIO_WritePin(LED3_GPIO_PORT, LED3_PIN, GPIO_PIN_RESET);
+	HAL_GPIO_Init(LEDG_GPIO_PORT, &GPIO_InitStruct);
+	HAL_GPIO_WritePin(LEDG_GPIO_PORT, LEDG_PIN, GPIO_PIN_RESET);
 
 	/*__GPIOA_CLK_ENABLE();
 
@@ -36,12 +38,12 @@ void LedBlinkTask(const void *argument)
 	// Flash an LED on and off forever.
 	while(1)
 	{
-		HAL_GPIO_WritePin(LED3_GPIO_PORT, LED3_PIN, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(LEDG_GPIO_PORT, LEDG_PIN, GPIO_PIN_RESET);
         //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
 		osDelay(250);
         
         //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(LED3_GPIO_PORT, LED3_PIN, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(LEDG_GPIO_PORT, LEDG_PIN, GPIO_PIN_SET);
 
 		osDelay(250);
 	}

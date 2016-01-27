@@ -266,7 +266,8 @@ void SensorsTask(void)
         // Send sensor Data to the base station
         SendSensorData();
         
-        osDelay(pollingRate);
+        //osDelay(pollingRate);
+        osDelay(1000);
     }
 }
 

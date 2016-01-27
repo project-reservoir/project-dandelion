@@ -412,11 +412,11 @@ ARM Macro Assembler    Page 7
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
 work --depend=.\objects\startup_stm32l053xx.d -o.\objects\startup_stm32l053xx.o
- -I"C:\Users\Stuart Alldritt\Documents\GitHub\project-dandelion\devkit\RTE" -IC
-:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM
-32L0xx_DFP\1.3.0\Device\Include --predefine="__UVISION_VERSION SETA 515" --pred
-efine="_RTE_ SETA 1" --predefine="STM32L053xx SETA 1" --list=.\listings\startup
-_stm32l053xx.lst RTE\Device\STM32L053C8\startup_stm32l053xx.s
+ -IC:\Users\skall\Documents\GitHub\project-dandelion\devkit\RTE -IC:\Keil_v5\AR
+M\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\1
+.4.0\Device\Include --predefine="__UVISION_VERSION SETA 517" --predefine="_RTE_
+ SETA 1" --predefine="STM32L053xx SETA 1" --list=.\listings\startup_stm32l053xx
+.lst RTE\Device\STM32L053C8\startup_stm32l053xx.s
 
 
 

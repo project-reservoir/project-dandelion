@@ -504,7 +504,7 @@ void si446x_get_adc_reading(uint8_t ADC_EN)
  * @param LEN               Length value.
  * @param DIFF_LEN          Difference length.
  */
-void si446x_get_packet_info(uint8_t FIELD_NUMBER_MASK, U16 LEN, S16 DIFF_LEN )
+void si446x_get_packet_info(uint8_t FIELD_NUMBER_MASK, uint16_t LEN, int16_t DIFF_LEN )
 {
     Pro2Cmd[0] = SI446X_CMD_ID_PACKET_INFO;
     Pro2Cmd[1] = FIELD_NUMBER_MASK;

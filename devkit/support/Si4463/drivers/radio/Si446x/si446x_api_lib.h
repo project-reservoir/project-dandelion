@@ -64,7 +64,7 @@ void si446x_change_state(uint8_t NEXT_STATE1);
     void si446x_frr_d_read(uint8_t respByteCount);
 
     void si446x_get_adc_reading(uint8_t ADC_EN);
-    void si446x_get_packet_info(uint8_t FIELD_NUMBER_MASK, uint16_t LEN, S16 DIFF_LEN );
+    void si446x_get_packet_info(uint8_t FIELD_NUMBER_MASK, uint16_t LEN, int16_t DIFF_LEN );
     void si446x_get_ph_status(uint8_t PH_CLR_PEND);
     void si446x_get_modem_status( uint8_t MODEM_CLR_PEND );
     void si446x_get_chip_status( uint8_t CHIP_CLR_PEND );

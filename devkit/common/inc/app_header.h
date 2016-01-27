@@ -1,7 +1,7 @@
 #ifndef __APP_HEADER_H
 #define __APP_HEADER_H
 
-#include "cmsis_os.h"
+#include "stdint.h"
 
 #define xstr(s) str(s)
 #define str(s) #s
@@ -15,10 +15,10 @@
 #define APP_VERSION         0x01010101
 #define APP_VERSION_STR     xstr(APP_VERSION)
 
-#define SRAM_START			0x20000000
-#define FLASH_START			0x08000000
+#define SRAM_START				0x20000000
+#define FLASH_START				0x08000000
 #define MAIN_APP_START		0x08000800
-#define BACKUP_APP_START    0x08008400
+#define BACKUP_APP_START  0x08008400
 
 typedef struct APP_HEADER_T {
 	uint32_t crc32;
