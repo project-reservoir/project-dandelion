@@ -9,8 +9,8 @@ uint8_t txPos = 0;
 
 void UART_CharTX(USART_TypeDef* uart, char c)
 {
-    uart->TDR = c;
     while((uart->ISR & USART_ISR_TXE) != USART_ISR_TXE);
+    uart->TDR = c;
 }
 
 UART_Status UART_ReadyTX(USART_TypeDef* uart)

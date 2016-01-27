@@ -29,7 +29,7 @@
 
 #elif DANDELION
 
-// TODO: setup the second I2C device
+    // TODO: setup the second I2C device
 
     #define I2Cx                            I2C1
     #define I2Cx_CLK_ENABLE()               __I2C1_CLK_ENABLE()
@@ -51,7 +51,37 @@
     /* Definition for I2Cx's NVIC */
     #define I2Cx_IRQn                       I2C1_IRQn
     #define I2Cx_Handler                    I2C1_Handler
-
+    
+    #define CAP_IN_1_PIN                    GPIO_PIN_0
+    #define CAP_IN_1_PORT                   GPIOA
+    #define CAP_IN_1_CLK_ENABLE()           __GPIOA_CLK_ENABLE()
+    #define CAP_IN_1_TSC                    TSC_GROUP1_IO1
+    
+    #define CAP_SENSE_1_PIN                 GPIO_PIN_1
+    #define CAP_SENSE_1_PORT                GPIOA
+    #define CAP_SENSE_1_CLK_ENABLE()        __GPIOA_CLK_ENABLE()
+    #define CAP_SENSE_1_TSC                 TSC_GROUP1_IO2
+    
+    #define CAP_IN_2_PIN                    GPIO_PIN_6
+    #define CAP_IN_2_PORT                   GPIOA
+    #define CAP_IN_2_CLK_ENABLE()           __GPIOA_CLK_ENABLE()
+    #define CAP_IN_2_TSC                    TSC_GROUP2_IO3
+    
+    #define CAP_SENSE_2_PIN                 GPIO_PIN_7
+    #define CAP_SENSE_2_PORT                GPIOA
+    #define CAP_SENSE_2_CLK_ENABLE()        __GPIOA_CLK_ENABLE()
+    #define CAP_SENSE_2_TSC                 TSC_GROUP2_IO4
+    
+    #define CAP_IN_3_PIN                    GPIO_PIN_0
+    #define CAP_IN_3_PORT                   GPIOB
+    #define CAP_IN_3_CLK_ENABLE()           __GPIOB_CLK_ENABLE()
+    #define CAP_IN_3_TSC                    TSC_GROUP3_IO2
+    
+    #define CAP_SENSE_3_PIN                 GPIO_PIN_1
+    #define CAP_SENSE_3_PORT                GPIOB
+    #define CAP_SENSE_3_CLK_ENABLE()        __GPIOB_CLK_ENABLE()
+    #define CAP_SENSE_3_TSC                 TSC_GROUP3_IO3
+    
 #else
     #error "Device type not selected. Define DEVKIT or DANDELION in project settings"
 #endif

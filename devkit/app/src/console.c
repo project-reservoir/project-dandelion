@@ -12,7 +12,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "power.h"
 #include "xprintf.h"
+#include "capacitance.h"
 
 // Minimum message size includes the ':' starting character and the \n
 #define MIN_INTEL_MESSAGE_LEN   12
@@ -37,210 +39,11 @@ static void processString(char* str);
 static uint8_t string_len(char* str);
 static void processDebugCommand(char* str, uint8_t len);
 static void processRadioCommand(char* str, uint8_t len);
-static void ParseIntelHex(char* str, uint8_t len);
-static uint8_t HexToNibble(char ch);
+static void processSensorCommand(char* str, uint8_t len);
 
 void consoleTxChar(unsigned char c)
 {
-    while(UART_ReadyTX(UartHandle.Instance) != UART_OK);
     UART_CharTX(UartHandle.Instance, c);
-}
-
-// Convert 1 hex char into a Nibble. Fills the lower 4 bits of the byte
-static uint8_t HexToNibble(char ch)
-{
-    uint8_t nib = 0;
-    
-    switch(ch)
-    {
-        case '0':
-            nib = 0u;
-            break;
-        
-        case '1':
-            nib = 1u;
-            break;
-        
-        case '2':
-            nib = 2u;
-            break;
-        
-        case '3':
-            nib = 3u;
-            break;
-        
-        case '4':
-            nib = 4u;
-            break;
-        
-        case '5':
-            nib = 5u;
-            break;
-        
-        case '6':
-            nib = 6u;
-            break;
-        
-        case '7':
-            nib = 7u;
-            break;
-        
-        case '8':
-            nib = 8u;
-            break;
-        
-        case '9':
-            nib = 9u;
-            break;
-        case 'A':
-        case 'a':
-            nib = 10u;
-            break;
-        
-        case 'B':
-        case 'b':
-            nib = 11u;
-            break;
-        
-        case 'C':
-        case 'c':
-            nib = 12u;
-            break;
-        
-        case 'D':
-        case 'd':
-            nib = 13u;
-            break;
-        
-        case 'E':
-        case 'e':
-            nib = 14u;
-            break;
-        
-        case 'F':
-        case 'f':
-            nib = 15u;
-            break;
-        
-        default:
-            DEBUG("Invalid HEX char in HexToNib\r\n");
-            break;
-    }
-    
-    return nib;
-}
-
-static void ParseIntelHex(char* str, uint8_t len)
-{
-    uint8_t i = 0;
-    uint8_t command = 0;
-    uint8_t byte_count = 0;
-    uint16_t address = 0;
-    uint8_t checksum = 0;
-    uint8_t sent_check = 0;
-    
-    if(len < MIN_INTEL_MESSAGE_LEN)
-    {
-        WARN("Malformed Intel Hex Msg\r\n");
-        return;
-    }
-    
-    if(str[0] != ':')
-    {
-        WARN("Message is not Intel Hex Msg\r\n");
-        return;
-    }
-    
-    // Form the byte count
-    byte_count = (HexToNibble(str[1]) << 4) | HexToNibble(str[2]);
-    checksum = byte_count;
-    
-    // Form the address
-    address = (HexToNibble(str[3]) << 12) | (HexToNibble(str[4]) << 8) | (HexToNibble(str[5]) << 4) | HexToNibble(str[6]);
-    checksum += ((HexToNibble(str[3]) << 4) | HexToNibble(str[4]));
-    checksum += ((HexToNibble(str[5]) << 4) | HexToNibble(str[6]));
-    
-    // Form the command
-    command = (HexToNibble(str[7]) << 4) | HexToNibble(str[8]);
-    checksum += command;
-    
-    for(i = 0; i < byte_count && i < MAX_INTEL_PAYLOAD; i++)
-    {
-        intel_hex_payload[i] = (HexToNibble(str[9 + (i*2)]) << 4) | HexToNibble(str[10 + (i*2)]);
-        checksum += intel_hex_payload[i];
-    }
-    
-    checksum = ~checksum;
-    checksum += 0x01;
-    
-    sent_check = (uint32_t)((HexToNibble(str[(byte_count * 2) + 9]) << 4) | HexToNibble(str[(byte_count * 2) + 10]));
-    
-    if(checksum != sent_check)
-    {
-        ERR("Intel Hex Checksum fail\r\n");
-        return;
-    }
-    
-    switch(command)
-    {
-        case 0:
-            if((byte_count % 4) != 0)
-            {
-                WARN("Intel HEX Cmd 0 err: byte count !mod 4\r\n");
-                break;
-            }
-            
-            // Allow the first write to be to any address, initialize for future writes
-            if(current_intel_address == 0)
-            {
-                current_intel_address = address;
-            }
-            else if(current_intel_address != address)
-            {
-                ERR("Addresses are not sequential\r\n");
-                return;
-            }
-            
-            current_intel_address += byte_count;
-            
-            for(i = 0; i < byte_count; i += 4)
-            {
-                FwUpdateWriteWord((intel_hex_payload[i + 3] << 24) | (intel_hex_payload[i + 2] << 16) | (intel_hex_payload[i + 1] << 8) | (intel_hex_payload[i]));
-            }
-            break;
-        
-        case 1:
-            if(byte_count != 0)
-            {
-                WARN("Intel HEX Cmd 1 err: byte count != 0\r\n");
-                break;
-            }
-            extended_address = 0;
-            FwUpdateEnd();
-            break;
-        
-        case 4:
-            if(byte_count != 2)
-            {
-                WARN("Intel HEX Cmd 4 err: byte count != 2\r\n");
-                break;
-            }
-            extended_address = (intel_hex_payload[0] << 8) | intel_hex_payload[1];
-            FwUpdateStart();
-            break;
-        
-        case 5:
-            if(byte_count != 4)
-            {
-                WARN("Intel HEX Cmd 5 err: byte count != 4\r\n");
-                break;
-            }
-            break;
-        
-        default:
-            WARN("Unknown Intel HEX cmd\r\n");
-            break;
-    }
 }
 
 void ConsoleTaskHwInit(void)
@@ -326,13 +129,10 @@ void processString(char* str)
     
     // TODO: check len > 0
     
-    ConsolePrint("\r\n");
+    xprintf("\r\n");
     
     switch(str[0])
     {
-        case ':':
-            ParseIntelHex(str, len);
-            break;
         case 'r':
             if(len >= 2)
             {
@@ -343,8 +143,8 @@ void processString(char* str)
             }
             else
             {
-                ConsolePrint("Reset commands\r\n");
-                ConsolePrint("rr: reset the microprocessor completely\r\n");
+                xprintf("Reset commands\r\n");
+                xprintf("rr: reset the microprocessor completely\r\n");
             }
             break;
         case 'u':
@@ -362,36 +162,73 @@ void processString(char* str)
             processRadioCommand(str, len);
             break;
         case 'v':
-            ConsolePrint("DANDELION OS V ");
-            ConsolePrint(APP_VERSION_STR);
-            ConsolePrint("\r\n");
-            ConsolePrint("BUILD DATE: ");
-            ConsolePrint(__DATE__);
-            ConsolePrint("  :  ");
-            ConsolePrint(__TIME__);
-            ConsolePrint("\r\n");
-            ConsolePrint("RUN REGION: ");
+            xprintf("DANDELION OS V ");
+            xprintf(APP_VERSION_STR);
+            xprintf("\r\n");
+            xprintf("BUILD DATE: ");
+            xprintf(__DATE__);
+            xprintf("  :  ");
+            xprintf(__TIME__);
+            xprintf("\r\n");
+            xprintf("RUN REGION: ");
             if(FwUpdateGetCurrentRegion() == MAIN_APP_START)
             {
-                ConsolePrint("MAIN APP");
+                xprintf("MAIN APP");
             }
             else
             {
-                ConsolePrint("BACKUP APP");
+                xprintf("BACKUP APP");
             }
-            ConsolePrint("\r\n\r\n");
+            xprintf("\r\n\r\n");
+            break;
+        case 's':    
+            processSensorCommand(str, len);
             break;
         default:
-            ConsolePrint("h : print help\r\n");
-            ConsolePrint("v : print version info\r\n");
-            ConsolePrint("d : debug information\r\n");
-            ConsolePrint("x : radio commands\r\n");
-            ConsolePrint("u : perform a fake firmware upgrade\r\n");
-            ConsolePrint("r : reset commands\r\n");
+            xprintf("h : print help\r\n");
+            xprintf("v : print version info\r\n");
+            xprintf("d : debug information\r\n");
+            xprintf("x : radio commands\r\n");
+            xprintf("u : perform a fake firmware upgrade\r\n");
+            xprintf("r : reset commands\r\n");
+            xprintf("s : sensor commands\r\n");
             break;
     }
     
-    ConsolePrint("> ");
+    xprintf("> ");
+}
+
+void processSensorCommand(char* str, uint8_t len)
+{
+    generic_message_t* generic_msg;
+    
+    if(len >= 2)
+    {
+        switch(str[1])
+        {
+            case 't':
+                xprintf("Temperature info:\n");
+                xprintf("Chip temp: %d c\n", GetChipTemperature());
+                return;
+            
+            case 'b':
+                xprintf("Battery voltage: %d mV\n", GetBatteryVoltage());
+                return;
+            
+            case 'c':
+            {
+                uint32_t cap1, cap2, cap3;
+                CapacitanceRead(&cap1, &cap2, &cap3);
+                xprintf("Capsense values: %d, %d, %d\n", cap1, cap2, cap3);
+                return;
+            }
+        }
+    }
+    
+    xprintf("Sensor Commands\r\n");
+    xprintf("st : print temperature data\r\n");
+    xprintf("sb : print battery data\r\n");
+    xprintf("sc : acquire and print capsense counts\r\n");
 }
 
 void processRadioCommand(char* str, uint8_t len)
@@ -415,29 +252,8 @@ void processRadioCommand(char* str, uint8_t len)
         }
     }
     
-    ConsolePrint("Radio Commands\r\n");
-    ConsolePrint("xp : send a radio ping packet\r\n");
-}
-
-void processSensorCommand(char* str, uint8_t len)
-{
-    uint32_t ms = 0;
-    
-    if(len >= 2)
-    {
-        switch(str[1])
-        {
-            case 'r':
-            if(str[2] == ' ')
-            {
-                ms = atoi(&str[3]);
-                return;
-            }
-        }
-    }
-    
-    ConsolePrint("Sensor Commands\r\n");
-    ConsolePrint("sr <val> : set polling rate in miliseconds\r\n");
+    xprintf("Radio Commands\r\n");
+    xprintf("xp : send a radio ping packet\r\n");
 }
 
 void processDebugCommand(char* str, uint8_t len)
@@ -466,11 +282,11 @@ void processDebugCommand(char* str, uint8_t len)
         }
     }
     
-    ConsolePrint("Debug commands\r\n");
-    ConsolePrint("dd : toggle debug messages\r\n");
-    ConsolePrint("di : toggle info messages\r\n");
-    ConsolePrint("dw : toggle warn messages\r\n");
-    ConsolePrint("de : toggle error messages\r\n");
+    xprintf("Debug commands\r\n");
+    xprintf("dd : toggle debug messages\r\n");
+    xprintf("di : toggle info messages\r\n");
+    xprintf("dw : toggle warn messages\r\n");
+    xprintf("de : toggle error messages\r\n");
 }
 
 uint8_t string_len(char* str)
@@ -483,23 +299,6 @@ uint8_t string_len(char* str)
     }
     
     return i;
-}
-
-void ConsolePrint(char* text)
-{
-    uint8_t i = string_len(text);
-    while(!console_task_started)
-    {
-        osDelay(10);
-    }
-    
-    // While the UART is not ready for TX, spin
-    while(UART_ReadyTX(UartHandle.Instance) != UART_OK)
-    {
-        osDelay(10);
-    }
-    
-    UART_StartTX(UartHandle.Instance, text, i);
 }
 
 void ConsoleGetChar(char c)

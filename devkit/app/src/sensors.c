@@ -6,6 +6,8 @@
 #include "sensor_conversions.h"
 #include "radio_packets.h"
 #include "debug.h"
+#include "power.h"
+#include "capacitance.h"
 
 // Global variables
 I2C_HandleTypeDef   I2CxHandle;
@@ -65,6 +67,9 @@ void SensorsTaskHwInit(void)
     /* NVIC for I2C1 */
     //HAL_NVIC_SetPriority(I2Cx_IRQn, 0, 1);
     //HAL_NVIC_EnableIRQ(I2Cx_IRQn);
+    
+    // Configure the capsense driver
+    CapacitanceInit();
 }
 
 void SensorsTaskOSInit(void)
@@ -261,8 +266,6 @@ void SensorsTask(void)
             }
         }
         
-        //ReadChipTemp(&sensorData.tempChip);
-        
         // Send sensor Data to the base station
         SendSensorData();
         
@@ -315,13 +318,10 @@ void SendSensorData(void)
     tmp = Float_To_HTU21D_Temp(sensorData.tempAir);
     radioMessage->payload.sensor_message.air_temp = tmp;
     
-    // TODO: find a way to collect battery and solar panel data
-    
     // battery level
-    radioMessage->payload.sensor_message.battery_level = 0;
+    radioMessage->payload.sensor_message.battery_level = GetBatteryVoltage();
     
-    // solar level
-    radioMessage->payload.sensor_message.solar_level = 0;
+    radioMessage->payload.sensor_message.chip_temp = GetChipTemperature();
     
     DEBUG("(SENSORS_TASK) Sending sensor message to radio task\r\n");
     

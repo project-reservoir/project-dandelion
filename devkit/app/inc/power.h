@@ -13,5 +13,7 @@
 
 void PowerHwInit(void);
 void PowerTask(void);
+int16_t GetChipTemperature(void);
+uint16_t GetBatteryVoltage(void);
 
 #endif // _POWER_H

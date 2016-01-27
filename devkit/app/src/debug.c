@@ -4,7 +4,7 @@
 #include "xprintf.h"
 #include <stdarg.h>
 
-static uint8_t debug_enabled = 0;
+static uint8_t debug_enabled = 1;
 static uint8_t info_enabled = 1;
 static uint8_t warn_enabled = 1;
 static uint8_t error_enabled = 1;

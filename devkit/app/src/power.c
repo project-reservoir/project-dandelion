@@ -5,6 +5,25 @@
 ADC_HandleTypeDef             adc;
 ADC_ChannelConfTypeDef        adcChannelConf;
 
+int32_t                       chip_temperature;
+uint32_t                      battery_voltage;
+
+#define TEMP130_CAL_ADDR ((uint16_t*) ((uint32_t) 0x1FF8007E))
+#define TEMP30_CAL_ADDR ((uint16_t*) ((uint32_t) 0x1FF8007A))
+#define VREFINT_CAL_ADDR ((uint16_t*) ((uint32_t) 0x1FF80078))
+#define VDD_CALIB ((uint16_t) (300))
+#define VDD_APPLI ((uint16_t) (330))
+
+int32_t ComputeTemperature(uint32_t measure)
+{
+    int32_t temperature;
+    temperature = ((measure * VDD_APPLI / VDD_CALIB) - (int32_t) *TEMP30_CAL_ADDR );
+    temperature = temperature * (int32_t)(130 - 30);
+    temperature = temperature / (int32_t)(*TEMP130_CAL_ADDR - *TEMP30_CAL_ADDR);
+    temperature = temperature + 30;
+    return(temperature);
+}
+
 void PowerHwInit(void)
 {
     // Initialize battery monitor ADC
@@ -33,12 +52,12 @@ void PowerHwInit(void)
     adc.Instance                   = ADC1;
     adc.Init.OversamplingMode      = DISABLE;  
     adc.Init.ClockPrescaler        = ADC_CLOCKPRESCALER_PCLK_DIV1;
-    adc.Init.LowPowerAutoOff       = ENABLE;
-    adc.Init.LowPowerFrequencyMode = ENABLE;
+    adc.Init.LowPowerAutoOff       = DISABLE;
+    adc.Init.LowPowerFrequencyMode = DISABLE;
     adc.Init.LowPowerAutoWait      = ENABLE;
 
     adc.Init.Resolution            = ADC_RESOLUTION12b;
-    adc.Init.SamplingTime          = ADC_SAMPLETIME_7CYCLES_5;
+    adc.Init.SamplingTime          = ADC_SAMPLETIME_239CYCLES_5;
     adc.Init.ScanDirection         = ADC_SCAN_DIRECTION_UPWARD;
     adc.Init.DataAlign             = ADC_DATAALIGN_RIGHT;
     adc.Init.ContinuousConvMode    = DISABLE;
@@ -59,7 +78,21 @@ void PowerHwInit(void)
     
     __HAL_ADC_CLEAR_FLAG(&adc, ADC_FLAG_EOCAL);
     
+    adcChannelConf.Channel = ADC_CHANNEL_0;
+    
+    if (HAL_ADC_ConfigChannel(&adc, &adcChannelConf) != HAL_OK)
+    {
+        WARN("Power ADC channel configuration failed\n");
+    }
+    
     adcChannelConf.Channel = BAT_MON_ADC_CHAN;
+    
+    if (HAL_ADC_ConfigChannel(&adc, &adcChannelConf) != HAL_OK)
+    {
+        WARN("Power ADC channel configuration failed\n");
+    }
+    
+    adcChannelConf.Channel = ADC_CHANNEL_VREFINT;
     
     if (HAL_ADC_ConfigChannel(&adc, &adcChannelConf) != HAL_OK)
     {
@@ -92,32 +125,62 @@ void PowerTask(void)
     // Wait for other tasks to spin up
     osDelay(4000);
     
+    adc.Instance->CR |= ADC_CR_ADEN;
+    
+    while((adc.Instance->ISR & ADC_ISR_ADRDY) != ADC_ISR_ADRDY);
+    
     while(1)
-    {
-        HAL_ADC_Start(&adc);
+    {        
+        // Start an ADC conversion
+        adc.Instance->CR |= ADC_CR_ADSTART;
         
-        if(HAL_ADC_PollForConversion(&adc, 100) != HAL_OK)
-        {
-            WARN("POWER: ADC Battery conversion failed!\n");
-        }
-        else
-        {
-            // Battery voltage = ADC voltage * 1.27
-            INFO("POWER: ADC Battery Value is %d\n", HAL_ADC_GetValue(&adc)); 
-        }
+        // Wait for the zeroth conversion to finish
+        // THIS CONVERSION IS A DUMMY CONVERSION AND THE RESULTS SHOULD BE DISCARDED
+        while((adc.Instance->ISR & ADC_ISR_EOC) != ADC_ISR_EOC && (adc.Instance->ISR & ADC_ISR_EOS) != ADC_ISR_EOS);
         
-        if(HAL_ADC_PollForConversion(&adc, 100) != HAL_OK)
-        {
-            WARN("POWER: ADC Temperature conversion failed!\n");
-        }
-        else
-        {
-            // Battery voltage = ADC voltage * 1.27
-            INFO("POWER: ADC Temperature Value is %d\n", HAL_ADC_GetValue(&adc)); 
-        }
+        adc.Instance->ISR |= ADC_ISR_EOC;
         
-        __HAL_ADC_CLEAR_FLAG(&adc, ADC_FLAG_EOS | ADC_FLAG_EOSMP);
+        // Wait for first conversion to finish
+        while((adc.Instance->ISR & ADC_ISR_EOC) != ADC_ISR_EOC && (adc.Instance->ISR & ADC_ISR_EOS) != ADC_ISR_EOS);
+        
+        // Read data from ADC DR, reset ISR flags
+        uint16_t battery_val = adc.Instance->DR;
+        
+        // Wait for second conversion to finish
+        while((adc.Instance->ISR & ADC_ISR_EOC) != ADC_ISR_EOC && (adc.Instance->ISR & ADC_ISR_EOS) != ADC_ISR_EOS);
+        
+        // Read data from ADC DRR, reset ISR flags
+        uint16_t vref_val = adc.Instance->DR;
+        
+        // Wait for third conversion to finish
+        while((adc.Instance->ISR & ADC_ISR_EOC) != ADC_ISR_EOC && (adc.Instance->ISR & ADC_ISR_EOS) != ADC_ISR_EOS);
+        
+        // Read data from ADC DRR, reset ISR flags
+        uint16_t temp_val = adc.Instance->DR;
+        
+        adc.Instance->ISR |= ADC_ISR_EOS;
+                
+        chip_temperature = ComputeTemperature(temp_val);
+        battery_voltage = (3000.0f * (float)(*VREFINT_CAL_ADDR) * (float)battery_val) / ((float)vref_val * 4095.0f);
+        //battery_voltage = (uint32_t)((3300.0f / 4095.0f) * (float)battery_val));
+        
+        // Battery voltage = ADC voltage * 1.27
+        DEBUG("POWER: Battery Voltage analog read is %d\n", battery_val);
+        DEBUG("POWER: Chip Temperature Value is %d\n", temp_val);
+        DEBUG("POWER: Vref Value is %d\n", vref_val);
+        DEBUG("POWER: ADC CALFACT %d\n", adc.Instance->CALFACT);
+        DEBUG("POWER: VREFINT Calibration %d\n", (*VREFINT_CAL_ADDR));
         
         osDelay(5000);
     }
+}
+
+int16_t GetChipTemperature(void)
+{
+    return chip_temperature;
+}
+
+uint16_t GetBatteryVoltage(void)
+{
+    return battery_voltage;
 }
