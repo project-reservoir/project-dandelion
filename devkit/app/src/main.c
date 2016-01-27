@@ -5,6 +5,7 @@
 #include "radio.h"
 #include "console.h"
 #include "fw_update.h"
+#include "power.h"
 #include "cmsis_os.h"
 
 unsigned portBASE_TYPE makeFreeRtosPriority (osPriority priority)
@@ -25,6 +26,7 @@ int main(void)
     xTaskHandle radioTaskHandle;
     xTaskHandle consoleTaskHandle;
     xTaskHandle fwUpdateTaskHandle;
+    xTaskHandle powerTaskHandle;
 
     // Configure the system clock
     SystemClock_Config();
@@ -82,6 +84,14 @@ int main(void)
                 NULL,
                 makeFreeRtosPriority(osPriorityNormal),
                 &ledTaskHandle);
+    
+    // Create an LED blink tasks	
+    xTaskCreate(PowerTask,
+                "PowerTask",
+                configMINIMAL_STACK_SIZE,
+                NULL,
+                makeFreeRtosPriority(osPriorityNormal),
+                &powerTaskHandle);
     
     // Start scheduler
     vTaskStartScheduler();

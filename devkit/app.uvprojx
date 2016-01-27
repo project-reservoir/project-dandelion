@@ -422,6 +422,11 @@
               <FilePath>.\app\src\system_interrupts.c</FilePath>
             </File>
             <File>
+              <FileName>power.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\power.c</FilePath>
+            </File>
+            <File>
               <FileName>hwctrl.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\src\hwctrl.c</FilePath>
@@ -465,11 +470,6 @@
               <FileName>fw_update.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\src\fw_update.c</FilePath>
-            </File>
-            <File>
-              <FileName>power.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\src\power.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1393,6 +1393,11 @@
               <FileType>1</FileType>
               <FilePath>.\app\src\capacitance.c</FilePath>
             </File>
+            <File>
+              <FileName>xprintf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\cross-platform\src\xprintf.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1427,6 +1432,11 @@
               <FileName>capacitance.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\app\inc\capacitance.h</FilePath>
+            </File>
+            <File>
+              <FileName>xprintf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\cross-platform\inc\xprintf.h</FilePath>
             </File>
           </Files>
         </Group>

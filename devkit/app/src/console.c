@@ -12,6 +12,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "xprintf.h"
 
 // Minimum message size includes the ':' starting character and the \n
 #define MIN_INTEL_MESSAGE_LEN   12
@@ -38,6 +39,12 @@ static void processDebugCommand(char* str, uint8_t len);
 static void processRadioCommand(char* str, uint8_t len);
 static void ParseIntelHex(char* str, uint8_t len);
 static uint8_t HexToNibble(char ch);
+
+void consoleTxChar(unsigned char c)
+{
+    while(UART_ReadyTX(UartHandle.Instance) != UART_OK);
+    UART_CharTX(UartHandle.Instance, c);
+}
 
 // Convert 1 hex char into a Nibble. Fills the lower 4 bits of the byte
 static uint8_t HexToNibble(char ch)
@@ -283,6 +290,8 @@ void ConsoleTaskOSInit(void)
     UartHandle.Init.Mode       = UART_MODE_TX_RX;
     
     assert_param(HAL_UART_Init(&UartHandle) == HAL_OK);
+    
+    xdev_out(consoleTxChar);
 }
 
 void ConsoleTask(void)

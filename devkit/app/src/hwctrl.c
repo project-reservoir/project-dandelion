@@ -3,6 +3,7 @@
 #include "radio.h"
 #include "console.h"
 #include "fw_update.h"
+#include "power.h"
 #include "hwctrl.h"
 
 void SystemClock_Config(void)
@@ -47,4 +48,5 @@ void HwCtrl_Init(void)
     RadioTaskHwInit();
     ConsoleTaskHwInit();
     FwUpdateHwInit();
+    PowerHwInit();
 }

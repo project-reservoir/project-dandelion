@@ -1,44 +1,55 @@
 #include "console.h"
 #include "debug.h"
+#include "FreeRTOS.h"
+#include "xprintf.h"
+#include <stdarg.h>
 
-static uint8_t debug_enabled = 1;
+static uint8_t debug_enabled = 0;
 static uint8_t info_enabled = 1;
 static uint8_t warn_enabled = 1;
 static uint8_t error_enabled = 1;
 
-void ERR(char* a) 
-{
+void ERR(const char *fmt, ...) {
     if(error_enabled)
     {
-        ConsolePrint("ERROR: ");
-        ConsolePrint(a);
+        xprintf("ERROR: ");
+        va_list args;
+        va_start(args, fmt);
+        xvprintf(fmt, args);
+        va_end(args);
     }
 }
 
-void WARN(char* a) 
-{
+void WARN(const char *fmt, ...) {
     if(warn_enabled)
     {
-        ConsolePrint("WARN: ");
-        ConsolePrint(a);
+        xprintf("WARN: ");
+        va_list args;
+        va_start(args, fmt);
+        xvprintf(fmt, args);
+        va_end(args);
     }
 }
 
-void INFO(char* a) 
-{
+void INFO(const char *fmt, ...) {
     if(info_enabled)
     {
-        ConsolePrint("INFO: ");
-        ConsolePrint(a);
+        xprintf("INFO: ");
+        va_list args;
+        va_start(args, fmt);
+        xvprintf(fmt, args);
+        va_end(args);
     }
 }
 
-void DEBUG(char* a) 
-{
+void DEBUG(const char *fmt, ...) {
     if(debug_enabled)
     {
-        ConsolePrint("DEBUG: ");
-        ConsolePrint(a);
+        xprintf("DEBUG: ");
+        va_list args;
+        va_start(args, fmt);
+        xvprintf(fmt, args);
+        va_end(args);
     }
 }
 
@@ -60,4 +71,24 @@ void ToggleError(void)
 void ToggleInfo(void)
 {
     info_enabled = !info_enabled;
+}
+
+uint8_t DebugEnabled(void)
+{
+    return debug_enabled;
+}
+
+uint8_t WarnEnabled(void)
+{
+    return warn_enabled;
+}
+
+uint8_t ErrorEnabled(void)
+{
+    return error_enabled;
+}
+
+uint8_t InfoEnabled(void)
+{
+    return info_enabled;
 }
