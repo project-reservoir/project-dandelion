@@ -136,15 +136,28 @@ void processString(char* str)
         case 'r':
             if(len >= 2)
             {
-                if(str[1] == 'r')
+                switch(str[1])
                 {
-                    NVIC_SystemReset();
+                    case 'r':
+                        NVIC_SystemReset();
+                        break;
+                    
+                    case 'f':
+                    {
+                        uint32_t cash = 0;
+                        cash++;
+                        cash--;
+                        
+                        cash = cash + 1 / cash;
+                    }
+                    break;
                 }
             }
             else
             {
-                xprintf("Reset commands\r\n");
-                xprintf("rr: reset the microprocessor completely\r\n");
+                xprintf("Reset commands\n");
+                xprintf("rr: reset the microprocessor completely\n");
+                xprintf("rf: reset the microprocessor by causing a HardFault\n");
             }
             break;
         case 'u':

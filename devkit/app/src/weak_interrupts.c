@@ -2,7 +2,8 @@
 
 void Dummy_Handler(void)
 {
-	for(;;);
+	HardFault_Handler();
+    //for(;;);
 }
 
 __weak void Reset_Handler()

@@ -6,6 +6,7 @@
 #include "hwctrl.h"
 #include "console.h"
 #include "uart.h"
+#include "led_task.h"
 
 extern I2C_HandleTypeDef I2CxHandle;
 extern SPI_HandleTypeDef SpiHandle;
@@ -13,6 +14,40 @@ extern UART_HandleTypeDef UartHandle;
 
 extern void __main(void);
 extern void xPortSysTickHandler(void);
+
+void HardFault_Handler()
+{     
+    for(uint8_t i = 0; i < 10; i++)
+    {
+        HAL_GPIO_WritePin(LEDR_GPIO_PORT, LEDR_PIN, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(LEDG_GPIO_PORT, LEDG_PIN, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(LEDB_GPIO_PORT, LEDB_PIN, GPIO_PIN_RESET);
+        
+        for(uint32_t j = 0; j < 4000000; j++)
+        {
+            __DMB();
+        }
+        
+        HAL_GPIO_WritePin(LEDR_GPIO_PORT, LEDR_PIN, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(LEDG_GPIO_PORT, LEDG_PIN, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(LEDB_GPIO_PORT, LEDB_PIN, GPIO_PIN_RESET);
+        
+        for(uint32_t j = 0; j < 4000000; j++)
+        {
+            __DMB();
+        }
+    }
+    
+    // Reset system
+    __DSB();                                                    
+    
+    SCB->AIRCR  = ((0x5FA << SCB_AIRCR_VECTKEY_Pos)      |
+                 SCB_AIRCR_SYSRESETREQ_Msk);
+    __DSB();
+    
+    // HACK: really long wait here. Can't be infinite or compiler will mess with the memory map
+    for(uint32_t i = 0; i < 0xFFFFFFFF; i++);
+}
 
 void Reset_Handler(void)
 {
@@ -88,7 +123,7 @@ void USART1_Handler(void)
 
 __attribute__((section("!!!!0.RESET_HANDLER"))) void Reset_Handler_Standin()
 {
-     Reset_Handler();
+    Reset_Handler();
 }
 
 __attribute__((section("!!!!0.NMI_HANDLER"))) void NMI_Handler_Standin()

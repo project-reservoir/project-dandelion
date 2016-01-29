@@ -22,15 +22,13 @@ SensorData          sensorData;
 uint32_t            pollingRate = DEFAULT_POLL_RATE; // Poll once per minute by default
 
 // Local function declarations
-static uint8_t GetTmp102Addr(uint8_t index);
+static void       ReadSoilMoisture(float* moist1, float* moist2, float* moist3);
+static uint8_t    GetTmp102Addr(uint8_t index);
 static I2C_Status InitTempSensor(uint8_t index);
 static I2C_Status ReadTempSensor(uint8_t index, float* tempOut);
 static I2C_Status ReadHumiditySensor(float* humidOut);
 static I2C_Status InitHumiditySensor(void);
 static I2C_Status ReadAirTempSensor(float* tempOut);
-static I2C_Status ReprogramSoilMoistureAddress(void);
-static I2C_Status InitSoilMoistureSensor(uint8_t sensor);
-static I2C_Status ReadSoilMoisture(uint8_t sensor, float* out);
 static I2C_Status PingI2C(uint8_t addr);
 static uint8_t    GetSmsAddr(uint8_t index);
 static void       SendSensorData(void);
@@ -102,20 +100,6 @@ void SensorsTask(void)
     
     INFO("(SENSORS_TASK) I2C Sensor failed to initialize\r\n");
     
-    /*
-    for(i = 0; i < 0x30; i++)
-    {
-        if(PingI2C(i) != I2C_OK)
-        {
-            I2C_Reset();
-        }
-        else
-        {
-            osDelay(1);
-        }
-    }
-    */
-    
     for(i = 0; i < 3; i++)
     {
         // If the temperature sensor initialized, set its enabled value to 3 (so it has 3 chances to respond to a read request)
@@ -134,26 +118,6 @@ void SensorsTask(void)
         enabledSensors[3] = 0;
         WARN("(SENSORS_TASK) Humidity sensor failed to initialize\r\n");
     }
-    
-    for(i = 4; i < 7; i++)
-    {
-        // Initialize the soil sensors. If any sensor fails to initialize, disable it.
-        if(InitSoilMoistureSensor(i - 4) != I2C_OK)
-        {
-            I2C_Reset();
-            enabledSensors[i] = 0;
-            WARN("(SENSORS_TASK) Soil Moisture sensor failed to initialize\r\n");
-        }
-    }
-    
-    // This code was used to initially reprogram the addresses on the soil moisture sensors.
-    // It should NOT be enabled in the field
-    /*    
-    if(ReprogramSoilMoistureAddress() != I2C_OK)
-    {
-        osDelay(2000);
-    }
-    */
     
     // Let other tasks in the system warmup before entering the sensor polling loop
     osDelay(2000);
@@ -230,47 +194,12 @@ void SensorsTask(void)
             while(0);
         }
         
-        for(i = 4; i < 7; i++)
-        {
-            if(enabledSensors[i] > 0)
-            {
-                switch(i)
-                {
-                    case 4:
-                        retVal = ReadSoilMoisture(0, &sensorData.moist0);
-                        break;
-                    case 5:
-                        retVal = ReadSoilMoisture(1, &sensorData.moist1);
-                        break;
-                    case 6:
-                        retVal = ReadSoilMoisture(2, &sensorData.moist2);
-                        break;
-                    default:
-                        retVal = ReadSoilMoisture(0, &sensorData.moist0);
-                        break;
-                }
-                
-                // If the sensor read failed, indicate that the sensor has one less chance to respond correctly before being disabled
-                if(retVal != I2C_OK)
-                {
-                    I2C_Reset();
-                    enabledSensors[i]--;
-                    WARN("(SENSORS_TASK) Soil moisture sensor read failed\r\n");
-                }
-                // The sensor is still alive! Restore it to a full 3 chances to respond
-                else if(enabledSensors[i] != 3)
-                {
-                    enabledSensors[i] = 3;
-                    DEBUG("(SENSORS_TASK) Soil moisture sensor connection restored\r\n");
-                }
-            }
-        }
+        ReadSoilMoisture(&sensorData.moist0, &sensorData.moist1, &sensorData.moist2);
         
         // Send sensor Data to the base station
         SendSensorData();
         
-        //osDelay(pollingRate);
-        osDelay(1000);
+        osDelay(pollingRate);
     }
 }
 
@@ -345,6 +274,17 @@ void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
 }
 
 // Local function implementations
+
+void ReadSoilMoisture(float* moist1, float* moist2, float* moist3)
+{
+    uint32_t capsense1, capsense2, capsense3;
+    CapacitanceRead(&capsense1, &capsense2, &capsense3);
+    
+    // TODO: real moisture calibration equation here. Needs in-air calibration data first.
+    *moist1 = capsense1;
+    *moist2 = capsense2;
+    *moist3 = capsense3;
+}
 
 uint8_t GetTmp102Addr(uint8_t index)
 {
@@ -589,12 +529,6 @@ I2C_Status ReadHumiditySensor(float* humidOut)
     return retVal;
 }
 
-I2C_Status InitSoilMoistureSensor(uint8_t sensor)
-{
-    // These sensors require no initialization for now
-    return I2C_OK;
-}
-
 I2C_Status ReadAirTempSensor(float* tempOut)
 {
     uint16_t temperature = 0;
@@ -642,105 +576,6 @@ I2C_Status ReadAirTempSensor(float* tempOut)
     
     return retVal;
 }
-
-I2C_Status ReprogramSoilMoistureAddress(void)
-{
-    I2C_Status retVal = I2C_OK;
-    
-    // This is a critical section: if the device is interrupted during an I2C transaction, it will probably fail.
-    // Disable all interrupts during this transaction to ensure that it completes sucessfully.
-    // NOTE: This means that the system clock will be wrong by ~15 ms (15 ticks) after this section of code is executed
-    taskENTER_CRITICAL();
-    
-    // Use a do {} while(0); loop to allow the use of the "break" statement.
-    // In C++ / Java this would be accomplished with a "try {} catch() {} finally {}" section, but C does not support this construct.
-    do
-    {
-        i2cTxBuffer[0] = SMS_SET_ADDRESS;
-        i2cTxBuffer[1] = 0x21;
-        
-        // I2C Write
-        I2C_Start(SMS_0_ADDR, I2C_WRITE); 
-        retVal = I2C_WriteBytes(i2cTxBuffer, 2);
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        retVal = I2C_WaitForTX();
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        
-        // I2C Write
-        I2C_Start(SMS_0_ADDR, I2C_WRITE);
-        retVal = I2C_WriteByte(0x06);
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        retVal = I2C_WaitForTX();
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        I2C_Stop();
-                
-    } while(0);
-    
-    taskEXIT_CRITICAL();
-    
-    return retVal;
-}
-
-I2C_Status ReadSoilMoisture(uint8_t sensor, float* out)
-{
-    uint16_t capacitance = 0;
-    I2C_Status retVal = I2C_OK;
-    
-    // This is a critical section: if the device is interrupted during an I2C transaction, it will probably fail.
-    // Disable all interrupts during this transaction to ensure that it completes sucessfully.
-    // NOTE: This means that the system clock will be wrong by ~15 ms (15 ticks) after this section of code is executed
-    taskENTER_CRITICAL();
-    
-    // Use a do {} while(0); loop to allow the use of the "break" statement.
-    // In C++ / Java this would be accomplished with a "try {} catch() {} finally {}" section, but C does not support this construct.
-    do
-    {
-        // I2C Write
-        I2C_Start(GetSmsAddr(sensor), I2C_WRITE); 
-        retVal = I2C_WriteByte(SMS_GET_CAPACITANCE);
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        retVal = I2C_WaitForTX();
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        
-        // I2C Read
-        I2C_Start(GetSmsAddr(sensor), I2C_READ);
-        retVal = I2C_ReadBytes(i2cRxBuffer, 2);
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        I2C_Stop();
-        
-        capacitance |= i2cRxBuffer[0] << 8;
-        capacitance |= i2cRxBuffer[1];
-        
-        *out = SMS_To_Float(capacitance);
-        
-    } while(0);
-    
-    taskEXIT_CRITICAL();
-    
-    return retVal;
-}
-
 
 I2C_Status PingI2C(uint8_t addr)
 {

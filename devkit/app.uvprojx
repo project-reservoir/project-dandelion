@@ -467,6 +467,11 @@
               <FilePath>.\app\src\debug.c</FilePath>
             </File>
             <File>
+              <FileName>weak_interrupts.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\src\weak_interrupts.c</FilePath>
+            </File>
+            <File>
               <FileName>fw_update.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\src\fw_update.c</FilePath>
@@ -515,6 +520,11 @@
               <FileName>fw_update.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\app\inc\fw_update.h</FilePath>
+            </File>
+            <File>
+              <FileName>system_interrupts.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\inc\system_interrupts.h</FilePath>
             </File>
             <File>
               <FileName>power.h</FileName>
@@ -1312,11 +1322,6 @@
               <FilePath>.\app\src\header.s</FilePath>
             </File>
             <File>
-              <FileName>weak_interrupts.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\app\src\weak_interrupts.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32l0xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\src\stm32l0xx_hal_msp.c</FilePath>
@@ -1403,11 +1408,6 @@
         <Group>
           <GroupName>bsp/inc</GroupName>
           <Files>
-            <File>
-              <FileName>system_interrupts.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\app\inc\system_interrupts.h</FilePath>
-            </File>
             <File>
               <FileName>i2c.h</FileName>
               <FileType>5</FileType>
