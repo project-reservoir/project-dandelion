@@ -15,34 +15,52 @@ extern UART_HandleTypeDef UartHandle;
 extern void __main(void);
 extern void xPortSysTickHandler(void);
 
+#define SHORT(port, led) HAL_GPIO_WritePin(port, led, GPIO_PIN_RESET); \
+                for(uint32_t j = 0; j < 400000; j++) { __DMB(); } \
+                HAL_GPIO_WritePin(port, led, GPIO_PIN_SET);
+
+#define LONG(port, led)  HAL_GPIO_WritePin(port, led, GPIO_PIN_RESET); \
+                for(uint32_t j = 0; j < 800000; j++) { __DMB(); } \
+                HAL_GPIO_WritePin(port, led, GPIO_PIN_SET);
+
+#define WAIT()  for(uint32_t j = 0; j < 400000; j++) { __DMB(); } \
+                
 void HardFault_Handler()
-{     
-    for(uint8_t i = 0; i < 10; i++)
+{   
+    HAL_GPIO_WritePin(LEDR_GPIO_PORT, LEDR_PIN, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(LEDG_GPIO_PORT, LEDG_PIN, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(LEDB_GPIO_PORT, LEDB_PIN, GPIO_PIN_SET);
+    
+    for(uint8_t i = 0; i < 5; i++)
     {
-        HAL_GPIO_WritePin(LEDR_GPIO_PORT, LEDR_PIN, GPIO_PIN_RESET);
-        HAL_GPIO_WritePin(LEDG_GPIO_PORT, LEDG_PIN, GPIO_PIN_RESET);
-        HAL_GPIO_WritePin(LEDB_GPIO_PORT, LEDB_PIN, GPIO_PIN_RESET);
+        SHORT(LEDR_GPIO_PORT, LEDR_PIN);
+        WAIT();
+        SHORT(LEDR_GPIO_PORT, LEDR_PIN);
+        WAIT();
+        SHORT(LEDR_GPIO_PORT, LEDR_PIN);
+        WAIT();
+        LONG(LEDR_GPIO_PORT, LEDR_PIN);
+        WAIT();
+        LONG(LEDR_GPIO_PORT, LEDR_PIN);
+        WAIT();
+        LONG(LEDR_GPIO_PORT, LEDR_PIN);
+        WAIT();
+        SHORT(LEDR_GPIO_PORT, LEDR_PIN);
+        WAIT();
+        SHORT(LEDR_GPIO_PORT, LEDR_PIN);
+        WAIT();
+        SHORT(LEDR_GPIO_PORT, LEDR_PIN);
         
-        for(uint32_t j = 0; j < 4000000; j++)
-        {
-            __DMB();
-        }
-        
-        HAL_GPIO_WritePin(LEDR_GPIO_PORT, LEDR_PIN, GPIO_PIN_RESET);
-        HAL_GPIO_WritePin(LEDG_GPIO_PORT, LEDG_PIN, GPIO_PIN_RESET);
-        HAL_GPIO_WritePin(LEDB_GPIO_PORT, LEDB_PIN, GPIO_PIN_RESET);
-        
-        for(uint32_t j = 0; j < 4000000; j++)
-        {
-            __DMB();
-        }
+        // Long wait between SOS
+        WAIT();
+        WAIT();
+        WAIT();
     }
     
     // Reset system
     __DSB();                                                    
     
-    SCB->AIRCR  = ((0x5FA << SCB_AIRCR_VECTKEY_Pos)      |
-                 SCB_AIRCR_SYSRESETREQ_Msk);
+    SCB->AIRCR  = ((0x5FA << SCB_AIRCR_VECTKEY_Pos) | SCB_AIRCR_SYSRESETREQ_Msk);
     __DSB();
     
     // HACK: really long wait here. Can't be infinite or compiler will mess with the memory map

@@ -257,6 +257,18 @@ void SendSensorData(void)
     SendToBaseStation((uint8_t*)radioMessage, sizeof(generic_message_t));
 }
 
+void SensorsCmd(sensor_cmd_payload_t cmd)
+{
+    // Field 0 == sensor polling rate change
+    if(cmd.valid_fields & 0x1)
+    {
+        DEBUG("COMMAND FROM BASE STATION: Changing sensor polling period to %d", cmd.sensor_polling_period);
+        SensorsChangePollingRate(cmd.sensor_polling_period);
+    }
+    
+    // Room for future expansion here
+}
+
 void HAL_I2C_MemTxCpltCallback(I2C_HandleTypeDef *hi2c)
 {
     if(hi2c == &I2CxHandle)

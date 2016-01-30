@@ -20,7 +20,8 @@ typedef enum {
     ANNOUNCE        = 9,
     JOIN            = 10,
     TIME_UPDATE     = 11,
-    RSSI            = 12
+    RSSI            = 12,
+    SENSOR_CMD      = 13
 } radio_cmd_t;
 
 #pragma pack(1)
@@ -55,12 +56,19 @@ typedef struct {
     uint32_t battery_level;
 } device_info_payload_t;
 
+#pragma pack(1)
 typedef struct {
     uint8_t curr_rssi;
     uint8_t latch_rssi;
     uint8_t ant1_rssi;
     uint8_t ant2_rssi;
 } rssi_payload_t;
+
+#pragma pack(1)
+typedef struct {
+    uint32_t sensor_polling_period; // Field 0
+    uint32_t valid_fields;
+} sensor_cmd_payload_t;
 
 #pragma pack(1)
 typedef struct {
@@ -76,6 +84,7 @@ typedef struct {
         fw_update_start_payload_t   fw_update_start;
         sensor_payload_t            sensor_message;
         rssi_payload_t              rssi_message;
+        sensor_cmd_payload_t        sensor_cmd;
     } payload;
 } generic_message_t;
 

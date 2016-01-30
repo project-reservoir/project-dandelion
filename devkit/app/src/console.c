@@ -143,14 +143,8 @@ void processString(char* str)
                         break;
                     
                     case 'f':
-                    {
-                        uint32_t cash = 0;
-                        cash++;
-                        cash--;
-                        
-                        cash = cash + 1 / cash;
-                    }
-                    break;
+                        __BKPT(0);
+                        break;
                 }
             }
             else

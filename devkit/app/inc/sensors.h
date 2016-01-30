@@ -2,6 +2,7 @@
 #define _SENSORS_H
 
 #include "stm32l0xx_hal.h"
+#include "radio_packets.h"
 
 // DEFINES
 
@@ -137,5 +138,6 @@ void        SensorsTaskHwInit(void);
 void        SensorsTask(void);
 void        SensorsChangePollingRate(uint32_t ms);
 uint32_t    SensorsGetPollingRate(void);
+void        SensorsCmd(sensor_cmd_payload_t cmd);
 
 #endif // _SENSORS_H

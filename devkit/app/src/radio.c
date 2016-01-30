@@ -508,6 +508,11 @@ void RadioTaskHandleIRQ(void)
                     generic_msg->payload.rssi_message.ant2_rssi  = Si446xCmd.GET_MODEM_STATUS.ANT2_RSSI;
                 
                     SendToDevice((uint8_t*)generic_msg, sizeof(generic_message_t), message->src);
+                    break;
+                
+                case SENSOR_CMD:
+                    SensorsCmd(message->payload.sensor_cmd);
+                    break;
             }
             // TODO: send ACK
         }
