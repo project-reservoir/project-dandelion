@@ -17,8 +17,9 @@
 
 #define SRAM_START				0x20000000
 #define FLASH_START				0x08000000
-#define MAIN_APP_START		0x08000800
-#define BACKUP_APP_START  0x08008400
+#define MAIN_APP_START		    0x08000800
+#define BACKUP_APP_START        0x08008400
+#define APP_SIZE                0x00007C00          
 
 typedef struct APP_HEADER_T {
 	uint32_t crc32;

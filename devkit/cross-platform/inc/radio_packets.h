@@ -36,6 +36,7 @@ typedef struct {
     uint16_t air_temp;
     uint16_t battery_level;
     int16_t  chip_temp;
+    uint32_t timestamp;
 } sensor_payload_t;
 
 #pragma pack(1)

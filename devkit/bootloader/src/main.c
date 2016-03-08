@@ -1,6 +1,7 @@
 #include "hwctrl.h"
 #include "app_header.h"
 #include "stm32l0xx_hal.h"
+#include "stdbool.h"
 
 // DEFINES
 #define ARM_THUMB_MODE 0x1
@@ -18,14 +19,57 @@ NVIC_BLOCK  ivt __attribute__((at(SRAM_BASE))) = {0xFF};
 // LOCAL FUNCTION DECLARATIONS
 void createIVT(APP_HEADER* app);
 void launchImage(APP_HEADER* app);
+uint32_t crc32(uint32_t crc, uint8_t *buf, uint32_t len);
 
 // GLOBAL FUNCTIONS
 int main(void)
 {    
-    // TODO: pick an image based on the CRC value
-    createIVT(main_app);
-    launchImage(main_app);
-
+    bool main_valid = (main_app->version != 0xFFFFFFFF) && 
+                      ((MAIN_APP_START + main_app->image_size + 4) < (MAIN_APP_START + APP_SIZE));
+    
+    bool backup_valid = (backup_app->version != 0xFFFFFFFF) && 
+                        ((BACKUP_APP_START + backup_app->image_size + 4) < (BACKUP_APP_START + APP_SIZE));
+    
+    uint32_t main_app_crc32 = 0x00000000;
+    uint32_t backup_app_crc32 = 0x00000000;
+    
+    if(main_valid)
+    {
+        main_app_crc32 = crc32(0x00000000, (uint8_t*)&(main_app->crc32_start_mark), main_app->image_size - 4);
+        main_valid = main_valid && (main_app_crc32 == main_app->crc32);
+    }
+    
+    if(backup_valid)
+    {
+        backup_app_crc32 = crc32(0x00000000, (uint8_t*)&(backup_app->crc32_start_mark), backup_app->image_size - 4);
+        backup_valid = backup_valid && (backup_app_crc32 == backup_app->crc32);
+    }
+    
+    if(main_valid && backup_valid)
+    {
+        if(main_app->version >= backup_app->version)
+        {
+            createIVT(main_app);
+            launchImage(main_app);
+        }
+        else
+        {
+            createIVT(backup_app);
+            launchImage(backup_app);
+        }
+    }
+    else if(main_valid)
+    {
+        createIVT(main_app);
+        launchImage(main_app);
+    }
+    else if(backup_valid)
+    {
+        createIVT(backup_app);
+        launchImage(backup_app);
+    }
+    
+    // TODO: blink a 'boot failure' code over the debug LED's
     for(;;);
 }
 
@@ -84,7 +128,24 @@ void launchImage(APP_HEADER* app)
     launch(stackPtr, progCtr);
 }
 
-
+// Compute and return the CRC32
+// This CRC32 should match the zlib.crc32 python routine
+uint32_t crc32(uint32_t crc, uint8_t *buf, uint32_t len)
+{
+    crc = ~crc;
+    while (len--) {
+        crc ^= *buf++;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+    }
+    return ~crc;
+}
 
 #ifdef  USE_FULL_ASSERT
 

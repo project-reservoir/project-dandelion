@@ -16,8 +16,8 @@ extern uint32_t __initial_sp;
 // and doesn't provide a way to change that.
 
 const APP_HEADER __Vectors __attribute__((section("HEADER"))) __attribute__((used)) = {
-	0,          // Space reserved in the image for a CRC32 checksum
-	0xDEADBEEF, // the CRC32 start mark
+	0x0BADC0DE,  // Space reserved in the image for a CRC32 checksum
+	0xDEADBEEF,  // the CRC32 start mark
 	APP_VERSION, // version
 	sizeof(APP_HEADER) + 0x00000090, // Reset_Handler, the entry point for this application (this calls SystemInit and __main, which in turn calls the application main)
 	0xFFFFFFFF, // image_size
