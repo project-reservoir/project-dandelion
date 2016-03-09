@@ -18,7 +18,7 @@ void FwUpdateStart(void);
 
 void FwUpdateEnd(void);
 
-uint8_t FwUpdateWriteWord(uint32_t word);
+uint8_t FwUpdateWriteWord(uint32_t word, uint32_t offset);
 
 bool FwUpdateInProgress(void);
 

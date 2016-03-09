@@ -105,11 +105,13 @@ void FwUpdateEnd(void)
 {
     uint8_t i  = 0;
     
+    // If there are bytes in the update buffer...
     if(update_buffer_pos != 0)
     {
-        for(i = update_buffer_pos; i < FLASH_PAGE_SIZE; i++)
+        // Fill the rest of the update buffer with 0's. The last call to FwUpdateWriteWord
+        for(i = update_buffer_pos; i < FLASH_PAGE_SIZE; i += 4)
         {
-            FwUpdateWriteWord(0x00000000);
+            FwUpdateWriteWord(0x00000000, update_current_address - FwUpdateGetBaseAddress() + i);
         }
     }
     
@@ -123,7 +125,7 @@ void FwUpdateEnd(void)
     flash_eeprom_nvm_lock();
 }
 
-uint8_t FwUpdateWriteWord(uint32_t word)
+uint8_t FwUpdateWriteWord(uint32_t word, uint32_t offset)
 {
     if(!update_in_progress)
     {
@@ -131,13 +133,22 @@ uint8_t FwUpdateWriteWord(uint32_t word)
         return 1; 
     }
     
+    // If the provided offset is not the expected offset, abort the firmware upgrade
+    if(offset != (update_current_address - FwUpdateGetBaseAddress() + update_buffer_pos))
+    {
+        return 1;
+    }
+    
+    // Write the word into the update buffer
     update_buffer[update_buffer_pos++] = word;
     
+    // If the buffer is full...
     if(update_buffer_pos >= FLASH_PAGE_SIZE)
     {
-        // Tell the FwUpdateTask to wakeup
+        // Tell the FwUpdateTask to wakeup, which causes a flash write.
         osSemaphoreRelease(updateBufferSem);
-        // And don't return until the memory operation completes
+        
+        // And don't return until the flash write completes. This blocks the calling task.
         osSemaphoreWait(memoryOpSem, osWaitForever);
     }
     

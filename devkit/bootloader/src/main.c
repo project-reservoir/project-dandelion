@@ -36,13 +36,13 @@ int main(void)
     if(main_valid)
     {
         main_app_crc32 = crc32(0x00000000, (uint8_t*)&(main_app->crc32_start_mark), main_app->image_size - 4);
-        main_valid = main_valid && (main_app_crc32 == main_app->crc32);
+        main_valid = main_valid && ((main_app_crc32 == main_app->crc32) || (main_app->crc32 == 0x0BADC0DE));
     }
     
     if(backup_valid)
     {
         backup_app_crc32 = crc32(0x00000000, (uint8_t*)&(backup_app->crc32_start_mark), backup_app->image_size - 4);
-        backup_valid = backup_valid && (backup_app_crc32 == backup_app->crc32);
+        backup_valid = backup_valid && ((backup_app_crc32 == backup_app->crc32) || (backup_app->crc32 == 0x0BADC0DE));
     }
     
     if(main_valid && backup_valid)

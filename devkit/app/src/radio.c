@@ -461,7 +461,7 @@ void RadioTaskHandleIRQ(void)
                 case FW_UPD_PAYLOAD:
                     for(uint8_t i = 0; i < NUM_FW_UPDATE_PAYLOAD_WORDS; i++)
                     {
-                        FwUpdateWriteWord(message->payload.fw_update_data.payload[i]);
+                        FwUpdateWriteWord(message->payload.fw_update_data.payload[i], message->payload.fw_update_data.offset);
                     }
                     break;
                     

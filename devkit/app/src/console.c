@@ -156,9 +156,9 @@ void processString(char* str)
             break;
         case 'u':
             FwUpdateStart();
-            for(i = 0; i < FLASH_PAGE_SIZE; i++)
+            for(i = 0; i < FLASH_PAGE_SIZE; i += 4)
             {
-                FwUpdateWriteWord(0xDEADBEEF);
+                FwUpdateWriteWord(0xDEADBEEF, i);
             }
             FwUpdateEnd();
             break;

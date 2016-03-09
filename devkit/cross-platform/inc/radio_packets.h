@@ -68,6 +68,7 @@ typedef struct {
 #pragma pack(1)
 typedef struct {
     uint32_t sensor_polling_period; // Field 0
+    uint32_t timestamp;             // Field 1
     uint32_t valid_fields;
 } sensor_cmd_payload_t;
 
