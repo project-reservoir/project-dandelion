@@ -2,6 +2,7 @@
 #include "cmsis_os.h"
 #include "flash.h"
 #include "app_header.h"
+#include "debug.h"
 #include <stdbool.h>
 
 osSemaphoreId updateBufferSem;
@@ -65,6 +66,7 @@ void FwUpdateTask(void)
         // Wait to be given access to the updateBuffer
         osSemaphoreWait(updateBufferSem, osWaitForever);
         
+        taskENTER_CRITICAL();
         // Buffer is full, start a page program
         flash_erase(update_current_address);
         
@@ -72,6 +74,7 @@ void FwUpdateTask(void)
         update_current_address += (FLASH_PAGE_SIZE/2)*4;
         flash_program(update_current_address, &update_buffer[FLASH_PAGE_SIZE/2]);
         update_current_address += (FLASH_PAGE_SIZE/2)*4;
+        taskEXIT_CRITICAL();
         
         update_buffer_pos = 0;
         
@@ -130,12 +133,14 @@ uint8_t FwUpdateWriteWord(uint32_t word, uint32_t offset)
     if(!update_in_progress)
     {
         // Error: cannot write words if update not started
+        ERR("Update Failed: no update in progress\r\n");
         return 1; 
     }
     
     // If the provided offset is not the expected offset, abort the firmware upgrade
-    if(offset != (update_current_address - FwUpdateGetBaseAddress() + update_buffer_pos))
+    if(offset != (update_current_address - FwUpdateGetBaseAddress() + (update_buffer_pos * 4)))
     {
+        ERR("Update Failed, invalid address. Expected %d, got %d\r\n", (update_current_address - FwUpdateGetBaseAddress() + (update_buffer_pos * 4)), offset);
         return 1;
     }
     
@@ -158,4 +163,41 @@ uint8_t FwUpdateWriteWord(uint32_t word, uint32_t offset)
 bool FwUpdateInProgress(void)
 {
     return update_in_progress;
+}
+
+uint32_t crc32(uint32_t crc, uint8_t *buf, uint32_t len)
+{
+    crc = ~crc;
+    while (len--) {
+        crc ^= *buf++;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+        crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+    }
+    return ~crc;
+}
+
+bool FwUpdateBackupImageValid(void)
+{
+    APP_HEADER* dandelion = ((APP_HEADER*)BACKUP_APP_START);
+    
+    if(dandelion->image_size < APP_SIZE && dandelion->image_size != 0 && dandelion->image_size != 0xFFFFFFFF) {
+        return crc32(0x00000000, (uint8_t*)(BACKUP_APP_START + 4), dandelion->image_size - 4) == dandelion->crc32;
+    }
+    return false;
+}
+
+bool FwUpdateMainImageValid(void)
+{
+    APP_HEADER* dandelion = ((APP_HEADER*)MAIN_APP_START);
+    
+    if(dandelion->image_size < APP_SIZE && dandelion->image_size != 0 && dandelion->image_size != 0xFFFFFFFF) {
+        return crc32(0x00000000, (uint8_t*)(MAIN_APP_START + 4), dandelion->image_size - 4) == dandelion->crc32;
+    }
+    return false;
 }

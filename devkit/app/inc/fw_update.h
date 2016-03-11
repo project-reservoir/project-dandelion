@@ -22,4 +22,8 @@ uint8_t FwUpdateWriteWord(uint32_t word, uint32_t offset);
 
 bool FwUpdateInProgress(void);
 
+bool FwUpdateBackupImageValid(void);
+
+bool FwUpdateMainImageValid(void);
+
 #endif // _FW_UPDATE_H

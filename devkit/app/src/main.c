@@ -48,7 +48,7 @@ int main(void)
                 "ConsoleTask",
                 configMINIMAL_STACK_SIZE,
                 NULL,
-                makeFreeRtosPriority(osPriorityNormal),
+                makeFreeRtosPriority(osPriorityLow),
                 &consoleTaskHandle);
                 
     // Create fw update task with maximum priority:
@@ -58,7 +58,7 @@ int main(void)
                 "FwUpdateTask",
                 configMINIMAL_STACK_SIZE,
                 NULL,
-                makeFreeRtosPriority(osPriorityNormal),
+                makeFreeRtosPriority(osPriorityHigh),
                 &fwUpdateTaskHandle);
     
     // Create radio task
@@ -66,7 +66,7 @@ int main(void)
                 "RadioTask",
                 configMINIMAL_STACK_SIZE,
                 NULL,
-                makeFreeRtosPriority(osPriorityNormal),
+                makeFreeRtosPriority(osPriorityHigh),
                 &radioTaskHandle);
     
     // Create sensor polling task
@@ -82,7 +82,7 @@ int main(void)
                 "LEDTask",
                 configMINIMAL_STACK_SIZE,
                 NULL,
-                makeFreeRtosPriority(osPriorityNormal),
+                makeFreeRtosPriority(osPriorityLow),
                 &ledTaskHandle);
     
     // Create an LED blink tasks	

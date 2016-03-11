@@ -169,13 +169,12 @@ void processString(char* str)
             processRadioCommand(str, len);
             break;
         case 'v':
-            xprintf("DANDELION OS V ");
-            xprintf(APP_VERSION_STR);
-            xprintf("\r\n");
-            xprintf("BUILD DATE: ");
-            xprintf(__DATE__);
-            xprintf("  :  ");
-            xprintf(__TIME__);
+            xprintf("DANDELION OS V %d.%d, HW Rev %d, %s\n", (APP_VERSION >> 24) & 0xFF, 
+                                                             (APP_VERSION >> 16) & 0xFF,
+                                                             (APP_VERSION >> 8)  & 0xFF,
+                                                             ((APP_VERSION >> 0)  & 0xFF) == 0x01 ? "DEBUG" : "PRODUCTION" );
+        
+            xprintf("BUILD DATE: %s @ %s\n\n", __DATE__, __TIME__);
             xprintf("\r\n");
             xprintf("RUN REGION: ");
             if(FwUpdateGetCurrentRegion() == MAIN_APP_START)
@@ -186,11 +185,14 @@ void processString(char* str)
             {
                 xprintf("BACKUP APP");
             }
+            xprintf("\r\n");
+            xprintf("Main App: %s\r\n", FwUpdateMainImageValid() ? "VALID" : "INVALID");
+            xprintf("Backup App: %s\r\n", FwUpdateBackupImageValid() ? "VALID" : "INVALID");
             xprintf("\r\n\r\n");
             break;
         case 's':    
             processSensorCommand(str, len);
-            break;
+            break;        
         default:
             xprintf("h : print help\r\n");
             xprintf("v : print version info\r\n");
@@ -287,9 +289,18 @@ void processDebugCommand(char* str, uint8_t len)
             ToggleError();
             return;
         }
+        else if(str[1] == 's')
+        {
+            xprintf("Debug = %s\n", DebugEnabled() ? "TRUE" : "FALSE");
+            xprintf("Info  = %s\n", InfoEnabled() ? "TRUE" : "FALSE");
+            xprintf("Warn  = %s\n", WarnEnabled() ? "TRUE" : "FALSE");
+            xprintf("Error = %s\n", ErrorEnabled() ? "TRUE" : "FALSE");
+            return;
+        }
     }
     
     xprintf("Debug commands\r\n");
+    xprintf("ds : print enabled message status\r\n");
     xprintf("dd : toggle debug messages\r\n");
     xprintf("di : toggle info messages\r\n");
     xprintf("dw : toggle warn messages\r\n");

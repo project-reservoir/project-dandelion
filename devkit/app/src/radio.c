@@ -32,6 +32,7 @@ static uint8_t rxBuff[BUFFSIZE];
 
 static RadioTaskState radioTaskState = SEARCHING;
 static NetworkInfo    network;
+static bool           inhibitTx      = false;
 
 // Local function prototypes
 static void RadioLinkManagementTask(void);
@@ -280,39 +281,51 @@ void RadioLinkManagementTask(void)
 // the osAlloc() routine: it will be freed using the osFree routine
 void SendToDevice(uint8_t* data, uint8_t size, uint32_t mac)
 {
-    RadioMessage* message = pvPortMalloc(sizeof(RadioMessage));
-    message->pData = data;
-    message->size = size;
-    message->dest = mac;
-    
-    // TODO: Check that this actually succeeded, and don't block forever.
-    //       Might need to return a status to indicate to calling function that we failed to send message
-    osMessagePut(radioTxMsgQ, (uint32_t)message, osWaitForever);
-    
-    SignalRadioTXNeeded();
+    if(!inhibitTx)
+    {
+        RadioMessage* message = pvPortMalloc(sizeof(RadioMessage));
+        message->pData = data;
+        message->size = size;
+        message->dest = mac;
+
+        // TODO: Check that this actually succeeded, and don't block forever.
+        //       Might need to return a status to indicate to calling function that we failed to send message
+        osMessagePut(radioTxMsgQ, (uint32_t)message, osWaitForever);
+
+        SignalRadioTXNeeded();
+    }
+    else
+    {
+        vPortFree(data);
+    }
 }
 
 // The pointer passed into this function should have been allocated using 
 // the osAlloc() routine: it will be freed using the osFree routine
 void SendToBaseStation(uint8_t* data, uint8_t size)
 {
-    RadioMessage* message = pvPortMalloc(sizeof(RadioMessage));
-    message->pData = data;
-    message->size = size;
-    message->dest = network.baseStationMac; // TODO: what if we disconnect from the network and connect to a new base station when there are messages in the queue? This would result in packet loss
-    
-    // TODO: Check that this actually succeeded, and don't block forever.
-    //       Might need to return a status to indicate to calling function that we failed to send message
-    if(osMessagePut(radioTxMsgQ, (uint32_t)message, osWaitForever) == osOK)
+    if(!inhibitTx)
     {
-        SignalRadioTXNeeded();
+        RadioMessage* message = pvPortMalloc(sizeof(RadioMessage));
+        message->pData = data;
+        message->size = size;
+        message->dest = network.baseStationMac; // TODO: what if we disconnect from the network and connect to a new base station when there are messages in the queue? This would result in packet loss
+        
+        // TODO: Check that this actually succeeded, and don't block forever.
+        //       Might need to return a status to indicate to calling function that we failed to send message
+        if(osMessagePut(radioTxMsgQ, (uint32_t)message, osWaitForever) == osOK)
+        {
+            SignalRadioTXNeeded();
+        }
+        else
+        {
+            DEBUG("SendToBaseStation failed due to message queue error\r\n");
+        }
     }
     else
     {
-        DEBUG("SendToBaseStation failed due to message queue error\r\n");
+        vPortFree(data);
     }
-    
-    
 }
 
 // The pointer passed into this function should have been allocated using 
@@ -422,6 +435,12 @@ void RadioTaskHandleIRQ(void)
     chipInt = Si446xCmd.GET_INT_STATUS.CHIP_PEND; // & Si446xCmd.GET_INT_STATUS.CHIP_STATUS;
     modemInt = Si446xCmd.GET_INT_STATUS.MODEM_PEND; // & Si446xCmd.GET_INT_STATUS.MODEM_STATUS;      
     
+    // Read the RX buffer in case there was something there
+    si446x_read_rx_fifo(RadioConfiguration.Radio_PacketLength, rxBuff);
+    
+    // Start RX operations
+    Radio_StartRX(pRadioConfiguration->Radio_ChannelNumber);
+    
     // PACKET_SENT
     if(phInt & PACKET_SENT)
     {
@@ -433,7 +452,7 @@ void RadioTaskHandleIRQ(void)
     if(phInt & PACKET_RX)
     {
         DEBUG("Packet RX event\r\n");
-        si446x_read_rx_fifo(RadioConfiguration.Radio_PacketLength, rxBuff);
+        
         generic_message_t* message = (generic_message_t*)rxBuff;
         generic_message_t* generic_msg;
         
@@ -451,17 +470,20 @@ void RadioTaskHandleIRQ(void)
                     break;
                 
                 case FW_UPD_START:
+                    // TODO: add a timer to automatically re-enable TX after 30 minutes
+                    inhibitTx = true;
                     FwUpdateStart();
                     break;
                 
                 case FW_UPD_END:
+                    inhibitTx = false;
                     FwUpdateEnd();
                     break;
                     
                 case FW_UPD_PAYLOAD:
                     for(uint8_t i = 0; i < NUM_FW_UPDATE_PAYLOAD_WORDS; i++)
                     {
-                        FwUpdateWriteWord(message->payload.fw_update_data.payload[i], message->payload.fw_update_data.offset);
+                        FwUpdateWriteWord(message->payload.fw_update_data.payload[i], message->payload.fw_update_data.offset + (i * 4));
                     }
                     break;
                     
@@ -537,8 +559,6 @@ void RadioTaskHandleIRQ(void)
     //  INVALID_SYNC
     //  TX_FIFO_ALMOST_EMPTY
     //  RX_FIFO_ALMOST_FULL
-    
-    Radio_StartRX(pRadioConfiguration->Radio_ChannelNumber);
 }
 
 uint32_t RadioGetMACAddress(void)
