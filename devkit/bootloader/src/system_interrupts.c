@@ -68,10 +68,14 @@ void NMI_Handler(void)
   */
 void HardFault_Handler(void)
 {
-  /* Go to infinite loop when Hard Fault exception occurs */
-  while (1)
-  {
-  }
+    // Reset system
+    __DSB();                                                    
+
+    SCB->AIRCR  = ((0x5FA << SCB_AIRCR_VECTKEY_Pos) | SCB_AIRCR_SYSRESETREQ_Msk);
+    __DSB();
+
+    // HACK: really long wait here. Can't be infinite or compiler will mess with the memory map
+    for(uint32_t i = 0; i < 0xFFFFFFFF; i++);
 }
 
 /**

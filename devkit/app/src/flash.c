@@ -1,5 +1,22 @@
 #include "flash.h"
 
+void flash_full_unlock(void)
+{
+    if((FLASH->PECR & FLASH_PECR_PRGLOCK) != RESET)
+    {
+        if((FLASH->PECR & FLASH_PECR_PELOCK) != RESET)
+        {  
+            /* Unlocking the Data memory and FLASH_PECR register access*/
+            FLASH->PEKEYR = FLASH_PEKEY1;
+            FLASH->PEKEYR = FLASH_PEKEY2;
+        }
+
+        /* Unlocking the program memory access */
+        FLASH->PRGKEYR = FLASH_PRGKEY1;
+        FLASH->PRGKEYR = FLASH_PRGKEY2;  
+    }
+}
+
 void flash_eeprom_unlock(void)
 {
     /* (1) Wait till no operation is on going */

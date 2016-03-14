@@ -112,9 +112,9 @@ void FwUpdateEnd(void)
     if(update_buffer_pos != 0)
     {
         // Fill the rest of the update buffer with 0's. The last call to FwUpdateWriteWord
-        for(i = update_buffer_pos; i < FLASH_PAGE_SIZE; i += 4)
+        for(i = update_buffer_pos; i < FLASH_PAGE_SIZE; i++)
         {
-            FwUpdateWriteWord(0x00000000, update_current_address - FwUpdateGetBaseAddress() + i);
+            FwUpdateWriteWord(0x00000000, (update_current_address - FwUpdateGetBaseAddress()) + (i * 4));
         }
     }
     
@@ -134,7 +134,7 @@ uint8_t FwUpdateWriteWord(uint32_t word, uint32_t offset)
     {
         // Error: cannot write words if update not started
         ERR("Update Failed: no update in progress\r\n");
-        return 1; 
+        return 1;
     }
     
     // If the provided offset is not the expected offset, abort the firmware upgrade

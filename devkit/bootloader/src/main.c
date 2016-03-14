@@ -2,6 +2,7 @@
 #include "app_header.h"
 #include "stm32l0xx_hal.h"
 #include "stdbool.h"
+#include "flash.h"
 
 // DEFINES
 #define ARM_THUMB_MODE 0x1
@@ -20,57 +21,70 @@ NVIC_BLOCK  ivt __attribute__((at(SRAM_BASE))) = {0xFF};
 void createIVT(APP_HEADER* app);
 void launchImage(APP_HEADER* app);
 uint32_t crc32(uint32_t crc, uint8_t *buf, uint32_t len);
+void UpdateMainApp(void);
+void SystemClock_Config(void);
 
 // GLOBAL FUNCTIONS
 int main(void)
 {    
-    bool main_valid = (main_app->version != 0xFFFFFFFF) && 
-                      ((MAIN_APP_START + main_app->image_size + 4) < (MAIN_APP_START + APP_SIZE));
+    __HAL_FLASH_SET_LATENCY(FLASH_LATENCY_1);
     
-    bool backup_valid = (backup_app->version != 0xFFFFFFFF) && 
-                        ((BACKUP_APP_START + backup_app->image_size + 4) < (BACKUP_APP_START + APP_SIZE));
+    bool main_valid = (main_app->version != 0xFFFFFFFF && main_app->version != 0) && 
+                      (main_app->image_size != 0xFFFFFFFF && main_app->image_size != 0) &&
+                      ((MAIN_APP_START + main_app->image_size) < (MAIN_APP_START + APP_SIZE));
+    
+    bool backup_valid = (backup_app->version != 0xFFFFFFFF && backup_app->version != 0) && 
+                        (backup_app->image_size != 0xFFFFFFFF && backup_app->image_size != 0) &&
+                        ((BACKUP_APP_START + backup_app->image_size) < (BACKUP_APP_START + APP_SIZE));
     
     uint32_t main_app_crc32 = 0x00000000;
     uint32_t backup_app_crc32 = 0x00000000;
     
     if(main_valid)
     {
-        main_app_crc32 = crc32(0x00000000, (uint8_t*)&(main_app->crc32_start_mark), main_app->image_size - 4);
-        main_valid = main_valid && ((main_app_crc32 == main_app->crc32) || (main_app->crc32 == 0x0BADC0DE));
+        main_app_crc32 = crc32(0x00000000, (uint8_t*)(MAIN_APP_START + 4), main_app->image_size - 4);
+        main_valid = main_valid && ((main_app_crc32 == main_app->crc32));
     }
     
     if(backup_valid)
     {
-        backup_app_crc32 = crc32(0x00000000, (uint8_t*)&(backup_app->crc32_start_mark), backup_app->image_size - 4);
-        backup_valid = backup_valid && ((backup_app_crc32 == backup_app->crc32) || (backup_app->crc32 == 0x0BADC0DE));
+        backup_app_crc32 = crc32(0x00000000, (uint8_t*)(BACKUP_APP_START + 4), backup_app->image_size - 4);
+        backup_valid = backup_valid && ((backup_app_crc32 == backup_app->crc32));
     }
     
     if(main_valid && backup_valid)
     {
-        if(main_app->version >= backup_app->version)
+        if(main_app->version < backup_app->version)
         {
-            createIVT(main_app);
-            launchImage(main_app);
-        }
-        else
-        {
-            createIVT(backup_app);
-            launchImage(backup_app);
+            UpdateMainApp();
         }
     }
-    else if(main_valid)
+    else if(backup_valid && !main_valid)
     {
-        createIVT(main_app);
-        launchImage(main_app);
+        UpdateMainApp();
     }
-    else if(backup_valid)
-    {
-        createIVT(backup_app);
-        launchImage(backup_app);
-    }
+    
+    createIVT(main_app);
+    launchImage(main_app);
     
     // TODO: blink a 'boot failure' code over the debug LED's
     for(;;);
+}
+
+void UpdateMainApp(void)
+{        
+    uint32_t updateBuffer[FLASH_PAGE_SIZE];
+    
+    flash_full_unlock();
+    for(uint32_t i = 0; i < APP_SIZE; i += (FLASH_PAGE_SIZE * 4))
+    {
+        flash_erase(i + MAIN_APP_START);
+        
+        memcpy(updateBuffer, (uint32_t*)(BACKUP_APP_START + i), (FLASH_PAGE_SIZE * 4));
+        
+        flash_program(i + MAIN_APP_START, updateBuffer);
+        flash_program(i + ((FLASH_PAGE_SIZE/2)*4) + MAIN_APP_START, &updateBuffer[FLASH_PAGE_SIZE/2]);
+    }
 }
 
 // LOCAL FUNCTIONS

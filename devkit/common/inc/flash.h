@@ -11,6 +11,7 @@ void flash_eeprom_nvm_lock(void);
 void flash_option_bytes_unlock(void);
 void flash_option_byte_program(uint8_t index, uint16_t data);
 void flash_erase_option_byte(uint8_t index);
+void flash_full_unlock(void);
 
 // Erase a page of flash memory on the device
 void flash_erase(uint32_t start_address);

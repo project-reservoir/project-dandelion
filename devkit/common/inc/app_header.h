@@ -12,14 +12,19 @@
 //      CC = HW ID (01 = DEVKIT, 02 = EVT1, 03 = EVT2)
 //      DD = Build type (01 = DEBUG, 02 = PRODUCTION)
 
-#define APP_VERSION         0x01010101
+#define OS_MAJOR            4
+#define OS_MINOR            0
+#define HW_ID               2
+#define BUILD_TYPE          1
+
+#define APP_VERSION         ((OS_MAJOR << 24) | (OS_MINOR << 16) | (HW_ID << 8) | (BUILD_TYPE))
 #define APP_VERSION_STR     xstr(APP_VERSION)
 
 #define SRAM_START				0x20000000
 #define FLASH_START				0x08000000
 #define MAIN_APP_START		    0x08000800
 #define BACKUP_APP_START        0x08008400
-#define APP_SIZE                0x00007C00          
+#define APP_SIZE                0x00007C00
 
 typedef struct APP_HEADER_T {
 	uint32_t crc32;
