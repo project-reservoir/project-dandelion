@@ -13,13 +13,13 @@ typedef enum I2C_Status_t {
     I2C_TIMEOUT
 } I2C_Status;
 
-void            I2C_Reset(void);
-void            I2C_Start(uint8_t addr, uint8_t rw);
-void            I2C_Stop(void);
-I2C_Status      I2C_WriteByte(uint8_t byte);
-I2C_Status      I2C_WriteBytes(uint8_t* buffer, uint8_t numBytes);
-I2C_Status      I2C_ReadBytes(uint8_t* buffer, uint8_t numBytes);
-I2C_Status      I2C_WaitForTX(void);
-I2C_Status      I2C_WaitForRX(void);
+void            I2C_Reset(I2C_TypeDef* i2c);
+void            I2C_Start(I2C_TypeDef* i2c, uint8_t addr, uint8_t rw);
+void            I2C_Stop(I2C_TypeDef* i2c);
+I2C_Status      I2C_WriteByte(I2C_TypeDef* i2c, uint8_t byte);
+I2C_Status      I2C_WriteBytes(I2C_TypeDef* i2c, uint8_t* buffer, uint8_t numBytes);
+I2C_Status      I2C_ReadBytes(I2C_TypeDef* i2c, uint8_t* buffer, uint8_t numBytes);
+I2C_Status      I2C_WaitForTX(I2C_TypeDef* i2c);
+I2C_Status      I2C_WaitForRX(I2C_TypeDef* i2c);
                 
 #endif // _I2C_H

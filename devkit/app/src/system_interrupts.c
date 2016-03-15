@@ -7,6 +7,7 @@
 #include "console.h"
 #include "uart.h"
 #include "led_task.h"
+#include "sensors.h"
 
 extern I2C_HandleTypeDef I2CxHandle;
 extern SPI_HandleTypeDef SpiHandle;
@@ -81,12 +82,6 @@ void SysTick_Handler(void)
 	}
 
 	HAL_IncTick();
-}
-
-void I2C2_Handler(void)
-{
-    HAL_I2C_EV_IRQHandler(&I2CxHandle);
-    HAL_I2C_ER_IRQHandler(&I2CxHandle);
 }
 
 void SPI1_Handler(void)

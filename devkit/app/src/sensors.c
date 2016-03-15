@@ -10,7 +10,8 @@
 #include "capacitance.h"
 
 // Global variables
-I2C_HandleTypeDef   I2CxHandle;
+I2C_HandleTypeDef   ALBI2CHandle;
+I2C_HandleTypeDef   SLBI2CHandle;
 
 uint8_t             i2cTxBuffer[I2C_BUFFER_SIZE];
 uint8_t             i2cRxBuffer[I2C_BUFFER_SIZE];
@@ -29,7 +30,6 @@ static I2C_Status ReadTempSensor(uint8_t index, float* tempOut);
 static I2C_Status ReadHumiditySensor(float* humidOut);
 static I2C_Status InitHumiditySensor(void);
 static I2C_Status ReadAirTempSensor(float* tempOut);
-static I2C_Status PingI2C(uint8_t addr);
 static uint8_t    GetSmsAddr(uint8_t index);
 static void       SendSensorData(void);
 
@@ -40,31 +40,45 @@ void SensorsTaskHwInit(void)
 
     /*##-1- Enable peripherals and GPIO Clocks #################################*/
     /* Enable GPIO TX/RX clock */
-    I2Cx_SCL_GPIO_CLK_ENABLE();
-    I2Cx_SDA_GPIO_CLK_ENABLE();
+    ALB_I2C_SCL_GPIO_CLK_ENABLE();
+    ALB_I2C_SDA_GPIO_CLK_ENABLE();
+    
+    SLB_I2C_SCL_GPIO_CLK_ENABLE();
+    SLB_I2C_SDA_GPIO_CLK_ENABLE();
+    
     /* Enable I2Cx clock */
-    I2Cx_CLK_ENABLE(); 
-
+    ALB_I2C_CLK_ENABLE(); 
+    SLB_I2C_CLK_ENABLE(); 
+    
     /*##-2- Configure peripheral GPIO ##########################################*/  
     /* I2C TX GPIO pin configuration  */
-    GPIO_InitStruct.Pin       = I2Cx_SCL_PIN;
+    GPIO_InitStruct.Pin       = ALB_I2C_SCL_PIN;
     GPIO_InitStruct.Mode      = GPIO_MODE_AF_OD;
     GPIO_InitStruct.Pull      = GPIO_PULLUP;
     GPIO_InitStruct.Speed     = GPIO_SPEED_FAST;
-    GPIO_InitStruct.Alternate = I2Cx_SCL_AF;
+    GPIO_InitStruct.Alternate = ALB_I2C_SCL_AF;
 
-    HAL_GPIO_Init(I2Cx_SCL_GPIO_PORT, &GPIO_InitStruct);
+    HAL_GPIO_Init(ALB_I2C_SCL_GPIO_PORT, &GPIO_InitStruct);
 
     /* I2C RX GPIO pin configuration  */
-    GPIO_InitStruct.Pin = I2Cx_SDA_PIN;
-    GPIO_InitStruct.Alternate = I2Cx_SDA_AF;
+    GPIO_InitStruct.Pin = ALB_I2C_SDA_PIN;
+    GPIO_InitStruct.Alternate = ALB_I2C_SDA_AF;
 
-    HAL_GPIO_Init(I2Cx_SDA_GPIO_PORT, &GPIO_InitStruct);
+    HAL_GPIO_Init(ALB_I2C_SDA_GPIO_PORT, &GPIO_InitStruct);
+    
+    GPIO_InitStruct.Pin       = SLB_I2C_SCL_PIN;
+    GPIO_InitStruct.Mode      = GPIO_MODE_AF_OD;
+    GPIO_InitStruct.Pull      = GPIO_PULLUP;
+    GPIO_InitStruct.Speed     = GPIO_SPEED_FAST;
+    GPIO_InitStruct.Alternate = SLB_I2C_SCL_AF;
 
-    /*##-3- Configure the NVIC for I2C #########################################*/   
-    /* NVIC for I2C1 */
-    //HAL_NVIC_SetPriority(I2Cx_IRQn, 0, 1);
-    //HAL_NVIC_EnableIRQ(I2Cx_IRQn);
+    HAL_GPIO_Init(SLB_I2C_SCL_GPIO_PORT, &GPIO_InitStruct);
+
+    /* I2C RX GPIO pin configuration  */
+    GPIO_InitStruct.Pin = SLB_I2C_SDA_PIN;
+    GPIO_InitStruct.Alternate = SLB_I2C_SDA_AF;
+
+    HAL_GPIO_Init(SLB_I2C_SDA_GPIO_PORT, &GPIO_InitStruct);
     
     // Configure the capsense driver
     CapacitanceInit();
@@ -76,17 +90,29 @@ void SensorsTaskOSInit(void)
         
     i2cSem = osSemaphoreCreate(osSemaphore(i2cTransactSem), 1);
     
-    I2CxHandle.Instance              = I2Cx;
-    I2CxHandle.Init.AddressingMode   = I2C_ADDRESSINGMODE_7BIT;
-    I2CxHandle.Init.Timing           = I2C_TIMING_100KHZ;
-    I2CxHandle.Init.DualAddressMode  = I2C_DUALADDRESS_DISABLED;
-    I2CxHandle.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
-    I2CxHandle.Init.GeneralCallMode  = I2C_GENERALCALL_DISABLED;
-    I2CxHandle.Init.NoStretchMode    = I2C_NOSTRETCH_DISABLED;
-    I2CxHandle.Init.OwnAddress1      = 0x00;
-    I2CxHandle.Init.OwnAddress2      = 0x00;
+    ALBI2CHandle.Instance              = ALB_I2C;
+    ALBI2CHandle.Init.AddressingMode   = I2C_ADDRESSINGMODE_7BIT;
+    ALBI2CHandle.Init.Timing           = I2C_TIMING_100KHZ;
+    ALBI2CHandle.Init.DualAddressMode  = I2C_DUALADDRESS_DISABLED;
+    ALBI2CHandle.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+    ALBI2CHandle.Init.GeneralCallMode  = I2C_GENERALCALL_DISABLED;
+    ALBI2CHandle.Init.NoStretchMode    = I2C_NOSTRETCH_DISABLED;
+    ALBI2CHandle.Init.OwnAddress1      = 0x00;
+    ALBI2CHandle.Init.OwnAddress2      = 0x00;
     
-    assert_param(HAL_I2C_Init(&I2CxHandle) == HAL_OK);
+    assert_param(HAL_I2C_Init(&ALBI2CHandle) == HAL_OK);
+    
+    SLBI2CHandle.Instance              = SLB_I2C;
+    SLBI2CHandle.Init.AddressingMode   = I2C_ADDRESSINGMODE_7BIT;
+    SLBI2CHandle.Init.Timing           = I2C_TIMING_100KHZ;
+    SLBI2CHandle.Init.DualAddressMode  = I2C_DUALADDRESS_DISABLED;
+    SLBI2CHandle.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+    SLBI2CHandle.Init.GeneralCallMode  = I2C_GENERALCALL_DISABLED;
+    SLBI2CHandle.Init.NoStretchMode    = I2C_NOSTRETCH_DISABLED;
+    SLBI2CHandle.Init.OwnAddress1      = 0x00;
+    SLBI2CHandle.Init.OwnAddress2      = 0x00;
+    
+    assert_param(HAL_I2C_Init(&SLBI2CHandle) == HAL_OK);
 }
 
 void SensorsTask(void)
@@ -106,7 +132,7 @@ void SensorsTask(void)
         // Else, disable the sensor
         if(InitTempSensor(i) != I2C_OK)
         {
-            I2C_Reset();
+            I2C_Reset(SLB_I2C);
             enabledSensors[i] = 0;
             WARN("(SENSORS_TASK) I2C Sensor failed to initialize\r\n"); 
         }
@@ -114,7 +140,7 @@ void SensorsTask(void)
     
     if(InitHumiditySensor() != I2C_OK)
     {
-        I2C_Reset();
+        I2C_Reset(ALB_I2C);
         enabledSensors[3] = 0;
         WARN("(SENSORS_TASK) Humidity sensor failed to initialize\r\n");
     }
@@ -150,7 +176,7 @@ void SensorsTask(void)
                 // If the sensor read failed, indicate that the sensor has one less chance to respond correctly before being disabled
                 if(retVal != I2C_OK)
                 {
-                    I2C_Reset();
+                    I2C_Reset(SLB_I2C);
                     enabledSensors[i]--;
                     WARN("(SENSORS_TASK) Temp sensor read failed\r\n");
                 }
@@ -168,7 +194,7 @@ void SensorsTask(void)
            do {
                 if(ReadHumiditySensor(&sensorData.humid) != I2C_OK)
                 {
-                    I2C_Reset();
+                    I2C_Reset(ALB_I2C);
                     enabledSensors[3]--;
                     WARN("(SENSORS_TASK) Humidity sensor read failed\r\n");
                     break;
@@ -181,7 +207,7 @@ void SensorsTask(void)
                
                 if(ReadAirTempSensor(&sensorData.tempAir) != I2C_OK)
                 {
-                    I2C_Reset();
+                    I2C_Reset(ALB_I2C);
                     enabledSensors[3]--;
                     WARN("(SENSORS_TASK) Air temp sensor read failed\r\n");
                 }
@@ -269,22 +295,6 @@ void SensorsCmd(sensor_cmd_payload_t cmd)
     // Room for future expansion here
 }
 
-void HAL_I2C_MemTxCpltCallback(I2C_HandleTypeDef *hi2c)
-{
-    if(hi2c == &I2CxHandle)
-    {
-        osSemaphoreRelease(i2cSem);
-    }
-}
-
-void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
-{
-    if(hi2c == &I2CxHandle)
-    {
-        osSemaphoreRelease(i2cSem);
-    }
-}
-
 // Local function implementations
 
 void ReadSoilMoisture(float* moist1, float* moist2, float* moist3)
@@ -365,59 +375,59 @@ I2C_Status ReadTempSensor(uint8_t index, float* tempOut)
 
         // Write to the config register to begin a one-shot temperature conversion
         // I2C Write
-        I2C_Start(GetTmp102Addr(index), 0); 
-        if((retVal = I2C_WriteByte(TMP102_CONFIG_ADDR)) != I2C_OK)
+        I2C_Start(SLB_I2C, GetTmp102Addr(index), 0); 
+        if((retVal = I2C_WriteByte(SLB_I2C, TMP102_CONFIG_ADDR)) != I2C_OK)
         {
             break;
         }
         
-        if((retVal = I2C_WaitForTX()) != I2C_OK)
+        if((retVal = I2C_WaitForTX(SLB_I2C)) != I2C_OK)
         {
             break;
         }
             
-        I2C_Stop();
+        I2C_Stop(SLB_I2C);
         
         // I2C Write
-        I2C_Start(GetTmp102Addr(index), 0); 
+        I2C_Start(SLB_I2C, GetTmp102Addr(index), 0); 
         
-        if((retVal = I2C_WriteBytes(i2cTxBuffer, 2)) != I2C_OK)
+        if((retVal = I2C_WriteBytes(SLB_I2C, i2cTxBuffer, 2)) != I2C_OK)
         {
             break;
         }
         
-        if((retVal = I2C_WaitForTX()) != I2C_OK)
+        if((retVal = I2C_WaitForTX(SLB_I2C)) != I2C_OK)
         {
             break;
         }
         
-        I2C_Stop();
+        I2C_Stop(SLB_I2C);
 
         // Read the temperature registers from the sensor
         // I2C Write
-        I2C_Start(GetTmp102Addr(index), 0); 
+        I2C_Start(SLB_I2C, GetTmp102Addr(index), 0); 
         
-        if((retVal = I2C_WriteByte(TMP102_TEMP_ADDR)) != I2C_OK)
+        if((retVal = I2C_WriteByte(SLB_I2C, TMP102_TEMP_ADDR)) != I2C_OK)
         {
             break;
         }
         
-        if((retVal = I2C_WaitForTX()) != I2C_OK)
+        if((retVal = I2C_WaitForTX(SLB_I2C)) != I2C_OK)
         {
             break;
         }
         
-        I2C_Stop();
+        I2C_Stop(SLB_I2C);
         
         // I2C Read
-        I2C_Start(GetTmp102Addr(index), 1);
+        I2C_Start(SLB_I2C, GetTmp102Addr(index), 1);
         
-        if((retVal = I2C_ReadBytes(i2cRxBuffer, 2)) != I2C_OK)
+        if((retVal = I2C_ReadBytes(SLB_I2C, i2cRxBuffer, 2)) != I2C_OK)
         {
             break;
         }
         
-        I2C_Stop();
+        I2C_Stop(SLB_I2C);
 
         // Process returned data
         temp |= i2cRxBuffer[0] << 4;
@@ -445,32 +455,32 @@ I2C_Status InitTempSensor(uint8_t index)
     do
     {
         // I2C Write
-        I2C_Start(GetTmp102Addr(index), 0);
-        retVal = I2C_WriteByte(TMP102_CONFIG_ADDR);
+        I2C_Start(SLB_I2C, GetTmp102Addr(index), 0);
+        retVal = I2C_WriteByte(SLB_I2C, TMP102_CONFIG_ADDR);
         if(retVal != I2C_OK)
         {
             break;
         }
-        retVal = I2C_WaitForTX();
+        retVal = I2C_WaitForTX(SLB_I2C);
         if(retVal != I2C_OK)
         {
             break;
         }
-        I2C_Stop();
+        I2C_Stop(SLB_I2C);
         
         // I2C Write
-        I2C_Start(GetTmp102Addr(index), 0); 
-        retVal = I2C_WriteBytes(i2cTxBuffer, 2);
+        I2C_Start(SLB_I2C, GetTmp102Addr(index), 0); 
+        retVal = I2C_WriteBytes(SLB_I2C, i2cTxBuffer, 2);
         if(retVal != I2C_OK)
         {
             break;
         }
-        retVal = I2C_WaitForTX();
+        retVal = I2C_WaitForTX(SLB_I2C);
         if(retVal != I2C_OK)
         {
             break;
         }
-        I2C_Stop();
+        I2C_Stop(SLB_I2C);
     }while(0);
     
     taskEXIT_CRITICAL();
@@ -504,30 +514,30 @@ I2C_Status ReadHumiditySensor(float* humidOut)
     do
     {
         // I2C Write
-        I2C_Start(HTU21D_ADDR, 0); 
+        I2C_Start(ALB_I2C, HTU21D_ADDR, 0); 
         
-        retVal = I2C_WriteByte(HTU21D_HUMID_MEAS_HOLD);
+        retVal = I2C_WriteByte(ALB_I2C, HTU21D_HUMID_MEAS_HOLD);
         if(retVal != I2C_OK)
         {
             break;
         }
         
-        retVal = I2C_WaitForTX();
+        retVal = I2C_WaitForTX(ALB_I2C);
         if(retVal != I2C_OK)
         {
             break;
         }
         
         // I2C Read
-        I2C_Start(HTU21D_ADDR, 1);
+        I2C_Start(ALB_I2C, HTU21D_ADDR, 1);
         
-        retVal = I2C_ReadBytes(i2cRxBuffer, 3);
+        retVal = I2C_ReadBytes(ALB_I2C, i2cRxBuffer, 3);
         if(retVal != I2C_OK)
         {
             break;
         }
         
-        I2C_Stop();
+        I2C_Stop(ALB_I2C);
         
         humidity |= i2cRxBuffer[0] << 8;
         humidity |= i2cRxBuffer[1];
@@ -556,26 +566,26 @@ I2C_Status ReadAirTempSensor(float* tempOut)
     do
     {
         // I2C Write
-        I2C_Start(HTU21D_ADDR, 0); 
-        retVal = I2C_WriteByte(HTU21D_TEMP_MEAS_HOLD);
+        I2C_Start(ALB_I2C, HTU21D_ADDR, 0); 
+        retVal = I2C_WriteByte(ALB_I2C, HTU21D_TEMP_MEAS_HOLD);
         if(retVal != I2C_OK)
         {
             break;
         }
-        retVal = I2C_WaitForTX();
+        retVal = I2C_WaitForTX(ALB_I2C);
         if(retVal != I2C_OK)
         {
             break;
         }
         
         // I2C Read
-        I2C_Start(HTU21D_ADDR, 1);
-        retVal = I2C_ReadBytes(i2cRxBuffer, 3);
+        I2C_Start(ALB_I2C, HTU21D_ADDR, 1);
+        retVal = I2C_ReadBytes(ALB_I2C, i2cRxBuffer, 3);
         if(retVal != I2C_OK)
         {
             break;
         }
-        I2C_Stop();
+        I2C_Stop(ALB_I2C);
         
         temperature |= i2cRxBuffer[0] << 8;
         temperature |= i2cRxBuffer[1];
@@ -583,48 +593,6 @@ I2C_Status ReadAirTempSensor(float* tempOut)
         *tempOut = HTU21D_Temp_To_Float(temperature);
         
     }while(0);
-    
-    taskEXIT_CRITICAL();
-    
-    return retVal;
-}
-
-I2C_Status PingI2C(uint8_t addr)
-{
-    I2C_Status retVal = I2C_OK;
-    
-    // This is a critical section: if the device is interrupted during an I2C transaction, it will probably fail.
-    // Disable all interrupts during this transaction to ensure that it completes sucessfully.
-    // NOTE: This means that the system clock will be wrong by ~15 ms (15 ticks) after this section of code is executed
-    taskENTER_CRITICAL();
-    
-    // Use a do {} while(0); loop to allow the use of the "break" statement.
-    // In C++ / Java this would be accomplished with a "try {} catch() {} finally {}" section, but C does not support this construct.
-    do
-    {
-        // I2C Write
-        I2C_Start(addr, I2C_WRITE); 
-        retVal = I2C_WriteByte(SMS_GET_ADDRESS);
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        retVal = I2C_WaitForTX();
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        
-        // I2C Read
-        I2C_Start(addr, I2C_READ);
-        retVal = I2C_ReadBytes(i2cRxBuffer, 1);
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        I2C_Stop();
-        
-    } while(0);
     
     taskEXIT_CRITICAL();
     

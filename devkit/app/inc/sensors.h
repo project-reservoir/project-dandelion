@@ -29,29 +29,50 @@
     #define I2Cx_Handler                    I2C1_Handler
 
 #elif DANDELION
-
-    // TODO: setup the second I2C device
-
-    #define I2Cx                            I2C1
-    #define I2Cx_CLK_ENABLE()               __I2C1_CLK_ENABLE()
-    #define I2Cx_SDA_GPIO_CLK_ENABLE()      __GPIOB_CLK_ENABLE()
-    #define I2Cx_SCL_GPIO_CLK_ENABLE()      __GPIOB_CLK_ENABLE() 
-
-    #define I2Cx_FORCE_RESET()              __I2C1_FORCE_RESET()
-    #define I2Cx_RELEASE_RESET()            __I2C1_RELEASE_RESET()
-
-    /* Definition for I2Cx Pins */
-    #define I2Cx_SCL_PIN                    GPIO_PIN_6
-    #define I2Cx_SCL_GPIO_PORT              GPIOB
-    #define I2Cx_SCL_AF                     GPIO_AF1_I2C1
     
-    #define I2Cx_SDA_PIN                    GPIO_PIN_7
-    #define I2Cx_SDA_GPIO_PORT              GPIOB
-    #define I2Cx_SDA_AF                     GPIO_AF1_I2C1
+    // SLB I2C
+    #define SLB_I2C                         I2C2
+    #define SLB_I2C_CLK_ENABLE()            __I2C2_CLK_ENABLE()
+    #define SLB_I2C_SDA_GPIO_CLK_ENABLE()   __GPIOB_CLK_ENABLE()
+    #define SLB_I2C_SCL_GPIO_CLK_ENABLE()   __GPIOB_CLK_ENABLE() 
+
+    #define SLB_I2C_FORCE_RESET()           __I2C2_FORCE_RESET()
+    #define SLB_I2C_RELEASE_RESET()         __I2C2_RELEASE_RESET()
+
+    /* Definition for SLB_I2C Pins */
+    #define SLB_I2C_SCL_PIN                 GPIO_PIN_10
+    #define SLB_I2C_SCL_GPIO_PORT           GPIOB
+    #define SLB_I2C_SCL_AF                  GPIO_AF5_I2C2
+    
+    #define SLB_I2C_SDA_PIN                 GPIO_PIN_11
+    #define SLB_I2C_SDA_GPIO_PORT           GPIOB
+    #define SLB_I2C_SDA_AF                  GPIO_AF5_I2C2
 
     /* Definition for I2Cx's NVIC */
-    #define I2Cx_IRQn                       I2C1_IRQn
-    #define I2Cx_Handler                    I2C1_Handler
+    #define SLB_I2C_IRQn                    I2C2_IRQn
+    #define SLB_I2C_Handler                 I2C2_Handler
+    
+    // ALB I2C
+    #define ALB_I2C                         I2C1
+    #define ALB_I2C_CLK_ENABLE()            __I2C1_CLK_ENABLE()
+    #define ALB_I2C_SDA_GPIO_CLK_ENABLE()   __GPIOB_CLK_ENABLE()
+    #define ALB_I2C_SCL_GPIO_CLK_ENABLE()   __GPIOB_CLK_ENABLE() 
+
+    #define ALB_I2C_FORCE_RESET()           __I2C1_FORCE_RESET()
+    #define ALB_I2C_RELEASE_RESET()         __I2C1_RELEASE_RESET()
+
+    /* Definition for I2Cx Pins */
+    #define ALB_I2C_SCL_PIN                 GPIO_PIN_6
+    #define ALB_I2C_SCL_GPIO_PORT           GPIOB
+    #define ALB_I2C_SCL_AF                  GPIO_AF1_I2C1
+    
+    #define ALB_I2C_SDA_PIN                 GPIO_PIN_7
+    #define ALB_I2C_SDA_GPIO_PORT           GPIOB
+    #define ALB_I2C_SDA_AF                  GPIO_AF1_I2C1
+
+    /* Definition for I2Cx's NVIC */
+    #define ALB_I2C_IRQn                    I2C1_IRQn
+    #define ALB_I2C_Handler                 I2C1_Handler
     
     #define CAP_IN_1_PIN                    GPIO_PIN_0
     #define CAP_IN_1_PORT                   GPIOA
