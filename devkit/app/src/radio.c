@@ -6,6 +6,7 @@
 #include "spi.h"
 #include "radio_packets.h"
 #include "fw_update.h"
+#include "app_header.h"
 
 extern void si446x_fifo_info(uint8_t FIFO);
 extern void si446x_read_rx_fifo( uint8_t numBytes, uint8_t* pRxData );
@@ -462,7 +463,21 @@ void RadioTaskHandleIRQ(void)
             {
                 // The base station has requested info from us: reply with it
                 case DEVICE_INFO:
-                    // TODO: assemble device info struct and place on radio TX queue
+                    DEBUG("Received Device Info message. Sending Device info packet...\r\n");
+                
+                    generic_msg = pvPortMalloc(sizeof(generic_message_t));
+                
+                    // TODO: check we didn't run out of RAM (we should catch this in the 
+                    //       application Malloc failed handler, but just in case)
+                    
+                    generic_msg->cmd = DEVICE_INFO;
+                    generic_msg->dst = message->src;
+                    generic_msg->src = RadioGetMACAddress();
+                    generic_msg->payload.device_info.mac = RadioGetMACAddress();
+                    generic_msg->payload.device_info.version = APP_VERSION;
+                    generic_msg->payload.device_info.battery_level = 99;
+                
+                    SendToDevice((uint8_t*)generic_msg, sizeof(generic_message_t), message->src);
                     break;
                 
                 case SENSOR_MSG:

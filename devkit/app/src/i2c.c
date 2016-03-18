@@ -104,7 +104,7 @@ I2C_Status I2C_ReadBytes(I2C_TypeDef* i2c, uint8_t* buffer, uint8_t numBytes)
         {
             return I2C_TIMEOUT;
         }
-        buffer[i] = I2C1->RXDR;
+        buffer[i] = i2c->RXDR;
     }
     
     return I2C_OK;

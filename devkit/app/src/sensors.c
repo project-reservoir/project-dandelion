@@ -26,9 +26,11 @@ uint32_t            pollingRate = DEFAULT_POLL_RATE; // Poll once per minute by 
 static void       ReadSoilMoisture(float* moist1, float* moist2, float* moist3);
 static uint8_t    GetTmp102Addr(uint8_t index);
 static I2C_Status InitTempSensor(uint8_t index);
-static I2C_Status ReadTempSensor(uint8_t index, float* tempOut);
+static I2C_Status ReadTempSensor(uint8_t index, uint16_t* tempOut);
 static I2C_Status ReadHumiditySensor(float* humidOut);
 static I2C_Status InitHumiditySensor(void);
+static I2C_Status InitPressureSensor(void);
+static I2C_Status ReadPressureSensor(uint32_t* altOut);
 static I2C_Status ReadAirTempSensor(float* tempOut);
 static uint8_t    GetSmsAddr(uint8_t index);
 static void       SendSensorData(void);
@@ -120,6 +122,11 @@ void SensorsTask(void)
     // Array storing the status of each physical sensor.
     // If a sensor fails to initialize, or fails 3 sensor reads in a row, 
     // it will be disabled here until the next system reboot
+    // 0 = tmp0
+    // 1 = tmp1
+    // 2 = tmp3
+    // 3 = humidity / air temp
+    // 4 = pressure
     uint8_t enabledSensors[7] = {3, 3, 3, 3, 3, 3, 3};
     uint8_t i;
     I2C_Status retVal = I2C_OK;
@@ -143,6 +150,13 @@ void SensorsTask(void)
         I2C_Reset(ALB_I2C);
         enabledSensors[3] = 0;
         WARN("(SENSORS_TASK) Humidity sensor failed to initialize\r\n");
+    }
+    
+    if(InitPressureSensor() != I2C_OK)
+    {
+        I2C_Reset(ALB_I2C);
+        enabledSensors[4] = 0;
+        WARN("(SENSORS_TASK) Pressure sensor failed to initialize\r\n");
     }
     
     // Let other tasks in the system warmup before entering the sensor polling loop
@@ -220,6 +234,16 @@ void SensorsTask(void)
             while(0);
         }
         
+        if(enabledSensors[4] > 0)
+        {
+            if(ReadPressureSensor(&sensorData.alt) != I2C_OK)
+            {
+                I2C_Reset(ALB_I2C);
+                enabledSensors[4]--;
+                WARN("(SENSORS_TASK) Altimeter sensor read failed\r\n");
+            }
+        }
+        
         ReadSoilMoisture(&sensorData.moist0, &sensorData.moist1, &sensorData.moist2);
         
         // Send sensor Data to the base station
@@ -258,16 +282,13 @@ void SendSensorData(void)
     radioMessage->payload.sensor_message.humid = tmp;
     
     // temp 0
-    tmp = Float_To_TMP102(sensorData.temp0);
-    radioMessage->payload.sensor_message.temp0 = tmp;
+    radioMessage->payload.sensor_message.temp0 = sensorData.temp0;
     
     // temp 1
-    tmp = Float_To_TMP102(sensorData.temp1);
-    radioMessage->payload.sensor_message.temp1 = tmp;
+    radioMessage->payload.sensor_message.temp1 = sensorData.temp1;
     
     // temp 2
-    tmp = Float_To_TMP102(sensorData.temp2);
-    radioMessage->payload.sensor_message.temp2 = tmp;
+    radioMessage->payload.sensor_message.temp2 = sensorData.temp2;
    
     // air temp
     tmp = Float_To_HTU21D_Temp(sensorData.tempAir);
@@ -276,7 +297,11 @@ void SendSensorData(void)
     // battery level
     radioMessage->payload.sensor_message.battery_level = GetBatteryVoltage();
     
+    // Chip temperature
     radioMessage->payload.sensor_message.chip_temp = GetChipTemperature();
+    
+    // Sensor altitude
+    radioMessage->payload.sensor_message.alt = sensorData.alt;
     
     DEBUG("(SENSORS_TASK) Sending sensor message to radio task\r\n");
     
@@ -286,13 +311,42 @@ void SendSensorData(void)
 void SensorsCmd(sensor_cmd_payload_t cmd)
 {
     // Field 0 == sensor polling rate change
-    if(cmd.valid_fields & 0x1)
+    if(cmd.valid_fields & 0x00000001)
     {
         DEBUG("COMMAND FROM BASE STATION: Changing sensor polling period to %d", cmd.sensor_polling_period);
         SensorsChangePollingRate(cmd.sensor_polling_period);
     }
     
     // Room for future expansion here
+    
+    if(cmd.valid_fields & 0x40000000)
+    {
+        // Set SLEEPDEEP bit
+        SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
+        // Ensure PDDS bit = 0
+        // Ensure WUF bit = 0
+
+        // STOPWUCK selects HSI16 as wakeup clock
+        
+        // Disable SysTick interrupt
+        NVIC_DisableIRQ(SysTick_IRQn);
+        
+        __WFI();
+        
+        // Reset the SLEEPDEEP bit
+        SCB->SCR &= (uint32_t)~((uint32_t)SCB_SCR_SLEEPDEEP_Msk);
+
+        // Reconfigure system clock
+        SystemClock_Config();
+        
+        NVIC_EnableIRQ(SysTick_IRQn);
+    }
+    
+    if(cmd.valid_fields & 0x80000000)
+    {
+        DEBUG("COMMAND FROM BASE STATION: Resetting...\r\n");
+        NVIC_SystemReset();
+    }
 }
 
 // Local function implementations
@@ -360,7 +414,7 @@ uint8_t GetSmsAddr(uint8_t index)
 
 // Read one of the temperature sensors. This function will 
 // block the calling task until the entire sensor read has been completed
-I2C_Status ReadTempSensor(uint8_t index, float* tempOut)
+I2C_Status ReadTempSensor(uint8_t index, uint16_t* tempOut)
 {
     I2C_Status retVal = I2C_OK;
     uint16_t temp = 0;
@@ -401,8 +455,8 @@ I2C_Status ReadTempSensor(uint8_t index, float* tempOut)
             break;
         }
         
-        I2C_Stop(SLB_I2C);
-
+        I2C_Stop(SLB_I2C);       
+        
         // Read the temperature registers from the sensor
         // I2C Write
         I2C_Start(SLB_I2C, GetTmp102Addr(index), 0); 
@@ -430,10 +484,10 @@ I2C_Status ReadTempSensor(uint8_t index, float* tempOut)
         I2C_Stop(SLB_I2C);
 
         // Process returned data
-        temp |= i2cRxBuffer[0] << 4;
-        temp |= (i2cRxBuffer[1] & 0x0F);
+        temp = (((uint16_t)i2cRxBuffer[0]) << 4) & 0xFFF0;
+        temp |= (((uint16_t)i2cRxBuffer[1]) >> 4) & 0x000F;
         
-        *tempOut = TMP102_To_Float(temp);
+        *tempOut = temp;
     } while(0);
     
     taskEXIT_CRITICAL();
@@ -469,7 +523,7 @@ I2C_Status InitTempSensor(uint8_t index)
         I2C_Stop(SLB_I2C);
         
         // I2C Write
-        I2C_Start(SLB_I2C, GetTmp102Addr(index), 0); 
+        I2C_Start(SLB_I2C, GetTmp102Addr(index), 0);
         retVal = I2C_WriteBytes(SLB_I2C, i2cTxBuffer, 2);
         if(retVal != I2C_OK)
         {
@@ -481,6 +535,17 @@ I2C_Status InitTempSensor(uint8_t index)
             break;
         }
         I2C_Stop(SLB_I2C);
+        
+        // I2C Read
+        I2C_Start(SLB_I2C, GetTmp102Addr(index), 1);
+        
+        if((retVal = I2C_ReadBytes(SLB_I2C, i2cRxBuffer, 2)) != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Stop(SLB_I2C);
+        
     }while(0);
     
     taskEXIT_CRITICAL();
@@ -492,6 +557,173 @@ I2C_Status InitHumiditySensor(void)
 {
     // Humidity sensor does not need initialization
     return I2C_OK;
+}
+
+I2C_Status InitPressureSensor(void)
+{
+    I2C_Status retVal = I2C_OK;
+        
+    taskENTER_CRITICAL();
+    
+    do
+    {
+        // Write the config values into the TX buffer
+        i2cTxBuffer[0] = MPL311_CONFIG_1_REG;
+        i2cTxBuffer[0] = MPL311_CONFIG_1_VAL;
+        
+        // I2C Write
+        I2C_Start(ALB_I2C, MPL311_ADDR, 0);
+        retVal = I2C_WriteBytes(ALB_I2C, i2cTxBuffer, 2);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        retVal = I2C_WaitForTX(ALB_I2C);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        I2C_Stop(ALB_I2C);
+        
+        // Write the config values into the TX buffer
+        i2cTxBuffer[0] = MPL311_CONFIG_2_REG;
+        i2cTxBuffer[0] = MPL311_CONFIG_2_VAL;
+        
+        // I2C Write
+        I2C_Start(ALB_I2C, MPL311_ADDR, 0); 
+        retVal = I2C_WriteBytes(ALB_I2C, i2cTxBuffer, 2);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        retVal = I2C_WaitForTX(ALB_I2C);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        I2C_Stop(ALB_I2C);
+        
+        // Start the sensor
+        i2cTxBuffer[0] = MPL311_CONFIG_1_REG;
+        i2cTxBuffer[0] = MPL311_CONFIG_1_VAL | 0x01;
+        
+        // I2C Write
+        I2C_Start(ALB_I2C, MPL311_ADDR, 0);
+        retVal = I2C_WriteBytes(ALB_I2C, i2cTxBuffer, 2);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        retVal = I2C_WaitForTX(ALB_I2C);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        I2C_Stop(ALB_I2C); 
+    }while(0);
+    
+    taskEXIT_CRITICAL();
+    
+    return retVal;
+}
+
+// Read the altimeter. This function will 
+// block the calling task until the entire sensor read has been completed
+I2C_Status ReadPressureSensor(uint32_t* altOut)
+{
+    I2C_Status retVal = I2C_OK;
+    uint32_t temp = 0;
+    
+    taskENTER_CRITICAL();
+    
+    do
+    {
+        // I2C Write
+        I2C_Start(ALB_I2C, MPL311_ADDR, 0);
+        
+        if((retVal = I2C_WriteByte(ALB_I2C, MPL311_ALT_MSB_REG)) != I2C_OK)
+        {
+            break;
+        }
+        
+        if((retVal = I2C_WaitForTX(ALB_I2C)) != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Stop(ALB_I2C);
+        
+        // I2C Read
+        I2C_Start(ALB_I2C, MPL311_ADDR, 1);
+        
+        if((retVal = I2C_ReadBytes(ALB_I2C, i2cRxBuffer, 1)) != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Stop(ALB_I2C);
+        
+        // I2C Write
+        I2C_Start(ALB_I2C, MPL311_ADDR, 0);
+        
+        if((retVal = I2C_WriteByte(ALB_I2C, MPL311_ALT_CSB_REG)) != I2C_OK)
+        {
+            break;
+        }
+        
+        if((retVal = I2C_WaitForTX(ALB_I2C)) != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Stop(ALB_I2C);
+        
+        // I2C Read
+        I2C_Start(ALB_I2C, MPL311_ADDR, 1);
+        
+        if((retVal = I2C_ReadBytes(ALB_I2C, &(i2cRxBuffer[1]), 1)) != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Stop(ALB_I2C);
+        
+        // I2C Write
+        I2C_Start(ALB_I2C, MPL311_ADDR, 0);
+        
+        if((retVal = I2C_WriteByte(ALB_I2C, MPL311_ALT_LSB_REG)) != I2C_OK)
+        {
+            break;
+        }
+        
+        if((retVal = I2C_WaitForTX(ALB_I2C)) != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Stop(ALB_I2C);
+        
+        // I2C Read
+        I2C_Start(ALB_I2C, MPL311_ADDR, 1);
+        
+        if((retVal = I2C_ReadBytes(ALB_I2C, &(i2cRxBuffer[2]), 1)) != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Stop(ALB_I2C);
+        
+        // Process returned data
+        temp = i2cRxBuffer[0] << 24;
+        temp |= i2cRxBuffer[1] << 16;
+        temp |= i2cRxBuffer[2] << 8;
+        
+        *altOut = temp;
+    } while(0);
+    
+    taskEXIT_CRITICAL();
+    
+    return retVal;
 }
 
 // Send a command to the humidity sensor to start a humidity value conversion

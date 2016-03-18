@@ -2,12 +2,8 @@
 
 float TMP102_To_Float(uint16_t input)
 {
-	return input * (float)TMP102_LSB_INC;
-}
-
-uint16_t Float_To_TMP102(float input)
-{
-	return input / (float)TMP102_LSB_INC;
+	//return ((input & 0x8000) ? (-1.0f) * (((~input) + 1) * (float)TMP102_LSB_INC) : input * (float)TMP102_LSB_INC);
+    return input * (float)TMP102_LSB_INC;
 }
 
 float HTU21D_Humid_To_Float(uint16_t input)
@@ -30,6 +26,11 @@ uint16_t Float_To_HTU21D_Temp(float input)
 	return (((input + 46.85f) / 175.72f) * ((float)(1 << 16)));
 }
 
+float MPL311_Alt_To_Float(uint32_t input)
+{
+    return (float)input / 65536.0f;
+}
+
 float SMS_To_Float(uint16_t input)
 {
     return input * 1.0;
@@ -38,4 +39,16 @@ float SMS_To_Float(uint16_t input)
 uint16_t Float_To_SMS(float input)
 {
     return input / 1.0;
+}
+
+float Moisture_To_Float(float moist)
+{
+    float res = ((100.0f * moist) - 71333.0f) / 229140.0f;
+    
+    if(res < 0.0f)
+    {
+        res = 0.0f;
+    }
+    
+    return res;
 }

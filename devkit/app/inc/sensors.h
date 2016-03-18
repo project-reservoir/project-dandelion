@@ -42,11 +42,11 @@
     /* Definition for SLB_I2C Pins */
     #define SLB_I2C_SCL_PIN                 GPIO_PIN_10
     #define SLB_I2C_SCL_GPIO_PORT           GPIOB
-    #define SLB_I2C_SCL_AF                  GPIO_AF5_I2C2
+    #define SLB_I2C_SCL_AF                  GPIO_AF6_I2C2
     
     #define SLB_I2C_SDA_PIN                 GPIO_PIN_11
     #define SLB_I2C_SDA_GPIO_PORT           GPIOB
-    #define SLB_I2C_SDA_AF                  GPIO_AF5_I2C2
+    #define SLB_I2C_SDA_AF                  GPIO_AF6_I2C2
 
     /* Definition for I2Cx's NVIC */
     #define SLB_I2C_IRQn                    I2C2_IRQn
@@ -113,7 +113,7 @@
 #define I2C_TIMING_300KHZ               0x0060134B /* Analog Filert ON, Rise Time 100ns, Fall Time 10ns */
 #define I2C_TIMING_300KHZ_NEW           0x00300619
 
-#define I2C_BUFFER_SIZE                 2
+#define I2C_BUFFER_SIZE                 4
 
 #define I2C_ADDRESS                     0x01
 
@@ -124,7 +124,7 @@
 #define TMP102_2_ADDR               0x4A
 
 #define TMP102_CONFIG_1_ONESHOT_VAL 0xE1
-#define TMP102_CONFIG_1_VAL         0x41
+#define TMP102_CONFIG_1_VAL         0x61
 #define TMP102_CONFIG_2_VAL         0xA0
 
 #define TMP102_TEMP_ADDR            0x00
@@ -151,6 +151,18 @@
 #define SMS_GET_CAPACITANCE         0x00
 #define SMS_SET_ADDRESS             0x01
 #define SMS_GET_ADDRESS             0x02
+
+// MPL311 (Air Pressure sensor) definitions
+#define MPL311_ADDR                 0xC0
+#define MPL311_CONFIG_1_VAL         0xB8
+#define MPL311_CONFIG_1_REG         0x26
+#define MPL311_CONFIG_2_VAL         0x07
+#define MPL311_CONFIG_2_REG         0x13
+#define MPL311_ALT_MSB_REG          0x01
+#define MPL311_ALT_CSB_REG          0x02
+#define MPL311_ALT_LSB_REG          0x03
+#define MPL311_TMP_MSB_REG          0x04
+#define MPL311_TMP_LSB_REG          0x05
 
 #define DEFAULT_POLL_RATE           5 * 1000
 

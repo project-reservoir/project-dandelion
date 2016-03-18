@@ -32,6 +32,19 @@ void LedBlinkTaskHwInit(void)
 
 void LedBlinkTask(const void *argument)
 {
+    //"Chirp" the LED to indicate power on
+    for(uint8_t i = 0; i < 20; i++)
+    {
+        HAL_GPIO_WritePin(LEDG_GPIO_PORT, LEDG_PIN, GPIO_PIN_RESET);
+        //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+        osDelay(50);
+        
+        //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(LEDG_GPIO_PORT, LEDG_PIN, GPIO_PIN_SET);
+
+        osDelay(50);
+    }
+    
 	// Flash an LED on and off forever.
 	while(1)
 	{

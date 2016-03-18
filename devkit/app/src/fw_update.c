@@ -126,6 +126,16 @@ void FwUpdateEnd(void)
     osSemaphoreWait(memoryOpSem, 0);
     
     flash_eeprom_nvm_lock();
+    
+    // Reset the device if the FW update succeeded
+    if(FwUpdateBackupImageValid())
+    {
+        NVIC_SystemReset();
+    }
+    else
+    {
+        ERR("Firmware update failed CRC check! Not rebooting...\r\n");
+    }
 }
 
 uint8_t FwUpdateWriteWord(uint32_t word, uint32_t offset)

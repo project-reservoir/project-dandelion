@@ -13,7 +13,7 @@
 //      DD = Build type (01 = DEBUG, 02 = PRODUCTION)
 
 #define OS_MAJOR            4
-#define OS_MINOR            0
+#define OS_MINOR            10
 #define HW_ID               2
 #define BUILD_TYPE          1
 

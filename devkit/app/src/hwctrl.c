@@ -38,6 +38,8 @@ void SystemClock_Config(void)
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;  
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;  
     HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1);
+    
+    __HAL_RCC_WAKEUPSTOP_CLK_CONFIG(RCC_StopWakeUpClock_HSI);
 }
 
 void HwCtrl_Init(void)

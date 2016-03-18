@@ -15,6 +15,7 @@
 #include "power.h"
 #include "xprintf.h"
 #include "capacitance.h"
+#include "hwctrl.h"
 
 // Minimum message size includes the ':' starting character and the \n
 #define MIN_INTEL_MESSAGE_LEN   12
@@ -144,6 +145,23 @@ void processString(char* str)
                     
                     case 'f':
                         __BKPT(0);
+                        break;
+                    
+                    case 'b':
+                         // Set SLEEPDEEP bit
+                         SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
+                         // Ensure PDDS bit = 0
+                         // Ensure WUF bit = 0
+                    
+                         // STOPWUCK selects HSI16 as wakeup clock
+                    
+                        __WFI();
+                        
+                        // Reset the SLEEPDEEP bit
+                        SCB->SCR &= (uint32_t)~((uint32_t)SCB_SCR_SLEEPDEEP_Msk);
+                    
+                        // Reconfigure system clock
+                        SystemClock_Config();
                         break;
                 }
             }
