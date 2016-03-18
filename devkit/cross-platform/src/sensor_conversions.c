@@ -43,7 +43,7 @@ uint16_t Float_To_SMS(float input)
 
 float Moisture_To_Float(float moist)
 {
-    float res = ((100.0f * moist) - 71333.0f) / 229140.0f;
+    float res = (moist - 3669.52f) / 89.1429f;
     
     if(res < 0.0f)
     {

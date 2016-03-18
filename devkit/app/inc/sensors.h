@@ -153,8 +153,8 @@
 #define SMS_GET_ADDRESS             0x02
 
 // MPL311 (Air Pressure sensor) definitions
-#define MPL311_ADDR                 0xC0
-#define MPL311_CONFIG_1_VAL         0xB8
+#define MPL311_ADDR                 0x60
+#define MPL311_CONFIG_1_VAL         0x80
 #define MPL311_CONFIG_1_REG         0x26
 #define MPL311_CONFIG_2_VAL         0x07
 #define MPL311_CONFIG_2_REG         0x13
@@ -164,6 +164,71 @@
 #define MPL311_TMP_MSB_REG          0x04
 #define MPL311_TMP_LSB_REG          0x05
 
+#define MPL3115A2_REGISTER_STATUS               (0x00)
+#define MPL3115A2_REGISTER_STATUS_TDR 0x02
+#define MPL3115A2_REGISTER_STATUS_PDR 0x04
+#define MPL3115A2_REGISTER_STATUS_PTDR 0x08
+
+#define MPL3115A2_REGISTER_PRESSURE_MSB         (0x01)
+#define MPL3115A2_REGISTER_PRESSURE_CSB         (0x02)
+#define MPL3115A2_REGISTER_PRESSURE_LSB         (0x03)
+
+#define MPL3115A2_REGISTER_TEMP_MSB             (0x04)
+#define MPL3115A2_REGISTER_TEMP_LSB             (0x05)
+
+#define MPL3115A2_REGISTER_DR_STATUS            (0x06)
+
+#define MPL3115A2_OUT_P_DELTA_MSB               (0x07)
+#define MPL3115A2_OUT_P_DELTA_CSB               (0x08)
+#define MPL3115A2_OUT_P_DELTA_LSB               (0x09)
+
+#define MPL3115A2_OUT_T_DELTA_MSB               (0x0A)
+#define MPL3115A2_OUT_T_DELTA_LSB               (0x0B)
+
+#define MPL3115A2_WHOAMI                        (0x0C)
+
+#define MPL3115A2_PT_DATA_CFG 0x13
+#define MPL3115A2_PT_DATA_CFG_TDEFE 0x01
+#define MPL3115A2_PT_DATA_CFG_PDEFE 0x02
+#define MPL3115A2_PT_DATA_CFG_DREM 0x04
+
+#define MPL3115A2_CTRL_REG1                     (0x26)
+#define MPL3115A2_CTRL_REG1_SBYB 0x01
+#define MPL3115A2_CTRL_REG1_OST 0x02
+#define MPL3115A2_CTRL_REG1_RST 0x04
+#define MPL3115A2_CTRL_REG1_OS1 0x00
+#define MPL3115A2_CTRL_REG1_OS2 0x08
+#define MPL3115A2_CTRL_REG1_OS4 0x10
+#define MPL3115A2_CTRL_REG1_OS8 0x18
+#define MPL3115A2_CTRL_REG1_OS16 0x20
+#define MPL3115A2_CTRL_REG1_OS32 0x28
+#define MPL3115A2_CTRL_REG1_OS64 0x30
+#define MPL3115A2_CTRL_REG1_OS128 0x38
+#define MPL3115A2_CTRL_REG1_RAW 0x40
+#define MPL3115A2_CTRL_REG1_ALT 0x80
+#define MPL3115A2_CTRL_REG1_BAR 0x00
+#define MPL3115A2_CTRL_REG2                     (0x27)
+#define MPL3115A2_CTRL_REG3                     (0x28)
+#define MPL3115A2_CTRL_REG4                     (0x29)
+#define MPL3115A2_CTRL_REG5                     (0x2A)
+
+#define MPL3115A2_REGISTER_STARTCONVERSION      (0x12)
+
+// LIS2DH Accelerometer
+#define LIS2DH_ADDR                 0x19
+#define LIS2DH_CTRL_REG1            0x20
+#define LIS2DH_CTRL_REG1_VAL        0x57
+#define LIS2DH_CTRL_REG4            0x23
+#define LIS2DH_CTRL_REG4_VAL        0x10
+#define LIS2DH_INT_CFG_REG          0x30
+#define LIS2DH_INT_CFG_REG_VAL      0x2A
+#define LIS2DH_INT_THS_REG          0x32
+#define LIS2DH_INT_THS_REG_VAL      0x3F
+#define LIS2DH_INT_COUNTER_REG      0x0E
+#define LIS2DH_WHOAMI_REG           0x0F
+#define LIS2DH_WHOAMI_REG_VAL       0x33
+
+// Task options
 #define DEFAULT_POLL_RATE           5 * 1000
 
 void        SensorsTaskOSInit(void);

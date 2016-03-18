@@ -31,6 +31,8 @@ static I2C_Status ReadHumiditySensor(float* humidOut);
 static I2C_Status InitHumiditySensor(void);
 static I2C_Status InitPressureSensor(void);
 static I2C_Status ReadPressureSensor(uint32_t* altOut);
+static I2C_Status InitAccelerometer(void);
+static I2C_Status ReadAccelerometer(uint8_t* interrupts);
 static I2C_Status ReadAirTempSensor(float* tempOut);
 static uint8_t    GetSmsAddr(uint8_t index);
 static void       SendSensorData(void);
@@ -127,6 +129,7 @@ void SensorsTask(void)
     // 2 = tmp3
     // 3 = humidity / air temp
     // 4 = pressure
+    // 5 = accelerometer
     uint8_t enabledSensors[7] = {3, 3, 3, 3, 3, 3, 3};
     uint8_t i;
     I2C_Status retVal = I2C_OK;
@@ -157,6 +160,13 @@ void SensorsTask(void)
         I2C_Reset(ALB_I2C);
         enabledSensors[4] = 0;
         WARN("(SENSORS_TASK) Pressure sensor failed to initialize\r\n");
+    }
+    
+    if(InitAccelerometer() != I2C_OK)
+    {
+        I2C_Reset(ALB_I2C);
+        enabledSensors[5] = 0;
+        WARN("(SENSORS_TASK) Accelerometer failed to initialize\r\n");
     }
     
     // Let other tasks in the system warmup before entering the sensor polling loop
@@ -244,6 +254,16 @@ void SensorsTask(void)
             }
         }
         
+        if(enabledSensors[5] > 0)
+        {
+            if(ReadAccelerometer(&sensorData.acc) != I2C_OK)
+            {
+                I2C_Reset(ALB_I2C);
+                enabledSensors[5]--;
+                WARN("(SENSORS_TASK) Accelerometer sensor read failed\r\n");
+            }
+        }
+        
         ReadSoilMoisture(&sensorData.moist0, &sensorData.moist1, &sensorData.moist2);
         
         // Send sensor Data to the base station
@@ -302,6 +322,9 @@ void SendSensorData(void)
     
     // Sensor altitude
     radioMessage->payload.sensor_message.alt = sensorData.alt;
+    
+    // Sensor acceleration
+    radioMessage->payload.sensor_message.acc = sensorData.acc;
     
     DEBUG("(SENSORS_TASK) Sending sensor message to radio task\r\n");
     
@@ -559,6 +582,66 @@ I2C_Status InitHumiditySensor(void)
     return I2C_OK;
 }
 
+I2C_Status PressureSensorRegWrite(uint8_t reg, uint8_t val)
+{
+    I2C_Status retVal = I2C_OK;
+    uint8_t tmp[2];
+    
+    tmp[0] = reg;
+    tmp[1] = val;
+    
+    do
+    {
+        I2C_Start(ALB_I2C, MPL311_ADDR, 0);
+        retVal = I2C_WriteBytes(ALB_I2C, tmp, 2);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        retVal = I2C_WaitForTX(ALB_I2C);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Stop(ALB_I2C);
+    } while(0);
+    
+    return retVal;
+}
+
+I2C_Status PressureSensorRegRead(uint8_t reg, uint8_t* val)
+{
+    I2C_Status retVal = I2C_OK;
+    
+    do
+    {
+        I2C_Start(ALB_I2C, MPL311_ADDR, 0);
+        retVal = I2C_WriteByte(ALB_I2C, reg);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        retVal = I2C_WaitForTX(ALB_I2C);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Start(ALB_I2C, MPL311_ADDR, 1);
+        
+        if((retVal = I2C_ReadBytes(ALB_I2C, val, 1)) != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Stop(ALB_I2C);
+    } while(0);
+    
+    return retVal;
+}
+
 I2C_Status InitPressureSensor(void)
 {
     I2C_Status retVal = I2C_OK;
@@ -567,59 +650,14 @@ I2C_Status InitPressureSensor(void)
     
     do
     {
-        // Write the config values into the TX buffer
-        i2cTxBuffer[0] = MPL311_CONFIG_1_REG;
-        i2cTxBuffer[0] = MPL311_CONFIG_1_VAL;
+        retVal = PressureSensorRegWrite(MPL3115A2_CTRL_REG1, MPL3115A2_CTRL_REG1_SBYB | MPL3115A2_CTRL_REG1_OS128 | MPL3115A2_CTRL_REG1_ALT);
         
-        // I2C Write
-        I2C_Start(ALB_I2C, MPL311_ADDR, 0);
-        retVal = I2C_WriteBytes(ALB_I2C, i2cTxBuffer, 2);
         if(retVal != I2C_OK)
         {
             break;
         }
-        retVal = I2C_WaitForTX(ALB_I2C);
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        I2C_Stop(ALB_I2C);
         
-        // Write the config values into the TX buffer
-        i2cTxBuffer[0] = MPL311_CONFIG_2_REG;
-        i2cTxBuffer[0] = MPL311_CONFIG_2_VAL;
-        
-        // I2C Write
-        I2C_Start(ALB_I2C, MPL311_ADDR, 0); 
-        retVal = I2C_WriteBytes(ALB_I2C, i2cTxBuffer, 2);
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        retVal = I2C_WaitForTX(ALB_I2C);
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        I2C_Stop(ALB_I2C);
-        
-        // Start the sensor
-        i2cTxBuffer[0] = MPL311_CONFIG_1_REG;
-        i2cTxBuffer[0] = MPL311_CONFIG_1_VAL | 0x01;
-        
-        // I2C Write
-        I2C_Start(ALB_I2C, MPL311_ADDR, 0);
-        retVal = I2C_WriteBytes(ALB_I2C, i2cTxBuffer, 2);
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        retVal = I2C_WaitForTX(ALB_I2C);
-        if(retVal != I2C_OK)
-        {
-            break;
-        }
-        I2C_Stop(ALB_I2C); 
+        retVal = PressureSensorRegWrite(MPL3115A2_PT_DATA_CFG, MPL3115A2_PT_DATA_CFG | MPL3115A2_PT_DATA_CFG_PDEFE | MPL3115A2_PT_DATA_CFG_DREM);
     }while(0);
     
     taskEXIT_CRITICAL();
@@ -638,75 +676,38 @@ I2C_Status ReadPressureSensor(uint32_t* altOut)
     
     do
     {
-        // I2C Write
+        retVal = PressureSensorRegWrite(MPL3115A2_CTRL_REG1, MPL3115A2_CTRL_REG1_SBYB | MPL3115A2_CTRL_REG1_OS128 | MPL3115A2_CTRL_REG1_ALT);
+
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        uint8_t sta = 0;
+        while (! (sta & MPL3115A2_REGISTER_STATUS_PDR)) {
+            retVal = PressureSensorRegRead(MPL3115A2_REGISTER_STATUS, &sta);
+            // TODO: a delay here would be nice to prevent slamming the I2C bus
+        }
+        
         I2C_Start(ALB_I2C, MPL311_ADDR, 0);
         
-        if((retVal = I2C_WriteByte(ALB_I2C, MPL311_ALT_MSB_REG)) != I2C_OK)
+        retVal = I2C_WriteByte(ALB_I2C, MPL3115A2_REGISTER_PRESSURE_MSB);
+        
+        if(retVal != I2C_OK)
         {
             break;
         }
         
-        if((retVal = I2C_WaitForTX(ALB_I2C)) != I2C_OK)
+        retVal = I2C_WaitForTX(ALB_I2C);
+        
+        if(retVal != I2C_OK)
         {
             break;
         }
         
-        I2C_Stop(ALB_I2C);
-        
-        // I2C Read
         I2C_Start(ALB_I2C, MPL311_ADDR, 1);
         
-        if((retVal = I2C_ReadBytes(ALB_I2C, i2cRxBuffer, 1)) != I2C_OK)
-        {
-            break;
-        }
-        
-        I2C_Stop(ALB_I2C);
-        
-        // I2C Write
-        I2C_Start(ALB_I2C, MPL311_ADDR, 0);
-        
-        if((retVal = I2C_WriteByte(ALB_I2C, MPL311_ALT_CSB_REG)) != I2C_OK)
-        {
-            break;
-        }
-        
-        if((retVal = I2C_WaitForTX(ALB_I2C)) != I2C_OK)
-        {
-            break;
-        }
-        
-        I2C_Stop(ALB_I2C);
-        
-        // I2C Read
-        I2C_Start(ALB_I2C, MPL311_ADDR, 1);
-        
-        if((retVal = I2C_ReadBytes(ALB_I2C, &(i2cRxBuffer[1]), 1)) != I2C_OK)
-        {
-            break;
-        }
-        
-        I2C_Stop(ALB_I2C);
-        
-        // I2C Write
-        I2C_Start(ALB_I2C, MPL311_ADDR, 0);
-        
-        if((retVal = I2C_WriteByte(ALB_I2C, MPL311_ALT_LSB_REG)) != I2C_OK)
-        {
-            break;
-        }
-        
-        if((retVal = I2C_WaitForTX(ALB_I2C)) != I2C_OK)
-        {
-            break;
-        }
-        
-        I2C_Stop(ALB_I2C);
-        
-        // I2C Read
-        I2C_Start(ALB_I2C, MPL311_ADDR, 1);
-        
-        if((retVal = I2C_ReadBytes(ALB_I2C, &(i2cRxBuffer[2]), 1)) != I2C_OK)
+        if((retVal = I2C_ReadBytes(ALB_I2C, i2cRxBuffer, 3)) != I2C_OK)
         {
             break;
         }
@@ -720,6 +721,140 @@ I2C_Status ReadPressureSensor(uint32_t* altOut)
         
         *altOut = temp;
     } while(0);
+    
+    taskEXIT_CRITICAL();
+    
+    return retVal;
+}
+
+I2C_Status AccelerometerRegWrite(uint8_t reg, uint8_t val)
+{
+    I2C_Status retVal = I2C_OK;
+    uint8_t tmp[2];
+    
+    tmp[0] = reg;
+    tmp[1] = val;
+    
+    do
+    {
+        I2C_Start(ALB_I2C, LIS2DH_ADDR, 0);
+        retVal = I2C_WriteBytes(ALB_I2C, tmp, 2);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        retVal = I2C_WaitForTX(ALB_I2C);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Stop(ALB_I2C);
+    } while(0);
+    
+    return retVal;
+}
+
+I2C_Status AccelerometerRegRead(uint8_t reg, uint8_t* val)
+{
+    I2C_Status retVal = I2C_OK;
+    
+    do
+    {
+        I2C_Start(ALB_I2C, LIS2DH_ADDR, 0);
+        retVal = I2C_WriteByte(ALB_I2C, reg);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        retVal = I2C_WaitForTX(ALB_I2C);
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Start(ALB_I2C, LIS2DH_ADDR, 1);
+        
+        if((retVal = I2C_ReadBytes(ALB_I2C, val, 1)) != I2C_OK)
+        {
+            break;
+        }
+        
+        I2C_Stop(ALB_I2C);
+    } while(0);
+    
+    return retVal;
+}
+
+I2C_Status InitAccelerometer(void)
+{
+    I2C_Status retVal = I2C_OK;
+        
+    taskENTER_CRITICAL();
+    
+    do
+    {
+        retVal = AccelerometerRegWrite(LIS2DH_CTRL_REG1, LIS2DH_CTRL_REG1_VAL);
+        
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        retVal = AccelerometerRegWrite(LIS2DH_CTRL_REG4, LIS2DH_CTRL_REG4_VAL);
+        
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        retVal = AccelerometerRegWrite(LIS2DH_INT_CFG_REG, LIS2DH_INT_CFG_REG_VAL);
+        
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        retVal = AccelerometerRegWrite(LIS2DH_INT_THS_REG, LIS2DH_INT_THS_REG_VAL);
+        
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        uint8_t val;
+        
+        retVal = AccelerometerRegRead(LIS2DH_WHOAMI_REG, &val);
+        
+        if(val != LIS2DH_WHOAMI_REG_VAL)
+        {
+            retVal = I2C_TIMEOUT;
+        }
+        
+    }while(0);
+    
+    taskEXIT_CRITICAL();
+    
+    return retVal;
+}
+
+I2C_Status ReadAccelerometer(uint8_t* interrupts)
+{
+    I2C_Status retVal = I2C_OK;
+        
+    taskENTER_CRITICAL();
+    
+    do
+    {
+        retVal = AccelerometerRegRead(LIS2DH_INT_COUNTER_REG, interrupts);
+        
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+    }while(0);
     
     taskEXIT_CRITICAL();
     

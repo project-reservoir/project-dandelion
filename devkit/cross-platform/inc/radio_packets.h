@@ -38,6 +38,7 @@ typedef struct {
     int16_t  chip_temp;
     uint32_t alt;
     uint32_t timestamp;
+    uint8_t  acc;
 } sensor_payload_t;
 
 #pragma pack(1)

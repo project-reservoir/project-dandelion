@@ -18,6 +18,7 @@ typedef struct SensorData_t {
     uint16_t temp0;
     uint16_t temp1;
     uint16_t temp2;
+    uint8_t  acc;
 } SensorData;
 
 // TMP102 sensors
