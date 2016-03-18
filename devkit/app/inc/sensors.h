@@ -221,12 +221,18 @@
 #define LIS2DH_CTRL_REG4            0x23
 #define LIS2DH_CTRL_REG4_VAL        0x10
 #define LIS2DH_INT_CFG_REG          0x30
-#define LIS2DH_INT_CFG_REG_VAL      0x2A
+#define LIS2DH_INT_CFG_REG_VAL      0x6A
 #define LIS2DH_INT_THS_REG          0x32
-#define LIS2DH_INT_THS_REG_VAL      0x3F
+#define LIS2DH_INT_THS_REG_VAL      0x10
 #define LIS2DH_INT_COUNTER_REG      0x0E
 #define LIS2DH_WHOAMI_REG           0x0F
 #define LIS2DH_WHOAMI_REG_VAL       0x33
+#define LIS2DH_OUT_X_L_REG          0x28
+#define LIS2DH_OUT_X_H_REG          0x29
+#define LIS2DH_OUT_Y_L_REG          0x2A
+#define LIS2DH_OUT_Y_H_REG          0x2B
+#define LIS2DH_OUT_Z_L_REG          0x2C
+#define LIS2DH_OUT_Z_H_REG          0x2D
 
 // Task options
 #define DEFAULT_POLL_RATE           5 * 1000

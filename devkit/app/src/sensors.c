@@ -32,7 +32,7 @@ static I2C_Status InitHumiditySensor(void);
 static I2C_Status InitPressureSensor(void);
 static I2C_Status ReadPressureSensor(uint32_t* altOut);
 static I2C_Status InitAccelerometer(void);
-static I2C_Status ReadAccelerometer(uint8_t* interrupts);
+static I2C_Status ReadAccelerometer(uint16_t* x, uint16_t* y, uint16_t* z);
 static I2C_Status ReadAirTempSensor(float* tempOut);
 static uint8_t    GetSmsAddr(uint8_t index);
 static void       SendSensorData(void);
@@ -256,12 +256,15 @@ void SensorsTask(void)
         
         if(enabledSensors[5] > 0)
         {
-            if(ReadAccelerometer(&sensorData.acc) != I2C_OK)
+            uint16_t x, y, z;
+            if(ReadAccelerometer(&x, &y, &z) != I2C_OK)
             {
                 I2C_Reset(ALB_I2C);
                 enabledSensors[5]--;
                 WARN("(SENSORS_TASK) Accelerometer sensor read failed\r\n");
             }
+            
+            DEBUG("X: %d, Y: %d, Z: %d", x, y, z);
         }
         
         ReadSoilMoisture(&sensorData.moist0, &sensorData.moist1, &sensorData.moist2);
@@ -344,15 +347,14 @@ void SensorsCmd(sensor_cmd_payload_t cmd)
     
     if(cmd.valid_fields & 0x40000000)
     {
+        taskENTER_CRITICAL();
+        
         // Set SLEEPDEEP bit
         SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
         // Ensure PDDS bit = 0
         // Ensure WUF bit = 0
 
         // STOPWUCK selects HSI16 as wakeup clock
-        
-        // Disable SysTick interrupt
-        NVIC_DisableIRQ(SysTick_IRQn);
         
         __WFI();
         
@@ -362,7 +364,7 @@ void SensorsCmd(sensor_cmd_payload_t cmd)
         // Reconfigure system clock
         SystemClock_Config();
         
-        NVIC_EnableIRQ(SysTick_IRQn);
+        taskENTER_CRITICAL();
     }
     
     if(cmd.valid_fields & 0x80000000)
@@ -839,7 +841,7 @@ I2C_Status InitAccelerometer(void)
     return retVal;
 }
 
-I2C_Status ReadAccelerometer(uint8_t* interrupts)
+I2C_Status ReadAccelerometer(uint16_t* x, uint16_t* y, uint16_t* z)
 {
     I2C_Status retVal = I2C_OK;
         
@@ -847,13 +849,61 @@ I2C_Status ReadAccelerometer(uint8_t* interrupts)
     
     do
     {
-        retVal = AccelerometerRegRead(LIS2DH_INT_COUNTER_REG, interrupts);
+        uint8_t tmp;
+        retVal = AccelerometerRegRead(LIS2DH_OUT_X_H_REG, &tmp);
         
         if(retVal != I2C_OK)
         {
             break;
         }
         
+        *x = tmp << 2;
+        
+        retVal = AccelerometerRegRead(LIS2DH_OUT_X_L_REG, &tmp);
+        
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        *x |= (tmp >> 6) & 0x03;
+        
+        retVal = AccelerometerRegRead(LIS2DH_OUT_Y_H_REG, &tmp);
+        
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        *y = tmp << 2;
+        
+        retVal = AccelerometerRegRead(LIS2DH_OUT_Y_L_REG, &tmp);
+        
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        *y |= (tmp >> 6) & 0x03;
+        
+        retVal = AccelerometerRegRead(LIS2DH_OUT_Z_H_REG, &tmp);
+        
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        *z = tmp << 2;
+        
+        retVal = AccelerometerRegRead(LIS2DH_OUT_Z_L_REG, &tmp);
+        
+        if(retVal != I2C_OK)
+        {
+            break;
+        }
+        
+        *z |= (tmp >> 6) & 0x03;
+               
     }while(0);
     
     taskEXIT_CRITICAL();
